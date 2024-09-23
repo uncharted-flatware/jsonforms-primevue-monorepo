@@ -1,0 +1,22 @@
+{
+  "name": "jsonforms-primevue-monorepo",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Monorepo for jsonforms-primevue package and example(s)",
+  "author": "Derek Gray",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "yarn@4.5.0",
+  "workspaces": [
+    "packages/*",
+    "examples/*"
+  ],
+  "scripts": {
+    "build": "yarn workspaces foreach run build",
+    "lint": "yarn workspaces foreach run lint",
+    "test": "yarn workspaces foreach run test",
+    "dev": "yarn workspaces playground dev"
+  }
+}
