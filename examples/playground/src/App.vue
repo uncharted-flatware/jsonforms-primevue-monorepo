@@ -65,19 +65,19 @@ const dataSchemaString = ref(JSON.stringify({
                 },
                 whenPercentageOfInputsFail: {
                     type: "integer",
-                    title: "When more than this amount of node inputs fail",
+                    title: "",
                     minimum: 0,
                     maximum: 100
                 },
                 thenNodeFailsWithinPercentage: {
                     type: "integer",
-                    title: "then the node fails ±",
+                    title: "",
                     minimum: 0,
                     maximum: 100
                 },
                 afterNumberOfSteps: {
                     type: "integer",
-                    title: "after this many steps:",
+                    title: "",
                     minimum: 1,
                     maximum: 5 // What should it be?
                 },
@@ -160,16 +160,32 @@ const uiSchemaString = ref(JSON.stringify({
                             scope: "#/properties/damagePropagation/properties/isWhenEnabled"
                         },
                         {
+                            type: "Label",
+                            text: "When more than"
+                        },
+                        {
                             type: "Control",
                             scope: "#/properties/damagePropagation/properties/whenPercentageOfInputsFail"
+                        },
+                        {
+                            type: "Label",
+                            text: "% of node inputs fail then the node fails ±"
                         },
                         {
                             type: "Control",
                             scope: "#/properties/damagePropagation/properties/thenNodeFailsWithinPercentage"
                         },
                         {
+                            type: "Label",
+                            text: "% after"
+                        },
+                        {
                             type: "Control",
                             scope: "#/properties/damagePropagation/properties/afterNumberOfSteps"
+                        },
+                        {
+                            type: "Label",
+                            text: "steps."
                         }
                     ]
                 },
@@ -267,9 +283,10 @@ const renderers = Object.freeze([
     // here you can add custom renderers
 ]);
 
-function onFormChanged(thing, thing2) {
-    errorMessage.value = '';
-    console.debug(`Arguments: ${thing}`);
+function onFormChanged(event: JsonFormsChangeEvent) {
+    if (event.errors) {
+        console.error(event.errors)
+    }
 }
 
 </script>
