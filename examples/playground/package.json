@@ -19,10 +19,10 @@
     "@jsonforms/vue-vanilla": "^3.4.0",
     "highlight.js": "11.8.0",
     "jsonforms-primevue": "workspace:*",
-    "primeicons": "^5.0.0",
-    "primevue": "^3.0.0",
+    "primeicons": "7.0.0",
+    "primevue": "3.47.2",
     "simple-code-editor": "2.0.9",
-    "vue": "^3.0.0"
+    "vue": "3.4.31"
   },
   "devDependencies": {
     "@types/node": "^16.0.0",

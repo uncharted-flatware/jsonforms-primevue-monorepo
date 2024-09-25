@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [vue()],
   build: {
     lib: {
-      entry: './src/index.s',
+      entry: './src/index.ts',
       name: 'JsonFormsPrimeVue',
       fileName: (format) => `jsonforms-primevue.${format}.js`,
     },

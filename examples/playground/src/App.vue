@@ -7,7 +7,10 @@ import {
     vanillaRenderers,
 } from "@jsonforms/vue-vanilla";
 import 'highlight.js';
+import Checkbox from 'primevue/checkbox';
+import InputText from 'primevue/inputtext';
 import CodeEditor from 'simple-code-editor';
+import primeVueRenderers from 'jsonforms-primevue';
 
 // mergeStyles combines all classes from both styles definitions into one
 const myStyles = mergeStyles(defaultStyles, { control: { label: "mylabel" } });
@@ -30,6 +33,7 @@ const dataSchemaString = ref(JSON.stringify({
             properties: {
                 method: {
                     "type": "string",
+                    "title": "",
                     "enum": [
                         "Use a saved snapshot",
                         "Randomized"
@@ -253,7 +257,10 @@ const uiSchemaString = ref(JSON.stringify({
 }, null, 2));
 
 const exampleDataString = ref(JSON.stringify({
-
+    "scenarioName": "My scenario",
+    "damagePropagation": {
+        "isWhenEnabled": true
+    }
 }, null, 2));
 
 const dataSchema = computed(() => {
@@ -280,19 +287,21 @@ const exampleData = computed(() => {
 
 const renderers = Object.freeze([
     ...vanillaRenderers,
-    // here you can add custom renderers
+    ...primeVueRenderers
 ]);
 
 function onFormChanged(event: JsonFormsChangeEvent) {
-    if (event.errors) {
+    if (event.errors?.length > 0) {
         console.error(event.errors)
     }
+    console.debug('onFormChanged: ', event.data);
 }
 
 </script>
 
 <template>
     <div class="display-flex-column height-100pct">
+
         <h1>JSON Forms Playground</h1>
         <div class="display-flex-row width-100pct">
             <div class="display-flex-column flex-grow-1 margin-default height-80pct vertical-scroll">
@@ -300,6 +309,7 @@ function onFormChanged(event: JsonFormsChangeEvent) {
                 <CodeEditor
                     :languages="[['json', 'JSON']]"
                     width="100%"
+                    height="400px"
                     font-size="12px"
                     :line-nums="true"
                     v-model="dataSchemaString"
@@ -308,6 +318,7 @@ function onFormChanged(event: JsonFormsChangeEvent) {
                 <CodeEditor
                     :languages="[['json', 'JSON']]"
                     width="100%"
+                    height="400px"
                     font-size="12px"
                     :line-nums="true"
                     v-model="uiSchemaString"
@@ -316,6 +327,7 @@ function onFormChanged(event: JsonFormsChangeEvent) {
                 <CodeEditor
                     :languages="[['json', 'JSON']]"
                     width="100%"
+                    height="400px"
                     font-size="12px"
                     :line-nums="true"
                     v-model="exampleDataString"

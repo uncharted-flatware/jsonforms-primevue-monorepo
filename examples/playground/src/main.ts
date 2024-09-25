@@ -1,4 +1,6 @@
 import '@jsonforms/vue-vanilla/vanilla.css';
+import 'primevue/resources/themes/lara-light-indigo/theme.css'
+
 
 import App from '@/App.vue';
 import { createApp } from 'vue';
