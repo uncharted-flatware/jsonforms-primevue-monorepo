@@ -1601,7 +1601,7 @@ __metadata:
     jsonforms-primevue: "workspace:*"
     monaco-editor: "npm:0.46.0"
     primeicons: "npm:7.0.0"
-    primevue: "npm:3.47.2"
+    primevue: "npm:3.53.0"
     simple-code-editor: "npm:2.0.9"
     typescript: "npm:^4.0.0"
     vite: "npm:^3.0.0"
@@ -1627,7 +1627,7 @@ __metadata:
     "@vitejs/plugin-vue": "npm:^5.1.4"
     "@vue/tsconfig": "npm:^0.5.1"
     lodash: "npm:^4.17.21"
-    primeicons: "npm:^5.0.0"
+    primeicons: "npm:7.0.0"
     primevue: "npm:3.53.0"
     typescript: "npm:^5.6.2"
     vite: "npm:^5.4.6"
@@ -1930,22 +1930,6 @@ __metadata:
   version: 7.0.0
   resolution: "primeicons@npm:7.0.0"
   checksum: 10/ff1d698a4d5932105393cd3288c6b1fd92ad30b6fbce1b49de86bcc1917d74d6769c12061d43aa8657fe52ac79d9336527f0708d8c5a0347a1ddcd3e47d0eb73
-  languageName: node
-  linkType: hard
-
-"primeicons@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "primeicons@npm:5.0.0"
-  checksum: 10/6ebe4497e0476cbe46c241198533feb23c6ca1a482747a10122fe2398f706ef8a2b1ded47a2d90300097eaf34dd7273d8776113c1e6232bbeac7cf515714c6a9
-  languageName: node
-  linkType: hard
-
-"primevue@npm:3.47.2":
-  version: 3.47.2
-  resolution: "primevue@npm:3.47.2"
-  peerDependencies:
-    vue: ^3.0.0
-  checksum: 10/9f330b1dffe2a47d6fa9c95bfe3216eae4905a6369d91ab5b51f473d5881f8a9ed3b5b70b2ccf160aa1411ca5b1bd4901397f914fe88171c6d3feb50a7dee9e6
   languageName: node
   linkType: hard
 

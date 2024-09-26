@@ -1,10 +1,5 @@
 <template>
     <div v-if="visible" :id="id">
-        <label
-            :for="id + '-input'"
-        >
-            <span>LABEL</span>{{ label }}
-        </label>
         <slot></slot>
     </div>
 </template>

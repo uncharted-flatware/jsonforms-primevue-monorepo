@@ -6,13 +6,12 @@
     >
         <Checkbox
             binary
-            :id="control.id + '-input'"
+            :inputId="control.id + '-input'"
             :disabled="!control.enabled"
             :autofocus="appliedOptions.focus"
             :placeholder="appliedOptions.placeholder"
-            :modelValue="control.data"
+            v-model="control.data"
             @update:modelValue="onChange"
-
         />
     </ControlWrapper>
 </template>

@@ -8,7 +8,7 @@ export const useControlCommon = <
     I extends { control: any; handleChange: any }
 >(
     input: I,
-    adaptTarget: (target: any) => any = (v) => v.value
+    adaptTarget: (target: any) => any = (v) => v
 ) => {
     const appliedOptions = computed(() =>
         merge(
@@ -19,8 +19,8 @@ export const useControlCommon = <
     );
 
     const isFocused = ref(false);
-    const onChange = (event: Event) => {
-        input.handleChange(input.control.value.path, adaptTarget(event.target));
+    const onChange = (value: any) => {
+        input.handleChange(input.control.value.path, adaptTarget(value));
     };
 
     const controlWrapper = computed(() => {

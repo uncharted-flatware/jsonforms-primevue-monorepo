@@ -10,6 +10,7 @@ export default defineConfig({
       name: 'JsonFormsPrimeVue',
       fileName: (format) => `jsonforms-primevue.${format}.js`,
     },
+    sourcemap: true,
     rollupOptions: {
       external: ['vue', '@jsonforms/core', '@jsonforms/vue', 'primevue'],
       output: {
