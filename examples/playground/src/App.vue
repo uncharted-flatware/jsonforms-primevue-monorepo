@@ -110,6 +110,10 @@ const uiSchemaString = ref(JSON.stringify({
         {
             type: "Group",
             label: "1. Scenario name",
+            options: {
+                isToggleable: true,
+                isExpanded: true
+            },
             elements: [
                 {
                     type: "Label",
@@ -124,6 +128,10 @@ const uiSchemaString = ref(JSON.stringify({
         {
             type: "Group",
             label: "2. Starting damage",
+            options: {
+                isToggleable: true,
+                isExpanded: true
+            },
             elements: [
                 {
                     type: "Label",
@@ -145,6 +153,10 @@ const uiSchemaString = ref(JSON.stringify({
         {
             type: "Group",
             label: "3. Damage propagation",
+            options: {
+                isToggleable: true,
+                isExpanded: false
+            },
             elements: [
                 {
                     type: "Label",
@@ -219,6 +231,10 @@ const uiSchemaString = ref(JSON.stringify({
         {
             type: "Group",
             label: "4. Reconnection",
+            options: {
+                isToggleable: true,
+                isExpanded: false
+            },
             elements: [
                 {
                     type: "Label",
@@ -229,6 +245,10 @@ const uiSchemaString = ref(JSON.stringify({
         {
             type: "Group",
             label: "5. Recovery",
+            options: {
+                isToggleable: true,
+                isExpanded: false
+            },
             elements: [
                 {
                     type: "Label",
@@ -239,6 +259,10 @@ const uiSchemaString = ref(JSON.stringify({
         {
             type: "Group",
             label: "6. How Many simulations?",
+            options: {
+                isToggleable: true,
+                isExpanded: true
+            },
             elements: [
                 {
                     type: "Label",

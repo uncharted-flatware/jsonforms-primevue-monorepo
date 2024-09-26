@@ -1,6 +1,6 @@
 <template>
     <If v-if="isToggleable">
-        <Accordion v-if="layout.visible" :activeIndex="0">
+        <Accordion v-if="layout.visible" :activeIndex="accordionIndexForExpansion">
             <AccordionTab :header="layout.label">
                 <For
                     v-for="(element, index) in layout.uischema.elements"
@@ -74,6 +74,9 @@ const layoutRenderer = defineComponent({
     computed: {
         isToggleable(): boolean {
             return !!this.appliedOptions.isToggleable;
+        },
+        accordionIndexForExpansion(): number | undefined {
+            return !!this.appliedOptions.isExpanded ? 0 : undefined;
         }
     }
 });
