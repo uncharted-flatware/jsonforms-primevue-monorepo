@@ -1,55 +1,55 @@
-<!--<template>-->
-<!--    <div class="p-field">-->
-<!--        <label v-if="label" :for="id">{{ label }}</label>-->
-<!--        <InputText-->
-<!--            :id="id"-->
-<!--            :value="data.value"-->
-<!--            @input="onChange($event.target.value)"-->
-<!--            :placeholder="description"-->
-<!--        />-->
-<!--        <small v-if="!isValid" class="p-error">{{ errorMessage }}</small>-->
-<!--    </div>-->
-<!--</template>-->
+<template>
+    <ControlWrapper
+        v-bind="controlWrapper"
+        :is-focused="isFocused"
+        :applied-options="appliedOptions"
+    >
+        <FloatLabel>
+            <InputText
+                :id="control.id + '-input'"
+                :disabled="!control.enabled"
+                :autofocus="appliedOptions.focus"
+                :placeholder="appliedOptions.placeholder"
+                v-model="control.data"
+                @update:modelValue="onChange"
+            />
+            <label :for="control.id + '-input'">{{ control.label }}</label>
+        </FloatLabel>
+    </ControlWrapper>
+</template>
 
-<!--<script lang="ts">-->
-<!--import { computed } from 'vue';-->
-<!--import InputText from 'primevue/inputtext';-->
-<!--import { useJsonFormsControl } from '@jsonforms/vue';-->
+<script lang="ts">
+import {
+    type ControlElement
+} from '@jsonforms/core';
+import {
+    rendererProps,
+    useJsonFormsControl,
+    type RendererProps,
+} from '@jsonforms/vue';
+import { defineComponent } from 'vue';
+import { default as ControlWrapper } from './ControlWrapper.vue';
+import { useControlCommon } from "../util/composition";
+import InputText from "primevue/inputtext";
+import FloatLabel from "primevue/floatlabel";
 
-<!--export default {-->
-<!--    name: 'StringControlRenderer',-->
-<!--    components: {-->
-<!--        InputText,-->
-<!--    },-->
-<!--    props: ['uischema', 'schema', 'path', 'enabled', 'id', 'visible'],-->
-<!--    setup(props) {-->
-<!--        const {-->
-<!--            data,-->
-<!--            handleChange,-->
-<!--            errors,-->
-<!--            label,-->
-<!--            description,-->
-<!--            required,-->
-<!--        } = useJsonFormsControl(props);-->
+const controlRenderer = defineComponent({
+    name: 'boolean-control-renderer',
+    components: {
+        InputText,
+        FloatLabel,
+        ControlWrapper,
+    },
+    props: {
+        ...rendererProps<ControlElement>(),
+    },
+    actions: {
 
-<!--        const isValid = computed(() => errors.value.length === 0);-->
-<!--        const errorMessage = computed(() => errors.value.join('\n'));-->
+    },
+    setup(props: RendererProps<ControlElement>) {
+        return useControlCommon(useJsonFormsControl(props));
+    }
+});
 
-<!--        const onChange = (value) => {-->
-<!--            handleChange(props.path, value);-->
-<!--        };-->
-
-<!--        return {-->
-<!--            data,-->
-<!--            handleChange,-->
-<!--            errors,-->
-<!--            label,-->
-<!--            description,-->
-<!--            required,-->
-<!--            isValid,-->
-<!--            errorMessage,-->
-<!--            onChange,-->
-<!--        };-->
-<!--    },-->
-<!--};-->
-<!--</script>-->
+export default controlRenderer;
+</script>

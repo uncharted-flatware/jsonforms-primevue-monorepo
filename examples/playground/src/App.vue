@@ -7,8 +7,6 @@ import {
     vanillaRenderers,
 } from "@jsonforms/vue-vanilla";
 import 'highlight.js';
-import Checkbox from 'primevue/checkbox';
-import InputText from 'primevue/inputtext';
 import CodeEditor from 'simple-code-editor';
 import primeVueRenderers from 'jsonforms-primevue';
 
