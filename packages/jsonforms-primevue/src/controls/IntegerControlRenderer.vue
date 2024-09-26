@@ -8,6 +8,7 @@
             <InputNumber
                 :id="control.id"
                 :inputId="control.id + '-input'"
+                :showButtons="true"
                 :disabled="!control.enabled"
                 :autofocus="appliedOptions.focus"
                 :placeholder="appliedOptions.placeholder"
@@ -35,7 +36,7 @@ import InputNumber from "primevue/inputnumber";
 import FloatLabel from "primevue/floatlabel";
 
 const controlRenderer = defineComponent({
-    name: 'number-control-renderer',
+    name: 'integer-control-renderer',
     components: {
         InputNumber,
         FloatLabel,

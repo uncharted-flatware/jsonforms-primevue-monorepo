@@ -315,6 +315,8 @@ const renderers = Object.freeze([
 function onFormChanged(event: JsonFormsChangeEvent) {
     if (event.errors?.length > 0) {
         console.error(event.errors)
+    } else {
+        exampleDataString.value = event.data ? JSON.stringify(event.data, null, 2) : '';
     }
     console.debug('onFormChanged: ', event.data);
 }
@@ -357,9 +359,9 @@ function onFormChanged(event: JsonFormsChangeEvent) {
             </div>
             <div class="form-container align-self-flex-start">
                 <h3>Rendered Form</h3>
-                <div v-if="errorMessage.length > 0" class="debug-box">
-                    {{ errorMessage }}
-                </div>
+<!--                <div v-if="errorMessage.length > 0" class="debug-box">-->
+<!--                    {{ errorMessage }}-->
+<!--                </div>-->
                 <json-forms
                     :data="exampleData"
                     :renderers="renderers"

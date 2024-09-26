@@ -34,7 +34,7 @@ import InputText from "primevue/inputtext";
 import FloatLabel from "primevue/floatlabel";
 
 const controlRenderer = defineComponent({
-    name: 'boolean-control-renderer',
+    name: 'string-control-renderer',
     components: {
         InputText,
         FloatLabel,
