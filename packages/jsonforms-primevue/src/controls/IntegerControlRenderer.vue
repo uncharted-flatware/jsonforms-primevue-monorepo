@@ -9,6 +9,7 @@
                 :id="control.id"
                 :inputId="control.id + '-input'"
                 :showButtons="true"
+                :suffix="appliedOptions.suffix"
                 :disabled="!control.enabled"
                 :autofocus="appliedOptions.focus"
                 :placeholder="appliedOptions.placeholder"
