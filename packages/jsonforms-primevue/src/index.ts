@@ -10,10 +10,12 @@ import NumberControlRenderer from './controls/NumberControlRenderer.vue';
 import BooleanControlRenderer from './controls/BooleanControlRenderer.vue';
 import GroupLayoutRenderer from './layouts/GroupLayoutRenderer.vue';
 import IntegerControlRenderer from "./controls/IntegerControlRenderer.vue";
+import EnumControlRenderer from "./controls/EnumControlRenderer.vue";
 
 // List of tester/ranking + renderer presets
 const renderers = [
     { tester: rankWith(2, and(isStringControl, not(isEnumControl))), renderer: StringControlRenderer },
+    { tester: rankWith(3, isEnumControl), renderer: EnumControlRenderer },
     { tester: rankWith(3, isNumberControl), renderer: NumberControlRenderer },
     { tester: rankWith(3, isIntegerControl), renderer: IntegerControlRenderer },
     { tester: rankWith(2, isBooleanControl), renderer: BooleanControlRenderer },
@@ -27,6 +29,7 @@ const renderers = [
 // Individual Renderers for customized test/ranking
 export {
     StringControlRenderer,
+    EnumControlRenderer,
     NumberControlRenderer,
     IntegerControlRenderer,
     BooleanControlRenderer,

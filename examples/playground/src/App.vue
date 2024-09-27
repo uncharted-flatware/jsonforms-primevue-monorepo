@@ -43,7 +43,7 @@ const dataSchemaString = ref(JSON.stringify({
                     description: "Use the visible nodes from a saved snapshot selection"
                 },
                 severity: {
-                    type: "number",
+                    type: "integer",
                     title: "Damage severity",
                     minimum: 0,
                     maximum: 100
@@ -146,7 +146,10 @@ const uiSchemaString = ref(JSON.stringify({
                 },
                 {
                     type: "Control",
-                    scope: "#/properties/startingDamage/properties/severity"
+                    scope: "#/properties/startingDamage/properties/severity",
+                    options: {
+                        suffix: "%"
+                    }
                 }
             ]
         },
@@ -167,7 +170,7 @@ const uiSchemaString = ref(JSON.stringify({
                     scope: "#/properties/damagePropagation/properties/weightingType"
                 },
                 {
-                    type: "HorizontalLayout",
+                    type: "VerticalLayout",
                     elements: [
                         {
                             type: "Control",
@@ -179,19 +182,28 @@ const uiSchemaString = ref(JSON.stringify({
                         },
                         {
                             type: "Control",
-                            scope: "#/properties/damagePropagation/properties/whenPercentageOfInputsFail"
+                            scope: "#/properties/damagePropagation/properties/whenPercentageOfInputsFail",
+                            options: {
+                                suffix: "%"
+                            }
                         },
                         {
                             type: "Label",
-                            text: "% of node inputs fail then the node fails ±"
+                            text: "of node inputs fail then the node fails ±",
+                            options: {
+                                suffix: "%"
+                            }
                         },
                         {
                             type: "Control",
-                            scope: "#/properties/damagePropagation/properties/thenNodeFailsWithinPercentage"
+                            scope: "#/properties/damagePropagation/properties/thenNodeFailsWithinPercentage",
+                            options: {
+                                suffix: "%"
+                            }
                         },
                         {
                             type: "Label",
-                            text: "% after"
+                            text: "after"
                         },
                         {
                             type: "Control",
@@ -362,7 +374,7 @@ function onFormChanged(event: JsonFormsChangeEvent) {
 <!--                <div v-if="errorMessage.length > 0" class="debug-box">-->
 <!--                    {{ errorMessage }}-->
 <!--                </div>-->
-                <json-forms
+                <JsonForms
                     :data="exampleData"
                     :renderers="renderers"
                     :schema="dataSchema"
@@ -403,36 +415,13 @@ function onFormChanged(event: JsonFormsChangeEvent) {
     margin: var(--standard-padding-size);
 }
 
-.vertical-layout {
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
 .form-container {
     width: 800px;
     margin: 0 auto;
 }
 
-.text-area {
-    min-height: 80px;
-}
-
 .vertical-scroll {
     overflow-y: auto;
-}
-
-.horizontal-scroll {
-    overflow-x: auto;
-}
-
-.text-align-left {
-    text-align: left;
-}
-
-.display-flex-row-left-justify {
-    display: flex;
-    flex-direction: row;
-    justify-items: left;
 }
 
 .display-flex-row {
