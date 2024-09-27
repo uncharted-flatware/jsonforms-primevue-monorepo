@@ -100,6 +100,15 @@ const dataSchemaString = ref(JSON.stringify({
             title: "Number of runs",
             minimum: 1,
             maximum: 1000
+        },
+        testing: {
+            type: "object",
+            properties: {
+                "dateTime": {
+                    type: "string",
+                    format: "date-time"
+                }
+            }
         }
     },
 }, null, 2));
@@ -283,6 +292,19 @@ const uiSchemaString = ref(JSON.stringify({
                 {
                     type: "Control",
                     scope: "#/properties/numberOfRuns"
+                }
+            ]
+        },
+        {
+            type: "Group",
+            label: "Test",
+            options: {
+                isToggleable: true
+            },
+            elements: [
+                {
+                    type: "Control",
+                    scope: "#/properties/testing/properties/dateTime"
                 }
             ]
         }

@@ -1,16 +1,23 @@
 import {
+    and,
+    not,
     rankWith,
     isStringControl,
     isNumberControl,
-    isBooleanControl, and, not, isEnumControl, uiTypeIs, isLayout, isIntegerControl,
-    //uiTypeIs,
+    isBooleanControl,
+    isEnumControl,
+    isLayout,
+    isIntegerControl,
+    isDateTimeControl,
+    uiTypeIs
 } from '@jsonforms/core';
 import StringControlRenderer from './controls/StringControlRenderer.vue';
 import NumberControlRenderer from './controls/NumberControlRenderer.vue';
 import BooleanControlRenderer from './controls/BooleanControlRenderer.vue';
 import GroupLayoutRenderer from './layouts/GroupLayoutRenderer.vue';
-import IntegerControlRenderer from "./controls/IntegerControlRenderer.vue";
-import EnumControlRenderer from "./controls/EnumControlRenderer.vue";
+import IntegerControlRenderer from './controls/IntegerControlRenderer.vue';
+import EnumControlRenderer from './controls/EnumControlRenderer.vue';
+import DateTimeControlRenderer from './controls/DateTimeControlRenderer.vue';
 
 // List of tester/ranking + renderer presets
 const renderers = [
@@ -19,6 +26,7 @@ const renderers = [
     { tester: rankWith(3, isNumberControl), renderer: NumberControlRenderer },
     { tester: rankWith(3, isIntegerControl), renderer: IntegerControlRenderer },
     { tester: rankWith(2, isBooleanControl), renderer: BooleanControlRenderer },
+    { tester: rankWith(3, isDateTimeControl), renderer: DateTimeControlRenderer },
     // {
     //     tester: rankWith(1, uiTypeIs('VerticalLayout')),
     //     renderer: VerticalLayoutRenderer,
@@ -33,6 +41,7 @@ export {
     NumberControlRenderer,
     IntegerControlRenderer,
     BooleanControlRenderer,
+    DateTimeControlRenderer,
     // Layouts
     GroupLayoutRenderer
 };
