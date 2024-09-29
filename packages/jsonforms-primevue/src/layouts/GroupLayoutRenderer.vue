@@ -2,19 +2,7 @@
     <If v-if="isToggleable">
         <Accordion v-if="layout.visible" :activeIndex="accordionIndexForExpansion">
             <AccordionTab :header="layout.label">
-                <For
-                    v-for="(element, index) in layout.uischema.elements"
-                    :key="`${layout.path}-${index}`"
-                >
-                    <DispatchRenderer
-                        :schema="layout.schema"
-                        :uischema="element"
-                        :path="layout.path"
-                        :enabled="layout.enabled"
-                        :renderers="layout.renderers"
-                        :cells="layout.cells"
-                    />
-                </For>
+                <LayoutElementsDispatcher v-bind="{ ...props }" />
             </AccordionTab>
         </Accordion>
     </If>
@@ -24,27 +12,14 @@
             :header="layout.label"
             :toggleable="isToggleable"
         >
-            <For
-                v-for="(element, index) in layout.uischema.elements"
-                :key="`${layout.path}-${index}`"
-            >
-                <DispatchRenderer
-                    :schema="layout.schema"
-                    :uischema="element"
-                    :path="layout.path"
-                    :enabled="layout.enabled"
-                    :renderers="layout.renderers"
-                    :cells="layout.cells"
-                />
-            </For>
+            <LayoutElementsDispatcher v-bind="{ ...props }" />
         </Panel>
     </Else>
 </template>
 
-<script lang="ts">
-
-import { defineComponent } from "vue";
-import { DispatchRenderer, type RendererProps, rendererProps, useJsonFormsLayout } from "@jsonforms/vue";
+<script setup lang="ts">
+import { computed } from "vue";
+import { DispatchRenderer, rendererProps, useJsonFormsLayout } from "@jsonforms/vue";
 import Accordion from 'primevue/accordion';
 import AccordionTab from 'primevue/accordiontab';
 import Panel from "primevue/panel";
@@ -53,33 +28,19 @@ import { useLayoutCommon } from "../util/composition";
 import If from "../components/If.vue";
 import For from "../components/For.vue";
 import Else from "../components/Else.vue";
+import LayoutElementsDispatcher from "./LayoutElementsDispatcher.vue";
 
-const layoutRenderer = defineComponent({
-    name: 'group-renderer',
-    components: {
-        Accordion,
-        AccordionTab,
-        DispatchRenderer,
-        Panel,
-        If,
-        For,
-        Else
-    },
-    props: {
-        ...rendererProps<Layout>()
-    },
-    setup(props: RendererProps<Layout>) {
-        return useLayoutCommon(useJsonFormsLayout(props));
-    },
-    computed: {
-        isToggleable(): boolean {
-            return !!this.appliedOptions.isToggleable;
-        },
-        accordionIndexForExpansion(): number | undefined {
-            return !!this.appliedOptions.isExpanded ? 0 : undefined;
-        }
-    }
+const props = defineProps(rendererProps<Layout>());
+const layoutProps = useJsonFormsLayout(props);
+const layoutCommon = useLayoutCommon(layoutProps);
+
+const { appliedOptions } = layoutCommon;
+
+const { layout } = layoutProps;
+
+const isToggleable = computed(() => !!appliedOptions.value.isToggleable);
+
+const accordionIndexForExpansion = computed(() => {
+    return !!appliedOptions.value.isExpanded ? 0 : undefined;
 });
-
-export default layoutRenderer;
 </script>

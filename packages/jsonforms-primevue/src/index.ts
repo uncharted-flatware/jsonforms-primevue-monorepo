@@ -14,10 +14,13 @@ import {
 import StringControlRenderer from './controls/StringControlRenderer.vue';
 import NumberControlRenderer from './controls/NumberControlRenderer.vue';
 import BooleanControlRenderer from './controls/BooleanControlRenderer.vue';
-import GroupLayoutRenderer from './layouts/GroupLayoutRenderer.vue';
 import IntegerControlRenderer from './controls/IntegerControlRenderer.vue';
 import EnumControlRenderer from './controls/EnumControlRenderer.vue';
 import DateTimeControlRenderer from './controls/DateTimeControlRenderer.vue';
+// Layouts
+import GroupLayoutRenderer from './layouts/GroupLayoutRenderer.vue';
+import HorizontalLayoutRenderer from "./layouts/HorizontalLayoutRenderer.vue";
+import VerticalLayoutRenderer from "./layouts/VerticalLayoutRenderer.vue";
 
 // List of tester/ranking + renderer presets
 const renderers = [
@@ -27,11 +30,10 @@ const renderers = [
     { tester: rankWith(3, isIntegerControl), renderer: IntegerControlRenderer },
     { tester: rankWith(2, isBooleanControl), renderer: BooleanControlRenderer },
     { tester: rankWith(3, isDateTimeControl), renderer: DateTimeControlRenderer },
-    // {
-    //     tester: rankWith(1, uiTypeIs('VerticalLayout')),
-    //     renderer: VerticalLayoutRenderer,
-    // },
-    { tester: rankWith(3, and(isLayout, uiTypeIs('Group'))), renderer: GroupLayoutRenderer }
+    // Layouts
+    { tester: rankWith(3, and(isLayout, uiTypeIs('Group'))), renderer: GroupLayoutRenderer },
+    { tester: rankWith(3, and(isLayout, uiTypeIs('HorizontalLayout'))), renderer: HorizontalLayoutRenderer },
+    { tester: rankWith(3, and(isLayout, uiTypeIs('VerticalLayout'))), renderer: VerticalLayoutRenderer }
 ];
 
 // Individual Renderers for customized test/ranking
@@ -43,7 +45,9 @@ export {
     BooleanControlRenderer,
     DateTimeControlRenderer,
     // Layouts
-    GroupLayoutRenderer
+    GroupLayoutRenderer,
+    HorizontalLayoutRenderer,
+    VerticalLayoutRenderer
 };
 
 export default renderers;
