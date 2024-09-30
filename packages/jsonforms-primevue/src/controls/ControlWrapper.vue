@@ -8,10 +8,14 @@
         </If>
         <ElseIf v-else-if="appliedOptions.labelPlacement === 'right'">
             <slot></slot>
-            <label :for="id + '-input'">{{ label }}</label>
+            <If v-if="label">
+                <label :for="id + '-input'">{{ label }}</label>
+            </If>
         </ElseIf>
         <Else v-else>
-            <label :for="id + '-input'">{{ label }}</label>
+            <If v-if="label">
+                <label :for="id + '-input'">{{ label }}</label>
+            </If>
             <slot></slot>
         </Else>
     </div>

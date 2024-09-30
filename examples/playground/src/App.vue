@@ -183,7 +183,7 @@ const uiSchemaString = ref(JSON.stringify({
                     scope: "#/properties/damagePropagation/properties/weightingType"
                 },
                 {
-                    type: "VerticalLayout",
+                    type: "HorizontalLayout",
                     elements: [
                         {
                             type: "Control",
@@ -202,7 +202,7 @@ const uiSchemaString = ref(JSON.stringify({
                         },
                         {
                             type: "Label",
-                            text: "of node inputs fail then the node fails ±",
+                            text: "of node inputs fail then the node fails",
                             options: {
                                 suffix: "%"
                             }
@@ -210,6 +210,7 @@ const uiSchemaString = ref(JSON.stringify({
                         {
                             type: "Control",
                             scope: "#/properties/damagePropagation/properties/thenNodeFailsWithinPercentage",
+                            label: "±",
                             options: {
                                 suffix: "%"
                             }
@@ -236,17 +237,18 @@ const uiSchemaString = ref(JSON.stringify({
                             elements: [
                                 {
                                     type: "Control",
-                                    scope: "#/properties/damagePropagation/properties/isUseHierarchicalDependenciesEnabled"
+                                    scope: "#/properties/damagePropagation/properties/isUseHierarchicalDependenciesEnabled",
+                                    label: "Use hierarchical dependencies for",
+                                    options: {
+                                        labelPlacement: "right"
+                                    }
                                 },
                                 {
-                                    type: "Label",
-                                    text: "Use hierarchical dependencies for"
+                                    type: "Control",
+                                    scope: "#/properties/damagePropagation/properties/hierarchicalDependenciesOption",
+                                    label: ""
                                 }
                             ]
-                        },
-                        {
-                            type: "Control",
-                            scope: "#/properties/damagePropagation/properties/hierarchicalDependenciesOption"
                         }
                     ]
                 }

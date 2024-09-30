@@ -42,6 +42,6 @@ const {
 } = controlCommon;
 
 const options = computed(() => {
-    return this.control.options.map(option => option.value);
+    return control.value.options.map(option => option.value);
 });
 </script>

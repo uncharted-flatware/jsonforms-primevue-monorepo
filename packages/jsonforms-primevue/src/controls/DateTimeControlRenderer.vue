@@ -32,11 +32,11 @@ import { useControlCommon } from "../util/composition";
 import DatePicker from "primevue/calendar";
 
 const props = defineProps(rendererProps<ControlElement>());
-const controlProps = useJsonFormsControl(props, (primeVueValue: Date): string => {
+const controlProps = useJsonFormsControl(props);
+const controlCommon = useControlCommon(controlProps, (primeVueValue: Date): string => {
     // PrimeVue outputs Date objects so convert them back to strings
     return primeVueValue.toISOString();
 });
-const controlCommon = useControlCommon(controlProps);
 
 const {
     appliedOptions,

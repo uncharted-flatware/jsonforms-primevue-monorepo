@@ -16,6 +16,7 @@
             :disabled="!control.enabled"
             :autofocus="appliedOptions.focus"
             :placeholder="appliedOptions.placeholder"
+            inputClass="w-5rem"
             v-model="control.data"
             @update:modelValue="onChange"
         />
