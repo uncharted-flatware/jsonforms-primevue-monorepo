@@ -1,12 +1,16 @@
 <template>
-    <div v-if="visible" :id="id" class="flex align-items-center gap-3">
-        <If v-if="labelPlacement === 'float'">
+    <div v-if="visible" :id="id" class="flex align-items-center gap-4">
+        <If v-if="appliedOptions.labelPlacement === 'float'">
             <FloatLabel>
                 <slot></slot>
                 <label :for="id + '-input'">{{ label }}</label>
             </FloatLabel>
         </If>
-        <Else>
+        <ElseIf v-else-if="appliedOptions.labelPlacement === 'right'">
+            <slot></slot>
+            <label :for="id + '-input'">{{ label }}</label>
+        </ElseIf>
+        <Else v-else>
             <label :for="id + '-input'">{{ label }}</label>
             <slot></slot>
         </Else>
@@ -14,9 +18,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed, PropType } from 'vue';
+import { PropType } from 'vue';
 import { Options } from '../util/options';
 import { If, Else, ElseIf } from '../components/blocks';
+import FloatLabel from 'primevue/floatlabel';
 
 const props = defineProps({
     id: {
@@ -63,9 +68,4 @@ const props = defineProps({
     //     type: Object as PropType<Styles>,
     // }
 });
-
-const labelPlacement = computed(() => {
-    return props.appliedOptions?.labelPlacement ?? 'left';
-});
-
 </script>

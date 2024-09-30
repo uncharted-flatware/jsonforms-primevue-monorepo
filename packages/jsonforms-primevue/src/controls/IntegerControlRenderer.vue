@@ -4,55 +4,56 @@
         :is-focused="isFocused"
         :applied-options="appliedOptions"
     >
-        <FloatLabel>
-            <InputNumber
-                :id="control.id"
-                :inputId="control.id + '-input'"
-                :showButtons="true"
-                :suffix="appliedOptions.suffix"
-                :disabled="!control.enabled"
-                :autofocus="appliedOptions.focus"
-                :placeholder="appliedOptions.placeholder"
-                v-model="control.data"
-                @update:modelValue="onChange"
-            />
-            <label :for="control.id">{{ control.label }}</label>
-        </FloatLabel>
+        <InputNumber
+            :id="control.id"
+            :inputId="control.id + '-input'"
+            :showButtons="true"
+            :prefix="appliedOptions.prefix"
+            :suffix="appliedOptions.suffix"
+            :step="step"
+            :min="control.schema.minimum"
+            :max="control.schema.maximum"
+            :disabled="!control.enabled"
+            :autofocus="appliedOptions.focus"
+            :placeholder="appliedOptions.placeholder"
+            v-model="control.data"
+            @update:modelValue="onChange"
+        />
     </ControlWrapper>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
+import { computed } from "vue";
 import {
     type ControlElement
 } from '@jsonforms/core';
 import {
     rendererProps,
-    useJsonFormsControl,
-    type RendererProps,
+    useJsonFormsControl
 } from '@jsonforms/vue';
-import { defineComponent } from 'vue';
 import { default as ControlWrapper } from './ControlWrapper.vue';
 import { useControlCommon } from "../util/composition";
 import InputNumber from "primevue/inputnumber";
-import FloatLabel from "primevue/floatlabel";
 
-const controlRenderer = defineComponent({
-    name: 'integer-control-renderer',
-    components: {
-        InputNumber,
-        FloatLabel,
-        ControlWrapper,
-    },
-    props: {
-        ...rendererProps<ControlElement>(),
-    },
-    actions: {
+const props = defineProps(rendererProps<ControlElement>());
+const controlProps = useJsonFormsControl(props);
+const controlCommon = useControlCommon(controlProps);
 
-    },
-    setup(props: RendererProps<ControlElement>) {
-        return useControlCommon(useJsonFormsControl(props));
+const {
+    appliedOptions,
+    control,
+    controlWrapper,
+    isFocused,
+    onChange
+} = controlCommon;
+
+const step = computed(() => {
+    if (control.value.schema.multipleOf) {
+        return control.value.schema.multipleOf;
     }
+    if (appliedOptions.value.step) {
+        return appliedOptions.value.step;
+    }
+    return 1;
 });
-
-export default controlRenderer;
 </script>

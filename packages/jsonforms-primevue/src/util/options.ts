@@ -4,7 +4,7 @@ export interface Options {
     focus?: boolean;
 
     // Relevant to most controls
-    labelPlacement?: 'left' | 'right' | 'above' | 'below' | 'float';
+    labelPlacement?: 'left' | 'right' | 'float';
 
     // Relevant to number controls
     step?: number;

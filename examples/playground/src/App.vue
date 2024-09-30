@@ -131,6 +131,10 @@ const uiSchemaString = ref(JSON.stringify({
                 {
                     type: "Control",
                     scope: "#/properties/scenarioName",
+                    label: "Name",
+                    options: {
+                        labelPlacement: "float"
+                    }
                 }
             ]
         },
@@ -291,7 +295,10 @@ const uiSchemaString = ref(JSON.stringify({
                 },
                 {
                     type: "Control",
-                    scope: "#/properties/numberOfRuns"
+                    scope: "#/properties/numberOfRuns",
+                    options: {
+                        "step": 10
+                    }
                 }
             ]
         },
@@ -313,10 +320,7 @@ const uiSchemaString = ref(JSON.stringify({
 }, null, 2));
 
 const exampleDataString = ref(JSON.stringify({
-    "scenarioName": "My scenario",
-    "damagePropagation": {
-        "isWhenEnabled": true
-    }
+
 }, null, 2));
 
 const dataSchema = computed(() => {

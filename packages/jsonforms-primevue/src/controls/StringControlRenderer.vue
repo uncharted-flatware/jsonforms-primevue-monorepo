@@ -1,55 +1,42 @@
 <template>
     <ControlWrapper
         v-bind="controlWrapper"
-        :is-focused="isFocused"
-        :applied-options="appliedOptions"
+        :isFocused="isFocused"
+        :appliedOptions="appliedOptions"
     >
-        <FloatLabel>
-            <InputText
-                :id="control.id + '-input'"
-                :disabled="!control.enabled"
-                :autofocus="appliedOptions.focus"
-                :placeholder="appliedOptions.placeholder"
-                v-model="control.data"
-                @update:modelValue="onChange"
-            />
-            <label :for="control.id + '-input'">{{ control.label }}</label>
-        </FloatLabel>
+        <InputText
+            :id="control.id"
+            :inputId="control.id + '-input'"
+            :disabled="!control.enabled"
+            :autofocus="appliedOptions.focus"
+            :placeholder="appliedOptions.placeholder"
+            v-model="control.data"
+            @update:modelValue="onChange"
+        />
     </ControlWrapper>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import {
     type ControlElement
 } from '@jsonforms/core';
 import {
     rendererProps,
-    useJsonFormsControl,
-    type RendererProps,
+    useJsonFormsControl
 } from '@jsonforms/vue';
-import { defineComponent } from 'vue';
 import { default as ControlWrapper } from './ControlWrapper.vue';
 import { useControlCommon } from "../util/composition";
 import InputText from "primevue/inputtext";
-import FloatLabel from "primevue/floatlabel";
 
-const controlRenderer = defineComponent({
-    name: 'string-control-renderer',
-    components: {
-        InputText,
-        FloatLabel,
-        ControlWrapper,
-    },
-    props: {
-        ...rendererProps<ControlElement>(),
-    },
-    actions: {
+const props = defineProps(rendererProps<ControlElement>());
+const controlProps = useJsonFormsControl(props);
+const controlCommon = useControlCommon(controlProps);
 
-    },
-    setup(props: RendererProps<ControlElement>) {
-        return useControlCommon(useJsonFormsControl(props));
-    }
-});
-
-export default controlRenderer;
+const {
+    appliedOptions,
+    control,
+    controlWrapper,
+    isFocused,
+    onChange
+} = controlCommon;
 </script>

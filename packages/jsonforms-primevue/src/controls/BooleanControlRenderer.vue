@@ -6,6 +6,7 @@
     >
         <Checkbox
             binary
+            :id="control.id"
             :inputId="control.id + '-input'"
             :disabled="!control.enabled"
             :autofocus="appliedOptions.focus"
