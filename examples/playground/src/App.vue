@@ -358,15 +358,15 @@ function onFormChanged(event: JsonFormsChangeEvent) {
 </script>
 
 <template>
-    <div class="display-flex-column height-100pct">
+    <div class="flex flex-column max-h-full gap-3">
 
         <h1>JSON Forms Playground</h1>
-        <div class="display-flex-row width-100pct">
-            <div class="display-flex-column flex-grow-1 margin-default height-80pct vertical-scroll">
+        <div class="flex flex-row align-content-flex-start max-w-full gap=3">
+            <div class="flex flex-column flex-grow-0 m3">
                 <h3>Data Schema</h3>
                 <CodeEditor
                     :languages="[['json', 'JSON']]"
-                    width="100%"
+                    width="650px"
                     height="400px"
                     font-size="12px"
                     :line-nums="true"
@@ -375,7 +375,7 @@ function onFormChanged(event: JsonFormsChangeEvent) {
                 <h3>UI Schema</h3>
                 <CodeEditor
                     :languages="[['json', 'JSON']]"
-                    width="100%"
+                    width="650px"
                     height="400px"
                     font-size="12px"
                     :line-nums="true"
@@ -384,14 +384,14 @@ function onFormChanged(event: JsonFormsChangeEvent) {
                 <h3>Example Data</h3>
                 <CodeEditor
                     :languages="[['json', 'JSON']]"
-                    width="100%"
+                    width="650px"
                     height="400px"
                     font-size="12px"
                     :line-nums="true"
                     v-model="exampleDataString"
                 />
             </div>
-            <div class="form-container align-self-flex-start">
+            <div class="form-container m-3">
                 <h3>Rendered Form</h3>
 <!--                <div v-if="errorMessage.length > 0" class="debug-box">-->
 <!--                    {{ errorMessage }}-->
@@ -413,84 +413,16 @@ function onFormChanged(event: JsonFormsChangeEvent) {
 
 
 <style>
-:root {
-    --nav-bar-height: 50px;
-    --footer-height: 30px;
-
-    --standard-padding-size: 5px;
-    --small-padding-size: 4px;
-    --standard-gap: var(--standard-padding-size);
-    --small-gap: var(--small-padding-size);
-    --standard-heading-height: 30px;
-
-    --standard-border-radius: 8px;
-    --spinner-dimension-small: 20px;
-
-    --table-font-size: small;
-}
-
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
-    margin: var(--standard-padding-size);
 }
 
 .form-container {
     width: 800px;
     margin: 0 auto;
-}
-
-.vertical-scroll {
-    overflow-y: auto;
-}
-
-.display-flex-row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: var(--standard-gap);
-}
-
-.display-flex-column {
-    display: flex;
-    flex-direction: column;
-    gap: var(--standard-gap);
-}
-
-.flex-grow-1 {
-    flex-grow: 1;
-}
-
-.align-self-flex-start {
-    align-self: flex-start;
-}
-
-.width-100pct {
-    width: 100%;
-}
-
-.height-100pct {
-    height: 90%;
-}
-
-.height-80pct {
-    height: 1200px;
-}
-
-.small-gap {
-    gap: var(--small-gap);
-}
-
-.debug-box {
-    border-style: solid;
-    border-color: red;
-    border-width: 2px;
-}
-
-.border-green {
-    border-color: green;
 }
 
 .footer {

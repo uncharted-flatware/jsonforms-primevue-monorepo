@@ -1,5 +1,5 @@
 <template>
-    <div v-if="layout.visible" class="flex flex-column align-content-start">
+    <div v-if="layout.visible" class="flex flex-column align-content-start gap-3">
         <LayoutElementsDispatcher v-bind="{ ...props }" />
     </div>
 </template>

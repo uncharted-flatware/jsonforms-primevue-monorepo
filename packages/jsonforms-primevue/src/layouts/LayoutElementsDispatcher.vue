@@ -17,7 +17,7 @@
 <script setup lang="ts">
 import { DispatchRenderer, rendererProps, useJsonFormsLayout } from "@jsonforms/vue";
 import { type Layout } from "@jsonforms/core";
-import For from "../components/For.vue";
+import For from "../components/blocks/For.vue";
 
 const props = defineProps(rendererProps<Layout>());
 const layoutProps = useJsonFormsLayout(props);

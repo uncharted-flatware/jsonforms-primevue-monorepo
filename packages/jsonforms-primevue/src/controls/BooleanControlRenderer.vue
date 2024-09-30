@@ -16,36 +16,27 @@
     </ControlWrapper>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import {
     type ControlElement,
 } from '@jsonforms/core';
 import {
     rendererProps,
     useJsonFormsControl,
-    type RendererProps,
 } from '@jsonforms/vue';
-import { defineComponent } from 'vue';
 import Checkbox from 'primevue/checkbox';
 import { default as ControlWrapper } from './ControlWrapper.vue';
 import { useControlCommon } from "../util/composition";
 
-const controlRenderer = defineComponent({
-    name: 'boolean-control-renderer',
-    components: {
-        Checkbox,
-        ControlWrapper,
-    },
-    props: {
-        ...rendererProps<ControlElement>(),
-    },
-    actions: {
+const props = defineProps(rendererProps<ControlElement>());
+const controlProps = useJsonFormsControl(props);
+const controlCommon = useControlCommon(controlProps);
 
-    },
-    setup(props: RendererProps<ControlElement>) {
-        return useControlCommon(useJsonFormsControl(props));
-    },
-});
-
-export default controlRenderer;
+const {
+    appliedOptions,
+    control,
+    controlWrapper,
+    isFocused,
+    onChange
+} = controlCommon;
 </script>

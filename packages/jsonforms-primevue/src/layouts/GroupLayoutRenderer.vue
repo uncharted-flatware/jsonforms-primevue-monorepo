@@ -2,7 +2,9 @@
     <If v-if="isToggleable">
         <Accordion v-if="layout.visible" :activeIndex="accordionIndexForExpansion">
             <AccordionTab :header="layout.label">
-                <LayoutElementsDispatcher v-bind="{ ...props }" />
+                <div class="flex flex-column align-content-start gap-3">
+                    <LayoutElementsDispatcher v-bind="{ ...props }" />
+                </div>
             </AccordionTab>
         </Accordion>
     </If>
@@ -12,22 +14,22 @@
             :header="layout.label"
             :toggleable="isToggleable"
         >
-            <LayoutElementsDispatcher v-bind="{ ...props }" />
+            <div class="flex flex-column align-content-start gap-3">
+                <LayoutElementsDispatcher v-bind="{ ...props }" />
+            </div>
         </Panel>
     </Else>
 </template>
 
 <script setup lang="ts">
 import { computed } from "vue";
-import { DispatchRenderer, rendererProps, useJsonFormsLayout } from "@jsonforms/vue";
+import { rendererProps, useJsonFormsLayout } from "@jsonforms/vue";
 import Accordion from 'primevue/accordion';
 import AccordionTab from 'primevue/accordiontab';
 import Panel from "primevue/panel";
 import { type Layout } from "@jsonforms/core";
 import { useLayoutCommon } from "../util/composition";
-import If from "../components/If.vue";
-import For from "../components/For.vue";
-import Else from "../components/Else.vue";
+import { If, Else } from "../components/blocks";
 import LayoutElementsDispatcher from "./LayoutElementsDispatcher.vue";
 
 const props = defineProps(rendererProps<Layout>());
