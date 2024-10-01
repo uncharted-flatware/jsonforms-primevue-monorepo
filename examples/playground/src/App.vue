@@ -264,6 +264,9 @@ const uiSchemaString = ref(JSON.stringify({
                     elements: [
                         {
                             type: "HorizontalLayout",
+                            options: {
+                                isWrappingEnabled: true
+                            },
                             elements: [
                                 {
                                     type: "Control",
@@ -276,7 +279,14 @@ const uiSchemaString = ref(JSON.stringify({
                                 {
                                     type: "Control",
                                     scope: "#/properties/damagePropagation/properties/hierarchicalDependenciesOption",
-                                    label: ""
+                                    label: "",
+                                    rule: {
+                                        effect: "DISABLE",
+                                        condition: {
+                                            scope: "#/properties/damagePropagation/properties/isUseHierarchicalDependenciesEnabled",
+                                            schema: { const: false }
+                                        }
+                                    }
                                 }
                             ]
                         }
@@ -352,7 +362,19 @@ const uiSchemaString = ref(JSON.stringify({
 }, null, 2));
 
 const exampleDataString = ref(JSON.stringify({
-
+    "damagePropagation": {
+        "isUseHierarchicalDependenciesEnabled": false,
+        "isWhenEnabled": true,
+        "weightingType": "None",
+        "whenPercentageOfInputsFail": 3,
+        "thenNodeFailsWithinPercentage": 3,
+        "afterNumberOfSteps": 2
+    },
+    "startingDamage": {
+        "method": "Randomized",
+        "severity": 5
+    },
+    "numberOfRuns": 10
 }, null, 2));
 
 const dataSchema = computed(() => {
