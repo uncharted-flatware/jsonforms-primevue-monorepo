@@ -1,4 +1,4 @@
-# jsonforms-primvevue
+# jsonforms-primevue
 
 ## Motivation
 
@@ -20,7 +20,7 @@ Import and add the ranked renderer configurations and supply them to the JSON Fo
 ```typescript vuejs
 <script lang="ts">
 import { JsonForms } from "@jsonforms/vue";
-import primeVueRenderers from "jsonforms-primevue";
+import primeVueRenderers from "@unchartedsoftware/jsonforms-primevue";
 
 // defineComponent(...
 
