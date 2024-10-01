@@ -36,9 +36,7 @@ const props = defineProps(rendererProps<Layout>());
 const layoutProps = useJsonFormsLayout(props);
 const layoutCommon = useLayoutCommon(layoutProps);
 
-const { appliedOptions } = layoutCommon;
-
-const { layout } = layoutProps;
+const { appliedOptions, layout } = layoutCommon;
 
 const isToggleable = computed(() => !!appliedOptions.value.isToggleable);
 

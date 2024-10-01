@@ -147,22 +147,44 @@ const uiSchemaString = ref(JSON.stringify({
             },
             elements: [
                 {
-                    type: "Label",
-                    text:  "Which nodes in the network are broken at the beginning of the simulation?"
-                },
-                {
-                    type: "Control",
-                    scope: "#/properties/startingDamage/properties/method",
+                    type: "HorizontalLayout",
                     options: {
-                        format: "radio"
-                    }
-                },
-                {
-                    type: "Control",
-                    scope: "#/properties/startingDamage/properties/severity",
-                    options: {
-                        suffix: "%"
-                    }
+                        isWrappingEnabled: false
+                    },
+                    elements: [
+                        {
+                            type: "VerticalLayout",
+                            elements: [
+                                {
+                                    type: "Label",
+                                    text:  "Which nodes in the network are broken at the beginning of the simulation?"
+                                },
+                                {
+                                    type: "Control",
+                                    scope: "#/properties/startingDamage/properties/method",
+                                    options: {
+                                        format: "radio"
+                                    }
+                                },
+                                {
+                                    type: "Control",
+                                    scope: "#/properties/startingDamage/properties/severity",
+                                    options: {
+                                        suffix: "%"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            type: "Label",
+                            text: "See image",
+                            options: {
+                                imageUrl: '/starting-damage.png',
+                                imageWidth: 200,
+                                imageHeight: 200
+                            }
+                        }
+                    ]
                 }
             ]
         },
@@ -190,42 +212,50 @@ const uiSchemaString = ref(JSON.stringify({
                             scope: "#/properties/damagePropagation/properties/isWhenEnabled"
                         },
                         {
-                            type: "Label",
-                            text: "When more than"
-                        },
-                        {
-                            type: "Control",
-                            scope: "#/properties/damagePropagation/properties/whenPercentageOfInputsFail",
+                            type: "HorizontalLayout",
                             options: {
-                                suffix: "%"
-                            }
-                        },
-                        {
-                            type: "Label",
-                            text: "of node inputs fail then the node fails",
-                            options: {
-                                suffix: "%"
-                            }
-                        },
-                        {
-                            type: "Control",
-                            scope: "#/properties/damagePropagation/properties/thenNodeFailsWithinPercentage",
-                            label: "±",
-                            options: {
-                                suffix: "%"
-                            }
-                        },
-                        {
-                            type: "Label",
-                            text: "after"
-                        },
-                        {
-                            type: "Control",
-                            scope: "#/properties/damagePropagation/properties/afterNumberOfSteps"
-                        },
-                        {
-                            type: "Label",
-                            text: "steps."
+                                isWrappingEnabled: true
+                            },
+                            elements: [
+                                {
+                                    type: "Label",
+                                    text: "When more than"
+                                },
+                                {
+                                    type: "Control",
+                                    scope: "#/properties/damagePropagation/properties/whenPercentageOfInputsFail",
+                                    options: {
+                                        suffix: "%"
+                                    }
+                                },
+                                {
+                                    type: "Label",
+                                    text: "of node inputs fail then the node fails",
+                                    options: {
+                                        suffix: "%"
+                                    }
+                                },
+                                {
+                                    type: "Control",
+                                    scope: "#/properties/damagePropagation/properties/thenNodeFailsWithinPercentage",
+                                    label: "±",
+                                    options: {
+                                        suffix: "%"
+                                    }
+                                },
+                                {
+                                    type: "Label",
+                                    text: "after"
+                                },
+                                {
+                                    type: "Control",
+                                    scope: "#/properties/damagePropagation/properties/afterNumberOfSteps"
+                                },
+                                {
+                                    type: "Label",
+                                    text: "steps."
+                                }
+                            ]
                         }
                     ]
                 },

@@ -62,3 +62,24 @@ export const useLayoutCommon = <
         appliedOptions
     };
 };
+
+export const useLabelCommon = <
+    T extends { config: any; uischema: UISchemaElement },
+    I extends { label: ComputedRef<T> },
+>(
+    input: I,
+) => {
+    const appliedOptions = computed(() =>
+        merge(
+            {},
+            cloneDeep(input.label.value.config),
+            cloneDeep(input.label.value.uischema.options)
+        )
+    );
+
+    return {
+        ...input,
+        appliedOptions
+    };
+};
+

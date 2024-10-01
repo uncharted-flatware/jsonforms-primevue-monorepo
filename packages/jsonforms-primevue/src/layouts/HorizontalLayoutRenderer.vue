@@ -1,5 +1,5 @@
 <template>
-    <div v-if="layout.visible" class="flex flex-row flex-wrap align-items-center gap-3">
+    <div v-if="layout.visible" :class="layoutClasses">
         <LayoutElementsDispatcher v-bind="{ ...props }" />
     </div>
 </template>
@@ -8,9 +8,20 @@
 import { rendererProps, useJsonFormsLayout } from "@jsonforms/vue";
 import { type Layout } from "@jsonforms/core";
 import LayoutElementsDispatcher from "./LayoutElementsDispatcher.vue";
+import { useLayoutCommon } from "../util/composition";
+import { computed } from "vue";
 
 const props = defineProps(rendererProps<Layout>());
 const layoutProps = useJsonFormsLayout(props);
+const layoutCommon = useLayoutCommon(layoutProps);
 
-const { layout } = layoutProps;
+const { appliedOptions, layout } = layoutCommon;
+
+const layoutClasses = computed(() => {
+    if (!!appliedOptions.value.isWrappingEnabled) {
+        return 'flex flex-row flex-wrap align-items-center gap-3';
+    } else {
+        return 'flex flex-row flex-nowrap align-items-start gap-3';
+    }
+});
 </script>

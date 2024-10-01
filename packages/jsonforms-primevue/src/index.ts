@@ -19,8 +19,9 @@ import EnumControlRenderer from './controls/EnumControlRenderer.vue';
 import DateTimeControlRenderer from './controls/DateTimeControlRenderer.vue';
 // Layouts
 import GroupLayoutRenderer from './layouts/GroupLayoutRenderer.vue';
-import HorizontalLayoutRenderer from "./layouts/HorizontalLayoutRenderer.vue";
-import VerticalLayoutRenderer from "./layouts/VerticalLayoutRenderer.vue";
+import HorizontalLayoutRenderer from './layouts/HorizontalLayoutRenderer.vue';
+import VerticalLayoutRenderer from './layouts/VerticalLayoutRenderer.vue';
+import LabelRenderer from './layouts/LabelRenderer.vue';
 
 // List of tester/ranking + renderer presets
 const renderers = [
@@ -33,7 +34,8 @@ const renderers = [
     // Layouts
     { tester: rankWith(3, and(isLayout, uiTypeIs('Group'))), renderer: GroupLayoutRenderer },
     { tester: rankWith(3, and(isLayout, uiTypeIs('HorizontalLayout'))), renderer: HorizontalLayoutRenderer },
-    { tester: rankWith(3, and(isLayout, uiTypeIs('VerticalLayout'))), renderer: VerticalLayoutRenderer }
+    { tester: rankWith(3, and(isLayout, uiTypeIs('VerticalLayout'))), renderer: VerticalLayoutRenderer },
+    { tester: rankWith(2, uiTypeIs('Label')), renderer: LabelRenderer }
 ];
 
 // Individual Renderers for customized test/ranking
@@ -47,7 +49,8 @@ export {
     // Layouts
     GroupLayoutRenderer,
     HorizontalLayoutRenderer,
-    VerticalLayoutRenderer
+    VerticalLayoutRenderer,
+    LabelRenderer
 };
 
 export default renderers;

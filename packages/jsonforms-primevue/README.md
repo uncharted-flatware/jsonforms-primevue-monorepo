@@ -40,21 +40,25 @@ import primeVueRenderers from "jsonforms-primevue";
 ## Roadmap / TODO
 
  - [ ] Basic controls for all types
-   - [ ] String input 
-   - [ ] Number Input
-     - [ ] Min/Max range support 
-     - [ ] Step support
-     - [ ] Prefix/Suffix support
-   - [ ] Integer Input
-     - [ ] Min/Max range support
-     - [ ] Step support
-     - [ ] Prefix/Suffix support
-   - [ ] Enum 
-   - [ ] Boolean (checkbox)
+   - [x] String input 
+   - [x] Number & Integer Input
+     - [x] Min/Max range support 
+     - [x] Step support
+     - [x] Prefix/Suffix support
+     - [ ] As-slider support
+   - [x] Enum 
+   - [x] Boolean (checkbox)
    - [ ] Date
-   - [ ] Date-Time
-   - [ ] Label placement options (float | north | south | east | west) ?
+   - [x] Date-Time
+   - [x] Label placement options (float | left | right)
    - [ ] Description display & options (onfocus | always | tooltip)
- - [ ] Group Layout renderer (with toggleable option to render as an accordion)
- - [ ] HorizontalLayout / VerticalLayout styling
+   - [ ] Support default values
+   - [ ] Radio options
+ - [x] Group Layout renderer (with toggleable option to render as an accordion)
+ - [x] HorizontalLayout / VerticalLayout styling
+   - [ ] Wrap/no-wrap or grid type support
  - [ ] Error / invalid state feedback
+ - [ ] Rules
+   - [ ] Disable 
+   - [ ] Visibility
+ - [x] Image display (option on Label)
