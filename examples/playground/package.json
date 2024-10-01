@@ -1,5 +1,5 @@
 {
-  "name": "jsonforms-playground",
+  "name": "@unchartedsoftware/jsonforms-playground",
   "version": "1.0.0",
   "private": true,
   "engines": {

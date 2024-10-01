@@ -1,5 +1,5 @@
 {
-  "name": "jsonforms-primevue-monorepo",
+  "name": "@unchartedsoftware/jsonforms-primevue-monorepo",
   "private": true,
   "version": "1.0.0",
   "description": "Monorepo for jsonforms-primevue package and example(s)",

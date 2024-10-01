@@ -9,7 +9,7 @@ This first version depends on PrimeVue 3.
 ## Installation
 
 ```bash
-yarn add @unchartedsoftware/jsonforms-primevue primevue@3.50.0 ... TODO: List the other peer dependencies
+yarn add @unchartedsoftware/jsonforms-primevue @jsonforms/core @jsonforms/vue primevue@3.50.0 primeflex
 ```
 
 ## Usage

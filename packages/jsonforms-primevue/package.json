@@ -1,5 +1,5 @@
 {
-  "name": "jsonforms-primevue",
+  "name": "@unchartedsoftware/jsonforms-primevue",
   "version": "0.0.1",
   "description": "PrimeVue renderers for JSON-Forms",
   "main": "dist/jsonforms-primevue.umd.js",
@@ -21,9 +21,7 @@
   },
   "packageManager": "yarn@4.5.0",
   "scripts": {
-    "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview",
     "lint": "eslint ../.. --ignore-path .eslintignore --ext .js,.ts,.vue",
     "lint:fix": "yarn lint --fix",
     "format": "prettier --ignore-path .prettierignore --write '**/*.{ts,tsx,vue,css,json,js,jsx}'",
