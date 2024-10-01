@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Monorepo for jsonforms-primevue package and example(s)",
   "author": "Derek Gray",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "engines": {
     "node": ">=20"
   },

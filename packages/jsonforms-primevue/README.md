@@ -46,7 +46,11 @@ import primeVueRenderers from "@unchartedsoftware/jsonforms-primevue";
      - [x] Step support
      - [x] Prefix/Suffix support
      - [ ] As-slider support
-   - [x] Enum 
+   - [ ] Enum
+     - [x] as strings 
+     - [x] as dropdown
+     - [ ] as oneOf (to support value vs label for each item)
+     - [ ] as 'radio' option
    - [x] Boolean (checkbox)
    - [ ] Date
    - [x] Date-Time

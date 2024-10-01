@@ -6,6 +6,7 @@
     "node": ">=20"
   },
   "packageManager": "yarn@4.5.0",
+  "license": "Apache-2.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
