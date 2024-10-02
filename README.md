@@ -1,4 +1,4 @@
-# jsonforms-primvevue-monorepo
+# jsonforms-primevue-monorepo
 
 ## Motivation
 
