@@ -1,7 +1,7 @@
 <template>
     <If v-if="label.visible">
         <If v-if="hasImage">
-            <Card>
+            <Card class="flex flex-column align-items-center gap-2">
                 <template #content>
                     <img
                         :src="imageUrl"
@@ -10,6 +10,7 @@
                         :height="height"
                         :style="imageStyle"
                     />
+                    <label>{{ label.text }}</label>
                 </template>
             </Card>
         </If>
