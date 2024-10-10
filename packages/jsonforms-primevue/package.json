@@ -2,6 +2,7 @@
   "name": "@unchartedsoftware/jsonforms-primevue",
   "version": "0.0.1",
   "description": "PrimeVue renderers for JSON-Forms",
+  "type": "module",
   "main": "dist/jsonforms-primevue.umd.js",
   "module": "dist/jsonforms-primevue.es.js",
   "types": "dist/types/index.d.ts",

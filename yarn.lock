@@ -452,6 +452,61 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@unchartedsoftware/jsonforms-playground@workspace:examples/playground":
+  version: 0.0.0-use.local
+  resolution: "@unchartedsoftware/jsonforms-playground@workspace:examples/playground"
+  dependencies:
+    "@jsonforms/core": "npm:3.4.0"
+    "@jsonforms/vue": "npm:3.4.0"
+    "@jsonforms/vue-vanilla": "npm:3.4.0"
+    "@types/node": "npm:^16.0.0"
+    "@unchartedsoftware/jsonforms-primevue": "workspace:*"
+    "@vitejs/plugin-vue": "npm:^3.0.0"
+    highlight.js: "npm:11.8.0"
+    primeflex: "npm:3.3.1"
+    primeicons: "npm:7.0.0"
+    primevue: "npm:3.53.0"
+    simple-code-editor: "npm:2.0.9"
+    typescript: "npm:^4.0.0"
+    vite: "npm:^3.0.0"
+    vue: "npm:3.4.31"
+    vue-tsc: "npm:^1.0.0"
+  languageName: unknown
+  linkType: soft
+
+"@unchartedsoftware/jsonforms-primevue-monorepo@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@unchartedsoftware/jsonforms-primevue-monorepo@workspace:."
+  languageName: unknown
+  linkType: soft
+
+"@unchartedsoftware/jsonforms-primevue@workspace:*, @unchartedsoftware/jsonforms-primevue@workspace:packages/jsonforms-primevue":
+  version: 0.0.0-use.local
+  resolution: "@unchartedsoftware/jsonforms-primevue@workspace:packages/jsonforms-primevue"
+  dependencies:
+    "@jsonforms/core": "npm:^3.0.0"
+    "@jsonforms/vue": "npm:^3.0.0"
+    "@types/lodash": "npm:^4"
+    "@types/node": "npm:^22.5.5"
+    "@vitejs/plugin-vue": "npm:^5.1.4"
+    "@vue/tsconfig": "npm:^0.5.1"
+    lodash: "npm:^4.17.21"
+    primeflex: "npm:3.3.1"
+    primeicons: "npm:7.0.0"
+    primevue: "npm:3.53.0"
+    typescript: "npm:^5.6.2"
+    vite: "npm:^5.4.6"
+    vue: "npm:^3.0.0"
+    vue-tsc: "npm:^2.1.6"
+  peerDependencies:
+    "@jsonforms/core": ^3.0.0
+    "@jsonforms/vue": ^3.0.0
+    primeflex: ^3.3.1
+    primevue: ^3.0.0
+    vue: ^3.0.0
+  languageName: unknown
+  linkType: soft
+
 "@vitejs/plugin-vue@npm:^3.0.0":
   version: 3.2.0
   resolution: "@vitejs/plugin-vue@npm:3.2.0"
@@ -1587,61 +1642,6 @@ __metadata:
   checksum: 10/02f2f466cdb0362558b2f1fd5e15cce82ef55d60cd7f8fa828cf35ba74330f8d767fcae5c5c2adb7851fa811766c694b9405810879bc4e1ddd78a7c0e03658ad
   languageName: node
   linkType: hard
-
-"jsonforms-playground@workspace:examples/playground":
-  version: 0.0.0-use.local
-  resolution: "jsonforms-playground@workspace:examples/playground"
-  dependencies:
-    "@jsonforms/core": "npm:3.4.0"
-    "@jsonforms/vue": "npm:3.4.0"
-    "@jsonforms/vue-vanilla": "npm:3.4.0"
-    "@types/node": "npm:^16.0.0"
-    "@vitejs/plugin-vue": "npm:^3.0.0"
-    highlight.js: "npm:11.8.0"
-    jsonforms-primevue: "workspace:*"
-    primeflex: "npm:3.3.1"
-    primeicons: "npm:7.0.0"
-    primevue: "npm:3.53.0"
-    simple-code-editor: "npm:2.0.9"
-    typescript: "npm:^4.0.0"
-    vite: "npm:^3.0.0"
-    vue: "npm:3.4.31"
-    vue-tsc: "npm:^1.0.0"
-  languageName: unknown
-  linkType: soft
-
-"jsonforms-primevue-monorepo@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "jsonforms-primevue-monorepo@workspace:."
-  languageName: unknown
-  linkType: soft
-
-"jsonforms-primevue@workspace:*, jsonforms-primevue@workspace:packages/jsonforms-primevue":
-  version: 0.0.0-use.local
-  resolution: "jsonforms-primevue@workspace:packages/jsonforms-primevue"
-  dependencies:
-    "@jsonforms/core": "npm:^3.0.0"
-    "@jsonforms/vue": "npm:^3.0.0"
-    "@types/lodash": "npm:^4"
-    "@types/node": "npm:^22.5.5"
-    "@vitejs/plugin-vue": "npm:^5.1.4"
-    "@vue/tsconfig": "npm:^0.5.1"
-    lodash: "npm:^4.17.21"
-    primeflex: "npm:3.3.1"
-    primeicons: "npm:7.0.0"
-    primevue: "npm:3.53.0"
-    typescript: "npm:^5.6.2"
-    vite: "npm:^5.4.6"
-    vue: "npm:^3.0.0"
-    vue-tsc: "npm:^2.1.6"
-  peerDependencies:
-    "@jsonforms/core": ^3.0.0
-    "@jsonforms/vue": ^3.0.0
-    primeflex: ^3.3.1
-    primevue: ^3.0.0
-    vue: ^3.0.0
-  languageName: unknown
-  linkType: soft
 
 "lodash@npm:^4.17.21":
   version: 4.17.21

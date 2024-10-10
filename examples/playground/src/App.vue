@@ -8,7 +8,7 @@ import {
 } from "@jsonforms/vue-vanilla";
 import 'highlight.js';
 import CodeEditor from 'simple-code-editor';
-import primeVueRenderers from 'jsonforms-primevue';
+import primeVueRenderers from '@unchartedsoftware/jsonforms-primevue';
 
 // mergeStyles combines all classes from both styles definitions into one
 const myStyles = mergeStyles(defaultStyles, { control: { label: "mylabel" } });
