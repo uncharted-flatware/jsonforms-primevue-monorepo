@@ -20,6 +20,7 @@ export default defineConfig({
           '@jsonforms/vue': 'JsonFormsVue',
           primevue: 'PrimeVue',
         },
+        exports: 'named'
       },
     },
   },

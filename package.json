@@ -14,8 +14,8 @@
     "examples/*"
   ],
   "scripts": {
-    "build": "yarn workspaces foreach run build",
-    "lint": "yarn workspaces foreach run lint",
+    "build": "yarn workspaces foreach --all run build",
+    "lint": "yarn workspaces foreach --all run lint",
     "test": "yarn workspaces foreach run test",
     "dev": "yarn workspaces playground dev"
   }
