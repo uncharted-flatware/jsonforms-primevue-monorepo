@@ -8,6 +8,8 @@
             :id="control.id"
             :inputId="control.id + '-input'"
             showTime
+            showIcon
+            iconDisplay="input"
             :hourFormat="hourFormat"
             :disabled="!control.enabled"
             :autofocus="appliedOptions.focus"
