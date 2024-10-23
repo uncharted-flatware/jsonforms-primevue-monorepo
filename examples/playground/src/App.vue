@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, defineComponent, reactive, ref, shallowRef, watch } from "vue";
 import { JsonForms, JsonFormsChangeEvent } from "@jsonforms/vue";
+import { createAjv } from '@jsonforms/core';
 import {
     defaultStyles,
     mergeStyles,
@@ -24,7 +25,8 @@ const dataSchemaString = ref(JSON.stringify({
         scenarioName: {
             type: "string",
             minLength: 1,
-            title: ""
+            title: "",
+            "default": "Untitled What-if"
         },
         startingDamage: {
             type: "object",
@@ -35,7 +37,8 @@ const dataSchemaString = ref(JSON.stringify({
                     "enum": [
                         "Use a saved snapshot",
                         "Randomized"
-                    ]
+                    ],
+                    "default": "Randomized"
                 },
                 savedSnapshot: {
                     type: "string",
@@ -46,7 +49,8 @@ const dataSchemaString = ref(JSON.stringify({
                     type: "integer",
                     title: "Damage severity",
                     minimum: 0,
-                    maximum: 100
+                    maximum: 100,
+                    default: 10
                 }
             }
         },
@@ -59,7 +63,8 @@ const dataSchemaString = ref(JSON.stringify({
                         "None",
                         "Count",
                         "Dollar value"
-                    ]
+                    ],
+                    "default": "None"
                 },
                 isWhenEnabled: {
                     type: "boolean",
@@ -69,19 +74,22 @@ const dataSchemaString = ref(JSON.stringify({
                     type: "integer",
                     title: "",
                     minimum: 0,
-                    maximum: 100
+                    maximum: 100,
+                    "default": 50
                 },
                 thenNodeFailsWithinPercentage: {
                     type: "integer",
                     title: "",
                     minimum: 0,
-                    maximum: 100
+                    maximum: 100,
+                    "default": 50
                 },
                 afterNumberOfSteps: {
                     type: "integer",
                     title: "",
                     minimum: 1,
-                    maximum: 5 // What should it be?
+                    maximum: 5, // What should it be?
+                    "default": 3
                 },
                 isUseHierarchicalDependenciesEnabled: {
                     type: "boolean",
@@ -90,8 +98,10 @@ const dataSchemaString = ref(JSON.stringify({
                 hierarchicalDependenciesOption: {
                     type: "string",
                     enum: [
+                        "First parent",
                         "Second parent"
-                    ]
+                    ],
+                    "default": "Second parent"
                 }
             }
         },
@@ -99,7 +109,8 @@ const dataSchemaString = ref(JSON.stringify({
             type: "integer",
             title: "Number of runs",
             minimum: 1,
-            maximum: 1000
+            maximum: 1000,
+            "default": 100
         },
         testing: {
             type: "object",
@@ -362,20 +373,25 @@ const uiSchemaString = ref(JSON.stringify({
 }, null, 2));
 
 const exampleDataString = ref(JSON.stringify({
-    "damagePropagation": {
-        "isUseHierarchicalDependenciesEnabled": false,
-        "isWhenEnabled": true,
-        "weightingType": "None",
-        "whenPercentageOfInputsFail": 3,
-        "thenNodeFailsWithinPercentage": 3,
-        "afterNumberOfSteps": 2
-    },
-    "startingDamage": {
-        "method": "Randomized",
-        "severity": 5
-    },
-    "numberOfRuns": 10
+    // "damagePropagation": {
+    //     "isUseHierarchicalDependenciesEnabled": false,
+    //     "isWhenEnabled": true,
+    //     "weightingType": "None",
+    //     "whenPercentageOfInputsFail": 3,
+    //     "thenNodeFailsWithinPercentage": 3,
+    //     "afterNumberOfSteps": 2
+    // },
+    // "startingDamage": {
+    //     "method": "Randomized",
+    //     "severity": 5
+    // },
+    // "numberOfRuns": 10
 }, null, 2));
+
+
+// Something that has to be done to support `default` in the data_schema
+const handleDefaultsAjv = shallowRef(createAjv({ useDefaults: true }));
+
 
 const dataSchema = computed(() => {
     try {
@@ -460,6 +476,7 @@ function onFormChanged(event: JsonFormsChangeEvent) {
                     :schema="dataSchema"
                     :uischema="uiSchema"
                     @change="onFormChanged"
+                    :ajv="handleDefaultsAjv"
                 />
             </div>
         </div>
