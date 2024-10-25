@@ -9,8 +9,10 @@ import {
     isLayout,
     isIntegerControl,
     isDateTimeControl,
-    uiTypeIs
+    uiTypeIs,
+    formatIs
 } from '@jsonforms/core';
+import ControlWrapper from './controls/ControlWrapper.vue';
 import StringControlRenderer from './controls/StringControlRenderer.vue';
 import NumberControlRenderer from './controls/NumberControlRenderer.vue';
 import BooleanControlRenderer from './controls/BooleanControlRenderer.vue';
@@ -22,6 +24,7 @@ import GroupLayoutRenderer from './layouts/GroupLayoutRenderer.vue';
 import HorizontalLayoutRenderer from './layouts/HorizontalLayoutRenderer.vue';
 import VerticalLayoutRenderer from './layouts/VerticalLayoutRenderer.vue';
 import LabelRenderer from './layouts/LabelRenderer.vue';
+import DurationControlRenderer from "./controls/DurationControlRenderer.vue";
 
 // List of tester/ranking + renderer presets
 const renderers = [
@@ -31,6 +34,7 @@ const renderers = [
     { tester: rankWith(3, isIntegerControl), renderer: IntegerControlRenderer },
     { tester: rankWith(2, isBooleanControl), renderer: BooleanControlRenderer },
     { tester: rankWith(3, isDateTimeControl), renderer: DateTimeControlRenderer },
+    { tester: rankWith(3, formatIs('duration')), renderer: DurationControlRenderer },
     // Layouts
     { tester: rankWith(3, and(isLayout, uiTypeIs('Group'))), renderer: GroupLayoutRenderer },
     { tester: rankWith(3, and(isLayout, uiTypeIs('HorizontalLayout'))), renderer: HorizontalLayoutRenderer },
@@ -40,6 +44,7 @@ const renderers = [
 
 // Individual Renderers for customized test/ranking
 export {
+    ControlWrapper,
     StringControlRenderer,
     EnumControlRenderer,
     NumberControlRenderer,

@@ -115,9 +115,15 @@ const dataSchemaString = ref(JSON.stringify({
         testing: {
             type: "object",
             properties: {
-                "dateTime": {
+                "aDateTime": {
                     type: "string",
+                    title: "A Date Time",
                     format: "date-time"
+                },
+                "aDuration": {
+                    type: "string",
+                    title: "An ISO time duration",
+                    format: "duration"
                 }
             }
         }
@@ -364,7 +370,11 @@ const uiSchemaString = ref(JSON.stringify({
             elements: [
                 {
                     type: "Control",
-                    scope: "#/properties/testing/properties/dateTime"
+                    scope: "#/properties/testing/properties/aDateTime"
+                },
+                {
+                    type: "Control",
+                    scope: "#/properties/testing/properties/aDuration"
                 }
             ]
         }
