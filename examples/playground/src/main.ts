@@ -1,5 +1,5 @@
 import '@jsonforms/vue-vanilla/vanilla.css';
-import 'primevue/resources/themes/lara-dark-indigo/theme.css'
+import 'primevue/resources/themes/aura-dark-indigo/theme.css'
 import 'primeflex/primeflex.css';
 
 

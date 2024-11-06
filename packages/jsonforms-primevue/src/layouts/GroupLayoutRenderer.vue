@@ -1,5 +1,5 @@
 <template>
-    <If v-if="isToggleable">
+    <If v-if="asAccordion">
         <Accordion v-if="layout.visible" :activeIndex="accordionIndexForExpansion">
             <AccordionTab :header="layout.label">
                 <div class="flex flex-column align-content-start gap-3">
@@ -13,6 +13,7 @@
             v-if="layout.visible"
             :header="layout.label"
             :toggleable="isToggleable"
+            :collapsed="isCollapsed"
         >
             <div class="flex flex-column align-content-start gap-3">
                 <LayoutElementsDispatcher v-bind="{ ...props }" />
@@ -38,7 +39,9 @@ const layoutCommon = useLayoutCommon(layoutProps);
 
 const { appliedOptions, layout } = layoutCommon;
 
+const asAccordion = computed(() => appliedOptions.value.asAccordion);
 const isToggleable = computed(() => !!appliedOptions.value.isToggleable);
+const isCollapsed = computed(() => !appliedOptions.value.isExpanded);
 
 const accordionIndexForExpansion = computed(() => {
     return !!appliedOptions.value.isExpanded ? 0 : undefined;
