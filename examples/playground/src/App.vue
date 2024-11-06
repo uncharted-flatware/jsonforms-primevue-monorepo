@@ -475,7 +475,7 @@ function onFormChanged(event: JsonFormsChangeEvent) {
                     v-model="exampleDataString"
                 />
             </div>
-            <div class="form-container m-3">
+            <div class="form-container p-3">
                 <h3>Rendered Form</h3>
 <!--                <div v-if="errorMessage.length > 0" class="debug-box">-->
 <!--                    {{ errorMessage }}-->
@@ -507,7 +507,7 @@ function onFormChanged(event: JsonFormsChangeEvent) {
 
 .form-container {
     width: 800px;
-    margin: 0 auto;
+    background-color: var(--surface-ground);
 }
 
 .footer {
