@@ -1,8 +1,8 @@
 <template>
     <ControlWrapper
         v-bind="controlWrapper"
-        :isFocused="isFocused"
-        :appliedOptions="appliedOptions"
+        :is-focused="isFocused"
+        :applied-options="appliedOptions"
     >
         <InputText
             :id="control.id"

@@ -3,29 +3,51 @@
         <If v-if="appliedOptions.labelPlacement === 'float'">
             <FloatLabel>
                 <slot></slot>
-                <label :for="id + '-input'">{{ label }}</label>
+                <label :for="id + '-input'" class="flex align-items-center gap-1">
+                    {{ label }}
+                    <span v-if="showDescriptionIcon" :id="id + '-info'" class="p-info-icon" v-tooltip="description">
+                        <InfoCircle class="text-primary cursor-pointer" />
+                    </span>
+                </label>
             </FloatLabel>
         </If>
         <ElseIf v-else-if="appliedOptions.labelPlacement === 'right'">
             <slot></slot>
             <If v-if="label">
-                <label :for="id + '-input'">{{ label }}</label>
+                <label :for="id + '-input'" class="flex align-items-center gap-1">
+                    {{ label }}
+                    <span v-if="showDescriptionIcon" :id="id + '-info'" class="p-info-icon" v-tooltip="description">
+                        <InfoCircle class="text-primary cursor-pointer" />
+                    </span>
+                </label>
             </If>
         </ElseIf>
         <Else v-else>
             <If v-if="label">
-                <label :for="id + '-input'">{{ label }}</label>
+                <label :for="id + '-input'" class="flex align-items-center gap-1">
+                    {{ label }}
+                    <span v-if="showDescriptionIcon" :id="id + '-info'" class="p-info-icon" v-tooltip="description">
+                        <InfoCircle class="text-primary cursor-pointer" />
+                    </span>
+                </label>
             </If>
             <slot></slot>
         </Else>
+        
+        <!-- Always display description -->
+        <div v-if="showAlwaysDescription" class="w-full text-sm text-gray-600 mt-1">
+            {{ description }}
+        </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import { PropType } from 'vue';
+import { PropType, computed } from 'vue';
 import { Options } from '../util/options';
 import { If, Else, ElseIf } from '../components/blocks';
 import FloatLabel from 'primevue/floatlabel';
+import Tooltip from 'primevue/tooltip';
+import InfoCircle from 'primevue/icons/infocircle';
 
 const props = defineProps({
     id: {
@@ -72,4 +94,24 @@ const props = defineProps({
     //     type: Object as PropType<Styles>,
     // }
 });
+
+// Computed properties for description display
+const descriptionDisplayMode = computed(() => 
+    props.appliedOptions?.descriptionDisplay || 'tooltip'
+);
+
+const showDescriptionIcon = computed(() => 
+    descriptionDisplayMode.value === 'tooltip' && props.description
+);
+
+const showAlwaysDescription = computed(() => 
+    descriptionDisplayMode.value === 'always' && props.description
+);
 </script>
+
+<style>
+.p-info-icon {
+    display: inline-flex;
+    align-items: center;
+}
+</style>

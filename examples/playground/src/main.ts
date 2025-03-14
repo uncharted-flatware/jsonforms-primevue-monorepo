@@ -6,10 +6,12 @@ import 'primeflex/primeflex.css';
 import App from '@/App.vue';
 import { createApp } from 'vue';
 import PrimeVue from 'primevue/config';
+import Tooltip from 'primevue/tooltip';
 
 const app = createApp(App);
 
 app.use(PrimeVue, { ripple: false });
+app.directive('tooltip', Tooltip);
 
 
 app.mount('#app');

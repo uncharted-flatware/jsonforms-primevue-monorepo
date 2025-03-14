@@ -14,16 +14,26 @@ yarn add @unchartedsoftware/jsonforms-primevue @jsonforms/core @jsonforms/vue pr
 
 ## Usage
 
-A runnable [example playground](./example/playground/README.md) application for live editing is available.
-Import and add the ranked renderer configurations and supply them to the JSON Forms component. i.e.:
+A runnable [example playground](./example/playground/README.md) application for live editing is available:
+
+```bash
+yarn dev
+```
+
+In your own app, import and add the ranked renderer configurations and supply them to the JSON Forms component. i.e.:
 
 ```typescript vuejs
 <script lang="ts">
 import { JsonForms } from "@jsonforms/vue";
 import primeVueRenderers from "@unchartedsoftware/jsonforms-primevue";
+import PrimeVue from 'primevue/config';
+import Tooltip from 'primevue/tooltip';
+
+// Important: Register the PrimeVue tooltip directive for description tooltips to work
+app.use(PrimeVue);
+app.directive('tooltip', Tooltip);
 
 // defineComponent(...
-
 </script>    
     
 <template>
@@ -36,6 +46,8 @@ import primeVueRenderers from "@unchartedsoftware/jsonforms-primevue";
     /> 
 </template>
 ```
+
+For detailed documentation on all available components, options, and customization features, please refer to the [Documentation](./DOCS.md).
 
 ## Roadmap / TODO
 
@@ -55,7 +67,7 @@ import primeVueRenderers from "@unchartedsoftware/jsonforms-primevue";
    - [ ] Date
    - [x] Date-Time
    - [x] Label placement options (float | left | right)
-   - [ ] Description display & options (onfocus | always | tooltip)
+   - [x] Description display & options (onfocus | always | tooltip)
    - [ ] Support default values
    - [ ] Radio options
  - [x] Group Layout renderer (with toggleable option to render as an accordion)
