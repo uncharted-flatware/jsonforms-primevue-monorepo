@@ -5,6 +5,9 @@ export interface Options {
 
     // Relevant to most controls
     labelPlacement?: 'left' | 'right' | 'float';
+    
+    // Description display options
+    descriptionDisplay?: 'always' | 'tooltip';
 
     // Relevant to number controls
     step?: number;

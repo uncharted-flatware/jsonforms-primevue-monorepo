@@ -25,6 +25,7 @@ import HorizontalLayoutRenderer from './layouts/HorizontalLayoutRenderer.vue';
 import VerticalLayoutRenderer from './layouts/VerticalLayoutRenderer.vue';
 import LabelRenderer from './layouts/LabelRenderer.vue';
 import DurationControlRenderer from "./controls/DurationControlRenderer.vue";
+import Tooltip from 'primevue/tooltip';
 
 // List of tester/ranking + renderer presets
 const renderers = [
@@ -55,7 +56,12 @@ export {
     GroupLayoutRenderer,
     HorizontalLayoutRenderer,
     VerticalLayoutRenderer,
-    LabelRenderer
+    LabelRenderer,
+    // Directives
+    Tooltip
 };
+
+// Note: To use the tooltip feature, you must register the directive in your app:
+// app.directive('tooltip', Tooltip);
 
 export default renderers;

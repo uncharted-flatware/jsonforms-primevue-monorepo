@@ -14,9 +14,9 @@
     "examples/*"
   ],
   "scripts": {
-    "build": "yarn workspaces foreach --all run build",
+    "build": "yarn workspace @unchartedsoftware/jsonforms-primevue run build",
     "lint": "yarn workspaces foreach --all run lint",
     "test": "yarn workspaces foreach run test",
-    "dev": "yarn workspaces playground dev"
+    "dev": "yarn workspace @unchartedsoftware/jsonforms-playground run dev"
   }
 }

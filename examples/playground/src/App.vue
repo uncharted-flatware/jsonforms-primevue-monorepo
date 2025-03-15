@@ -26,6 +26,7 @@ const dataSchemaString = ref(JSON.stringify({
             type: "string",
             minLength: 1,
             title: "",
+            description: "A unique name to identify this scenario for easy reference later",
             "default": "Untitled What-if"
         },
         startingDamage: {
@@ -34,6 +35,7 @@ const dataSchemaString = ref(JSON.stringify({
                 method: {
                     "type": "string",
                     "title": "",
+                    "description": "Choose how to initialize the damage in the network - either from a saved state or randomly generated",
                     "enum": [
                         "Use a saved snapshot",
                         "Randomized"
@@ -43,11 +45,12 @@ const dataSchemaString = ref(JSON.stringify({
                 savedSnapshot: {
                     type: "string",
                     title: "",
-                    description: "Use the visible nodes from a saved snapshot selection"
+                    description: "Use the visible nodes from a saved snapshot selection as the starting point for damage"
                 },
                 severity: {
                     type: "integer",
                     title: "Damage severity",
+                    description: "Controls the percentage of nodes that will be initially damaged in the network",
                     minimum: 0,
                     maximum: 100,
                     default: 10
@@ -59,6 +62,7 @@ const dataSchemaString = ref(JSON.stringify({
             properties: {
                 weightingType: {
                     type: "string",
+                    description: "Determines how edge weights are considered in damage propagation calculations",
                     enum: [
                         "None",
                         "Count",
@@ -68,7 +72,8 @@ const dataSchemaString = ref(JSON.stringify({
                 },
                 isWhenEnabled: {
                     type: "boolean",
-                    title: ""
+                    title: "",
+                    description: "Enable conditional damage propagation based on input failure percentage"
                 },
                 whenPercentageOfInputsFail: {
                     type: "integer",
@@ -108,6 +113,7 @@ const dataSchemaString = ref(JSON.stringify({
         numberOfRuns: {
             type: "integer",
             title: "Number of runs",
+            description: "The total number of simulation iterations to perform - higher values give more statistical confidence but take longer",
             minimum: 1,
             maximum: 1000,
             "default": 100
@@ -143,14 +149,15 @@ const uiSchemaString = ref(JSON.stringify({
             elements: [
                 {
                     type: "Label",
-                    text:  "Give your what-if scenario a name so you can easily identify it later."
+                    text: "Give your what-if scenario a name so you can easily identify it later."
                 },
                 {
                     type: "Control",
                     scope: "#/properties/scenarioName",
                     label: "Name",
                     options: {
-                        labelPlacement: "float"
+                        labelPlacement: "float",
+                        descriptionDisplay: "tooltip"
                     }
                 }
             ]
@@ -164,6 +171,10 @@ const uiSchemaString = ref(JSON.stringify({
             },
             elements: [
                 {
+                    type: "Label",
+                    text: "This section demonstrates the two description display modes (tooltip and always):"
+                },
+                {
                     type: "HorizontalLayout",
                     options: {
                         isWrappingEnabled: false
@@ -174,20 +185,32 @@ const uiSchemaString = ref(JSON.stringify({
                             elements: [
                                 {
                                     type: "Label",
-                                    text:  "Which nodes in the network are broken at the beginning of the simulation?"
+                                    text: "Which nodes in the network are broken at the beginning of the simulation?"
                                 },
                                 {
                                     type: "Control",
                                     scope: "#/properties/startingDamage/properties/method",
+                                    label: "Method",
                                     options: {
-                                        format: "radio"
+                                        format: "radio",
+                                        descriptionDisplay: "always"
+                                    }
+                                },
+                                {
+                                    type: "Control",
+                                    scope: "#/properties/startingDamage/properties/savedSnapshot",
+                                    label: "Saved Snapshot",
+                                    options: {
+                                        descriptionDisplay: "tooltip"
                                     }
                                 },
                                 {
                                     type: "Control",
                                     scope: "#/properties/startingDamage/properties/severity",
+                                    label: "Severity",
                                     options: {
-                                        suffix: "%"
+                                        suffix: "%",
+                                        descriptionDisplay: "tooltip"
                                     }
                                 }
                             ]
@@ -210,7 +233,7 @@ const uiSchemaString = ref(JSON.stringify({
             label: "3. Damage propagation",
             options: {
                 isToggleable: true,
-                isExpanded: false
+                isExpanded: true
             },
             elements: [
                 {
@@ -219,14 +242,22 @@ const uiSchemaString = ref(JSON.stringify({
                 },
                 {
                     type: "Control",
-                    scope: "#/properties/damagePropagation/properties/weightingType"
+                    scope: "#/properties/damagePropagation/properties/weightingType",
+                    label: "Weighting Type",
+                    options: {
+                        descriptionDisplay: "always"
+                    }
                 },
                 {
                     type: "HorizontalLayout",
                     elements: [
                         {
                             type: "Control",
-                            scope: "#/properties/damagePropagation/properties/isWhenEnabled"
+                            scope: "#/properties/damagePropagation/properties/isWhenEnabled",
+                            label: "Enable Conditional Propagation",
+                            options: {
+                                descriptionDisplay: "always"
+                            }
                         },
                         {
                             type: "HorizontalLayout",
@@ -355,8 +386,10 @@ const uiSchemaString = ref(JSON.stringify({
                 {
                     type: "Control",
                     scope: "#/properties/numberOfRuns",
+                    label: "Number of Runs",
                     options: {
-                        "step": 10
+                        "step": 10,
+                        descriptionDisplay: "tooltip"
                     }
                 }
             ]

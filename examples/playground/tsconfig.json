@@ -16,6 +16,8 @@
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "noImplicitReturns": true,
-    "noImplicitOverride": true
+    "noImplicitOverride": true,
+    "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true
   }
 }
