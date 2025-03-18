@@ -67,7 +67,7 @@ For detailed documentation on all available components, options, and customizati
    - [ ] Date
    - [x] Date-Time
    - [x] Label placement options (float | left | right)
-   - [x] Description display & options (onfocus | always | tooltip)
+   - [x] Description display & options (always | tooltip)
    - [ ] Support default values
    - [ ] Radio options
  - [x] Group Layout renderer (with toggleable option to render as an accordion)
