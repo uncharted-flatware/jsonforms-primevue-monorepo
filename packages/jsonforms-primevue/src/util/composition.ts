@@ -1,6 +1,7 @@
-import { computed, ComputedRef, ref } from 'vue';
+import { computed, ref } from 'vue';
+import type { ComputedRef } from 'vue';
+import type { UISchemaElement } from "@jsonforms/core";
 import { cloneDeep, merge } from 'lodash';
-import { UISchemaElement } from "@jsonforms/core";
 
 /**
  * Adds isFocused, appliedOptions and onChange (TODO: styles)

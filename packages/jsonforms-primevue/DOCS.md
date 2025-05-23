@@ -13,6 +13,7 @@ This documentation provides detailed information about the JSONForms PrimeVue re
   - [Enum Control](#enum-control)
   - [Date-Time Control](#date-time-control)
   - [Duration Control](#duration-control)
+  - [Array Control](#array-control)
 - [Layout Components](#layout-components)
   - [Group Layout](#group-layout)
   - [Horizontal Layout](#horizontal-layout)
@@ -115,6 +116,7 @@ The String Control renders a text input field for string values.
 - `focus`: Set to `true` to auto-focus this field when the form loads
 - `descriptionDisplay`: How to display the description (see [Description Display](#description-display))
 - `labelPlacement`: Where to place the label (see [Label Placement](#label-placement))
+- `displayOnly`: Set to `true` to render the field as read-only text display
 
 ### Number Control
 
@@ -151,7 +153,7 @@ The Number Control renders a numeric input field for decimal numbers.
 ```
 
 **Options:**
-- All common options (placeholder, focus, descriptionDisplay, labelPlacement)
+- All common options (placeholder, focus, descriptionDisplay, labelPlacement, displayOnly)
 - `step`: The step increment for the number input (defaults to 0.1 if not specified)
 - `prefix`: Text to display before the number (e.g., currency symbol)
 - `suffix`: Text to display after the number (e.g., unit)
@@ -195,7 +197,7 @@ The Integer Control renders a numeric input field for integer values, with incre
 ```
 
 **Options:**
-- All common options (placeholder, focus, descriptionDisplay, labelPlacement)
+- All common options (placeholder, focus, descriptionDisplay, labelPlacement, displayOnly)
 - `step`: The step increment for the number input (defaults to 1 if not specified)
 - `prefix`: Text to display before the number
 - `suffix`: Text to display after the number
@@ -234,7 +236,7 @@ The Boolean Control renders a checkbox for boolean values.
 ```
 
 **Options:**
-- All common options (focus, descriptionDisplay, labelPlacement)
+- All common options (focus, descriptionDisplay, labelPlacement, displayOnly)
 
 ### Enum Control
 
@@ -266,7 +268,7 @@ The Enum Control renders a dropdown for selecting from a list of predefined valu
 ```
 
 **Options:**
-- All common options (placeholder, focus, descriptionDisplay, labelPlacement)
+- All common options (placeholder, focus, descriptionDisplay, labelPlacement, displayOnly)
 
 ### Date-Time Control
 
@@ -299,7 +301,7 @@ The Date-Time Control renders a date and time picker.
 ```
 
 **Options:**
-- All common options (placeholder, focus, descriptionDisplay, labelPlacement)
+- All common options (placeholder, focus, descriptionDisplay, labelPlacement, displayOnly)
 - `hourFormat`: "12" (default) or "24" to specify the hour format
 
 ### Duration Control
@@ -332,10 +334,59 @@ The Duration Control renders a numeric input for ISO 8601 duration values, curre
 ```
 
 **Options:**
-- All common options (placeholder, focus, descriptionDisplay, labelPlacement)
+- All common options (placeholder, focus, descriptionDisplay, labelPlacement, displayOnly)
 
 **Notes:**
 - Currently only supports days in the format "P{n}D" (e.g., "P5D" for 5 days)
+
+### Array Control
+
+The Array Control renders a data table for managing arrays of values, with support for adding, removing, and editing items.
+
+**Schema Example:**
+```json
+{
+  "type": "object",
+  "properties": {
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of tags"
+    }
+  }
+}
+```
+
+**UI Schema Example:**
+```json
+{
+  "type": "Control",
+  "scope": "#/properties/tags",
+  "options": {
+    "emptyMessage": "No tags added yet"
+  }
+}
+```
+
+**Options:**
+- All common options (focus, descriptionDisplay, labelPlacement, displayOnly)
+- `emptyMessage`: Custom message to display when the array is empty (defaults to "No items found")
+
+**Features:**
+- Add new items with the "+" button
+- Remove individual items with the trash icon
+- Select multiple items to remove them in bulk
+- Sort items by clicking column headers
+- Filter items using the built-in search functionality
+- Pagination support for large arrays
+- Each item is rendered using the appropriate control based on its schema
+
+**Notes:**
+- The array control uses PrimeVue's DataTable component for a rich user experience
+- Each item in the array is rendered using the appropriate control based on its schema
+- The control maintains unique IDs for each item to ensure proper tracking and updates
 
 ## Layout Components
 
@@ -413,6 +464,70 @@ The Vertical Layout arranges elements vertically.
 ```
 
 ## Common Options
+
+### Display Only Mode
+
+All control renderers support a `displayOnly` mode that renders the field values as read-only text instead of interactive input controls. This is useful for creating read-only forms or displaying data in a non-editable format.
+
+**Configuration:**
+
+In your UI schema, you can enable display-only mode using the `displayOnly` option:
+
+```json
+{
+  "type": "Control",
+  "scope": "#/properties/myField",
+  "options": {
+    "displayOnly": true
+  }
+}
+```
+
+**Behavior by Control Type:**
+
+- **String Control**: Displays the text value with any configured prefix/suffix
+- **Number/Integer Control**: Displays the formatted number with prefix/suffix
+- **Boolean Control**: Shows a checkmark (✓) or X (✗) icon with "Yes"/"No" text
+- **Enum Control**: Displays the selected value as text
+- **Date-Time Control**: Shows the formatted date and time
+- **Duration Control**: Displays the formatted duration (e.g., "5 days")
+- **Array Control**: Hides add/remove buttons and renders all items in display-only mode
+- **Object Control**: Renders all nested properties in display-only mode
+
+**Example:**
+
+```json
+// Data Schema
+{
+  "properties": {
+    "name": { "type": "string" },
+    "age": { "type": "integer" },
+    "isActive": { "type": "boolean" }
+  }
+}
+
+// UI Schema with display-only mode
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Control",
+      "scope": "#/properties/name",
+      "options": { "displayOnly": true }
+    },
+    {
+      "type": "Control", 
+      "scope": "#/properties/age",
+      "options": { "displayOnly": true }
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/isActive", 
+      "options": { "displayOnly": true }
+    }
+  ]
+}
+```
 
 ### Label Placement
 

@@ -2,6 +2,9 @@ export interface Options {
     showUnfocusedDescription?: boolean;
     hideRequiredAsterisk?: boolean;
     focus?: boolean;
+    
+    // Display mode options
+    displayOnly?: boolean;
 
     // Relevant to most controls
     labelPlacement?: 'left' | 'right' | 'float';
@@ -16,4 +19,7 @@ export interface Options {
 
     // Date/Time controls
     hourFormat?: string;
+
+    // Array controls
+    emptyMessage?: string;
 }

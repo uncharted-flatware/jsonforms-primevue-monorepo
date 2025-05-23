@@ -42,11 +42,11 @@
 </template>
 
 <script setup lang="ts">
-import { PropType, computed } from 'vue';
-import { Options } from '../util/options';
+import { computed } from 'vue';
+import type { PropType } from 'vue';
+import type { Options } from '../util/options';
 import { If, Else, ElseIf } from '../components/blocks';
 import FloatLabel from 'primevue/floatlabel';
-import Tooltip from 'primevue/tooltip';
 import InfoCircle from 'primevue/icons/infocircle';
 
 const props = defineProps({
@@ -89,6 +89,7 @@ const props = defineProps({
         type: Boolean,
         default: false,
     },
+
     // styles: {
     //     required: true,
     //     type: Object as PropType<Styles>,

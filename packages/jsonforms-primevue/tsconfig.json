@@ -1,7 +1,10 @@
 {
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
   "include": [
-    "src/**/*",
-    "src/**/*.vue"
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
   ],
   "compilerOptions": {
     "composite": true,
@@ -9,7 +12,7 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "types": ["node"],
+    "types": ["vite/client", "vue", "node"],
     "skipLibCheck": true,
     "noImplicitAny": false,
     "noImplicitThis": true,
@@ -17,6 +20,17 @@
     "strictFunctionTypes": true,
     "noImplicitReturns": true,
     "noImplicitOverride": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "target": "ESNext",
+    "verbatimModuleSyntax": true,
+    "jsx": "preserve"
   }
 }

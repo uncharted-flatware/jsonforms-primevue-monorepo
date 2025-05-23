@@ -3,8 +3,13 @@
         v-bind="controlWrapper"
         :is-focused="isFocused"
         :applied-options="appliedOptions"
+        :display-value="formatDisplayValue"
     >
+        <div v-if="appliedOptions.displayOnly" class="p-3 text-900">
+            {{ formatDisplayValue }}
+        </div>
         <InputNumber
+            v-else
             :id="control.id"
             :inputId="control.id + '-input'"
             :prefix="appliedOptions.prefix"
@@ -54,5 +59,15 @@ const step = computed(() => {
         return appliedOptions.value.step;
     }
     return 0.1;
+});
+
+const formatDisplayValue = computed(() => {
+    if (control.value.data === undefined || control.value.data === null) {
+        return '';
+    }
+    
+    const prefix = appliedOptions.value.prefix || '';
+    const suffix = appliedOptions.value.suffix || '';
+    return `${prefix}${control.value.data}${suffix}`;
 });
 </script>
