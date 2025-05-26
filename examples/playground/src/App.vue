@@ -248,6 +248,113 @@ const dataSchemaString = ref(JSON.stringify({
                     }
                 }
             }
+        },
+        ufoSighting: {
+            type: "object",
+            title: "UFO Sighting Report",
+            properties: {
+                sightingId: {
+                    type: "string",
+                    title: "Sighting ID",
+                    description: "Unique identifier for the sighting"
+                },
+                dateTime: {
+                    type: "string",
+                    format: "date-time",
+                    title: "Date and Time",
+                    description: "When the sighting occurred"
+                },
+                location: {
+                    type: "object",
+                    title: "Location",
+                    properties: {
+                        city: {
+                            type: "string",
+                            title: "City"
+                        },
+                        state: {
+                            type: "string",
+                            title: "State"
+                        },
+                        coordinates: {
+                            type: "string",
+                            title: "Coordinates",
+                            description: "Latitude and Longitude"
+                        }
+                    }
+                },
+                description: {
+                    type: "string",
+                    title: "Description",
+                    description: "Detailed description of the sighting"
+                },
+                witnessDetails: {
+                    type: "array",
+                    title: "Witness Details",
+                    items: {
+                        type: "object",
+                        properties: {
+                            name: {
+                                type: "string",
+                                title: "Name"
+                            },
+                            contact: {
+                                type: "string",
+                                title: "Contact Information"
+                            },
+                            statement: {
+                                type: "string",
+                                title: "Witness Statement"
+                            }
+                        }
+                    }
+                },
+                characteristics: {
+                    type: "object",
+                    title: "UFO Characteristics",
+                    properties: {
+                        shape: {
+                            type: "string",
+                            enum: ["Saucer", "Cigar", "Triangle", "Sphere", "Other"],
+                            title: "Shape"
+                        },
+                        color: {
+                            type: "string",
+                            title: "Color"
+                        },
+                        size: {
+                            type: "string",
+                            title: "Estimated Size"
+                        },
+                        speed: {
+                            type: "string",
+                            title: "Estimated Speed"
+                        },
+                        altitude: {
+                            type: "string",
+                            title: "Estimated Altitude"
+                        }
+                    }
+                },
+                weatherConditions: {
+                    type: "object",
+                    title: "Weather Conditions",
+                    properties: {
+                        temperature: {
+                            type: "string",
+                            title: "Temperature"
+                        },
+                        visibility: {
+                            type: "string",
+                            title: "Visibility"
+                        },
+                        cloudCover: {
+                            type: "string",
+                            title: "Cloud Cover"
+                        }
+                    }
+                }
+            }
         }
     }
 }, null, 2));
@@ -625,6 +732,192 @@ const uiSchemaString = ref(JSON.stringify({
                     }
                 }
             ]
+        },
+        {
+            type: "Group",
+            label: "Complex Layout Example - UFO Sighting",
+            options: {
+                isToggleable: true,
+                isExpanded: true
+            },
+            elements: [
+                {
+                    type: "Label",
+                    text: "UFO Sighting Report",
+                    options: {
+                        imageUrl: "/saucer.png",
+                        imageWidth: 200,
+                        imageHeight: 200
+                    }
+                },
+                {
+                    type: "HorizontalLayout",
+                    elements: [
+                        {
+                            type: "Control",
+                            scope: "#/properties/ufoSighting/properties/sightingId",
+                            options: {
+                                placeholder: "Enter sighting ID"
+                            }
+                        },
+                        {
+                            type: "Control",
+                            scope: "#/properties/ufoSighting/properties/dateTime"
+                        }
+                    ],
+                    options: {
+                        isWrappingEnabled: true
+                    }
+                },
+                {
+                    type: "Group",
+                    label: "Location Information",
+                    options: {
+                        isToggleable: true,
+                        isExpanded: true
+                    },
+                    elements: [
+                        {
+                            type: "HorizontalLayout",
+                            elements: [
+                                {
+                                    type: "Control",
+                                    scope: "#/properties/ufoSighting/properties/location/properties/city"
+                                },
+                                {
+                                    type: "Control",
+                                    scope: "#/properties/ufoSighting/properties/location/properties/state"
+                                }
+                            ],
+                            options: {
+                                isWrappingEnabled: true
+                            }
+                        },
+                        {
+                            type: "Control",
+                            scope: "#/properties/ufoSighting/properties/location/properties/coordinates"
+                        }
+                    ]
+                },
+                {
+                    type: "Control",
+                    scope: "#/properties/ufoSighting/properties/description",
+                    options: {
+                        multi: true
+                    }
+                },
+                {
+                    type: "Group",
+                    label: "UFO Characteristics",
+                    options: {
+                        isToggleable: true,
+                        isExpanded: true
+                    },
+                    elements: [
+                        {
+                            type: "HorizontalLayout",
+                            elements: [
+                                {
+                                    type: "Control",
+                                    scope: "#/properties/ufoSighting/properties/characteristics/properties/shape"
+                                },
+                                {
+                                    type: "Control",
+                                    scope: "#/properties/ufoSighting/properties/characteristics/properties/color"
+                                }
+                            ],
+                            options: {
+                                isWrappingEnabled: true
+                            }
+                        },
+                        {
+                            type: "HorizontalLayout",
+                            elements: [
+                                {
+                                    type: "Control",
+                                    scope: "#/properties/ufoSighting/properties/characteristics/properties/size"
+                                },
+                                {
+                                    type: "Control",
+                                    scope: "#/properties/ufoSighting/properties/characteristics/properties/speed"
+                                },
+                                {
+                                    type: "Control",
+                                    scope: "#/properties/ufoSighting/properties/characteristics/properties/altitude"
+                                }
+                            ],
+                            options: {
+                                isWrappingEnabled: true
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "Group",
+                    label: "Weather Conditions",
+                    options: {
+                        isToggleable: true,
+                        isExpanded: true
+                    },
+                    elements: [
+                        {
+                            type: "HorizontalLayout",
+                            elements: [
+                                {
+                                    type: "Control",
+                                    scope: "#/properties/ufoSighting/properties/weatherConditions/properties/temperature"
+                                },
+                                {
+                                    type: "Control",
+                                    scope: "#/properties/ufoSighting/properties/weatherConditions/properties/visibility"
+                                },
+                                {
+                                    type: "Control",
+                                    scope: "#/properties/ufoSighting/properties/weatherConditions/properties/cloudCover"
+                                }
+                            ],
+                            options: {
+                                isWrappingEnabled: true
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "Control",
+                    scope: "#/properties/ufoSighting/properties/witnessDetails",
+                    options: {
+                        elementLabelProp: "name",
+                        detail: {
+                            type: "VerticalLayout",
+                            elements: [
+                                {
+                                    type: "HorizontalLayout",
+                                    elements: [
+                                        {
+                                            type: "Control",
+                                            scope: "#/properties/name"
+                                        },
+                                        {
+                                            type: "Control",
+                                            scope: "#/properties/contact"
+                                        }
+                                    ],
+                                    options: {
+                                        isWrappingEnabled: true
+                                    }
+                                },
+                                {
+                                    type: "Control",
+                                    scope: "#/properties/statement",
+                                    options: {
+                                        multi: true
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
         }
     ]
 }, null, 2));
@@ -705,6 +998,40 @@ const exampleDataString = ref(JSON.stringify({
                 "status": "Pending"
             }
         ]
+    },
+    "ufoSighting": {
+        "sightingId": "UFO-2024-001",
+        "dateTime": "2024-03-25T21:30:00Z",
+        "location": {
+            "city": "Roswell",
+            "state": "New Mexico",
+            "coordinates": "33.3943° N, 104.5230° W"
+        },
+        "description": "Observed a bright, metallic disc-shaped object hovering approximately 1000 feet above ground level. The object remained stationary for about 5 minutes before rapidly ascending and disappearing into the clouds. No sound was detected during the observation.",
+        "witnessDetails": [
+            {
+                "name": "John Smith",
+                "contact": "john.smith@email.com",
+                "statement": "I was walking my dog when I noticed an unusual light in the sky. At first, I thought it was a plane, but it was completely silent and moving in ways that no aircraft I've seen could move."
+            },
+            {
+                "name": "Jane Doe",
+                "contact": "jane.doe@email.com",
+                "statement": "I was in my backyard when I saw the object. It was definitely not a drone or any conventional aircraft I'm familiar with. The way it moved was unlike anything I've ever seen."
+            }
+        ],
+        "characteristics": {
+            "shape": "Saucer",
+            "color": "Metallic silver with blue lights",
+            "size": "Approximately 50 feet in diameter",
+            "speed": "Unknown, but extremely fast when it departed",
+            "altitude": "Initially at 1000 feet, then rapidly ascended"
+        },
+        "weatherConditions": {
+            "temperature": "72°F",
+            "visibility": "Clear",
+            "cloudCover": "Partly cloudy"
+        }
     }
 }, null, 2));
 

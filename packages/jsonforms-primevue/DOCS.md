@@ -447,9 +447,15 @@ The Horizontal Layout arranges elements horizontally.
       "type": "Control",
       "scope": "#/properties/lastName"
     }
-  ]
+  ],
+  "options": {
+    "isWrappingEnabled": true
+  }
 }
 ```
+
+**Options:**
+- `isWrappingEnabled`: When `true`, allows elements to wrap to the next line if they don't fit in the available space. When `false` (default), elements will stay on a single line and may overflow their container.
 
 ### Vertical Layout
 
