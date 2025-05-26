@@ -365,7 +365,8 @@ The Array Control renders a data table for managing arrays of values, with suppo
   "type": "Control",
   "scope": "#/properties/tags",
   "options": {
-    "emptyMessage": "No tags added yet"
+    "emptyMessage": "No tags added yet",
+    "detail": "GENERATED"
   }
 }
 ```
@@ -373,6 +374,13 @@ The Array Control renders a data table for managing arrays of values, with suppo
 **Options:**
 - All common options (focus, descriptionDisplay, labelPlacement, displayOnly)
 - `emptyMessage`: Custom message to display when the array is empty (defaults to "No items found")
+- `elementLabelProp`: Property to use as the label for each array item
+- `showSortButtons`: Enable buttons to reorder array items
+- `detail`: Controls how array items are rendered. Can be one of:
+  - `"DEFAULT"`: Renders a simple control without any special detail view
+  - `"GENERATED"`: Automatically generates a UI schema based on the item's schema properties
+  - `"REGISTERED"`: Uses a registered UI schema for the item's type, falling back to generated if none found
+  - `{ type: "Layout", elements: [...] }`: Uses the provided UI schema directly to render each item
 
 **Features:**
 - Add new items with the "+" button
@@ -387,6 +395,7 @@ The Array Control renders a data table for managing arrays of values, with suppo
 - The array control uses PrimeVue's DataTable component for a rich user experience
 - Each item in the array is rendered using the appropriate control based on its schema
 - The control maintains unique IDs for each item to ensure proper tracking and updates
+- For more details on the `detail` option, see the [JSONForms documentation](https://jsonforms.io/docs/uischema/controls#the-detail-option)
 
 ## Layout Components
 
@@ -469,6 +478,11 @@ The Vertical Layout arranges elements vertically.
 
 All control renderers support a `displayOnly` mode that renders the field values as read-only text instead of interactive input controls. This is useful for creating read-only forms or displaying data in a non-editable format.
 
+**Key Differences:**
+- `displayOnly`: Completely replaces the input control with a text display, removing all interactive elements
+- `readonly`: Keeps the input control visible but prevents user interaction
+- `disabled`: Keeps the input control visible but grays it out and prevents interaction
+
 **Configuration:**
 
 In your UI schema, you can enable display-only mode using the `displayOnly` option:
@@ -478,16 +492,21 @@ In your UI schema, you can enable display-only mode using the `displayOnly` opti
   "type": "Control",
   "scope": "#/properties/myField",
   "options": {
-    "displayOnly": true
+    "displayOnly": true,
+    "compact": true  // Optional: reduces padding and spacing in display-only mode
   }
 }
 ```
+
+**Options:**
+- `displayOnly`: Set to `true` to render the field as read-only text display
+- `compact`: Set to `true` to reduce padding and spacing in display-only mode (default: `false`)
 
 **Behavior by Control Type:**
 
 - **String Control**: Displays the text value with any configured prefix/suffix
 - **Number/Integer Control**: Displays the formatted number with prefix/suffix
-- **Boolean Control**: Shows a checkmark (✓) or X (✗) icon with "Yes"/"No" text
+- **Boolean Control**: Shows a checkmark (✓) or X (✗) icon
 - **Enum Control**: Displays the selected value as text
 - **Date-Time Control**: Shows the formatted date and time
 - **Duration Control**: Displays the formatted duration (e.g., "5 days")

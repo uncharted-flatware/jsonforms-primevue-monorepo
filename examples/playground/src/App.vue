@@ -29,20 +29,6 @@ const testValue = ref('Hello World - This should appear in all three inputs!');
 
 const dataSchemaString = ref(JSON.stringify({
     properties: {
-        scenarioName: {
-            type: "string",
-            minLength: 1,
-            title: "",
-            description: "A unique name to identify this scenario for easy reference later",
-            "default": "Untitled What-if"
-        },
-        tags: {
-            type: "array",
-            items: {
-                type: "string"
-            },
-            description: "Tags to categorize this scenario"
-        },
         simpleNumbers: {
             type: "array",
             title: "Simple Numbers Array",
@@ -50,95 +36,6 @@ const dataSchemaString = ref(JSON.stringify({
             items: {
                 type: "number"
             }
-        },
-        startingDamage: {
-            type: "object",
-            properties: {
-                method: {
-                    "type": "string",
-                    "title": "",
-                    "description": "Choose how to initialize the damage in the network - either from a saved state or randomly generated",
-                    "enum": [
-                        "Use a saved snapshot",
-                        "Randomized"
-                    ],
-                    "default": "Randomized"
-                },
-                savedSnapshot: {
-                    type: "string",
-                    title: "",
-                    description: "Use the visible nodes from a saved snapshot selection as the starting point for damage"
-                },
-                severity: {
-                    type: "integer",
-                    title: "Damage severity",
-                    description: "Controls the percentage of nodes that will be initially damaged in the network",
-                    minimum: 0,
-                    maximum: 100,
-                    default: 10
-                }
-            }
-        },
-        damagePropagation: {
-            type: "object",
-            properties: {
-                weightingType: {
-                    type: "string",
-                    description: "Determines how edge weights are considered in damage propagation calculations",
-                    enum: [
-                        "None",
-                        "Count",
-                        "Dollar value"
-                    ],
-                    "default": "None"
-                },
-                isWhenEnabled: {
-                    type: "boolean",
-                    title: "",
-                    description: "Enable conditional damage propagation based on input failure percentage"
-                },
-                whenPercentageOfInputsFail: {
-                    type: "integer",
-                    title: "",
-                    minimum: 0,
-                    maximum: 100,
-                    "default": 50
-                },
-                thenNodeFailsWithinPercentage: {
-                    type: "integer",
-                    title: "",
-                    minimum: 0,
-                    maximum: 100,
-                    "default": 50
-                },
-                afterNumberOfSteps: {
-                    type: "integer",
-                    title: "",
-                    minimum: 1,
-                    maximum: 5, // What should it be?
-                    "default": 3
-                },
-                isUseHierarchicalDependenciesEnabled: {
-                    type: "boolean",
-                    title: ""
-                },
-                hierarchicalDependenciesOption: {
-                    type: "string",
-                    enum: [
-                        "First parent",
-                        "Second parent"
-                    ],
-                    "default": "Second parent"
-                }
-            }
-        },
-        numberOfRuns: {
-            type: "integer",
-            title: "Number of runs",
-            description: "The total number of simulation iterations to perform - higher values give more statistical confidence but take longer",
-            minimum: 1,
-            maximum: 1000,
-            "default": 100
         },
         testing: {
             type: "object",
@@ -349,294 +246,6 @@ const uiSchemaString = ref(JSON.stringify({
     elements: [
         {
             type: "Group",
-            label: "1. Scenario name",
-            options: {
-                isToggleable: true,
-                isExpanded: true
-            },
-            elements: [
-                {
-                    type: "Label",
-                    text: "Give your what-if scenario a name so you can easily identify it later."
-                },
-                {
-                    type: "Control",
-                    scope: "#/properties/scenarioName",
-                    label: "Name",
-                    options: {
-                        labelPlacement: "float",
-                        descriptionDisplay: "tooltip"
-                    }
-                }
-            ]
-        },
-        {
-            type: "Group",
-            label: "2. Tags",
-            options: {
-                isToggleable: true,
-                isExpanded: true
-            },
-            elements: [
-                {
-                    type: "Label",
-                    text: "Add tags to help categorize and find this scenario later."
-                },
-                {
-                    type: "Control",
-                    scope: "#/properties/tags",
-                    options: {
-                        emptyMessage: "No tags added yet"
-                    }
-                },
-                {
-                    type: "Label",
-                    text: "Simple Numbers Array with Sort Buttons"
-                },
-                {
-                    type: "Control",
-                    scope: "#/properties/simpleNumbers",
-                    options: {
-                        showSortButtons: true,
-                        emptyMessage: "No numbers added yet"
-                    }
-                }
-            ]
-        },
-        {
-            type: "Group",
-            label: "2. Starting damage",
-            options: {
-                isToggleable: true,
-                isExpanded: true
-            },
-            elements: [
-                {
-                    type: "Label",
-                    text: "This section demonstrates the two description display modes (tooltip and always):"
-                },
-                {
-                    type: "HorizontalLayout",
-                    options: {
-                        isWrappingEnabled: false
-                    },
-                    elements: [
-                        {
-                            type: "VerticalLayout",
-                            elements: [
-                                {
-                                    type: "Label",
-                                    text: "Which nodes in the network are broken at the beginning of the simulation?"
-                                },
-                                {
-                                    type: "Control",
-                                    scope: "#/properties/startingDamage/properties/method",
-                                    label: "Method",
-                                    options: {
-                                        format: "radio",
-                                        descriptionDisplay: "always"
-                                    }
-                                },
-                                {
-                                    type: "Control",
-                                    scope: "#/properties/startingDamage/properties/savedSnapshot",
-                                    label: "Saved Snapshot",
-                                    options: {
-                                        descriptionDisplay: "tooltip"
-                                    }
-                                },
-                                {
-                                    type: "Control",
-                                    scope: "#/properties/startingDamage/properties/severity",
-                                    label: "Severity",
-                                    options: {
-                                        suffix: "%",
-                                        descriptionDisplay: "tooltip"
-                                    }
-                                }
-                            ]
-                        },
-                        {
-                            type: "Label",
-                            text: "See image",
-                            options: {
-                                imageUrl: '/starting-damage.png',
-                                imageWidth: 200,
-                                imageHeight: 200
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            type: "Group",
-            label: "3. Damage propagation",
-            options: {
-                isToggleable: true,
-                isExpanded: true
-            },
-            elements: [
-                {
-                    type: "Label",
-                    text: "Tell the algorithm what causes the successive dominoes to fall."
-                },
-                {
-                    type: "Control",
-                    scope: "#/properties/damagePropagation/properties/weightingType",
-                    label: "Weighting Type",
-                    options: {
-                        descriptionDisplay: "always"
-                    }
-                },
-                {
-                    type: "HorizontalLayout",
-                    elements: [
-                        {
-                            type: "Control",
-                            scope: "#/properties/damagePropagation/properties/isWhenEnabled",
-                            label: "Enable Conditional Propagation",
-                            options: {
-                                descriptionDisplay: "always"
-                            }
-                        },
-                        {
-                            type: "HorizontalLayout",
-                            options: {
-                                isWrappingEnabled: true
-                            },
-                            elements: [
-                                {
-                                    type: "Label",
-                                    text: "When more than"
-                                },
-                                {
-                                    type: "Control",
-                                    scope: "#/properties/damagePropagation/properties/whenPercentageOfInputsFail",
-                                    options: {
-                                        suffix: "%"
-                                    }
-                                },
-                                {
-                                    type: "Label",
-                                    text: "of node inputs fail then the node fails",
-                                    options: {
-                                        suffix: "%"
-                                    }
-                                },
-                                {
-                                    type: "Control",
-                                    scope: "#/properties/damagePropagation/properties/thenNodeFailsWithinPercentage",
-                                    label: "±",
-                                    options: {
-                                        suffix: "%"
-                                    }
-                                },
-                                {
-                                    type: "Label",
-                                    text: "after"
-                                },
-                                {
-                                    type: "Control",
-                                    scope: "#/properties/damagePropagation/properties/afterNumberOfSteps"
-                                },
-                                {
-                                    type: "Label",
-                                    text: "steps."
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    type: "VerticalLayout",
-                    elements: [
-                        {
-                            type: "HorizontalLayout",
-                            options: {
-                                isWrappingEnabled: true
-                            },
-                            elements: [
-                                {
-                                    type: "Control",
-                                    scope: "#/properties/damagePropagation/properties/isUseHierarchicalDependenciesEnabled",
-                                    label: "Use hierarchical dependencies for",
-                                    options: {
-                                        labelPlacement: "right"
-                                    }
-                                },
-                                {
-                                    type: "Control",
-                                    scope: "#/properties/damagePropagation/properties/hierarchicalDependenciesOption",
-                                    label: "",
-                                    rule: {
-                                        effect: "DISABLE",
-                                        condition: {
-                                            scope: "#/properties/damagePropagation/properties/isUseHierarchicalDependenciesEnabled",
-                                            schema: { const: false }
-                                        }
-                                    }
-                                }
-                            ]
-                        }
-                    ]
-                }
-
-            ]
-        },
-        {
-            type: "Group",
-            label: "4. Reconnection",
-            options: {
-                isToggleable: true,
-                isExpanded: false
-            },
-            elements: [
-                {
-                    type: "Label",
-                    text: "Tell the algorithm how new edges get formed."
-                }
-            ]
-        },
-        {
-            type: "Group",
-            label: "5. Recovery",
-            options: {
-                isToggleable: true,
-                isExpanded: false
-            },
-            elements: [
-                {
-                    type: "Label",
-                    text: "Tell the algorithm how things that were broken recover."
-                }
-            ]
-        },
-        {
-            type: "Group",
-            label: "6. How Many simulations?",
-            options: {
-                isToggleable: true,
-                isExpanded: true
-            },
-            elements: [
-                {
-                    type: "Label",
-                    text: "How many simulations do you want to create? There are various probabilities, so each simulation will be different."
-                },
-                {
-                    type: "Control",
-                    scope: "#/properties/numberOfRuns",
-                    label: "Number of Runs",
-                    options: {
-                        "step": 10,
-                        descriptionDisplay: "tooltip"
-                    }
-                }
-            ]
-        },
-        {
-            type: "Group",
             label: "Test",
             options: {
                 isToggleable: true,
@@ -653,7 +262,7 @@ const uiSchemaString = ref(JSON.stringify({
                 },
                 {
                     type: "Label",
-                    text: "Task List Example with showSortButtons and elementLabelProp"
+                    text: "1. Basic Task List (with sort buttons and name as label)"
                 },
                 {
                     type: "Control",
@@ -667,7 +276,7 @@ const uiSchemaString = ref(JSON.stringify({
                 },
                 {
                     type: "Label",
-                    text: "Task List with Custom Detail UI Schema"
+                    text: "2. Custom Layout Task List (horizontal layout with two columns)"
                 },
                 {
                     type: "Control",
@@ -711,7 +320,7 @@ const uiSchemaString = ref(JSON.stringify({
                 },
                 {
                     type: "Label",
-                    text: "Read-Only Task List Example"
+                    text: "3. Read-Only Task List (with preset tasks)"
                 },
                 {
                     type: "Control",
@@ -721,6 +330,98 @@ const uiSchemaString = ref(JSON.stringify({
                         emptyMessage: "No tasks available",
                         detail: "GENERATED",
                         readonly: true
+                    }
+                },
+                {
+                    type: "Label",
+                    text: "Detail Option Examples:"
+                },
+                {
+                    type: "Label",
+                    text: "4. DEFAULT Detail Option (simple control)"
+                },
+                {
+                    type: "Control",
+                    scope: "#/properties/testing/properties/tasks",
+                    options: {
+                        elementLabelProp: "name",
+                        emptyMessage: "No tasks added yet",
+                        showSortButtons: true,
+                        detail: "DEFAULT"
+                    }
+                },
+                {
+                    type: "Label",
+                    text: "5. REGISTERED Detail Option (with fallback to GENERATED)"
+                },
+                {
+                    type: "Control",
+                    scope: "#/properties/testing/properties/tasks",
+                    options: {
+                        elementLabelProp: "name",
+                        emptyMessage: "No tasks added yet",
+                        showSortButtons: true,
+                        detail: "REGISTERED"
+                    }
+                },
+                {
+                    type: "Label",
+                    text: "6. GENERATED Detail Option (automatic layout)"
+                },
+                {
+                    type: "Control",
+                    scope: "#/properties/testing/properties/tasks",
+                    options: {
+                        elementLabelProp: "name",
+                        emptyMessage: "No tasks added yet",
+                        showSortButtons: true,
+                        detail: "GENERATED"
+                    }
+                },
+                {
+                    type: "Label",
+                    text: "7. Custom UI Schema Detail Option (vertical layout with float labels)"
+                },
+                {
+                    type: "Control",
+                    scope: "#/properties/testing/properties/tasks",
+                    options: {
+                        elementLabelProp: "name",
+                        emptyMessage: "No tasks added yet",
+                        showSortButtons: true,
+                        detail: {
+                            type: "VerticalLayout",
+                            elements: [
+                                {
+                                    type: "Control",
+                                    scope: "#/properties/name",
+                                    options: {
+                                        labelPlacement: "float"
+                                    }
+                                },
+                                {
+                                    type: "Control",
+                                    scope: "#/properties/priority",
+                                    options: {
+                                        labelPlacement: "float"
+                                    }
+                                },
+                                {
+                                    type: "Control",
+                                    scope: "#/properties/isCompleted",
+                                    options: {
+                                        labelPlacement: "right"
+                                    }
+                                },
+                                {
+                                    type: "Control",
+                                    scope: "#/properties/dueDate",
+                                    options: {
+                                        labelPlacement: "float"
+                                    }
+                                }
+                            ]
+                        }
                     }
                 }
             ]
@@ -838,19 +539,6 @@ const uiSchemaString = ref(JSON.stringify({
 const exampleDataString = ref(JSON.stringify({
     "tags": ["test-tag", "another-tag"],
     "simpleNumbers": [10, 25, 5, 40, 15],
-    // "damagePropagation": {
-    //     "isUseHierarchicalDependenciesEnabled": false,
-    //     "isWhenEnabled": true,
-    //     "weightingType": "None",
-    //     "whenPercentageOfInputsFail": 3,
-    //     "thenNodeFailsWithinPercentage": 3,
-    //     "afterNumberOfSteps": 2
-    // },
-    // "startingDamage": {
-    //     "method": "Randomized",
-    //     "severity": 5
-    // },
-    // "numberOfRuns": 10
     "testing": {
         "tasks": [
             {
@@ -997,26 +685,6 @@ function onFormChanged(event: JsonFormsChangeEvent) {
     <div class="flex flex-column max-h-full gap-3">
 
         <h1>JSON Forms Playground</h1>
-        
-        <!-- SANITY TEST: PrimeVue InputText disabled behavior -->
-        <div class="p-3 border-1 border-300 border-round" style="background-color: #f8f9fa;">
-            <h3>Sanity Test: Disabled InputText Behavior</h3>
-            <div class="flex flex-column gap-2">
-                <div>
-                    <label>Enabled Input:</label>
-                    <InputText v-model="testValue" />
-                </div>
-                <div>
-                    <label>Disabled Input (should show value):</label>
-                    <InputText v-model="testValue" :disabled="true" />
-                </div>
-                <div>
-                    <label>Readonly Input (should show value):</label>
-                    <InputText v-model="testValue" :readonly="true" />
-                </div>
-                <div>Current value: {{ testValue }}</div>
-            </div>
-        </div>
         
         <div class="flex flex-row align-content-flex-start max-w-full gap=3">
             <div class="flex flex-column flex-grow-0 m3">

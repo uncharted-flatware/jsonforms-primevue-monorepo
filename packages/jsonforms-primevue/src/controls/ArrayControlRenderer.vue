@@ -212,8 +212,27 @@ const getItemUiSchema = (): UISchemaElement => {
       return generateUiSchemaFromItemSchema();
     }
     
-    // For 'REGISTERED' and 'DEFAULT', use a simple control
-    // In a full implementation, 'REGISTERED' would check for registered UI schemas
+    if (detailType === 'REGISTERED') {
+      // Check for registered UI schema for this type
+      const registeredUiSchema = control.value.renderers.find(
+        (r: any) => r.tester && r.tester(control.value.schema, control.value.uischema)
+      ) as { uischema?: UISchemaElement };
+      
+      if (registeredUiSchema?.uischema) {
+        return registeredUiSchema.uischema;
+      }
+      
+      // Fallback to generated if no registered schema found
+      return generateUiSchemaFromItemSchema();
+    }
+    
+    if (detailType === 'DEFAULT') {
+      // Simple control without any special detail view
+      return {
+        type: 'Control',
+        scope: '#'
+      } as any;
+    }
   }
   
   // Default: simple control
@@ -225,24 +244,26 @@ const getItemUiSchema = (): UISchemaElement => {
 
 // Generate a UI schema from the item schema properties
 const generateUiSchemaFromItemSchema = (): UISchemaElement => {
-  const itemSchemaValue = itemSchema.value;
+  const schema = itemSchema.value;
   
-  if (itemSchemaValue?.type === 'object' && itemSchemaValue.properties) {
-    const elements = Object.keys(itemSchemaValue.properties).map(prop => ({
-      type: 'Control' as const,
-      scope: `#/properties/${prop}`
-    }));
-    
+  if (!schema || !schema.properties) {
     return {
-      type: 'VerticalLayout',
-      elements
+      type: 'Control',
+      scope: '#'
     } as any;
   }
   
-  // Fallback for non-object items
+  // Create a vertical layout with controls for each property
   return {
-    type: 'Control',
-    scope: '#'
+    type: 'VerticalLayout',
+    elements: Object.entries(schema.properties).map(([name, propSchema]) => ({
+      type: 'Control',
+      scope: `#/properties/${name}`,
+      label: (propSchema as JsonSchema).title || name,
+      options: {
+        ...(appliedOptions.value.displayOnly ? { displayOnly: true, compact: true } : {})
+      }
+    }))
   } as any;
 };
 
