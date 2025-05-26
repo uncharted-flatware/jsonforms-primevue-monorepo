@@ -305,6 +305,22 @@ const dataSchemaString = ref(JSON.stringify({
                         type: "string"
                     }
                 },
+                numberArrayValue: {
+                    type: "array",
+                    title: "Number Array Value",
+                    description: "A number array for display-only testing",
+                    items: {
+                        type: "number"
+                    }
+                },
+                booleanArrayValue: {
+                    type: "array",
+                    title: "Boolean Array Value",
+                    description: "A boolean array for display-only testing",
+                    items: {
+                        type: "boolean"
+                    }
+                },
                 objectArrayValue: {
                     type: "array",
                     title: "Object Array Value",
@@ -787,11 +803,28 @@ const uiSchemaString = ref(JSON.stringify({
                         },
                         {
                             type: "Control",
+                            scope: "#/properties/displayOnlyTest/properties/numberArrayValue",
+                            options: {
+                                displayOnly: true,
+                                emptyMessage: "No items to display"
+                            }
+                        },
+                        {
+                            type: "Control",
+                            scope: "#/properties/displayOnlyTest/properties/booleanArrayValue",
+                            options: {
+                                displayOnly: true,
+                                emptyMessage: "No items to display"
+                            }
+                        },
+                        {
+                            type: "Control",
                             scope: "#/properties/displayOnlyTest/properties/objectArrayValue",
                             options: {
                                 displayOnly: true,
                                 elementLabelProp: "name",
-                                emptyMessage: "No objects to display"
+                                emptyMessage: "No objects to display",
+                                detail: "GENERATED"
                             }
                         }
                     ]
@@ -892,6 +925,12 @@ const exampleDataString = ref(JSON.stringify({
             "First item",
             "Second item",
             "Third item"
+        ],
+        "numberArrayValue": [
+            1, 2, 3, 4, 5
+        ],
+        "booleanArrayValue": [
+            true, false, true, false, true
         ],
         "objectArrayValue": [
             {

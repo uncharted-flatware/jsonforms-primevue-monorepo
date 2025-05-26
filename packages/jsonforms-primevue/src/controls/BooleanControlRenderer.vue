@@ -8,7 +8,6 @@
         <div v-if="appliedOptions.displayOnly" class="flex align-items-center gap-2">
             <i v-if="control.data" class="pi pi-check text-green-600" aria-label="Yes"></i>
             <i v-else class="pi pi-times text-red-600" aria-label="No"></i>
-            <span class="text-900">{{ control.data ? 'Yes' : 'No' }}</span>
         </div>
         <Checkbox
             v-else

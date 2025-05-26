@@ -4,7 +4,7 @@
     :is-focused="isFocused"
     :applied-options="appliedOptions"
   >
-    <div class="flex flex-column gap-3">
+    <div :class="appliedOptions.displayOnly ? 'flex flex-column gap-1' : 'flex flex-column gap-3'">
       <div class="flex justify-content-between align-items-center">
         <span class="text-xl text-900 font-bold">{{ control.label }}</span>
         <div class="flex gap-2" v-if="control.enabled && !appliedOptions.displayOnly">
@@ -23,7 +23,52 @@
         {{ appliedOptions.emptyMessage || 'No items found' }}
       </div>
 
-      <!-- Interactive mode - this block now handles all cases where items exist -->
+      <!-- Simple display for primitive arrays in displayOnly mode -->
+      <div v-else-if="appliedOptions.displayOnly && isPrimitiveArray" class="flex flex-column gap-1">
+        <div 
+          v-for="(item, index) in control.data" 
+          :key="`${control.path}-${index}`" 
+          class="flex align-items-center gap-1"
+        >
+          <i class="pi pi-circle-fill text-300" style="font-size: 0.4rem;"></i>
+          <div class="flex-1">
+            <DispatchRenderer
+              :schema="itemSchema"
+              :uischema="{ type: 'Control', scope: '#', options: { displayOnly: true, compact: true } } as any"
+              :path="composePaths(control.path, `${index}`)"
+              :enabled="false"
+              :renderers="control.renderers"
+              :cells="control.cells"
+              :data="item"
+              class="w-full"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Compact display for object arrays in displayOnly mode -->
+      <div v-else-if="appliedOptions.displayOnly" class="flex flex-column gap-2">
+        <div 
+          v-for="(item, index) in control.data" 
+          :key="`${control.path}-${index}`" 
+          class="border-1 border-300 border-round p-2"
+        >
+
+          <!-- Item content with compact spacing -->
+          <ArrayItemRenderer
+            :schema="itemSchema"
+            :uischema="getItemUiSchema()"
+            :path="composePaths(control.path, `${index}`)"
+            :enabled="false"
+            :renderers="control.renderers"
+            :cells="control.cells"
+            :data="item"
+            :readonly="true"
+          />
+        </div>
+      </div>
+
+      <!-- Complex display mode for objects or non-displayOnly mode -->
       <div v-else class="flex flex-column gap-3">
         <div 
           v-for="(item, index) in control.data" 
@@ -103,6 +148,7 @@ import { composePaths } from '@jsonforms/core';
 import Button from 'primevue/button';
 import ArrayItemRenderer from './ArrayItemRenderer.vue';
 import get from 'lodash/get';
+import { DispatchRenderer } from '@jsonforms/vue';
 
 const props = defineProps(rendererProps<ControlElement>());
 const controlProps = useJsonFormsControl(props);
@@ -115,6 +161,15 @@ const {
   isFocused,
   onChange
 } = controlCommon;
+
+// Check if the array contains primitive values (string, number, boolean)
+const isPrimitiveArray = computed(() => {
+  const itemSchemaValue = itemSchema.value;
+  return itemSchemaValue?.type === 'string' || 
+         itemSchemaValue?.type === 'number' || 
+         itemSchemaValue?.type === 'integer' || 
+         itemSchemaValue?.type === 'boolean';
+});
 
 // Get the label for an array item based on elementLabelProp option
 const getItemLabel = (item: any, index: number) => {
@@ -138,43 +193,6 @@ const getItemLabel = (item: any, index: number) => {
   
   // Generic label
   return `Item ${index + 1}`;
-};
-
-// Get the display value for an array item in display-only mode
-const getDisplayValue = (item: any, index: number) => {
-  // For primitive values, just return the string representation
-  if (typeof item === 'string' || typeof item === 'number' || typeof item === 'boolean') {
-    return String(item);
-  }
-  
-  // For objects, try to get a meaningful representation
-  if (item && typeof item === 'object') {
-    const elementLabelProp = appliedOptions.value.elementLabelProp;
-    
-    // If elementLabelProp is specified, use that
-    if (elementLabelProp) {
-      const labelValue = get(item, elementLabelProp);
-      if (labelValue !== undefined && labelValue !== null) {
-        return String(labelValue);
-      }
-    }
-    
-    // Try to find the first meaningful property
-    for (const [key, value] of Object.entries(item)) {
-      if (typeof value === 'string' && value.trim()) {
-        return String(value);
-      }
-      if (typeof value === 'number') {
-        return String(value);
-      }
-    }
-    
-    // If no meaningful property found, show JSON representation
-    return JSON.stringify(item);
-  }
-  
-  // Fallback
-  return String(item);
 };
 
 // Generate UI schema for array items based on detail option

@@ -5,6 +5,7 @@ export interface Options {
     
     // Display mode options
     displayOnly?: boolean;
+    compact?: boolean;
 
     // Relevant to most controls
     labelPlacement?: 'left' | 'right' | 'float';

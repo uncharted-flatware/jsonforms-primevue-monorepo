@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-column gap-2 w-full">
+  <div class="flex flex-column w-full">
     <DispatchRenderer
       :schema="props.schema"
       :uischema="effectiveUiSchema"
@@ -81,6 +81,10 @@ const effectiveUiSchema = computed(() => {
   
   if (props.readonly) {
     baseSchema.options.displayOnly = true;
+    // Preserve compact option if it was passed from parent
+    if ((props.uischema as any)?.options?.compact) {
+      baseSchema.options.compact = true;
+    }
   }
   
   return baseSchema;
@@ -91,6 +95,10 @@ const addDisplayOnlyOption = (uischema: any) => {
   if (uischema.type === 'Control') {
     uischema.options = uischema.options || {};
     uischema.options.displayOnly = true;
+    // Preserve compact option if it was passed from parent
+    if ((props.uischema as any)?.options?.compact) {
+      uischema.options.compact = true;
+    }
   } else if (uischema.elements && Array.isArray(uischema.elements)) {
     uischema.elements.forEach((element: any) => addDisplayOnlyOption(element));
   }

@@ -4,7 +4,7 @@
     :is-focused="isFocused"
     :applied-options="appliedOptions"
   >
-    <div class="flex flex-column gap-3 p-3 border-1 border-300 border-round">
+    <div class="flex flex-column gap-1 p-3 border-1 border-300 border-round">
       <div v-for="property in objectProperties" :key="property.name" class="flex flex-column gap-1">
         <DispatchRenderer
           :schema="property.schema"
@@ -54,7 +54,7 @@ const objectProperties = computed(() => {
       scope: `#/properties/${name}`,
       label: (propertySchema as JsonSchema).title || name,
       options: {
-        ...(appliedOptions.value.displayOnly ? { displayOnly: true } : {})
+        ...(appliedOptions.value.displayOnly ? { displayOnly: true, compact: true } : {})
       }
     }
   }));
@@ -67,8 +67,6 @@ const getPropertyValue = (propertyName: string) => {
 
 // Handle property changes
 const handlePropertyChange = (propertyName: string) => (event: any) => {
-  console.log('ObjectControlRenderer handlePropertyChange:', { propertyName, event });
-  
   let newValue;
   if (event && typeof event === 'object' && 'data' in event) {
     newValue = event.data;
@@ -83,7 +81,6 @@ const handlePropertyChange = (propertyName: string) => (event: any) => {
     [propertyName]: newValue
   };
   
-  console.log('ObjectControlRenderer updating to:', newData);
   onChange(newData);
 };
 </script> 

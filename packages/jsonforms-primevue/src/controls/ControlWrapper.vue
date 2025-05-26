@@ -1,5 +1,5 @@
 <template>
-    <div v-if="visible" :id="id" class="flex align-items-center gap-4">
+    <div v-if="visible" :id="id" class="flex align-items-center gap-2">
         <If v-if="appliedOptions.labelPlacement === 'float'">
             <FloatLabel>
                 <slot></slot>

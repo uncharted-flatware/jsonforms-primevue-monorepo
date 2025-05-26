@@ -5,7 +5,7 @@
         :applied-options="appliedOptions"
         :display-value="formatDisplayValue"
     >
-        <div v-if="appliedOptions.displayOnly" class="p-3 text-900">
+        <div v-if="appliedOptions.displayOnly" :class="appliedOptions.compact ? 'text-900' : 'p-3 text-900'">
             {{ formatDisplayValue }}
         </div>
         <InputNumber
