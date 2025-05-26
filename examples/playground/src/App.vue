@@ -25,7 +25,6 @@ defineOptions({
 });
 
 const errorMessage = ref('');
-const testValue = ref('Hello World - This should appear in all three inputs!');
 
 const dataSchemaString = ref(JSON.stringify({
     properties: {
@@ -158,28 +157,6 @@ const dataSchemaString = ref(JSON.stringify({
                             items: {
                                 type: "string"
                             }
-                        }
-                    }
-                },
-                "labelExamples": {
-                    type: "object",
-                    title: "Label Examples",
-                    description: "Examples of different label types and options",
-                    properties: {
-                        "basicLabel": {
-                            type: "string",
-                            title: "Basic Label Example",
-                            description: "A simple string input with a basic label"
-                        },
-                        "imageLabel": {
-                            type: "string",
-                            title: "Image Label Example",
-                            description: "A string input with a label that includes an image"
-                        },
-                        "styledLabel": {
-                            type: "string",
-                            title: "Styled Label Example",
-                            description: "A string input with a styled label"
                         }
                     }
                 }
@@ -636,37 +613,16 @@ const uiSchemaString = ref(JSON.stringify({
             elements: [
                 {
                     type: "Label",
-                    text: "Basic Label"
-                },
-                {
-                    type: "Control",
-                    scope: "#/properties/testing/properties/labelExamples/properties/basicLabel"
+                    text: "Basic Label Example"
                 },
                 {
                     type: "Label",
                     text: "Label with Image",
                     options: {
-                        imageUrl: "https://primevue.org/images/logo.svg",
-                        imageWidth: 100,
-                        imageHeight: 50
+                        imageUrl: "/saucer.png",
+                        imageWidth: 200,
+                        imageHeight: 200
                     }
-                },
-                {
-                    type: "Control",
-                    scope: "#/properties/testing/properties/labelExamples/properties/imageLabel"
-                },
-                {
-                    type: "Label",
-                    text: "Styled Label with Image",
-                    options: {
-                        imageUrl: "https://primevue.org/images/logo.svg",
-                        imageWidth: 50,
-                        imageHeight: 50
-                    }
-                },
-                {
-                    type: "Control",
-                    scope: "#/properties/testing/properties/labelExamples/properties/styledLabel"
                 }
             ]
         }
@@ -714,11 +670,6 @@ const exampleDataString = ref(JSON.stringify({
             "name": "Example Object",
             "description": "This is an example object with various properties",
             "tags": ["example", "test", "demo"]
-        },
-        "labelExamples": {
-            "basicLabel": "Basic label example value",
-            "imageLabel": "Image label example value",
-            "styledLabel": "Styled label example value"
         }
     },
     "displayOnlyTest": {
