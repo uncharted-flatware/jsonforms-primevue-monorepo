@@ -29,25 +29,45 @@ const testValue = ref('Hello World - This should appear in all three inputs!');
 
 const dataSchemaString = ref(JSON.stringify({
     properties: {
-        simpleNumbers: {
-            type: "array",
-            title: "Simple Numbers Array",
-            description: "An array of numbers with sort buttons",
-            items: {
-                type: "number"
-            }
-        },
         testing: {
             type: "object",
             properties: {
+                "aString": {
+                    type: "string",
+                    title: "String Value",
+                    description: "A simple string input"
+                },
+                "aNumber": {
+                    type: "number",
+                    title: "Number Value",
+                    description: "A number input with currency formatting"
+                },
+                "anInteger": {
+                    type: "integer",
+                    title: "Integer Value",
+                    description: "An integer input with item count formatting",
+                    minimum: 0,
+                    maximum: 100
+                },
+                "aBoolean": {
+                    type: "boolean",
+                    title: "Boolean Value",
+                    description: "A boolean toggle"
+                },
+                "anEnum": {
+                    type: "string",
+                    title: "Enum Value",
+                    description: "A dropdown with predefined options",
+                    enum: ["Option 1", "Option 2", "Option 3"]
+                },
                 "aDateTime": {
                     type: "string",
-                    title: "A Date Time",
+                    title: "Date Time",
                     format: "date-time"
                 },
                 "aDuration": {
                     type: "string",
-                    title: "An ISO time duration",
+                    title: "Duration",
                     format: "duration"
                 },
                 "tasks": {
@@ -116,37 +136,51 @@ const dataSchemaString = ref(JSON.stringify({
                         required: ["name", "priority"]
                     }
                 },
-                "readOnlyTasks": {
-                    type: "array",
-                    title: "Read-Only Task List",
-                    description: "A read-only list of preset tasks",
-                    items: {
-                        type: "object",
-                        properties: {
-                            name: {
-                                type: "string",
-                                title: "Task Name",
-                                description: "The name of the task"
-                            },
-                            priority: {
-                                type: "string",
-                                enum: ["Low", "Medium", "High"],
-                                title: "Priority",
-                                description: "The priority level of the task"
-                            },
-                            isCompleted: {
-                                type: "boolean",
-                                title: "Completed",
-                                description: "Whether the task is completed"
-                            },
-                            dueDate: {
-                                type: "string",
-                                format: "date-time",
-                                title: "Due Date",
-                                description: "When the task is due"
-                            }
+                "anObject": {
+                    type: "object",
+                    title: "Object Example",
+                    description: "An example of an object control",
+                    properties: {
+                        name: {
+                            type: "string",
+                            title: "Name",
+                            description: "The name of the object"
                         },
-                        required: ["name", "priority"]
+                        description: {
+                            type: "string",
+                            title: "Description",
+                            description: "A description of the object"
+                        },
+                        tags: {
+                            type: "array",
+                            title: "Tags",
+                            description: "Tags associated with the object",
+                            items: {
+                                type: "string"
+                            }
+                        }
+                    }
+                },
+                "labelExamples": {
+                    type: "object",
+                    title: "Label Examples",
+                    description: "Examples of different label types and options",
+                    properties: {
+                        "basicLabel": {
+                            type: "string",
+                            title: "Basic Label Example",
+                            description: "A simple string input with a basic label"
+                        },
+                        "imageLabel": {
+                            type: "string",
+                            title: "Image Label Example",
+                            description: "A string input with a label that includes an image"
+                        },
+                        "styledLabel": {
+                            type: "string",
+                            title: "Styled Label Example",
+                            description: "A string input with a styled label"
+                        }
                     }
                 }
             }
@@ -238,7 +272,7 @@ const dataSchemaString = ref(JSON.stringify({
                 }
             }
         }
-    },
+    }
 }, null, 2));
 
 const uiSchemaString = ref(JSON.stringify({
@@ -246,23 +280,106 @@ const uiSchemaString = ref(JSON.stringify({
     elements: [
         {
             type: "Group",
-            label: "Test",
+            label: "Basic Controls",
             options: {
                 isToggleable: true,
-                isExpanded: true
+                isExpanded: false
             },
             elements: [
+                {
+                    type: "Label",
+                    text: "String Control"
+                },
+                {
+                    type: "Control",
+                    scope: "#/properties/testing/properties/aString",
+                    options: {
+                        placeholder: "Enter a string value"
+                    }
+                },
+                {
+                    type: "Label",
+                    text: "Number Control"
+                },
+                {
+                    type: "Control",
+                    scope: "#/properties/testing/properties/aNumber",
+                    options: {
+                        prefix: "$",
+                        suffix: " USD"
+                    }
+                },
+                {
+                    type: "Label",
+                    text: "Integer Control"
+                },
+                {
+                    type: "Control",
+                    scope: "#/properties/testing/properties/anInteger",
+                    options: {
+                        prefix: "#",
+                        suffix: " items"
+                    }
+                },
+                {
+                    type: "Label",
+                    text: "Boolean Control"
+                },
+                {
+                    type: "Control",
+                    scope: "#/properties/testing/properties/aBoolean"
+                },
+                {
+                    type: "Label",
+                    text: "Enum Control"
+                },
+                {
+                    type: "Control",
+                    scope: "#/properties/testing/properties/anEnum"
+                },
+                {
+                    type: "Label",
+                    text: "Date-Time Control"
+                },
                 {
                     type: "Control",
                     scope: "#/properties/testing/properties/aDateTime"
                 },
                 {
+                    type: "Label",
+                    text: "Duration Control"
+                },
+                {
                     type: "Control",
                     scope: "#/properties/testing/properties/aDuration"
+                }
+            ]
+        },
+        {
+            type: "Group",
+            label: "Complex Controls",
+            options: {
+                isToggleable: true,
+                isExpanded: false
+            },
+            elements: [
+                {
+                    type: "Label",
+                    text: "Array Control - Default Detail"
+                },
+                {
+                    type: "Control",
+                    scope: "#/properties/testing/properties/tasks",
+                    options: {
+                        elementLabelProp: "name",
+                        emptyMessage: "No tasks added yet",
+                        showSortButtons: true,
+                        detail: "DEFAULT"
+                    }
                 },
                 {
                     type: "Label",
-                    text: "1. Basic Task List (with sort buttons and name as label)"
+                    text: "Array Control - Generated Detail"
                 },
                 {
                     type: "Control",
@@ -276,7 +393,7 @@ const uiSchemaString = ref(JSON.stringify({
                 },
                 {
                     type: "Label",
-                    text: "2. Custom Layout Task List (horizontal layout with two columns)"
+                    text: "Array Control - Custom Layout"
                 },
                 {
                     type: "Control",
@@ -320,123 +437,91 @@ const uiSchemaString = ref(JSON.stringify({
                 },
                 {
                     type: "Label",
-                    text: "3. Read-Only Task List (with preset tasks)"
+                    text: "Object Control"
                 },
                 {
                     type: "Control",
-                    scope: "#/properties/testing/properties/readOnlyTasks",
-                    options: {
-                        elementLabelProp: "name",
-                        emptyMessage: "No tasks available",
-                        detail: "GENERATED",
-                        readonly: true
-                    }
-                },
-                {
-                    type: "Label",
-                    text: "Detail Option Examples:"
-                },
-                {
-                    type: "Label",
-                    text: "4. DEFAULT Detail Option (simple control)"
-                },
-                {
-                    type: "Control",
-                    scope: "#/properties/testing/properties/tasks",
-                    options: {
-                        elementLabelProp: "name",
-                        emptyMessage: "No tasks added yet",
-                        showSortButtons: true,
-                        detail: "DEFAULT"
-                    }
-                },
-                {
-                    type: "Label",
-                    text: "5. REGISTERED Detail Option (with fallback to GENERATED)"
-                },
-                {
-                    type: "Control",
-                    scope: "#/properties/testing/properties/tasks",
-                    options: {
-                        elementLabelProp: "name",
-                        emptyMessage: "No tasks added yet",
-                        showSortButtons: true,
-                        detail: "REGISTERED"
-                    }
-                },
-                {
-                    type: "Label",
-                    text: "6. GENERATED Detail Option (automatic layout)"
-                },
-                {
-                    type: "Control",
-                    scope: "#/properties/testing/properties/tasks",
-                    options: {
-                        elementLabelProp: "name",
-                        emptyMessage: "No tasks added yet",
-                        showSortButtons: true,
-                        detail: "GENERATED"
-                    }
-                },
-                {
-                    type: "Label",
-                    text: "7. Custom UI Schema Detail Option (vertical layout with float labels)"
-                },
-                {
-                    type: "Control",
-                    scope: "#/properties/testing/properties/tasks",
-                    options: {
-                        elementLabelProp: "name",
-                        emptyMessage: "No tasks added yet",
-                        showSortButtons: true,
-                        detail: {
-                            type: "VerticalLayout",
-                            elements: [
-                                {
-                                    type: "Control",
-                                    scope: "#/properties/name",
-                                    options: {
-                                        labelPlacement: "float"
-                                    }
-                                },
-                                {
-                                    type: "Control",
-                                    scope: "#/properties/priority",
-                                    options: {
-                                        labelPlacement: "float"
-                                    }
-                                },
-                                {
-                                    type: "Control",
-                                    scope: "#/properties/isCompleted",
-                                    options: {
-                                        labelPlacement: "right"
-                                    }
-                                },
-                                {
-                                    type: "Control",
-                                    scope: "#/properties/dueDate",
-                                    options: {
-                                        labelPlacement: "float"
-                                    }
-                                }
-                            ]
-                        }
-                    }
+                    scope: "#/properties/testing/properties/anObject"
                 }
             ]
         },
         {
             type: "Group",
-            label: "Display-Only Test",
+            label: "Layout Components",
             options: {
                 isToggleable: true,
-                isExpanded: true
+                isExpanded: false
             },
             elements: [
                 {
                     type: "Label",
-                    text: "This section demonstrates components in display-only mode (without form controls)"
+                    text: "Group Layout (Accordion)"
+                },
+                {
+                    type: "Group",
+                    label: "Accordion Example",
+                    options: {
+                        asAccordion: true,
+                        isExpanded: true
+                    },
+                    elements: [
+                        {
+                            type: "Control",
+                            scope: "#/properties/testing/properties/aString"
+                        },
+                        {
+                            type: "Control",
+                            scope: "#/properties/testing/properties/aNumber"
+                        }
+                    ]
+                },
+                {
+                    type: "Label",
+                    text: "Horizontal Layout"
+                },
+                {
+                    type: "HorizontalLayout",
+                    elements: [
+                        {
+                            type: "Control",
+                            scope: "#/properties/testing/properties/aString"
+                        },
+                        {
+                            type: "Control",
+                            scope: "#/properties/testing/properties/aNumber"
+                        }
+                    ]
+                },
+                {
+                    type: "Label",
+                    text: "Vertical Layout"
+                },
+                {
+                    type: "VerticalLayout",
+                    elements: [
+                        {
+                            type: "Control",
+                            scope: "#/properties/testing/properties/aString"
+                        },
+                        {
+                            type: "Control",
+                            scope: "#/properties/testing/properties/aNumber"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            type: "Group",
+            label: "Display-Only Examples",
+            options: {
+                isToggleable: true,
+                isExpanded: false
+            },
+            elements: [
+                {
+                    type: "Label",
+                    text: "Basic Controls in Display Mode"
                 },
                 {
                     type: "VerticalLayout",
@@ -493,7 +578,16 @@ const uiSchemaString = ref(JSON.stringify({
                             options: {
                                 displayOnly: true
                             }
-                        },
+                        }
+                    ]
+                },
+                {
+                    type: "Label",
+                    text: "Complex Controls in Display Mode"
+                },
+                {
+                    type: "VerticalLayout",
+                    elements: [
                         {
                             type: "Control",
                             scope: "#/properties/displayOnlyTest/properties/arrayValue",
@@ -531,15 +625,63 @@ const uiSchemaString = ref(JSON.stringify({
                     ]
                 }
             ]
+        },
+        {
+            type: "Group",
+            label: "Label Examples",
+            options: {
+                isToggleable: true,
+                isExpanded: false
+            },
+            elements: [
+                {
+                    type: "Label",
+                    text: "Basic Label"
+                },
+                {
+                    type: "Control",
+                    scope: "#/properties/testing/properties/labelExamples/properties/basicLabel"
+                },
+                {
+                    type: "Label",
+                    text: "Label with Image",
+                    options: {
+                        imageUrl: "https://primevue.org/images/logo.svg",
+                        imageWidth: 100,
+                        imageHeight: 50
+                    }
+                },
+                {
+                    type: "Control",
+                    scope: "#/properties/testing/properties/labelExamples/properties/imageLabel"
+                },
+                {
+                    type: "Label",
+                    text: "Styled Label with Image",
+                    options: {
+                        imageUrl: "https://primevue.org/images/logo.svg",
+                        imageWidth: 50,
+                        imageHeight: 50
+                    }
+                },
+                {
+                    type: "Control",
+                    scope: "#/properties/testing/properties/labelExamples/properties/styledLabel"
+                }
+            ]
         }
     ]
-    ,
 }, null, 2));
 
 const exampleDataString = ref(JSON.stringify({
-    "tags": ["test-tag", "another-tag"],
-    "simpleNumbers": [10, 25, 5, 40, 15],
     "testing": {
+        "aString": "Example string value",
+        "aNumber": 1234.56,
+        "anInteger": 42,
+        "aBoolean": true,
+        "anEnum": "Option 2",
+        "aDateTime": "2024-03-25T14:30:00Z",
+        "aDuration": "P7D",
         "tasks": [
             {
                 "name": "Setup Development Environment",
@@ -566,40 +708,18 @@ const exampleDataString = ref(JSON.stringify({
                 "priority": "Medium",
                 "isCompleted": false,
                 "dueDate": "2024-03-30T11:00:00Z"
-            },
-            {
-                "name": "Security Audit",
-                "priority": "High",
-                "isCompleted": true,
-                "dueDate": "2024-03-25T13:00:00Z"
             }
         ],
-        "readOnlyTasks": [
-            {
-                "name": "Review Pull Requests",
-                "priority": "High",
-                "isCompleted": true,
-                "dueDate": "2024-03-20T10:00:00Z"
-            },
-            {
-                "name": "Update Documentation",
-                "priority": "Medium",
-                "isCompleted": false,
-                "dueDate": "2024-03-22T15:00:00Z"
-            },
-            {
-                "name": "Fix Critical Bug",
-                "priority": "High",
-                "isCompleted": false,
-                "dueDate": "2024-03-21T12:00:00Z"
-            },
-            {
-                "name": "Code Review",
-                "priority": "Low",
-                "isCompleted": true,
-                "dueDate": "2024-03-19T16:00:00Z"
-            }
-        ]
+        "anObject": {
+            "name": "Example Object",
+            "description": "This is an example object with various properties",
+            "tags": ["example", "test", "demo"]
+        },
+        "labelExamples": {
+            "basicLabel": "Basic label example value",
+            "imageLabel": "Image label example value",
+            "styledLabel": "Styled label example value"
+        }
     },
     "displayOnlyTest": {
         "stringValue": "This is a display-only string value",
