@@ -1,0 +1,266 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "outputDataSchema.json",
+  "title": "Output Data Schema",
+  "description": "Standard JSON Schema for analytics output data structures",
+  "type": "object",
+  "properties": {
+    "temperatureReadings": {
+      "type": "array",
+      "title": "Temperature Readings",
+      "description": "Time-series temperature data from sensors",
+      "items": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Timestamp",
+            "description": "When the reading was taken"
+          },
+          "value": {
+            "type": "number",
+            "title": "Temperature",
+            "description": "Temperature value in Celsius"
+          },
+          "sensor": {
+            "type": "string",
+            "title": "Sensor ID",
+            "description": "Identifier for the sensor"
+          },
+          "location": {
+            "type": "string",
+            "title": "Location",
+            "description": "Physical location of the sensor"
+          }
+        },
+        "required": ["timestamp", "value", "sensor"]
+      }
+    },
+    "edgeCounts": {
+      "type": "array",
+      "title": "Edge Count Analysis",
+      "description": "Analysis of incoming and outgoing edges for graph nodes",
+      "items": {
+        "type": "object",
+        "properties": {
+          "nodeId": {
+            "type": "string",
+            "title": "Node ID",
+            "description": "Unique identifier for the graph node"
+          },
+          "incomingEdges": {
+            "type": "integer",
+            "title": "Incoming Edges",
+            "description": "Number of edges pointing to this node",
+            "minimum": 0
+          },
+          "outgoingEdges": {
+            "type": "integer",
+            "title": "Outgoing Edges", 
+            "description": "Number of edges originating from this node",
+            "minimum": 0
+          },
+          "nodeType": {
+            "type": "string",
+            "title": "Node Type",
+            "description": "Classification or type of the node"
+          }
+        },
+        "required": ["nodeId", "incomingEdges", "outgoingEdges"]
+      }
+    },
+    "performanceMetrics": {
+      "type": "array",
+      "title": "Performance Metrics",
+      "description": "System performance measurements over time",
+      "items": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Measurement Time"
+          },
+          "cpuUsage": {
+            "type": "number",
+            "title": "CPU Usage",
+            "description": "CPU utilization percentage",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "memoryUsage": {
+            "type": "number",
+            "title": "Memory Usage",
+            "description": "Memory utilization percentage",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "responseTime": {
+            "type": "number",
+            "title": "Response Time",
+            "description": "Average response time in milliseconds",
+            "minimum": 0
+          }
+        },
+        "required": ["timestamp"]
+      }
+    },
+    "summary": {
+      "type": "object",
+      "title": "Analysis Summary",
+      "description": "High-level summary statistics",
+      "properties": {
+        "totalNodes": {
+          "type": "integer",
+          "title": "Total Nodes",
+          "description": "Total number of nodes analyzed",
+          "minimum": 0
+        },
+        "avgTemperature": {
+          "type": "number",
+          "title": "Average Temperature",
+          "description": "Mean temperature across all readings"
+        },
+        "analysisDate": {
+          "type": "string",
+          "format": "date-time",
+          "title": "Analysis Date",
+          "description": "When this analysis was performed"
+        },
+        "dataQuality": {
+          "type": "string",
+          "title": "Data Quality",
+          "description": "Assessment of data quality",
+          "enum": ["excellent", "good", "fair", "poor"]
+        }
+      }
+    },
+    "alerts": {
+      "type": "array",
+      "title": "System Alerts",
+      "description": "Alerts or anomalies detected during analysis",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Alert ID"
+          },
+          "severity": {
+            "type": "string",
+            "title": "Severity",
+            "enum": ["low", "medium", "high", "critical"]
+          },
+          "message": {
+            "type": "string",
+            "title": "Alert Message"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Alert Time"
+          },
+          "source": {
+            "type": "string",
+            "title": "Alert Source",
+            "description": "Component or system that generated the alert"
+          }
+        },
+        "required": ["id", "severity", "message", "timestamp"]
+      }
+    },
+    "experimentalResults": {
+      "type": "array",
+      "title": "Experimental Results",
+      "description": "Scientific measurement data with error bounds and confidence intervals",
+      "items": {
+        "type": "object",
+        "properties": {
+          "condition": {
+            "type": "string",
+            "title": "Experimental Condition",
+            "description": "The experimental condition or treatment"
+          },
+          "meanValue": {
+            "type": "number",
+            "title": "Mean Value",
+            "description": "The mean measurement value"
+          },
+          "standardError": {
+            "type": "number",
+            "title": "Standard Error",
+            "description": "Standard error of the mean",
+            "minimum": 0
+          },
+          "confidenceIntervalLow": {
+            "type": "number",
+            "title": "CI Lower Bound",
+            "description": "Lower bound of 95% confidence interval"
+          },
+          "confidenceIntervalHigh": {
+            "type": "number",
+            "title": "CI Upper Bound", 
+            "description": "Upper bound of 95% confidence interval"
+          },
+          "sampleSize": {
+            "type": "integer",
+            "title": "Sample Size",
+            "description": "Number of observations",
+            "minimum": 1
+          },
+          "experimentDate": {
+            "type": "string",
+            "format": "date",
+            "title": "Experiment Date",
+            "description": "When the experiment was conducted"
+          }
+        },
+        "required": ["condition", "meanValue", "standardError"]
+      }
+    },
+    "timeSeriesWithErrors": {
+      "type": "array",
+      "title": "Time Series with Error Bounds",
+      "description": "Time-based measurements with uncertainty quantification",
+      "items": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Timestamp",
+            "description": "When the measurement was taken"
+          },
+          "value": {
+            "type": "number",
+            "title": "Measured Value",
+            "description": "The primary measurement value"
+          },
+          "errorLow": {
+            "type": "number",
+            "title": "Lower Error Bound",
+            "description": "Lower bound of measurement uncertainty"
+          },
+          "errorHigh": {
+            "type": "number",
+            "title": "Upper Error Bound",
+            "description": "Upper bound of measurement uncertainty"
+          },
+          "sensor": {
+            "type": "string",
+            "title": "Sensor ID",
+            "description": "Identifier for the measurement sensor"
+          },
+          "quality": {
+            "type": "string",
+            "title": "Data Quality",
+            "description": "Quality assessment of the measurement",
+            "enum": ["high", "medium", "low"]
+          }
+        },
+        "required": ["timestamp", "value"]
+      }
+    }
+  }
+} 

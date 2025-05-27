@@ -1,34 +1,6 @@
 {
   "type": "object",
-  "definitions": {
-    "dataPoint2d": {
-      "type": "object",
-      "properties": {
-        "time": {
-          "type": "string",
-          "format": "date-time",
-          "title": "Timestamp",
-          "description": "The time point for this measurement"
-        },
-        "value": {
-          "type": "number",
-          "title": "Value",
-          "description": "The measured value at this time point"
-        },
-        "min": {
-          "type": "number",
-          "title": "Minimum",
-          "description": "Optional minimum bound (for error bars)"
-        },
-        "max": {
-          "type": "number",
-          "title": "Maximum", 
-          "description": "Optional maximum bound (for error bars)"
-        }
-      },
-      "required": ["time", "value"]
-    }
-  },
+  "definitions": {},
   "properties": {
     "testing": {
       "type": "object",
@@ -358,12 +330,36 @@
         }
       }
     },
-    "timeseriesData": {
+    "lineChartData": {
       "type": "array",
-      "title": "Timeseries Data",
-      "description": "A collection of time-based data points with optional error bounds",
+      "title": "Line Chart Data",
+      "description": "Data for line chart visualization with encoding support",
       "items": {
-        "$ref": "#/definitions/dataPoint2d"
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Timestamp"
+          },
+          "value": {
+            "type": "number",
+            "title": "Value"
+          },
+          "errorLow": {
+            "type": "number",
+            "title": "Error Lower Bound"
+          },
+          "errorHigh": {
+            "type": "number",
+            "title": "Error Upper Bound"
+          },
+          "category": {
+            "type": "string",
+            "title": "Category"
+          }
+        },
+        "required": ["timestamp", "value"]
       }
     }
   }

@@ -568,46 +568,68 @@
       "elements": [
         {
           "type": "Label",
-          "text": "Timeseries Chart with Error Band"
+          "text": "Line Chart with Error Band (Encoding-based)"
         },
         {
           "type": "Control",
-          "scope": "#/properties/timeseriesData",
+          "scope": "#/properties/lineChartData",
           "options": {
             "title": "Temperature Over Time (Error Band)",
-            "independentVariable": "time",
-            "dependentVariable": "value",
-            "minVariable": "min",
-            "maxVariable": "max",
-            "showErrorBars": true,
+            "encoding": {
+              "x": {"field": "timestamp", "type": "temporal"},
+              "y": {"field": "value", "type": "quantitative"},
+              "yError": {"field": "errorLow", "type": "quantitative"},
+              "yError2": {"field": "errorHigh", "type": "quantitative"},
+              "color": {"field": "category", "type": "nominal"}
+            },
             "showAsErrorBand": true,
-            "width": 400,
+            "width": 500,
             "height": 300,
             "lineColor": "#2563eb",
-            "errorBarColor": "#93c5fd",
             "errorBandColor": "#dbeafe",
             "errorBandOpacity": 0.4
           }
         },
         {
           "type": "Label",
-          "text": "Timeseries Chart with Error Bars"
+          "text": "Line Chart with Error Bars (Encoding-based)"
         },
         {
           "type": "Control",
-          "scope": "#/properties/timeseriesData",
+          "scope": "#/properties/lineChartData",
           "options": {
             "title": "Temperature Over Time (Error Bars)",
-            "independentVariable": "time",
-            "dependentVariable": "value",
-            "minVariable": "min",
-            "maxVariable": "max",
-            "showErrorBars": true,
+            "encoding": {
+              "x": {"field": "timestamp", "type": "temporal"},
+              "y": {"field": "value", "type": "quantitative"},
+              "yError": {"field": "errorLow", "type": "quantitative"},
+              "yError2": {"field": "errorHigh", "type": "quantitative"},
+              "color": {"field": "category", "type": "nominal"}
+            },
             "showAsErrorBand": false,
-            "width": 400,
+            "width": 500,
             "height": 300,
             "lineColor": "#dc2626",
             "errorBarColor": "#fca5a5"
+          }
+        },
+        {
+          "type": "Label",
+          "text": "Simple Line Chart (No Errors)"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/lineChartData",
+          "options": {
+            "title": "Simple Line Chart",
+            "encoding": {
+              "x": {"field": "timestamp", "type": "temporal"},
+              "y": {"field": "value", "type": "quantitative"},
+              "color": {"field": "category", "type": "nominal"}
+            },
+            "width": 500,
+            "height": 300,
+            "lineColor": "#059669"
           }
         }
       ]

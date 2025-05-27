@@ -1,18 +1,20 @@
-import { rankWith, and, schemaSubPathMatches, resolveSchema, isObjectArrayControl } from '@jsonforms/core';
-import TimeseriesRenderer from './TimeseriesRenderer.vue';
+import {
+  rankWith,
+  and,
+  isObjectArrayControl,
+  hasOption,
+} from "@jsonforms/core";
+import LineChartRenderer from "./LineChartRenderer.vue";
 
-// Tester for timeseries data (array of dataPoint2d objects)
-const timeseriesTester = rankWith(
+// Tester for line chart data (array with encoding options)
+const lineChartTester = rankWith(
   4, // Higher rank than default renderers
   and(
     isObjectArrayControl,
-    schemaSubPathMatches('items', (schema) => {
-      // Check if items references the dataPoint2d definition
-      return schema.$ref === '#/definitions/dataPoint2d';
-    })
+    hasOption("encoding")
   )
 );
 
 export const customRenderers = [
-  { tester: timeseriesTester, renderer: TimeseriesRenderer }
-]; 
+  { tester: lineChartTester, renderer: LineChartRenderer },
+];
