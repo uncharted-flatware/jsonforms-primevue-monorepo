@@ -1,0 +1,370 @@
+{
+  "type": "object",
+  "definitions": {
+    "dataPoint2d": {
+      "type": "object",
+      "properties": {
+        "time": {
+          "type": "string",
+          "format": "date-time",
+          "title": "Timestamp",
+          "description": "The time point for this measurement"
+        },
+        "value": {
+          "type": "number",
+          "title": "Value",
+          "description": "The measured value at this time point"
+        },
+        "min": {
+          "type": "number",
+          "title": "Minimum",
+          "description": "Optional minimum bound (for error bars)"
+        },
+        "max": {
+          "type": "number",
+          "title": "Maximum", 
+          "description": "Optional maximum bound (for error bars)"
+        }
+      },
+      "required": ["time", "value"]
+    }
+  },
+  "properties": {
+    "testing": {
+      "type": "object",
+      "properties": {
+        "aString": {
+          "type": "string",
+          "title": "String Value",
+          "description": "A simple string input"
+        },
+        "aNumber": {
+          "type": "number",
+          "title": "Number Value",
+          "description": "A number input with currency formatting"
+        },
+        "anInteger": {
+          "type": "integer",
+          "title": "Integer Value",
+          "description": "An integer input with item count formatting",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "aBoolean": {
+          "type": "boolean",
+          "title": "Boolean Value",
+          "description": "A boolean toggle"
+        },
+        "anEnum": {
+          "type": "string",
+          "title": "Enum Value",
+          "description": "A dropdown with predefined options",
+          "enum": ["Option 1", "Option 2", "Option 3"]
+        },
+        "aDateTime": {
+          "type": "string",
+          "title": "Date Time",
+          "format": "date-time"
+        },
+        "aDuration": {
+          "type": "string",
+          "title": "Duration",
+          "format": "duration"
+        },
+        "tasks": {
+          "type": "array",
+          "title": "Task List",
+          "description": "A list of tasks with different properties",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "title": "Task Name",
+                "description": "The name of the task"
+              },
+              "priority": {
+                "type": "string",
+                "enum": ["Low", "Medium", "High"],
+                "title": "Priority",
+                "description": "The priority level of the task"
+              },
+              "isCompleted": {
+                "type": "boolean",
+                "title": "Completed",
+                "description": "Whether the task is completed"
+              },
+              "dueDate": {
+                "type": "string",
+                "format": "date-time",
+                "title": "Due Date",
+                "description": "When the task is due"
+              }
+            },
+            "required": ["name", "priority"]
+          }
+        },
+        "advancedTasks": {
+          "type": "array",
+          "title": "Advanced Task List",
+          "description": "A list of tasks with custom layout",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "title": "Task Name",
+                "description": "The name of the task"
+              },
+              "priority": {
+                "type": "string",
+                "enum": ["Low", "Medium", "High"],
+                "title": "Priority",
+                "description": "The priority level of the task"
+              },
+              "isCompleted": {
+                "type": "boolean",
+                "title": "Completed",
+                "description": "Whether the task is completed"
+              },
+              "dueDate": {
+                "type": "string",
+                "format": "date-time",
+                "title": "Due Date",
+                "description": "When the task is due"
+              }
+            },
+            "required": ["name", "priority"]
+          }
+        },
+        "anObject": {
+          "type": "object",
+          "title": "Object Example",
+          "description": "An example of an object control",
+          "properties": {
+            "name": {
+              "type": "string",
+              "title": "Name",
+              "description": "The name of the object"
+            },
+            "description": {
+              "type": "string",
+              "title": "Description",
+              "description": "A description of the object"
+            },
+            "tags": {
+              "type": "array",
+              "title": "Tags",
+              "description": "Tags associated with the object",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "displayOnlyTest": {
+      "type": "object",
+      "properties": {
+        "stringValue": {
+          "type": "string",
+          "title": "String Value",
+          "description": "A string value for display-only testing"
+        },
+        "numberValue": {
+          "type": "number",
+          "title": "Number Value",
+          "description": "A number value for display-only testing"
+        },
+        "integerValue": {
+          "type": "integer",
+          "title": "Integer Value",
+          "description": "An integer value for display-only testing",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "booleanValue": {
+          "type": "boolean",
+          "title": "Boolean Value",
+          "description": "A boolean value for display-only testing"
+        },
+        "enumValue": {
+          "type": "string",
+          "title": "Enum Value",
+          "description": "An enum value for display-only testing",
+          "enum": ["Option 1", "Option 2", "Option 3"]
+        },
+        "dateTimeValue": {
+          "type": "string",
+          "title": "Date/Time Value",
+          "description": "A date/time value for display-only testing",
+          "format": "date-time"
+        },
+        "durationValue": {
+          "type": "string",
+          "title": "Duration Value",
+          "description": "A duration value for display-only testing",
+          "format": "duration"
+        },
+        "arrayValue": {
+          "type": "array",
+          "title": "Array Value",
+          "description": "An array for display-only testing",
+          "items": {
+            "type": "string"
+          }
+        },
+        "numberArrayValue": {
+          "type": "array",
+          "title": "Number Array Value",
+          "description": "A number array for display-only testing",
+          "items": {
+            "type": "number"
+          }
+        },
+        "booleanArrayValue": {
+          "type": "array",
+          "title": "Boolean Array Value",
+          "description": "A boolean array for display-only testing",
+          "items": {
+            "type": "boolean"
+          }
+        },
+        "objectArrayValue": {
+          "type": "array",
+          "title": "Object Array Value",
+          "description": "An object array for display-only testing",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "title": "Name"
+              },
+              "status": {
+                "type": "string",
+                "title": "Status"
+              }
+            }
+          }
+        }
+      }
+    },
+    "ufoSighting": {
+      "type": "object",
+      "title": "UFO Sighting Report",
+      "properties": {
+        "sightingId": {
+          "type": "string",
+          "title": "Sighting ID",
+          "description": "Unique identifier for the sighting"
+        },
+        "dateTime": {
+          "type": "string",
+          "format": "date-time",
+          "title": "Date and Time",
+          "description": "When the sighting occurred"
+        },
+        "location": {
+          "type": "object",
+          "title": "Location",
+          "properties": {
+            "city": {
+              "type": "string",
+              "title": "City"
+            },
+            "state": {
+              "type": "string",
+              "title": "State"
+            },
+            "coordinates": {
+              "type": "string",
+              "title": "Coordinates",
+              "description": "Latitude and Longitude"
+            }
+          }
+        },
+        "description": {
+          "type": "string",
+          "title": "Description",
+          "description": "Detailed description of the sighting"
+        },
+        "witnessDetails": {
+          "type": "array",
+          "title": "Witness Details",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "title": "Name"
+              },
+              "contact": {
+                "type": "string",
+                "title": "Contact Information"
+              },
+              "statement": {
+                "type": "string",
+                "title": "Witness Statement"
+              }
+            }
+          }
+        },
+        "characteristics": {
+          "type": "object",
+          "title": "UFO Characteristics",
+          "properties": {
+            "shape": {
+              "type": "string",
+              "enum": ["Saucer", "Cigar", "Triangle", "Sphere", "Other"],
+              "title": "Shape"
+            },
+            "color": {
+              "type": "string",
+              "title": "Color"
+            },
+            "size": {
+              "type": "string",
+              "title": "Estimated Size"
+            },
+            "speed": {
+              "type": "string",
+              "title": "Estimated Speed"
+            },
+            "altitude": {
+              "type": "string",
+              "title": "Estimated Altitude"
+            }
+          }
+        },
+        "weatherConditions": {
+          "type": "object",
+          "title": "Weather Conditions",
+          "properties": {
+            "temperature": {
+              "type": "string",
+              "title": "Temperature"
+            },
+            "visibility": {
+              "type": "string",
+              "title": "Visibility"
+            },
+            "cloudCover": {
+              "type": "string",
+              "title": "Cloud Cover"
+            }
+          }
+        }
+      }
+    },
+    "timeseriesData": {
+      "type": "array",
+      "title": "Timeseries Data",
+      "description": "A collection of time-based data points with optional error bounds",
+      "items": {
+        "$ref": "#/definitions/dataPoint2d"
+      }
+    }
+  }
+} 
