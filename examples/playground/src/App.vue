@@ -27,6 +27,36 @@ defineOptions({
 const errorMessage = ref('');
 
 const dataSchemaString = ref(JSON.stringify({
+    type: "object",
+    definitions: {
+        dataPoint2d: {
+            type: "object",
+            properties: {
+                time: {
+                    type: "string",
+                    format: "date-time",
+                    title: "Timestamp",
+                    description: "The time point for this measurement"
+                },
+                value: {
+                    type: "number",
+                    title: "Value",
+                    description: "The measured value at this time point"
+                },
+                min: {
+                    type: "number",
+                    title: "Minimum",
+                    description: "Optional minimum bound (for error bars)"
+                },
+                max: {
+                    type: "number",
+                    title: "Maximum", 
+                    description: "Optional maximum bound (for error bars)"
+                }
+            },
+            required: ["time", "value"]
+        }
+    },
     properties: {
         testing: {
             type: "object",
@@ -354,6 +384,14 @@ const dataSchemaString = ref(JSON.stringify({
                         }
                     }
                 }
+            }
+        },
+        timeseriesData: {
+            type: "array",
+            title: "Timeseries Data",
+            description: "A collection of time-based data points with optional error bounds",
+            items: {
+                "$ref": "#/definitions/dataPoint2d"
             }
         }
     }
@@ -738,7 +776,7 @@ const uiSchemaString = ref(JSON.stringify({
             label: "Complex Layout Example - UFO Sighting",
             options: {
                 isToggleable: true,
-                isExpanded: true
+                isExpanded: false
             },
             elements: [
                 {
@@ -918,6 +956,60 @@ const uiSchemaString = ref(JSON.stringify({
                     }
                 }
             ]
+        },
+        {
+            type: "Group",
+            label: "Custom Renderers",
+            options: {
+                isToggleable: true,
+                isExpanded: true
+            },
+            elements: [
+                {
+                    type: "Label",
+                    text: "Timeseries Chart with Error Band"
+                },
+                {
+                    type: "Control",
+                    scope: "#/properties/timeseriesData",
+                    options: {
+                        title: "Temperature Over Time (Error Band)",
+                        independentVariable: "time",
+                        dependentVariable: "value",
+                        minVariable: "min",
+                        maxVariable: "max",
+                        showErrorBars: true,
+                        showAsErrorBand: true,
+                        width: 400,
+                        height: 300,
+                        lineColor: "#2563eb",
+                        errorBarColor: "#93c5fd",
+                        errorBandColor: "#dbeafe",
+                        errorBandOpacity: 0.4
+                    }
+                },
+                {
+                    type: "Label",
+                    text: "Timeseries Chart with Error Bars"
+                },
+                {
+                    type: "Control",
+                    scope: "#/properties/timeseriesData",
+                    options: {
+                        title: "Temperature Over Time (Error Bars)",
+                        independentVariable: "time",
+                        dependentVariable: "value",
+                        minVariable: "min",
+                        maxVariable: "max",
+                        showErrorBars: true,
+                        showAsErrorBand: false,
+                        width: 400,
+                        height: 300,
+                        lineColor: "#dc2626",
+                        errorBarColor: "#fca5a5"
+                    }
+                }
+            ]
         }
     ]
 }, null, 2));
@@ -1032,7 +1124,81 @@ const exampleDataString = ref(JSON.stringify({
             "visibility": "Clear",
             "cloudCover": "Partly cloudy"
         }
-    }
+    },
+    "timeseriesData": [
+        {
+            "time": "2024-01-01T00:00:00Z",
+            "value": 20.5,
+            "min": 18.2,
+            "max": 22.8
+        },
+        {
+            "time": "2024-01-01T06:00:00Z",
+            "value": 18.3,
+            "min": 16.1,
+            "max": 20.5
+        },
+        {
+            "time": "2024-01-01T12:00:00Z",
+            "value": 25.7,
+            "min": 23.4,
+            "max": 28.0
+        },
+        {
+            "time": "2024-01-01T18:00:00Z",
+            "value": 22.1,
+            "min": 19.8,
+            "max": 24.4
+        },
+        {
+            "time": "2024-01-02T00:00:00Z",
+            "value": 19.8,
+            "min": 17.5,
+            "max": 22.1
+        },
+        {
+            "time": "2024-01-02T06:00:00Z",
+            "value": 17.2,
+            "min": 15.0,
+            "max": 19.4
+        },
+        {
+            "time": "2024-01-02T12:00:00Z",
+            "value": 26.9,
+            "min": 24.6,
+            "max": 29.2
+        },
+        {
+            "time": "2024-01-02T18:00:00Z",
+            "value": 23.5,
+            "min": 21.2,
+            "max": 25.8
+        },
+        {
+            "time": "2024-01-03T00:00:00Z",
+            "value": 21.0,
+            "min": 18.7,
+            "max": 23.3
+        },
+        {
+            "time": "2024-01-03T06:00:00Z",
+            "value": 16.8,
+            "min": 14.5,
+            "max": 19.1
+        },
+        {
+            "time": "2024-01-03T12:00:00Z",
+            "value": 28.2,
+            "min": 25.9,
+            "max": 30.5
+        },
+        {
+            "time": "2024-01-03T18:00:00Z",
+            "value": 24.7,
+            "min": 22.4,
+            "max": 27.0
+        }
+    ]
 }, null, 2));
 
 

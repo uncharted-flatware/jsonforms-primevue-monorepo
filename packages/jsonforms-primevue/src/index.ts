@@ -46,6 +46,7 @@ import VerticalLayoutRenderer from './layouts/VerticalLayoutRenderer.vue';
 import LabelRenderer from './layouts/LabelRenderer.vue';
 import DurationControlRenderer from "./controls/DurationControlRenderer.vue";
 import Tooltip from 'primevue/tooltip';
+import { useControlCommon } from './util/composition';
 
 // List of tester/ranking + renderer presets
 const renderers = [
@@ -83,7 +84,9 @@ export {
     VerticalLayoutRenderer,
     LabelRenderer,
     // Directives
-    Tooltip
+    Tooltip,
+    // Utilities
+    useControlCommon
 };
 
 // Note: To use the tooltip feature, you must register the directive in your app:
