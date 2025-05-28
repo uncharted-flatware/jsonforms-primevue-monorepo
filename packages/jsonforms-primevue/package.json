@@ -1,6 +1,6 @@
 {
   "name": "@unchartedsoftware/jsonforms-primevue",
-  "version": "0.0.1",
+  "version": "1.1.0",
   "description": "PrimeVue renderers for JSON-Forms",
   "type": "module",
   "main": "dist/jsonforms-primevue.umd.js",
