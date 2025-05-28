@@ -1,0 +1,120 @@
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Group",
+      "label": "Time Series Data",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/temperatureReadings",
+          "options": {
+            "encoding": {
+              "x": {"field": "timestamp", "type": "temporal"},
+              "y": {"field": "value", "type": "quantitative"},
+              "color": {"field": "sensor", "type": "nominal"}
+            }
+          }
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/performanceMetrics",
+          "options": {
+            "encoding": {
+              "x": {"field": "timestamp", "type": "temporal"},
+              "y": {"field": "cpuUsage", "type": "quantitative"},
+              "y2": {"field": "memoryUsage", "type": "quantitative"}
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "Group", 
+      "label": "Graph Analysis",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/edgeCounts",
+          "options": {
+            "encoding": {
+              "x": {"field": "nodeId", "type": "nominal"},
+              "y": {"field": "incomingEdges", "type": "quantitative"},
+              "color": {"field": "nodeType", "type": "nominal"}
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "Group",
+      "label": "Summary & Alerts", 
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/summary"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/alerts",
+          "options": {
+            "encoding": {
+              "x": {"field": "timestamp", "type": "temporal"},
+              "y": {"field": "severity", "type": "ordinal"},
+              "color": {"field": "severity", "type": "ordinal"}
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "Group",
+      "label": "Error Bar Examples",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/experimentalResults",
+          "options": {
+            "encoding": {
+              "x": {"field": "condition", "type": "nominal"},
+              "y": {"field": "meanValue", "type": "quantitative"},
+              "yError": {"field": "standardError", "type": "quantitative"}
+            }
+          }
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/timeSeriesWithErrors",
+          "options": {
+            "encoding": {
+              "x": {"field": "timestamp", "type": "temporal"},
+              "y": {"field": "value", "type": "quantitative"},
+              "yError": {"field": "errorLow", "type": "quantitative"},
+              "yError2": {"field": "errorHigh", "type": "quantitative"},
+              "color": {"field": "sensor", "type": "nominal"}
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "Group",
+      "label": "Alternative Error Bar Encoding",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/experimentalResults",
+          "options": {
+            "encoding": {
+              "x": {"field": "condition", "type": "nominal"},
+              "y": {"field": "meanValue", "type": "quantitative"},
+              "yError": {"field": "confidenceIntervalLow", "type": "quantitative"},
+              "yError2": {"field": "confidenceIntervalHigh", "type": "quantitative"},
+              "size": {"field": "sampleSize", "type": "quantitative"}
+            }
+          }
+        }
+      ]
+    }
+  ]
+} 

@@ -3,8 +3,13 @@
         v-bind="controlWrapper"
         :is-focused="isFocused"
         :applied-options="appliedOptions"
+        :display-value="formattedDate"
     >
+        <div v-if="appliedOptions.displayOnly" :class="appliedOptions.compact ? 'text-900' : 'p-3 text-900'">
+            {{ formattedDate }}
+        </div>
         <DatePicker
+            v-else
             :id="control.id"
             :inputId="control.id + '-input'"
             showTime
@@ -50,5 +55,18 @@ const {
 
 const hourFormat = computed(() => {
     return appliedOptions.value.hourFormat === '24' ? '24' : '12';
+});
+
+const formattedDate = computed(() => {
+    if (!control.value.data) {
+        return '';
+    }
+    
+    try {
+        const date = new Date(control.value.data);
+        return date.toLocaleString();
+    } catch (e) {
+        return control.value.data;
+    }
 });
 </script>

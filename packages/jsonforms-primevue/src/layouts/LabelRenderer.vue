@@ -1,16 +1,18 @@
 <template>
     <If v-if="label.visible">
         <If v-if="hasImage">
-            <Card class="flex flex-column align-items-center gap-2">
+            <Card class="flex flex-column align-items-center">
                 <template #content>
-                    <img
-                        :src="imageUrl"
-                        :alt="label.text"
-                        :width="width"
-                        :height="height"
-                        :style="imageStyle"
-                    />
-                    <label>{{ label.text }}</label>
+                    <div class="flex flex-column align-items-center gap-2">
+                        <img
+                            :src="imageUrl"
+                            :alt="label.text"
+                            :width="width"
+                            :height="height"
+                            :style="imageStyle"
+                        />
+                        <span class="text-sm text-500">{{ label.text }}</span>
+                    </div>
                 </template>
             </Card>
         </If>

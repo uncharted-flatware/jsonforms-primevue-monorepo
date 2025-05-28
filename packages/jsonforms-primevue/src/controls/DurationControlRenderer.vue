@@ -3,8 +3,13 @@
         v-bind="controlWrapper"
         :is-focused="isFocused"
         :applied-options="appliedOptions"
+        :display-value="formattedDuration"
     >
+        <div v-if="appliedOptions.displayOnly" :class="appliedOptions.compact ? 'text-900' : 'p-3 text-900'">
+            {{ formattedDuration }}
+        </div>
         <InputNumber
+            v-else
             :id="control.id"
             :inputId="control.id + '-input'"
             :disabled="!control.enabled"
@@ -29,7 +34,7 @@ import {
     rendererProps,
     useJsonFormsControl,
 } from '@jsonforms/vue';
-import { ref, watch } from 'vue';
+import { ref, watch, computed } from 'vue';
 import { default as ControlWrapper } from './ControlWrapper.vue';
 import { useControlCommon } from "../util/composition";
 import InputNumber from "primevue/inputnumber";
@@ -66,6 +71,13 @@ function parseDurationToDays(duration: string): number | null {
     const match = duration.match(/^P(\d+)D$/);
     return match ? parseInt(match[1], 10) : null;
 }
+
+const formattedDuration = computed(() => {
+    const days = parseDurationToDays(control.value.data);
+    if (days === null) return '';
+    
+    return days === 1 ? '1 day' : `${days} days`;
+});
 </script>
 
 <style scoped>

@@ -3,8 +3,13 @@
         v-bind="controlWrapper"
         :is-focused="isFocused"
         :applied-options="appliedOptions"
+        :display-value="control.data"
     >
+        <div v-if="appliedOptions.displayOnly" :class="appliedOptions.compact ? 'text-900' : 'p-3 text-900'">
+            {{ control.data || '' }}
+        </div>
         <Dropdown
+            v-else
             :inputId="control.id + '-input'"
             :disabled="!control.enabled"
             :autofocus="appliedOptions.focus"
@@ -42,6 +47,9 @@ const {
 } = controlCommon;
 
 const options = computed(() => {
+    if (!control.value.options) {
+        return [];
+    }
     return control.value.options.map(option => option.value);
 });
 </script>

@@ -1,0 +1,206 @@
+{
+  "testing": {
+    "aString": "Example string value",
+    "aNumber": 1234.56,
+    "anInteger": 42,
+    "aBoolean": true,
+    "anEnum": "Option 2",
+    "aDateTime": "2024-03-25T14:30:00Z",
+    "aDuration": "P7D",
+    "tasks": [
+      {
+        "name": "Setup Development Environment",
+        "priority": "High",
+        "isCompleted": false,
+        "dueDate": "2024-03-26T09:00:00Z"
+      },
+      {
+        "name": "Write Unit Tests",
+        "priority": "Medium",
+        "isCompleted": true,
+        "dueDate": "2024-03-24T16:00:00Z"
+      }
+    ],
+    "advancedTasks": [
+      {
+        "name": "Design System Architecture",
+        "priority": "High",
+        "isCompleted": false,
+        "dueDate": "2024-03-28T14:00:00Z"
+      },
+      {
+        "name": "Performance Optimization",
+        "priority": "Medium",
+        "isCompleted": false,
+        "dueDate": "2024-03-30T11:00:00Z"
+      }
+    ],
+    "anObject": {
+      "name": "Example Object",
+      "description": "This is an example object with various properties",
+      "tags": ["example", "test", "demo"]
+    }
+  },
+  "displayOnlyTest": {
+    "stringValue": "This is a display-only string value",
+    "numberValue": 1234.56,
+    "integerValue": 42,
+    "booleanValue": true,
+    "enumValue": "Option 2",
+    "dateTimeValue": "2024-03-25T14:30:00Z",
+    "durationValue": "P7D",
+    "arrayValue": [
+      "First item",
+      "Second item",
+      "Third item"
+    ],
+    "numberArrayValue": [
+      1, 2, 3, 4, 5
+    ],
+    "booleanArrayValue": [
+      true, false, true, false, true
+    ],
+    "objectArrayValue": [
+      {
+        "name": "Project Alpha",
+        "status": "Active"
+      },
+      {
+        "name": "Project Beta",
+        "status": "Completed"
+      },
+      {
+        "name": "Project Gamma",
+        "status": "Pending"
+      }
+    ]
+  },
+  "ufoSighting": {
+    "sightingId": "UFO-2024-001",
+    "dateTime": "2024-03-25T21:30:00Z",
+    "location": {
+      "city": "Roswell",
+      "state": "New Mexico",
+      "coordinates": "33.3943° N, 104.5230° W"
+    },
+    "description": "Observed a bright, metallic disc-shaped object hovering approximately 1000 feet above ground level. The object remained stationary for about 5 minutes before rapidly ascending and disappearing into the clouds. No sound was detected during the observation.",
+    "witnessDetails": [
+      {
+        "name": "John Smith",
+        "contact": "john.smith@email.com",
+        "statement": "I was walking my dog when I noticed an unusual light in the sky. At first, I thought it was a plane, but it was completely silent and moving in ways that no aircraft I've seen could move."
+      },
+      {
+        "name": "Jane Doe",
+        "contact": "jane.doe@email.com",
+        "statement": "I was in my backyard when I saw the object. It was definitely not a drone or any conventional aircraft I'm familiar with. The way it moved was unlike anything I've ever seen."
+      }
+    ],
+    "characteristics": {
+      "shape": "Saucer",
+      "color": "Metallic silver with blue lights",
+      "size": "Approximately 50 feet in diameter",
+      "speed": "Unknown, but extremely fast when it departed",
+      "altitude": "Initially at 1000 feet, then rapidly ascended"
+    },
+    "weatherConditions": {
+      "temperature": "72°F",
+      "visibility": "Clear",
+      "cloudCover": "Partly cloudy"
+    }
+  },
+  "lineChartData": [
+    {
+      "timestamp": "2024-01-01T00:00:00Z",
+      "value": 20.5,
+      "errorLow": 19.2,
+      "errorHigh": 21.8
+    },
+    {
+      "timestamp": "2024-01-01T06:00:00Z",
+      "value": 18.3,
+      "errorLow": 17.1,
+      "errorHigh": 19.5
+    },
+    {
+      "timestamp": "2024-01-01T12:00:00Z",
+      "value": 25.7,
+      "errorLow": 24.2,
+      "errorHigh": 27.2
+    },
+    {
+      "timestamp": "2024-01-01T18:00:00Z",
+      "value": 22.1,
+      "errorLow": 20.8,
+      "errorHigh": 23.4
+    },
+    {
+      "timestamp": "2024-01-02T00:00:00Z",
+      "value": 19.8,
+      "errorLow": 18.5,
+      "errorHigh": 21.1
+    }
+  ],
+  "multiCategoryChartData": [
+    {
+      "timestamp": "2024-01-01T00:00:00Z",
+      "temperature": 22.5,
+      "sensor": "Sensor A"
+    },
+    {
+      "timestamp": "2024-01-01T00:00:00Z",
+      "temperature": 18.3,
+      "sensor": "Sensor B"
+    },
+    {
+      "timestamp": "2024-01-01T00:00:00Z",
+      "temperature": 25.1,
+      "sensor": "Sensor C"
+    },
+    {
+      "timestamp": "2024-01-01T06:00:00Z",
+      "temperature": 23.2,
+      "sensor": "Sensor A"
+    },
+    {
+      "timestamp": "2024-01-01T06:00:00Z",
+      "temperature": 19.1,
+      "sensor": "Sensor B"
+    },
+    {
+      "timestamp": "2024-01-01T06:00:00Z",
+      "temperature": 26.4,
+      "sensor": "Sensor C"
+    },
+    {
+      "timestamp": "2024-01-01T12:00:00Z",
+      "temperature": 24.8,
+      "sensor": "Sensor A"
+    },
+    {
+      "timestamp": "2024-01-01T12:00:00Z",
+      "temperature": 20.5,
+      "sensor": "Sensor B"
+    },
+    {
+      "timestamp": "2024-01-01T12:00:00Z",
+      "temperature": 27.9,
+      "sensor": "Sensor C"
+    },
+    {
+      "timestamp": "2024-01-01T18:00:00Z",
+      "temperature": 23.6,
+      "sensor": "Sensor A"
+    },
+    {
+      "timestamp": "2024-01-01T18:00:00Z",
+      "temperature": 19.8,
+      "sensor": "Sensor B"
+    },
+    {
+      "timestamp": "2024-01-01T18:00:00Z",
+      "temperature": 26.7,
+      "sensor": "Sensor C"
+    }
+  ]
+} 

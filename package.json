@@ -18,5 +18,11 @@
     "lint": "yarn workspaces foreach --all run lint",
     "test": "yarn workspaces foreach run test",
     "dev": "yarn workspace @unchartedsoftware/jsonforms-playground run dev"
+  },
+  "dependencies": {
+    "lodash-es": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/lodash-es": "^4.17.12"
   }
 }

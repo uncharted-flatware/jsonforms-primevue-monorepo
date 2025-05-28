@@ -18,6 +18,8 @@
     "noImplicitReturns": true,
     "noImplicitOverride": true,
     "isolatedModules": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "bundler"
   }
 }
