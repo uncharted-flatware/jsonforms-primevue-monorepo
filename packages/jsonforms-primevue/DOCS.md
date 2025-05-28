@@ -692,6 +692,8 @@ You can control where the label appears relative to the input field using the `l
 - `left` (default): Label appears to the left of the input
 - `right`: Label appears to the right of the input
 - `float`: Label floats inside the input field (moves up when the field has a value)
+- `top`: Label appears above the input field in a vertical layout
+- `hide`: No label is displayed (useful for compact layouts or when context is clear from placement)
 
 ### Description Display
 

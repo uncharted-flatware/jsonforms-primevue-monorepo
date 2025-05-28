@@ -5,9 +5,8 @@
     :applied-options="appliedOptions"
   >
     <div :class="appliedOptions.displayOnly ? 'flex flex-column gap-1' : 'flex flex-column gap-3'">
-      <div class="flex justify-content-between align-items-center">
-        <span class="text-xl text-900 font-bold">{{ control.label }}</span>
-        <div class="flex gap-2" v-if="control.enabled && !appliedOptions.displayOnly">
+      <div class="flex justify-content-end" v-if="control.enabled && !appliedOptions.displayOnly">
+        <div class="flex gap-2">
           <Button
             :disabled="!control.enabled"
             @click="addItem"
@@ -18,7 +17,7 @@
           </Button>
         </div>
       </div>
-
+      
       <div v-if="!control.data || control.data.length === 0" class="text-500 text-center p-3">
         {{ appliedOptions.emptyMessage || 'No items found' }}
       </div>
@@ -34,7 +33,7 @@
           <div class="flex-1">
             <DispatchRenderer
               :schema="itemSchema"
-              :uischema="{ type: 'Control', scope: '#', options: { displayOnly: true, compact: true } } as any"
+              :uischema="{ type: 'Control', scope: '#', options: { displayOnly: true, compact: true, labelPlacement: appliedOptions.labelPlacement } } as any"
               :path="composePaths(control.path, `${index}`)"
               :enabled="false"
               :renderers="control.renderers"
@@ -53,7 +52,6 @@
           :key="`${control.path}-${index}`" 
           class="border-1 border-300 border-round p-2"
         >
-
           <!-- Item content with compact spacing -->
           <ArrayItemRenderer
             :schema="itemSchema"
@@ -260,7 +258,10 @@ const generateUiSchemaFromItemSchema = (): UISchemaElement => {
       type: 'Control',
       scope: `#/properties/${name}`,
       label: (propSchema as JsonSchema).title || name,
-      options: (appliedOptions.value.displayOnly ? { displayOnly: true, compact: true } : {})
+      options: {
+        ...(appliedOptions.value.displayOnly ? { displayOnly: true, compact: true } : {}),
+        labelPlacement: appliedOptions.value.labelPlacement
+      }
     }))
   } as any;
 };

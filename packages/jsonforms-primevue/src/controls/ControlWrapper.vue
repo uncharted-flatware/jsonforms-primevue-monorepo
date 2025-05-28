@@ -1,5 +1,5 @@
 <template>
-    <div v-if="visible" :id="id" class="flex align-items-center gap-2">
+    <div v-if="visible" :id="id" :class="appliedOptions.labelPlacement === 'top' ? 'flex flex-column gap-2' : 'flex align-items-center gap-2'">
         <If v-if="appliedOptions.labelPlacement === 'float'">
             <FloatLabel>
                 <slot></slot>
@@ -11,6 +11,17 @@
                 </label>
             </FloatLabel>
         </If>
+        <ElseIf v-else-if="appliedOptions.labelPlacement === 'top'">
+            <If v-if="label">
+                <label :for="id + '-input'" class="flex align-items-center gap-1">
+                    {{ label }}
+                    <span v-if="showDescriptionIcon" :id="id + '-info'" class="p-info-icon" v-tooltip="description">
+                        <InfoCircle class="text-primary cursor-pointer" />
+                    </span>
+                </label>
+            </If>
+            <slot></slot>
+        </ElseIf>
         <ElseIf v-else-if="appliedOptions.labelPlacement === 'right'">
             <slot></slot>
             <If v-if="label">
@@ -21,6 +32,9 @@
                     </span>
                 </label>
             </If>
+        </ElseIf>
+        <ElseIf v-else-if="appliedOptions.labelPlacement === 'hide'">
+            <slot></slot>
         </ElseIf>
         <Else v-else>
             <If v-if="label">

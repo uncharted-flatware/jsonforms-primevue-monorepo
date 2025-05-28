@@ -8,7 +8,7 @@ export interface Options {
     compact?: boolean;
 
     // Relevant to most controls
-    labelPlacement?: 'left' | 'right' | 'float';
+    labelPlacement?: 'left' | 'right' | 'float' | 'hide' | 'top';
     
     // Description display options
     descriptionDisplay?: 'always' | 'tooltip';

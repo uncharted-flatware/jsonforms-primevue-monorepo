@@ -2,6 +2,29 @@
   "type": "object",
   "definitions": {},
   "properties": {
+    "temp": {
+      "type": "object",
+      "properties": {
+        "references_with_values": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "ref": {
+                "type": "object",
+                "properties": {
+                  "type": { "type": "string" },
+                  "id": { "type": "string" }
+                },
+                "required": ["type", "id"]
+              },
+              "value": { "type": "number" }
+            },
+            "required": ["ref", "value"]
+          }
+        }
+      }
+    },
     "testing": {
       "type": "object",
       "properties": {
