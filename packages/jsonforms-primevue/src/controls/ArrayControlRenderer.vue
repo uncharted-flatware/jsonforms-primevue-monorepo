@@ -326,18 +326,18 @@ const moveItem = (fromIndex: number, toIndex: number) => {
 
 // Update an item's value
 const updateItem = (index: number, value: any) => {
-  console.log('ArrayControlRenderer updateItem:', { index, value, currentData: control.value.data });
+  console.debug('ArrayControlRenderer updateItem:', { index, value, currentData: control.value.data });
   
   const newData = [...(control.value.data || [])];
   newData[index] = value;
   
-  console.log('ArrayControlRenderer updating to:', newData);
+  console.debug('ArrayControlRenderer updating to:', newData);
   onChange(newData);
 };
 
 // Handle change events from ArrayItemRenderer
 const handleItemChange = (index: number) => (event: any) => {
-  console.log('ArrayControlRenderer handleItemChange:', { index, event });
+  console.debug('ArrayControlRenderer handleItemChange:', { index, event });
   
   let newValue;
   if (event && typeof event === 'object' && 'data' in event) {

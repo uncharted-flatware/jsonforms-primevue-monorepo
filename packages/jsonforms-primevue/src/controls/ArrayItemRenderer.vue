@@ -116,16 +116,7 @@ const handleChange = (event: any) => {
     newValue = event;
   }
   
-  console.log('ArrayItemRenderer change:', { event, newValue, path: props.path });
+  console.debug('ArrayItemRenderer change:', { event, newValue, path: props.path });
   emit('change', { data: newValue });
 };
-
-// Debug logging when component is mounted (remove in production)
-// console.log('ArrayItemRenderer mounted:', {
-//   path: props.path,
-//   data: props.data,
-//   uischema: props.uischema,
-//   schema: props.schema,
-//   effectiveUiSchema: effectiveUiSchema.value
-// });
 </script> 

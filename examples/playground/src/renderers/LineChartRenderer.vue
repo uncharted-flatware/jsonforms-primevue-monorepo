@@ -25,9 +25,6 @@ const props = defineProps(rendererProps<ControlElement>());
 const controlProps = useJsonFormsControl(props);
 const controlCommon = useControlCommon(controlProps);
 
-// Debug log to confirm the renderer is being used
-console.log('LineChartRenderer mounted with data:', controlProps.control.value.data);
-
 const {
   appliedOptions,
   control,
