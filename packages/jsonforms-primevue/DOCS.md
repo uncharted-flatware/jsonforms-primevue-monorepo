@@ -14,6 +14,7 @@ This documentation provides detailed information about the JSONForms PrimeVue re
   - [Date-Time Control](#date-time-control)
   - [Duration Control](#duration-control)
   - [Array Control](#array-control)
+  - [Line Chart Control](#line-chart-control)
 - [Layout Components](#layout-components)
   - [Group Layout](#group-layout)
   - [Horizontal Layout](#horizontal-layout)
@@ -396,6 +397,125 @@ The Array Control renders a data table for managing arrays of values, with suppo
 - Each item in the array is rendered using the appropriate control based on its schema
 - The control maintains unique IDs for each item to ensure proper tracking and updates
 - For more details on the `detail` option, see the [JSONForms documentation](https://jsonforms.io/docs/uischema/controls#the-detail-option)
+
+### Line Chart Control
+
+The Line Chart Control renders interactive line charts with support for error bars and multiple data series using Vega-Lite visualization.
+
+**Schema Example:**
+```json
+{
+  "type": "object",
+  "properties": {
+    "temperatureData": {
+      "type": "array",
+      "title": "Temperature Measurements",
+      "items": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Measurement Time"
+          },
+          "value": {
+            "type": "number",
+            "title": "Temperature"
+          },
+          "errorLow": {
+            "type": "number",
+            "title": "Lower Error Bound"
+          },
+          "errorHigh": {
+            "type": "number",
+            "title": "Upper Error Bound"
+          },
+          "sensor": {
+            "type": "string",
+            "title": "Sensor ID"
+          }
+        },
+        "required": ["timestamp", "value"]
+      }
+    }
+  }
+}
+```
+
+**UI Schema Example:**
+```json
+{
+  "type": "Control",
+  "scope": "#/properties/temperatureData",
+  "options": {
+    "title": "Temperature Over Time",
+    "encoding": {
+      "x": {"field": "timestamp", "type": "temporal"},
+      "y": {"field": "value", "type": "quantitative"},
+      "yError": {"field": "errorLow", "type": "quantitative"},
+      "yError2": {"field": "errorHigh", "type": "quantitative"},
+      "color": {"field": "sensor", "type": "nominal"}
+    },
+    "width": 600,
+    "height": 400,
+    "showAsErrorBand": true,
+    "lineColor": "#2563eb",
+    "errorBandColor": "#dbeafe",
+    "errorBandOpacity": 0.4
+  }
+}
+```
+
+**Encoding Options:**
+The `encoding` option defines how data fields map to visual properties:
+
+- **Required encodings:**
+  - `x`: Horizontal axis mapping (field, type, optional title)
+  - `y`: Vertical axis mapping (field, type, optional title)
+
+- **Optional encodings:**
+  - `color`: Color encoding for grouping data series
+  - `size`: Size encoding for point sizes
+  - `yError`: Lower error bound or symmetric error magnitude
+  - `yError2`: Upper error bound for asymmetric error bars
+  - `xError`: Horizontal error bars (lower bound)
+  - `xError2`: Horizontal error bars (upper bound)
+
+- **Field types:**
+  - `temporal`: Date/time data
+  - `quantitative`: Numeric data
+  - `nominal`: Categorical data (unordered)
+  - `ordinal`: Categorical data (ordered)
+
+**Chart Styling Options:**
+- `title`: Chart title
+- `width`: Chart width in pixels (default: 600)
+- `height`: Chart height in pixels (default: 300)
+- `lineColor`: Color of the main line (default: "#1f77b4")
+- `errorBarColor`: Color of error bars (default: "#aec7e8")
+- `errorBandColor`: Color of error bands (default: "#e6f3ff")
+- `errorBandOpacity`: Opacity of error bands (default: 0.3)
+- `showAsErrorBand`: Show errors as filled bands instead of bars (default: false)
+
+**Error Visualization:**
+- **Symmetric errors**: Use only `yError` encoding
+- **Asymmetric errors**: Use both `yError` and `yError2` encodings
+- **Error bands**: Set `showAsErrorBand: true` for filled confidence intervals
+- **Error bars**: Set `showAsErrorBand: false` for traditional error bars
+
+**Features:**
+- Interactive Vega-Lite charts with zoom, pan, and export capabilities
+- Support for multiple data series with automatic color coding
+- Error bars and confidence intervals
+- Responsive design that adapts to container size
+- Automatic tooltip generation showing all encoded fields
+- Display-only mode for read-only chart viewing
+
+**Notes:**
+- Requires both `x` and `y` encodings to be specified
+- The control automatically activates when an array has an `encoding` option
+- Uses Vega-Lite v6 for chart rendering
+- Error encodings are optional and will only render if the corresponding data fields exist
 
 ## Layout Components
 

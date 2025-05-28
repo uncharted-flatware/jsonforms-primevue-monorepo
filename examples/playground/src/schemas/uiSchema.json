@@ -579,15 +579,11 @@
               "x": {"field": "timestamp", "type": "temporal"},
               "y": {"field": "value", "type": "quantitative"},
               "yError": {"field": "errorLow", "type": "quantitative"},
-              "yError2": {"field": "errorHigh", "type": "quantitative"},
-              "color": {"field": "category", "type": "nominal"}
+              "yError2": {"field": "errorHigh", "type": "quantitative"}
             },
             "showAsErrorBand": true,
             "width": 500,
-            "height": 300,
-            "lineColor": "#2563eb",
-            "errorBandColor": "#dbeafe",
-            "errorBandOpacity": 0.4
+            "height": 300
           }
         },
         {
@@ -603,14 +599,11 @@
               "x": {"field": "timestamp", "type": "temporal"},
               "y": {"field": "value", "type": "quantitative"},
               "yError": {"field": "errorLow", "type": "quantitative"},
-              "yError2": {"field": "errorHigh", "type": "quantitative"},
-              "color": {"field": "category", "type": "nominal"}
+              "yError2": {"field": "errorHigh", "type": "quantitative"}
             },
             "showAsErrorBand": false,
             "width": 500,
-            "height": 300,
-            "lineColor": "#dc2626",
-            "errorBarColor": "#fca5a5"
+            "height": 300
           }
         },
         {
@@ -624,12 +617,28 @@
             "title": "Simple Line Chart",
             "encoding": {
               "x": {"field": "timestamp", "type": "temporal"},
-              "y": {"field": "value", "type": "quantitative"},
-              "color": {"field": "category", "type": "nominal"}
+              "y": {"field": "value", "type": "quantitative"}
             },
             "width": 500,
-            "height": 300,
-            "lineColor": "#059669"
+            "height": 300
+          }
+        },
+        {
+          "type": "Label",
+          "text": "Multi-Category Line Chart with Legend"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/multiCategoryChartData",
+          "options": {
+            "title": "Temperature by Sensor (Multiple Categories)",
+            "encoding": {
+              "x": {"field": "timestamp", "type": "temporal", "title": "Time"},
+              "y": {"field": "temperature", "type": "quantitative", "title": "Temperature (°C)"},
+              "color": {"field": "sensor", "type": "nominal", "title": "Sensor"}
+            },
+            "width": 500,
+            "height": 300
           }
         }
       ]

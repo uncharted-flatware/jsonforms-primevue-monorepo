@@ -114,71 +114,93 @@
       "timestamp": "2024-01-01T00:00:00Z",
       "value": 20.5,
       "errorLow": 19.2,
-      "errorHigh": 21.8,
-      "category": "Sensor A"
+      "errorHigh": 21.8
     },
     {
       "timestamp": "2024-01-01T06:00:00Z",
       "value": 18.3,
       "errorLow": 17.1,
-      "errorHigh": 19.5,
-      "category": "Sensor A"
+      "errorHigh": 19.5
     },
     {
       "timestamp": "2024-01-01T12:00:00Z",
       "value": 25.7,
       "errorLow": 24.2,
-      "errorHigh": 27.2,
-      "category": "Sensor A"
+      "errorHigh": 27.2
     },
     {
       "timestamp": "2024-01-01T18:00:00Z",
       "value": 22.1,
       "errorLow": 20.8,
-      "errorHigh": 23.4,
-      "category": "Sensor A"
+      "errorHigh": 23.4
     },
     {
       "timestamp": "2024-01-02T00:00:00Z",
       "value": 19.8,
       "errorLow": 18.5,
-      "errorHigh": 21.1,
-      "category": "Sensor A"
+      "errorHigh": 21.1
+    }
+  ],
+  "multiCategoryChartData": [
+    {
+      "timestamp": "2024-01-01T00:00:00Z",
+      "temperature": 22.5,
+      "sensor": "Sensor A"
     },
     {
       "timestamp": "2024-01-01T00:00:00Z",
-      "value": 21.2,
-      "errorLow": 19.8,
-      "errorHigh": 22.6,
-      "category": "Sensor B"
+      "temperature": 18.3,
+      "sensor": "Sensor B"
+    },
+    {
+      "timestamp": "2024-01-01T00:00:00Z",
+      "temperature": 25.1,
+      "sensor": "Sensor C"
     },
     {
       "timestamp": "2024-01-01T06:00:00Z",
-      "value": 19.1,
-      "errorLow": 17.9,
-      "errorHigh": 20.3,
-      "category": "Sensor B"
+      "temperature": 23.2,
+      "sensor": "Sensor A"
+    },
+    {
+      "timestamp": "2024-01-01T06:00:00Z",
+      "temperature": 19.1,
+      "sensor": "Sensor B"
+    },
+    {
+      "timestamp": "2024-01-01T06:00:00Z",
+      "temperature": 26.4,
+      "sensor": "Sensor C"
     },
     {
       "timestamp": "2024-01-01T12:00:00Z",
-      "value": 26.4,
-      "errorLow": 24.8,
-      "errorHigh": 28.0,
-      "category": "Sensor B"
+      "temperature": 24.8,
+      "sensor": "Sensor A"
+    },
+    {
+      "timestamp": "2024-01-01T12:00:00Z",
+      "temperature": 20.5,
+      "sensor": "Sensor B"
+    },
+    {
+      "timestamp": "2024-01-01T12:00:00Z",
+      "temperature": 27.9,
+      "sensor": "Sensor C"
     },
     {
       "timestamp": "2024-01-01T18:00:00Z",
-      "value": 23.3,
-      "errorLow": 21.9,
-      "errorHigh": 24.7,
-      "category": "Sensor B"
+      "temperature": 23.6,
+      "sensor": "Sensor A"
     },
     {
-      "timestamp": "2024-01-02T00:00:00Z",
-      "value": 20.5,
-      "errorLow": 19.1,
-      "errorHigh": 21.9,
-      "category": "Sensor B"
+      "timestamp": "2024-01-01T18:00:00Z",
+      "temperature": 19.8,
+      "sensor": "Sensor B"
+    },
+    {
+      "timestamp": "2024-01-01T18:00:00Z",
+      "temperature": 26.7,
+      "sensor": "Sensor C"
     }
   ]
 } 

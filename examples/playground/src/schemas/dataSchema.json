@@ -361,6 +361,30 @@
         },
         "required": ["timestamp", "value"]
       }
+    },
+    "multiCategoryChartData": {
+      "type": "array",
+      "title": "Multi-Category Chart Data",
+      "description": "Data for line chart with multiple meaningful categories",
+      "items": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Timestamp"
+          },
+          "temperature": {
+            "type": "number",
+            "title": "Temperature"
+          },
+          "sensor": {
+            "type": "string",
+            "title": "Sensor"
+          }
+        },
+        "required": ["timestamp", "temperature", "sensor"]
+      }
     }
   }
 } 

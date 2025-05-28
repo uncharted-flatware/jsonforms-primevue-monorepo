@@ -47,17 +47,23 @@ const error = ref<string>('');
 // Extract encoding from options
 const encoding = computed(() => appliedOptions.value.encoding || {});
 
-// Extract chart configuration from options
-const chartOptions = computed(() => ({
-  title: appliedOptions.value.title || 'Line Chart',
-  width: appliedOptions.value.width || 600,
-  height: appliedOptions.value.height || 300,
-  lineColor: appliedOptions.value.lineColor || '#1f77b4',
-  errorBarColor: appliedOptions.value.errorBarColor || '#aec7e8',
-  errorBandColor: appliedOptions.value.errorBandColor || '#e6f3ff',
-  errorBandOpacity: appliedOptions.value.errorBandOpacity || 0.3,
-  showAsErrorBand: appliedOptions.value.showAsErrorBand || false
-}));
+// Extract chart configuration from options with PrimeVue theme defaults
+const chartOptions = computed(() => {
+  // Get CSS custom property values from the document
+  const rootStyles = getComputedStyle(document.documentElement);
+  
+  return {
+    title: appliedOptions.value.title || 'Line Chart',
+    width: appliedOptions.value.width || 600,
+    height: appliedOptions.value.height || 300,
+    // Use PrimeVue theme colors instead of uiSchema options
+    lineColor: rootStyles.getPropertyValue('--primary-color').trim() || '#818cf8',
+    errorBarColor: rootStyles.getPropertyValue('--surface-400').trim() || '#a1a1aa',
+    errorBandColor: rootStyles.getPropertyValue('--primary-200').trim() || '#c9cefc',
+    errorBandOpacity: 0.5,
+    showAsErrorBand: appliedOptions.value.showAsErrorBand || false
+  };
+});
 
 // Process the data points
 const dataPoints = computed(() => {
@@ -100,6 +106,12 @@ const createVegaSpec = (): TopLevelSpec => {
     throw new Error('Both x and y encodings are required for line chart');
   }
   
+  // Get additional theme colors from CSS custom properties
+  const rootStyles = getComputedStyle(document.documentElement);
+  const backgroundColor = rootStyles.getPropertyValue('--surface-card').trim() || '#18181b';
+  const textColor = rootStyles.getPropertyValue('--text-color').trim() || '#ffffff';
+  const gridColor = rootStyles.getPropertyValue('--surface-border').trim() || '#27272a';
+  
   // Base line chart layer
   const lineLayer: any = {
     mark: {
@@ -112,12 +124,24 @@ const createVegaSpec = (): TopLevelSpec => {
       x: {
         field: enc.x.field,
         type: enc.x.type,
-        title: enc.x.title || (enc.x.field.charAt(0).toUpperCase() + enc.x.field.slice(1))
+        title: enc.x.title || (enc.x.field.charAt(0).toUpperCase() + enc.x.field.slice(1)),
+        axis: {
+          labelColor: textColor,
+          titleColor: textColor,
+          gridColor: gridColor,
+          domainColor: gridColor
+        }
       },
       y: {
         field: enc.y.field,
         type: enc.y.type,
-        title: enc.y.title || (enc.y.field.charAt(0).toUpperCase() + enc.y.field.slice(1))
+        title: enc.y.title || (enc.y.field.charAt(0).toUpperCase() + enc.y.field.slice(1)),
+        axis: {
+          labelColor: textColor,
+          titleColor: textColor,
+          gridColor: gridColor,
+          domainColor: gridColor
+        }
       },
       tooltip: [
         { field: enc.x.field, type: enc.x.type },
@@ -131,7 +155,11 @@ const createVegaSpec = (): TopLevelSpec => {
     lineLayer.encoding.color = {
       field: enc.color.field,
       type: enc.color.type,
-      title: enc.color.title || enc.color.field
+      title: enc.color.title || enc.color.field,
+      legend: {
+        labelColor: textColor,
+        titleColor: textColor
+      }
     };
     lineLayer.encoding.tooltip.push({
       field: enc.color.field,
@@ -151,7 +179,7 @@ const createVegaSpec = (): TopLevelSpec => {
 
     if (hasErrorData) {
       if (opts.showAsErrorBand && enc.yError && enc.yError2) {
-        // Error band layer (area chart) - requires both yError and yError2
+        // Error band layer using area mark with actual data values
         const errorBandLayer = {
           mark: {
             type: 'area',
@@ -163,7 +191,13 @@ const createVegaSpec = (): TopLevelSpec => {
           encoding: {
             x: {
               field: enc.x.field,
-              type: enc.x.type
+              type: enc.x.type,
+              axis: {
+                labelColor: textColor,
+                titleColor: textColor,
+                gridColor: gridColor,
+                domainColor: gridColor
+              }
             },
             y: {
               field: enc.yError.field,
@@ -184,47 +218,93 @@ const createVegaSpec = (): TopLevelSpec => {
         // Insert error band before the line layer so it appears behind
         layers.unshift(errorBandLayer);
       } else {
-        // Error bar layer using Vega-Lite's built-in error bar support
+        // Create connected error bounds using line layers with actual data values
         if (enc.yError && enc.yError2) {
-          // Asymmetric error bars
-          const errorBarLayer = {
+          // Upper bound line using actual yError2 values
+          const upperBoundLayer = {
             mark: {
-              type: 'rule',
+              type: 'line',
               color: opts.errorBarColor,
-              strokeWidth: 1
+              strokeWidth: 1,
+              strokeDash: [3, 3],
+              interpolate: 'linear'
             },
             encoding: {
               x: {
                 field: enc.x.field,
-                type: enc.x.type
+                type: enc.x.type,
+                axis: {
+                  labelColor: textColor,
+                  titleColor: textColor,
+                  gridColor: gridColor,
+                  domainColor: gridColor
+                }
               },
               y: {
-                field: enc.yError.field,
-                type: enc.yError.type
-              },
-              y2: {
                 field: enc.yError2.field,
                 type: enc.yError2.type
               },
               tooltip: [
                 { field: enc.x.field, type: enc.x.type },
-                { field: enc.yError.field, type: enc.yError.type, title: 'Lower Bound' },
                 { field: enc.yError2.field, type: enc.yError2.type, title: 'Upper Bound' }
               ]
             }
           };
-          layers.push(errorBarLayer);
-        } else if (enc.yError) {
-          // Symmetric error bars (yError represents the error magnitude)
-          const errorBarLayer = {
+
+          // Lower bound line using actual yError values
+          const lowerBoundLayer = {
             mark: {
-              type: 'errorbar',
-              color: opts.errorBarColor
+              type: 'line',
+              color: opts.errorBarColor,
+              strokeWidth: 1,
+              strokeDash: [3, 3],
+              interpolate: 'linear'
             },
             encoding: {
               x: {
                 field: enc.x.field,
-                type: enc.x.type
+                type: enc.x.type,
+                axis: {
+                  labelColor: textColor,
+                  titleColor: textColor,
+                  gridColor: gridColor,
+                  domainColor: gridColor
+                }
+              },
+              y: {
+                field: enc.yError.field,
+                type: enc.yError.type
+              },
+              tooltip: [
+                { field: enc.x.field, type: enc.x.type },
+                { field: enc.yError.field, type: enc.yError.type, title: 'Lower Bound' }
+              ]
+            }
+          };
+
+          // Add both bound lines before the main line
+          layers.push(upperBoundLayer);
+          layers.push(lowerBoundLayer);
+
+        } else if (enc.yError) {
+          // Single error field - create symmetric error bars using actual values
+          // This assumes yError contains the error magnitude, not absolute bounds
+          const errorBarLayer = {
+            mark: {
+              type: 'errorbar',
+              color: opts.errorBarColor,
+              ticks: true
+            },
+            encoding: {
+              x: {
+                field: enc.x.field,
+                type: enc.x.type,
+                axis: {
+                  labelColor: textColor,
+                  titleColor: textColor,
+                  gridColor: gridColor,
+                  domainColor: gridColor
+                }
               },
               y: {
                 field: enc.y.field,
@@ -245,7 +325,7 @@ const createVegaSpec = (): TopLevelSpec => {
         lineLayer.encoding.tooltip.push({
           field: enc.yError.field,
           type: enc.yError.type,
-          title: enc.yError.title || 'Error'
+          title: enc.yError.title || 'Error Lower'
         });
       }
       if (enc.yError2) {
@@ -260,9 +340,16 @@ const createVegaSpec = (): TopLevelSpec => {
 
   return {
     $schema: 'https://vega.github.io/schema/vega-lite/v6.json',
-    title: opts.title,
+    title: {
+      text: opts.title,
+      color: textColor
+    },
     width: opts.width,
     height: opts.height,
+    background: backgroundColor,
+    view: {
+      stroke: null
+    },
     data: {
       values: dataPoints.value
     },
