@@ -44,6 +44,6 @@ const isToggleable = computed(() => !!appliedOptions.value.isToggleable);
 const isCollapsed = computed(() => !appliedOptions.value.isExpanded);
 
 const accordionIndexForExpansion = computed(() => {
-    return !!appliedOptions.value.isExpanded ? 0 : undefined;
+    return appliedOptions.value.isExpanded ? 0 : undefined;
 });
 </script>

@@ -2,7 +2,6 @@ import {
     and,
     not,
     rankWith,
-    schemaTypeIs,
     isStringControl,
     isNumberControl,
     isBooleanControl,
@@ -12,22 +11,11 @@ import {
     isDateTimeControl,
     uiTypeIs,
     formatIs,
-    type JsonSchema,
-    isControl,
     isObjectControl,
     or,
     isPrimitiveArrayControl,
     isObjectArrayControl
 } from '@jsonforms/core';
-
-// We need to create a proper custom array control tester
-// The tester should verify it's a control UI schema and array schema type
-// but exclude any special array cases like ArrayItem
-const isArrayControl = and(
-  isControl,
-  schemaTypeIs('array'),
-  not(uiTypeIs('ArrayItem'))
-);
 
 import ControlWrapper from './controls/ControlWrapper.vue';
 import StringControlRenderer from './controls/StringControlRenderer.vue';

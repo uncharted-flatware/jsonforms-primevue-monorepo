@@ -53,9 +53,7 @@ const objectProperties = computed(() => {
       type: 'Control' as const,
       scope: `#/properties/${name}`,
       label: (propertySchema as JsonSchema).title || name,
-      options: {
-        ...(appliedOptions.value.displayOnly ? { displayOnly: true, compact: true } : {})
-      }
+      options: (appliedOptions.value.displayOnly ? { displayOnly: true, compact: true } : {})
     }
   }));
 });

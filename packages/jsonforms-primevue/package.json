@@ -23,8 +23,8 @@
   "packageManager": "yarn@4.5.0",
   "scripts": {
     "build": "vue-tsc --noEmit && vite build",
-    "lint": "eslint ../.. --ignore-path .eslintignore --ext .js,.ts,.vue",
-    "lint:fix": "yarn lint --fix",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
     "format": "prettier --ignore-path .prettierignore --write '**/*.{ts,tsx,vue,css,json,js,jsx}'",
     "format:ci": "prettier --ignore-path .prettierignore --check '**/*.{ts,tsx,vue,css,json,js,jsx}'",
     "test:unit": "vitest",
@@ -50,6 +50,7 @@
     "@types/uuid": "^9.0.8",
     "@vitejs/plugin-vue": "^5.2.3",
     "@vue/tsconfig": "^0.5.1",
+    "oxlint": "^0.16.12",
     "primeflex": "3.3.1",
     "primeicons": "7.0.0",
     "primevue": "3.53.0",

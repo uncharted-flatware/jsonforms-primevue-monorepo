@@ -75,7 +75,7 @@ const effectiveUiSchema = computed(() => {
     type: 'Control' as const,
     scope: '#',
     options: {
-      ...((props.uischema as any)?.options || {})
+      ...(props.uischema as any)?.options
     }
   };
   

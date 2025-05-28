@@ -1,0 +1,9 @@
+{
+  "rules": {
+  },
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "plugins": ["typescript", "unicorn", "oxc"]
+} 

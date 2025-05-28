@@ -260,9 +260,7 @@ const generateUiSchemaFromItemSchema = (): UISchemaElement => {
       type: 'Control',
       scope: `#/properties/${name}`,
       label: (propSchema as JsonSchema).title || name,
-      options: {
-        ...(appliedOptions.value.displayOnly ? { displayOnly: true, compact: true } : {})
-      }
+      options: (appliedOptions.value.displayOnly ? { displayOnly: true, compact: true } : {})
     }))
   } as any;
 };
