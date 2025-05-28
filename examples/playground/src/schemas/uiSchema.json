@@ -582,8 +582,9 @@
               "yError2": {"field": "errorHigh", "type": "quantitative"}
             },
             "showAsErrorBand": true,
-            "width": 500,
-            "height": 300
+            "width": 400,
+            "height": 300,
+            "displayOnly": true
           }
         },
         {
@@ -602,8 +603,9 @@
               "yError2": {"field": "errorHigh", "type": "quantitative"}
             },
             "showAsErrorBand": false,
-            "width": 500,
-            "height": 300
+            "width": 400,
+            "height": 300,
+            "displayOnly": true
           }
         },
         {
@@ -619,8 +621,9 @@
               "x": {"field": "timestamp", "type": "temporal"},
               "y": {"field": "value", "type": "quantitative"}
             },
-            "width": 500,
-            "height": 300
+            "width": 400,
+            "height": 300,
+            "displayOnly": true
           }
         },
         {
@@ -637,8 +640,9 @@
               "y": {"field": "temperature", "type": "quantitative", "title": "Temperature (°C)"},
               "color": {"field": "sensor", "type": "nominal", "title": "Sensor"}
             },
-            "width": 500,
-            "height": 300
+            "width": 400,
+            "height": 300,
+            "displayOnly": true
           }
         }
       ]

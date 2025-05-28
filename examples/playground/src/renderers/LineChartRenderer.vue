@@ -4,13 +4,7 @@
     :is-focused="isFocused"
     :applied-options="appliedOptions"
   >
-    <div v-if="appliedOptions.displayOnly" class="p-3 text-900">
-      <div class="text-sm text-500 mb-2">Line Chart Data ({{ dataPoints.length }} points)</div>
-      <div class="text-xs text-400" v-if="timeRange.start !== 'N/A'">
-        {{ timeRange.start }} to {{ timeRange.end }}
-      </div>
-    </div>
-    <div v-else>
+    <div>
       <div ref="vegaContainer" class="w-full" style="min-height: 300px;"></div>
       <div v-if="error" class="text-red-500 text-sm mt-2">
         Error rendering chart: {{ error }}

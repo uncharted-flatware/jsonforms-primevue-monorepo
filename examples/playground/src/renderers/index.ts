@@ -3,6 +3,7 @@ import {
   and,
   isObjectArrayControl,
   hasOption,
+  optionIs,
 } from "@jsonforms/core";
 import LineChartRenderer from "./LineChartRenderer.vue";
 
@@ -11,6 +12,7 @@ const lineChartTester = rankWith(
   4, // Higher rank than default renderers
   and(
     isObjectArrayControl,
+    optionIs("displayOnly", true),
     hasOption("encoding")
   )
 );
