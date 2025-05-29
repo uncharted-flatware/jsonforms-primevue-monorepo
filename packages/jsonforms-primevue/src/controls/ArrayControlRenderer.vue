@@ -5,7 +5,7 @@
     :applied-options="appliedOptions"
   >
     <div :class="appliedOptions.displayOnly ? 'flex flex-column gap-1' : 'flex flex-column gap-3'">
-      <div class="flex justify-content-end" v-if="control.enabled && !appliedOptions.displayOnly">
+      <div class="flex justify-content-end" v-if="control.enabled && !appliedOptions.displayOnly && !appliedOptions.displayAsTable">
         <div class="flex gap-2">
           <Button
             :disabled="!control.enabled"
@@ -20,6 +20,104 @@
       
       <div v-if="!control.data || control.data.length === 0" class="text-500 text-center p-3">
         {{ appliedOptions.emptyMessage || 'No items found' }}
+      </div>
+
+      <!-- Table Display Mode -->
+      <div v-else-if="appliedOptions.displayAsTable && !isPrimitiveArray" class="flex flex-column gap-2">
+        <DataTable 
+          :value="control.data"
+          :resizableColumns="true"
+          :tableStyle="{ minWidth: '50rem' }"
+          class="p-datatable-sm"
+        >
+          <!-- Action column for non-displayOnly mode -->
+          <Column v-if="!appliedOptions.displayOnly" header="Actions" :style="{ width: '10rem' }" frozen alignFrozen="right">
+            <template #body="{ index }">
+              <div class="flex gap-1">
+                <template v-if="appliedOptions.showSortButtons">
+                  <Button
+                    @click="moveItem(index, index - 1)"
+                    :disabled="index === 0"
+                    v-tooltip.top="'Move Up'"
+                    class="p-button-sm"
+                    text
+                    severity="secondary"
+                  >
+                    <i class="pi pi-chevron-up"></i>
+                  </Button>
+                  <Button
+                    @click="moveItem(index, index + 1)"
+                    :disabled="index === control.data.length - 1"
+                    v-tooltip.top="'Move Down'"
+                    class="p-button-sm"
+                    text
+                    severity="secondary"
+                  >
+                    <i class="pi pi-chevron-down"></i>
+                  </Button>
+                </template>
+                <Button
+                  @click="removeItem(index)"
+                  v-tooltip.top="'Remove Item'"
+                  class="p-button-sm"
+                  severity="danger"
+                  text
+                >
+                  <i class="pi pi-trash"></i>
+                </Button>
+              </div>
+            </template>
+          </Column>
+
+          <!-- Dynamic columns based on object properties -->
+          <Column 
+            v-for="property in tableColumns" 
+            :key="property.key"
+            :field="property.key"
+            :header="property.header"
+            :style="{ minWidth: '12rem' }"
+          >
+            <template #body="{ data, index }">
+              <div style="border: 1px solid red; padding: 2px; margin: 1px;">
+                <div style="font-size: 10px; color: red;">
+                  DEBUG: {{ property.key }} - HasEnum: {{ !!property.schema.enum }} | EnumValues: {{ property.schema.enum }}
+                </div>
+                <DispatchRenderer
+                  :schema="property.schema"
+                  :uischema="{ 
+                    type: 'Control', 
+                    scope: '#',
+                    options: { 
+                      ...(appliedOptions.displayOnly ? { displayOnly: true } : {}),
+                      compact: true,
+                      labelPlacement: 'hide'
+                    }
+                  } as ControlElement"
+                  :path="`${composePaths(control.path, `${index}`)}.${property.key}`"
+                  :enabled="control.enabled && !appliedOptions.displayOnly"
+                  :renderers="control.renderers"
+                  :cells="control.cells"
+                  :data="data[property.key]"
+                  @change="handleCellChange(index, property.key)"
+                  class="w-full"
+                />
+              </div>
+            </template>
+          </Column>
+        </DataTable>
+
+        <!-- Add button for table mode -->
+        <div class="flex justify-content-start" v-if="control.enabled && !appliedOptions.displayOnly">
+          <Button
+            :disabled="!control.enabled"
+            @click="addItem"
+            v-tooltip.top="'Add Item'"
+            class="p-button-sm"
+          >
+            <i class="pi pi-plus mr-1"></i>
+            Add Row
+          </Button>
+        </div>
       </div>
 
       <!-- Simple display for primitive arrays in displayOnly mode -->
@@ -144,6 +242,8 @@ import { default as ControlWrapper } from './ControlWrapper.vue';
 import { useControlCommon } from '../util/composition';
 import { composePaths } from '@jsonforms/core';
 import Button from 'primevue/button';
+import DataTable from 'primevue/datatable';
+import Column from 'primevue/column';
 import ArrayItemRenderer from './ArrayItemRenderer.vue';
 import get from 'lodash/get';
 import { DispatchRenderer } from '@jsonforms/vue';
@@ -168,6 +268,79 @@ const isPrimitiveArray = computed(() => {
          itemSchemaValue?.type === 'integer' || 
          itemSchemaValue?.type === 'boolean';
 });
+
+// Generate table columns from object schema properties
+const tableColumns = computed(() => {
+  const schema = itemSchema.value;
+  
+  if (!schema || !schema.properties) {
+    return [];
+  }
+  
+  const columns = Object.entries(schema.properties).map(([name, propertySchema]) => {
+    const typedSchema = propertySchema as JsonSchema;
+    console.debug('Table column schema:', { name, schema: typedSchema, hasEnum: !!typedSchema.enum, enumValues: typedSchema.enum });
+    
+    return {
+      key: name,
+      header: typedSchema.title || name,
+      schema: typedSchema
+    };
+  });
+  
+  return columns;
+});
+
+// Handle cell changes from DispatchRenderer
+const handleCellChange = (rowIndex: number, propertyKey: string) => (event: any) => {
+  console.debug('Cell change:', { rowIndex, propertyKey, event });
+  
+  let newPropertyValue;
+  if (event && typeof event === 'object' && 'data' in event) {
+    newPropertyValue = event.data;
+  } else {
+    newPropertyValue = event;
+  }
+  
+  const newData = [...(control.value.data || [])];
+  if (newData[rowIndex]) {
+    // Update just the specific property in the row object
+    newData[rowIndex] = {
+      ...newData[rowIndex],
+      [propertyKey]: newPropertyValue
+    };
+    onChange(newData);
+  }
+};
+
+// Format cell values for display (still used for display-only mode)
+const formatCellValue = (value: any, schema: JsonSchema) => {
+  if (value === null || value === undefined) {
+    return '';
+  }
+  
+  if (schema.type === 'boolean') {
+    return value ? 'Yes' : 'No';
+  }
+  
+  if (schema.type === 'number' || schema.type === 'integer') {
+    return typeof value === 'number' ? value.toString() : value;
+  }
+  
+  if (schema.type === 'string') {
+    return value.toString();
+  }
+  
+  if (Array.isArray(value)) {
+    return `[${value.length} items]`;
+  }
+  
+  if (typeof value === 'object') {
+    return '[Object]';
+  }
+  
+  return value.toString();
+};
 
 // Get the label for an array item based on elementLabelProp option
 const getItemLabel = (item: any, index: number) => {

@@ -15,8 +15,8 @@
             :autofocus="appliedOptions.focus"
             :placeholder="appliedOptions.placeholder"
             :options="options"
-            v-model="control.data"
-            @update:modelValue="onChange"
+            :model-value="control.data"
+            @update:model-value="onChange"
         />
     </ControlWrapper>
 </template>
@@ -47,9 +47,36 @@ const {
 } = controlCommon;
 
 const options = computed(() => {
-    if (!control.value.options) {
-        return [];
+    // console.debug('EnumControlRenderer options computation:', {
+    //     controlOptions: control.value.options,
+    //     schema: control.value.schema,
+    //     schemaEnum: control.value.schema.enum,
+    //     path: control.value.path
+    // });
+    
+    // FIRST: Check schema.enum - this should be the primary source
+    if (control.value.schema && control.value.schema.enum) {
+        console.debug('Using schema.enum:', control.value.schema.enum);
+        return control.value.schema.enum;
     }
-    return control.value.options.map(option => option.value);
+    
+    // SECOND: Use JSONForms control options if available (for compatibility)
+    if (control.value.options && control.value.options.length > 0) {
+        return control.value.options.map(option => option.value);
+    }
+    
+    // THIRD: Check for oneOf enum pattern
+    if (control.value.schema && control.value.schema.oneOf) {
+        const enumValues = control.value.schema.oneOf
+            .filter((item: any) => item.const !== undefined)
+            .map((item: any) => item.const);
+        if (enumValues.length > 0) {
+            console.debug('Using oneOf enum:', enumValues);
+            return enumValues;
+        }
+    }
+    
+    console.warn('No enum options found for:', control.value.path);
+    return [];
 });
 </script>

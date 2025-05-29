@@ -19,8 +19,8 @@
             :disabled="!control.enabled"
             :autofocus="appliedOptions.focus"
             :placeholder="appliedOptions.placeholder"
-            v-model="control.data"
-            @update:modelValue="onChange"
+            :model-value="control.data"
+            @update:model-value="onChange"
         />
     </ControlWrapper>
 </template>

@@ -12,11 +12,11 @@
             v-else
             :id="control.id"
             :inputId="control.id + '-input'"
-            v-model="control.data"
+            :model-value="control.data"
             :disabled="!control.enabled || !!appliedOptions.readonly"
             :autofocus="appliedOptions.focus"
             :placeholder="appliedOptions.placeholder"
-            @update:modelValue="onChange"
+            @update:model-value="onChange"
         />
     </ControlWrapper>
 </template>

@@ -649,6 +649,58 @@
     },
     {
       "type": "Group",
+      "label": "Table Display Examples",
+      "options": {
+        "isToggleable": true,
+        "isExpanded": true
+      },
+      "elements": [
+        {
+          "type": "Label",
+          "text": "Array as Table (Editable)"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/testing/properties/tasks",
+          "options": {
+            "displayAsTable": true,
+            "elementLabelProp": "name",
+            "emptyMessage": "No tasks added yet",
+            "showSortButtons": true
+          }
+        },
+        {
+          "type": "Label",
+          "text": "Array as Table (Display Only)"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/testing/properties/tasks",
+          "options": {
+            "displayAsTable": true,
+            "displayOnly": true,
+            "elementLabelProp": "name",
+            "emptyMessage": "No tasks to display"
+          }
+        },
+        {
+          "type": "Label",
+          "text": "References with Values - Table View"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/temp/properties/references_with_values",
+          "options": {
+            "displayAsTable": true,
+            "elementLabelProp": "ref.id",
+            "emptyMessage": "No references added yet",
+            "showSortButtons": true
+          }
+        }
+      ]
+    },
+    {
+      "type": "Group",
       "label": "References with Values",
       "options": {
         "isToggleable": true,

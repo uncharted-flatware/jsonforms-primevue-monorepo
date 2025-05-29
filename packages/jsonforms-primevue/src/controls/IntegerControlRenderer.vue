@@ -22,8 +22,8 @@
             :autofocus="appliedOptions.focus"
             :placeholder="appliedOptions.placeholder"
             inputClass="w-5rem"
-            v-model="control.data"
-            @update:modelValue="onChange"
+            :model-value="control.data"
+            @update:model-value="onChange"
         />
     </ControlWrapper>
 </template>

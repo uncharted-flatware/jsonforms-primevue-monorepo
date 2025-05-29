@@ -15,13 +15,13 @@
             :disabled="!control.enabled"
             :autofocus="appliedOptions.focus"
             :placeholder="appliedOptions.placeholder"
-            v-model="internalValue"
+            :model-value="internalValue"
             :min="0"
             :max="365"
             :step="1"
             showButtons
             inputClass="w-5rem"
-            @update:modelValue="onChange"
+            @update:model-value="onChange"
         />
     </ControlWrapper>
 </template>
