@@ -1,84 +1,58 @@
 <template>
-  <ControlWrapper
-    v-bind="controlWrapper"
-    :is-focused="isFocused"
-    :applied-options="appliedOptions"
-  >
-    <div class="flex flex-column gap-1 p-3 border-1 border-300 border-round">
-      <div v-for="property in objectProperties" :key="property.name" class="flex flex-column gap-1">
-        <DispatchRenderer
-          :schema="property.schema"
-          :uischema="property.uischema"
-          :path="`${control.path}.${property.name}`"
-          :enabled="control.enabled && !appliedOptions.displayOnly"
-          :renderers="control.renderers"
-          :cells="control.cells"
-          :data="getPropertyValue(property.name)"
-          @change="handlePropertyChange(property.name)"
-          :readonly="!control.enabled || appliedOptions.displayOnly"
-        />
-      </div>
-    </div>
-  </ControlWrapper>
+  <div v-if="control.visible">
+    <DispatchRenderer
+      :enabled="control.enabled"
+      :schema="control.schema"
+      :uischema="detailUiSchema"
+      :path="control.path"
+      :renderers="control.renderers"
+      :cells="control.cells"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { type ControlElement, type JsonSchema } from '@jsonforms/core';
-import { rendererProps, useJsonFormsControl, DispatchRenderer } from '@jsonforms/vue';
-import { default as ControlWrapper } from './ControlWrapper.vue';
+import { type ControlElement, type JsonSchema, type GroupLayout, findUISchema, Generate } from '@jsonforms/core';
+import { rendererProps, DispatchRenderer, useJsonFormsControlWithDetail } from '@jsonforms/vue';
 import { useControlCommon } from '../util/composition';
+import isEmpty from 'lodash/isEmpty';
 
 const props = defineProps(rendererProps<ControlElement>());
-const controlProps = useJsonFormsControl(props);
+const controlProps = useJsonFormsControlWithDetail(props);
 const controlCommon = useControlCommon(controlProps);
 
 const {
-  appliedOptions,
-  control,
-  controlWrapper,
-  isFocused,
-  onChange
+  control
 } = controlCommon;
 
-// Extract object properties from schema
-const objectProperties = computed(() => {
-  const schema = control.value.schema as JsonSchema;
-  const properties = schema.properties || {};
-  
-  return Object.entries(properties).map(([name, propertySchema]) => ({
-    name,
-    schema: propertySchema as JsonSchema,
-    uischema: {
-      type: 'Control' as const,
-      scope: `#/properties/${name}`,
-      label: (propertySchema as JsonSchema).title || name,
-      options: (appliedOptions.value.displayOnly ? { displayOnly: true, compact: true } : {})
+const detailUiSchema = computed(() => {
+  const uiSchemaGenerator = () => {
+    const uiSchema = Generate.uiSchema(
+      control.value.schema,
+      'Group',
+      undefined,
+      control.value.rootSchema,
+    );
+    if (isEmpty(control.value.path)) {
+      uiSchema.type = 'VerticalLayout';
+    } else {
+      (uiSchema as GroupLayout).label = control.value.label;
     }
-  }));
+    return uiSchema;
+  };
+
+  let result = findUISchema(
+    control.value.uischemas,
+    control.value.schema,
+    control.value.uischema.scope,
+    control.value.path,
+    uiSchemaGenerator,
+    control.value.uischema,
+    control.value.rootSchema,
+  );
+
+  return result;
 });
 
-// Get property value from the current data
-const getPropertyValue = (propertyName: string) => {
-  return control.value.data?.[propertyName];
-};
-
-// Handle property changes
-const handlePropertyChange = (propertyName: string) => (event: any) => {
-  let newValue;
-  if (event && typeof event === 'object' && 'data' in event) {
-    newValue = event.data;
-  } else {
-    newValue = event;
-  }
-  
-  // Update the specific property in the object
-  const currentData = control.value.data || {};
-  const newData = {
-    ...currentData,
-    [propertyName]: newValue
-  };
-  
-  onChange(newData);
-};
 </script> 
