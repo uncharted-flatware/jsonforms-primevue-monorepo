@@ -74,7 +74,6 @@ function onFormChanged(event: JsonFormsChangeEvent) {
     } else {
         exampleDataString.value = event.data ? JSON.stringify(event.data, null, 2) : '';
     }
-    console.debug('onFormChanged: ', event.data);
 }
 
 </script>
@@ -116,9 +115,7 @@ function onFormChanged(event: JsonFormsChangeEvent) {
             </div>
             <div class="form-container p-3">
                 <h3>Rendered Form</h3>
-<!--                <div v-if="errorMessage.length > 0" class="debug-box">-->
-<!--                    {{ errorMessage }}-->
-<!--                </div>-->
+
                 <JsonForms
                     :data="exampleData"
                     :renderers="renderers"

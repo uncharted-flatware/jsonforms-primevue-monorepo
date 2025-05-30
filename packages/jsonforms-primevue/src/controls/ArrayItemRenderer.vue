@@ -116,7 +116,6 @@ const handleChange = (event: any) => {
     newValue = event;
   }
   
-  console.debug('ArrayItemRenderer change:', { event, newValue, path: props.path });
   emit('change', { data: newValue });
 };
 </script> 

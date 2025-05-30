@@ -78,10 +78,7 @@
             :style="{ minWidth: '12rem' }"
           >
             <template #body="{ data, index }">
-              <div style="border: 1px solid red; padding: 2px; margin: 1px;">
-                <div style="font-size: 10px; color: red;">
-                  DEBUG: {{ property.key }} - HasEnum: {{ !!property.schema.enum }} | EnumValues: {{ property.schema.enum }}
-                </div>
+              <div style="padding: 2px; margin: 1px;">
                 <DispatchRenderer
                   :schema="property.schema"
                   :uischema="{ 
@@ -279,8 +276,7 @@ const tableColumns = computed(() => {
   
   const columns = Object.entries(schema.properties).map(([name, propertySchema]) => {
     const typedSchema = propertySchema as JsonSchema;
-    console.debug('Table column schema:', { name, schema: typedSchema, hasEnum: !!typedSchema.enum, enumValues: typedSchema.enum });
-    
+   
     return {
       key: name,
       header: typedSchema.title || name,
@@ -293,7 +289,6 @@ const tableColumns = computed(() => {
 
 // Handle cell changes from DispatchRenderer
 const handleCellChange = (rowIndex: number, propertyKey: string) => (event: any) => {
-  console.debug('Cell change:', { rowIndex, propertyKey, event });
   
   let newPropertyValue;
   if (event && typeof event === 'object' && 'data' in event) {
@@ -498,18 +493,15 @@ const moveItem = (fromIndex: number, toIndex: number) => {
 
 // Update an item's value
 const updateItem = (index: number, value: any) => {
-  console.debug('ArrayControlRenderer updateItem:', { index, value, currentData: control.value.data });
   
   const newData = [...(control.value.data || [])];
   newData[index] = value;
   
-  console.debug('ArrayControlRenderer updating to:', newData);
   onChange(newData);
 };
 
 // Handle change events from ArrayItemRenderer
 const handleItemChange = (index: number) => (event: any) => {
-  console.debug('ArrayControlRenderer handleItemChange:', { index, event });
   
   let newValue;
   if (event && typeof event === 'object' && 'data' in event) {

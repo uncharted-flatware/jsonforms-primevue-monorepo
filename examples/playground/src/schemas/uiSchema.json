@@ -160,11 +160,30 @@
         },
         {
           "type": "Label",
-          "text": "Object Control"
+          "text": "Single Object Control"
         },
         {
           "type": "Control",
-          "scope": "#/properties/testing/properties/anObject"
+          "scope": "#/properties/testing/properties/anObject",
+          "options": {
+            "detail": {
+              "type": "VerticalLayout",
+              "elements": [
+                {
+                  "type": "Control",
+                  "scope": "#/properties/name"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/description"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/tags"
+                }
+              ]
+            }
+          }
         }
       ]
     },
@@ -689,7 +708,7 @@
         },
         {
           "type": "Control",
-          "scope": "#/properties/temp/properties/references_with_values",
+          "scope": "#/properties/temp/properties/references with values",
           "options": {
             "displayAsTable": true,
             "elementLabelProp": "ref.id",
@@ -709,7 +728,7 @@
       "elements": [
         {
           "type": "Control",
-          "scope": "#/properties/temp/properties/references_with_values",
+          "scope": "#/properties/temp/properties/references with values",
           "options": {
             "elementLabelProp": "ref.id",
             "emptyMessage": "No references added yet",
@@ -762,7 +781,7 @@
       "elements": [
         {
           "type": "Control",
-          "scope": "#/properties/temp/properties/references_with_values",
+          "scope": "#/properties/temp/properties/references with values",
           "options": {
             "elementLabelProp": "ref.id",
             "emptyMessage": "No references added yet",

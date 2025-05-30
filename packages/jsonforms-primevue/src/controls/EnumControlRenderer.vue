@@ -47,16 +47,9 @@ const {
 } = controlCommon;
 
 const options = computed(() => {
-    // console.debug('EnumControlRenderer options computation:', {
-    //     controlOptions: control.value.options,
-    //     schema: control.value.schema,
-    //     schemaEnum: control.value.schema.enum,
-    //     path: control.value.path
-    // });
-    
+
     // FIRST: Check schema.enum - this should be the primary source
     if (control.value.schema && control.value.schema.enum) {
-        console.debug('Using schema.enum:', control.value.schema.enum);
         return control.value.schema.enum;
     }
     
@@ -71,7 +64,6 @@ const options = computed(() => {
             .filter((item: any) => item.const !== undefined)
             .map((item: any) => item.const);
         if (enumValues.length > 0) {
-            console.debug('Using oneOf enum:', enumValues);
             return enumValues;
         }
     }
