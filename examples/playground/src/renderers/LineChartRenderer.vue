@@ -127,6 +127,11 @@ const createVegaSpec = (): TopLevelSpec => {
         field: enc.y.field,
         type: enc.y.type,
         title: enc.y.title || (enc.y.field.charAt(0).toUpperCase() + enc.y.field.slice(1)),
+        scale: {
+          zero: false,
+          nice: true,
+          padding: 0.1
+        },
         axis: {
           labelColor: textColor,
           titleColor: textColor,
