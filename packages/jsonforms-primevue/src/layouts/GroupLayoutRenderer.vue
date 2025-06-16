@@ -41,9 +41,9 @@ const { appliedOptions, layout } = layoutCommon;
 
 const asAccordion = computed(() => appliedOptions.value.asAccordion);
 const isToggleable = computed(() => !!appliedOptions.value.isToggleable);
-const isCollapsed = computed(() => !appliedOptions.value.isExpanded);
+const isCollapsed = computed(() => appliedOptions.value.isExpanded === false);
 
 const accordionIndexForExpansion = computed(() => {
-    return appliedOptions.value.isExpanded ? 0 : undefined;
+    return appliedOptions.value.isExpanded !== false ? 0 : undefined;
 });
 </script>
