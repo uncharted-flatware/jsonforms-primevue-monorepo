@@ -576,6 +576,39 @@ The Horizontal Layout arranges elements horizontally.
 
 **Options:**
 - `isWrappingEnabled`: When `true`, allows elements to wrap to the next line if they don't fit in the available space. When `false` (default), elements will stay on a single line and may overflow their container.
+- `layout`: Controls the spacing between elements. Can be `'default'` (standard gaps) or `'space-between'` (maximum space distributed between elements). Only applicable when `isWrappingEnabled` is `false`.
+
+**Space-Between Layout Example:**
+
+```json
+{
+  "type": "HorizontalLayout",
+  "elements": [
+    {
+      "type": "Control",
+      "scope": "#/properties/firstName",
+      "options": {
+        "placeholder": "Left side"
+      }
+    },
+    {
+      "type": "Control", 
+      "scope": "#/properties/lastName",
+      "options": {
+        "placeholder": "Right side"
+      }
+    }
+  ],
+  "options": {
+    "layout": "space-between"
+  }
+}
+```
+
+**Notes:**
+- Space-between layout fills the full width and places elements at opposite ends
+- Not compatible with `isWrappingEnabled: true`
+- Useful for creating split layouts like left/right form sections
 
 ### Vertical Layout
 

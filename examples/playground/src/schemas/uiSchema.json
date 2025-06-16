@@ -443,6 +443,32 @@
               "scope": "#/properties/testing/properties/aNumber"
             }
           ]
+        },
+        {
+          "type": "Label",
+          "text": "Horizontal Layout with Space-Between"
+        },
+        {
+          "type": "HorizontalLayout",
+          "elements": [
+            {
+              "type": "Control",
+              "scope": "#/properties/testing/properties/aString",
+              "options": {
+                "placeholder": "Left side field"
+              }
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/testing/properties/aNumber",
+              "options": {
+                "placeholder": "Right side field"
+              }
+            }
+          ],
+          "options": {
+            "layout": "space-between"
+          }
         }
       ]
     },
@@ -983,13 +1009,17 @@
             "labelPlacement": "top",
             "detail": {
               "type": "HorizontalLayout",
+              "options": {
+                "layout": "space-between"
+              },
               "elements": [
                 {
                   "type": "Control",
                   "scope": "#/properties/ref/properties/id",
                   "options": {
                     "placeholder": "Enter reference ID",
-                    "labelPlacement": "hide"
+                    "labelPlacement": "hide",
+                    "compact": true
                   }
                 },
                 {
@@ -998,7 +1028,8 @@
                   "options": {
                     "prefix": "$",
                     "suffix": " USD",
-                    "labelPlacement": "hide"
+                    "labelPlacement": "hide",
+                    "compact": true
                   }
                 }
               ]

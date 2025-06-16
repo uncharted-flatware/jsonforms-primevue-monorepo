@@ -141,11 +141,10 @@
       </div>
 
       <!-- Compact display for object arrays in displayOnly mode -->
-      <div v-else-if="appliedOptions.displayOnly" class="flex flex-column gap-2">
+      <div v-else-if="appliedOptions.displayOnly" class="flex flex-column gap-1">
         <div 
           v-for="(item, index) in control.data" 
-          :key="`${control.path}-${index}`" 
-          class="border-1 border-300 border-round p-2"
+          :key="`${control.path}-${index}`"
         >
           <!-- Item content with compact spacing -->
           <ArrayItemRenderer
