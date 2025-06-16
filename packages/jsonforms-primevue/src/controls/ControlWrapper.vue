@@ -1,5 +1,9 @@
 <template>
-    <div v-if="visible" :id="id" :class="appliedOptions.labelPlacement === 'top' ? 'flex flex-column gap-2' : 'flex align-items-center gap-2'">
+    <div 
+        v-if="visible" 
+        :id="id" 
+        :class="containerClasses"
+    >
         <If v-if="appliedOptions.labelPlacement === 'float'">
             <FloatLabel>
                 <slot></slot>
@@ -122,6 +126,25 @@ const showDescriptionIcon = computed(() =>
 const showAlwaysDescription = computed(() => 
     descriptionDisplayMode.value === 'always' && props.description
 );
+
+const containerClasses = computed(() => {
+    const labelPlacement = props.appliedOptions?.labelPlacement;
+    const layout = props.appliedOptions?.layout;
+    
+    if (labelPlacement === 'top') {
+        return 'flex flex-column gap-2';
+    } else if (labelPlacement === 'float') {
+        return '';
+    } else if (labelPlacement === 'hide') {
+        return '';
+    } else if (layout === 'space-between') {
+        // For space-between layout, use full width with justify-content-between
+        return 'flex align-items-center justify-content-between w-full';
+    } else {
+        // Default layout for left and right label placements
+        return 'flex align-items-center gap-2';
+    }
+});
 </script>
 
 <style>

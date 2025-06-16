@@ -7,6 +7,24 @@
     "anEnum": "Option 2",
     "aDateTime": "2024-03-25T14:30:00Z",
     "aDuration": "P7D",
+    "controlWrapper": {
+      "defaultPlacement": "Default label placement example",
+      "topPlacement": "Top label placement example", 
+      "rightPlacement": "Right label placement example",
+      "floatPlacement": "Float label placement example",
+      "hiddenLabel": "Field with hidden label example",
+      "tooltipDescription": "Tooltip description example",
+      "alwaysDescription": "Always visible description example",
+      "requiredField": "Required field example",
+      "visibleField": "Visible field example",
+      "hiddenField": "This field should be hidden",
+      "errorField": "Field with error example",
+      "focusedField": "Focused field example",
+      "spaceBetweenLeft": "Left label example",
+      "spaceBetweenRight": "Right label example", 
+      "spaceBetweenShort": "Short text",
+      "spaceBetweenLong": "Long label text"
+    },
     "tasks": [
       {
         "name": "Setup Development Environment",

@@ -10,6 +10,9 @@ export interface Options {
     // Relevant to most controls
     labelPlacement?: 'left' | 'right' | 'float' | 'hide' | 'top';
     
+    // Layout options
+    layout?: 'default' | 'space-between';
+
     // Description display options
     descriptionDisplay?: 'always' | 'tooltip';
 

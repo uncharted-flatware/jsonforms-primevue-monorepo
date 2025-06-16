@@ -548,7 +548,7 @@ The Group Layout groups related controls together, optionally with a header.
 **Options:**
 - `asAccordion`: If `true`, renders as an accordion panel
 - `isToggleable`: If `true`, allows the group to be collapsed/expanded (when not using accordion)
-- `isExpanded`: If `true`, the group is expanded by default
+- `isExpanded`: Controls the initial expansion state. Groups are expanded by default unless explicitly set to `false`
 
 ### Horizontal Layout
 
@@ -694,6 +694,83 @@ You can control where the label appears relative to the input field using the `l
 - `float`: Label floats inside the input field (moves up when the field has a value)
 - `top`: Label appears above the input field in a vertical layout
 - `hide`: No label is displayed (useful for compact layouts or when context is clear from placement)
+
+### Layout Options
+
+You can control how the label and input field are positioned within the container using the `layout` option:
+
+```json
+{
+  "type": "Control",
+  "scope": "#/properties/name",
+  "options": {
+    "labelPlacement": "left",
+    "layout": "space-between"
+  }
+}
+```
+
+**Available values:**
+- `default`: Standard layout with gaps between elements
+- `space-between`: Container fills full width with maximum space distributed between label and input field
+
+**Space-Between Layout:**
+
+The `space-between` layout is particularly useful for creating forms where you want:
+- Labels and fields at opposite ends of the container
+- Consistent alignment across fields with varying label lengths  
+- Maximum utilization of available horizontal space
+- Professional settings panels or configuration forms
+
+**Example:**
+
+```json
+// Data Schema
+{
+  "properties": {
+    "shortLabel": {
+      "type": "string",
+      "title": "Name",
+      "description": "Short label with space-between layout"
+    },
+    "longLabel": {
+      "type": "string", 
+      "title": "Very Long Configuration Setting Name",
+      "description": "Long label with space-between layout"
+    }
+  }
+}
+
+// UI Schema with space-between layout
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Control",
+      "scope": "#/properties/shortLabel",
+      "options": {
+        "labelPlacement": "left",
+        "layout": "space-between",
+        "placeholder": "Field positioned at right edge"
+      }
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/longLabel", 
+      "options": {
+        "labelPlacement": "left",
+        "layout": "space-between",
+        "placeholder": "Also at right edge despite long label"
+      }
+    }
+  ]
+}
+```
+
+**Notes:**
+- Works with both `labelPlacement: 'left'` and `labelPlacement: 'right'`
+- Automatically handles varying label lengths while maintaining consistent field positioning
+- Not applicable with `labelPlacement: 'float'`, `'top'`, or `'hide'`
 
 ### Description Display
 
