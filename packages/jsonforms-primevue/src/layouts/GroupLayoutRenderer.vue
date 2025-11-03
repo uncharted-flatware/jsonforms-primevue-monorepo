@@ -1,11 +1,14 @@
 <template>
     <If v-if="asAccordion">
-        <Accordion v-if="layout.visible" :activeIndex="accordionIndexForExpansion">
-            <AccordionTab :header="layout.label">
-                <div class="flex flex-column align-content-start gap-3">
-                    <LayoutElementsDispatcher v-bind="{ ...props }" />
-                </div>
-            </AccordionTab>
+        <Accordion v-if="layout.visible" :value="accordionValueForExpansion">
+            <AccordionPanel value="0">
+                <AccordionHeader>{{ layout.label }}</AccordionHeader>
+                <AccordionContent>
+                    <div class="flex flex-column align-content-start gap-3">
+                        <LayoutElementsDispatcher v-bind="{ ...props }" />
+                    </div>
+                </AccordionContent>
+            </AccordionPanel>
         </Accordion>
     </If>
     <Else v-else>
@@ -26,7 +29,9 @@
 import { computed } from "vue";
 import { rendererProps, useJsonFormsLayout } from "@jsonforms/vue";
 import Accordion from 'primevue/accordion';
-import AccordionTab from 'primevue/accordiontab';
+import AccordionPanel from 'primevue/accordionpanel';
+import AccordionHeader from 'primevue/accordionheader';
+import AccordionContent from 'primevue/accordioncontent';
 import Panel from "primevue/panel";
 import { type Layout } from "@jsonforms/core";
 import { useLayoutCommon } from "../util/composition";
@@ -43,7 +48,7 @@ const asAccordion = computed(() => appliedOptions.value.asAccordion);
 const isToggleable = computed(() => !!appliedOptions.value.isToggleable);
 const isCollapsed = computed(() => appliedOptions.value.isExpanded === false);
 
-const accordionIndexForExpansion = computed(() => {
-    return appliedOptions.value.isExpanded !== false ? 0 : undefined;
+const accordionValueForExpansion = computed(() => {
+    return appliedOptions.value.isExpanded !== false ? ['0'] : [];
 });
 </script>

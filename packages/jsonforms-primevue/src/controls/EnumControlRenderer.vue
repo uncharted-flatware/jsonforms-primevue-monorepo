@@ -8,7 +8,7 @@
         <div v-if="appliedOptions.displayOnly" :class="appliedOptions.compact ? 'text-900' : 'p-3 text-900'">
             {{ control.data || '' }}
         </div>
-        <Dropdown
+        <Select
             v-else
             :inputId="control.id + '-input'"
             :disabled="!control.enabled"
@@ -32,7 +32,7 @@ import {
 import { computed } from 'vue';
 import { default as ControlWrapper } from './ControlWrapper.vue';
 import { useControlCommon } from "../util/composition";
-import Dropdown from "primevue/dropdown";
+import Select from "primevue/select";
 
 const props = defineProps(rendererProps<ControlElement>());
 const controlProps = useJsonFormsEnumControl(props);

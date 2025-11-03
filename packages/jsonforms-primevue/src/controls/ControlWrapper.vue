@@ -65,7 +65,7 @@ import type { PropType } from 'vue';
 import type { Options } from '../util/options';
 import { If, Else, ElseIf } from '../components/blocks';
 import FloatLabel from 'primevue/floatlabel';
-import InfoCircle from 'primevue/icons/infocircle';
+import InfoCircle from '@primevue/icons/infocircle';
 
 const props = defineProps({
     id: {
