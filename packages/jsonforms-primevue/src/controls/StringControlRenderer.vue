@@ -59,3 +59,27 @@ const formatDisplayValue = computed(() => {
 
 
 </script>
+
+<style scoped>
+/* Scoped styles for text inputs within this control */
+:deep(.p-inputtext) {
+    border: 1px solid var(--surface-border) !important;
+    border-radius: 4px !important;
+    padding: 0.5rem 0.75rem !important;
+    background: var(--surface-0, #ffffff) !important;
+    width: 100%;
+    font-size: var(--text-size, 1rem);
+    transition: border-color 0.2s;
+}
+
+:deep(.p-inputtext:focus) {
+    outline: none;
+    border-color: var(--primary-color, #f02896) !important;
+    box-shadow: 0 0 0 0.2rem rgba(240, 40, 150, 0.25);
+}
+
+:deep(.p-inputtext:disabled) {
+    background: var(--surface-100, #f8f9fa) !important;
+    opacity: 0.6;
+}
+</style>

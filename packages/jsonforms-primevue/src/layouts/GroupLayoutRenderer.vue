@@ -1,6 +1,6 @@
 <template>
     <If v-if="asAccordion">
-        <Accordion v-if="layout.visible" :value="accordionValueForExpansion">
+        <Accordion v-if="layout.visible" :value="accordionValueForExpansion" class="jsonforms-layout">
             <AccordionPanel value="0">
                 <AccordionHeader>{{ layout.label }}</AccordionHeader>
                 <AccordionContent>
@@ -17,6 +17,7 @@
             :header="layout.label"
             :toggleable="isToggleable"
             :collapsed="isCollapsed"
+            class="group-panel jsonforms-layout"
         >
             <div class="flex flex-column align-content-start gap-3">
                 <LayoutElementsDispatcher v-bind="{ ...props }" />
@@ -52,3 +53,99 @@ const accordionValueForExpansion = computed(() => {
     return appliedOptions.value.isExpanded !== false ? ['0'] : [];
 });
 </script>
+
+<style scoped>
+.group-panel {
+    margin-bottom: 1rem;
+}
+
+:deep(.p-panel-header) {
+    background: var(--surface-50);
+    border: 1px solid var(--surface-border);
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    font-weight: 600;
+    font-size: var(--text-size-small, 0.875rem);
+    padding: 0.75rem 1rem;
+}
+
+:deep(.p-panel-content) {
+    border: 1px solid var(--surface-border);
+    border-radius: 0 0 6px 6px;
+    padding: 1rem;
+    background: var(--surface-0);
+    overflow: visible;
+    position: relative;
+    z-index: 1;
+}
+
+:deep(.p-panel-toggle-icon) {
+    color: var(--text-color-secondary);
+}
+
+:deep(.p-accordion-header) {
+    font-weight: 600;
+    font-size: var(--text-size-small, 0.875rem);
+}
+
+:deep(.p-accordion-content) {
+    padding: 1rem;
+}
+
+/* Ensure input controls have borders */
+:deep(.p-inputnumber),
+:deep(.p-inputtext),
+:deep(.p-select),
+:deep(.p-calendar),
+:deep(.p-datepicker) {
+    border: 1px solid var(--surface-border) !important;
+    border-radius: 4px;
+}
+
+:deep(.p-inputtext) {
+    padding: 0.5rem 0.75rem !important;
+    background: var(--surface-0, #ffffff) !important;
+    width: 100%;
+}
+
+:deep(.p-inputnumber-input) {
+    border: none;
+    border-radius: 4px 0 0 4px;
+}
+
+:deep(.p-inputnumber-buttons-stacked .p-inputnumber-button-group) {
+    border-left: 1px solid var(--surface-border);
+}
+
+:deep(.p-inputnumber-button) {
+    border: none;
+    height: 50%;
+}
+
+:deep(.p-inputnumber-button:first-child) {
+    border-bottom: 0.5px solid var(--surface-border);
+}
+
+/* Ensure dropdowns and overlays are visible */
+:deep(.p-select-overlay),
+:deep(.p-select-overlay-panel),
+:deep(.p-dropdown-panel),
+:deep(.p-overlay) {
+    z-index: 9999 !important;
+}
+</style>
+
+<style>
+/* Global styles for overlays - scoped to jsonforms layouts */
+.jsonforms-layout .p-select-overlay,
+.jsonforms-layout ~ .p-select-overlay,
+.jsonforms-layout .p-select-list,
+.jsonforms-layout ~ .p-select-list,
+.jsonforms-layout .p-dropdown-panel,
+.jsonforms-layout ~ .p-dropdown-panel,
+.jsonforms-layout .p-overlay-panel,
+.jsonforms-layout ~ .p-overlay-panel {
+    z-index: 9999 !important;
+    position: absolute !important;
+}
+</style>

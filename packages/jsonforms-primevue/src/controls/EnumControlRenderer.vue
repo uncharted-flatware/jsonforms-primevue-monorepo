@@ -17,6 +17,7 @@
             :options="options"
             :model-value="control.data"
             @update:model-value="onChange"
+            appendTo="self"
         />
     </ControlWrapper>
 </template>
@@ -72,3 +73,56 @@ const options = computed(() => {
     return [];
 });
 </script>
+
+<style>
+/* Global styles for dropdown overlays - scoped to jsonforms components */
+.jsonforms-control .p-select-overlay,
+.jsonforms-control ~ .p-select-overlay,
+.jsonforms-layout .p-select-overlay,
+.jsonforms-layout ~ .p-select-overlay,
+.p-select-overlay.jsonforms-overlay {
+    z-index: 9999 !important;
+    background: var(--surface-0, #ffffff) !important;
+    border: 1px solid var(--surface-border) !important;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.jsonforms-control .p-select-list,
+.jsonforms-control ~ .p-select-list,
+.jsonforms-layout .p-select-list,
+.jsonforms-layout ~ .p-select-list,
+.p-select-list.jsonforms-overlay {
+    z-index: 9999 !important;
+    background: var(--surface-0, #ffffff) !important;
+    padding: 0.25rem 0;
+}
+
+.jsonforms-control .p-select-option,
+.jsonforms-control ~ .p-select-overlay .p-select-option,
+.jsonforms-layout .p-select-option,
+.jsonforms-layout ~ .p-select-overlay .p-select-option {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    background: var(--surface-0, #ffffff);
+}
+
+.jsonforms-control .p-select-option:hover,
+.jsonforms-control ~ .p-select-overlay .p-select-option:hover,
+.jsonforms-layout .p-select-option:hover,
+.jsonforms-layout ~ .p-select-overlay .p-select-option:hover,
+.jsonforms-control .p-select-option[data-p-focused="true"],
+.jsonforms-control ~ .p-select-overlay .p-select-option[data-p-focused="true"],
+.jsonforms-layout .p-select-option[data-p-focused="true"],
+.jsonforms-layout ~ .p-select-overlay .p-select-option[data-p-focused="true"] {
+    background: var(--surface-100, #f8f9fa) !important;
+}
+
+.jsonforms-control .p-select-option[data-p-selected="true"],
+.jsonforms-control ~ .p-select-overlay .p-select-option[data-p-selected="true"],
+.jsonforms-layout .p-select-option[data-p-selected="true"],
+.jsonforms-layout ~ .p-select-overlay .p-select-option[data-p-selected="true"] {
+    background: var(--primary-color, #f02896) !important;
+    color: white !important;
+}
+</style>

@@ -5,7 +5,7 @@ import 'primeicons/primeicons.css';
 import App from '@/App.vue';
 import { createApp } from 'vue';
 import PrimeVue from 'primevue/config';
-import Aura from '@primevue/themes/aura';
+import theme from './theme';
 import Tooltip from 'primevue/tooltip';
 
 const app = createApp(App);
@@ -13,10 +13,11 @@ const app = createApp(App);
 app.use(PrimeVue, { 
     ripple: false,
     theme: {
-        preset: Aura,
+        preset: theme,
         options: {
-            darkModeSelector: false,
-            cssLayer: false
+            prefix: '',
+            cssLayer: true,
+            darkModeSelector: '.dark-mode',
         }
     }
 });

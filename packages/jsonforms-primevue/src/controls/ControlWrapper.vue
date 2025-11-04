@@ -130,24 +130,48 @@ const showAlwaysDescription = computed(() =>
 const containerClasses = computed(() => {
     const labelPlacement = props.appliedOptions?.labelPlacement;
     const layout = props.appliedOptions?.layout;
+    const baseClasses = ['control-wrapper', 'jsonforms-control'];
     
     if (labelPlacement === 'top') {
-        return 'flex flex-column gap-2';
+        baseClasses.push('flex', 'flex-column', 'gap-2');
     } else if (labelPlacement === 'float') {
-        return '';
+        baseClasses.push('');
     } else if (labelPlacement === 'hide') {
-        return '';
+        baseClasses.push('');
     } else if (layout === 'space-between') {
         // For space-between layout, use full width with justify-content-between
-        return 'flex align-items-center justify-content-between w-full';
+        baseClasses.push('flex', 'align-items-center', 'justify-content-between', 'w-full');
     } else {
         // Default layout for left and right label placements
-        return 'flex align-items-center gap-2';
+        baseClasses.push('flex', 'align-items-center', 'gap-2');
     }
+    
+    return baseClasses.join(' ');
 });
 </script>
 
-<style>
+<style scoped>
+.control-wrapper {
+    margin-bottom: 1rem;
+}
+
+.control-wrapper label {
+    font-weight: 500;
+    font-size: var(--text-size-small, 0.875rem);
+    color: var(--text-color);
+    min-width: fit-content;
+}
+
+/* Style the always-visible description with border */
+.control-wrapper .w-full.text-sm {
+    padding: 0.5rem;
+    background: var(--surface-50);
+    border: 1px solid var(--surface-border);
+    border-radius: 4px;
+    font-size: var(--text-size-small, 0.875rem);
+    color: var(--text-color-secondary);
+}
+
 .p-info-icon {
     display: inline-flex;
     align-items: center;
