@@ -135,17 +135,7 @@ const accordionValueForExpansion = computed(() => {
 }
 </style>
 
-<style>
-/* Global styles for overlays - scoped to jsonforms layouts */
-.jsonforms-layout .p-select-overlay,
-.jsonforms-layout ~ .p-select-overlay,
-.jsonforms-layout .p-select-list,
-.jsonforms-layout ~ .p-select-list,
-.jsonforms-layout .p-dropdown-panel,
-.jsonforms-layout ~ .p-dropdown-panel,
-.jsonforms-layout .p-overlay-panel,
-.jsonforms-layout ~ .p-overlay-panel {
-    z-index: 9999 !important;
-    position: absolute !important;
-}
-</style>
+<!-- 
+  Note: Global unscoped styles removed to prevent style pollution.
+  Overlays now inherit from parent app's PrimeVue theme.
+-->
