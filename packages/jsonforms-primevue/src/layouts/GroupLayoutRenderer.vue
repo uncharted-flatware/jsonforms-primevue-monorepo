@@ -1,6 +1,10 @@
 <template>
     <If v-if="asAccordion">
-        <Accordion v-if="layout.visible" :activeIndex="accordionIndexForExpansion">
+        <Accordion 
+            v-if="layout.visible" 
+            :activeIndex="accordionIndexForExpansion"
+            :style="{ width: widthOption }"
+        >
             <AccordionTab :header="layout.label">
                 <div class="flex flex-column align-content-start gap-3">
                     <LayoutElementsDispatcher v-bind="{ ...props }" />
@@ -14,6 +18,7 @@
             :header="layout.label"
             :toggleable="isToggleable"
             :collapsed="isCollapsed"
+            :style="{ width: widthOption }"
         >
             <div class="flex flex-column align-content-start gap-3">
                 <LayoutElementsDispatcher v-bind="{ ...props }" />
@@ -42,6 +47,7 @@ const { appliedOptions, layout } = layoutCommon;
 const asAccordion = computed(() => appliedOptions.value.asAccordion);
 const isToggleable = computed(() => !!appliedOptions.value.isToggleable);
 const isCollapsed = computed(() => appliedOptions.value.isExpanded === false);
+const widthOption = computed(() => appliedOptions.value.width || 'auto');
 
 const accordionIndexForExpansion = computed(() => {
     return appliedOptions.value.isExpanded !== false ? 0 : undefined;
