@@ -14,7 +14,6 @@
             :inputId="control.id + '-input'"
             showTime
             showIcon
-            iconDisplay="input"
             :hourFormat="hourFormat"
             :disabled="!control.enabled"
             :autofocus="appliedOptions.focus"
@@ -36,7 +35,7 @@ import {
 import { computed } from 'vue';
 import { default as ControlWrapper } from './ControlWrapper.vue';
 import { useControlCommon } from "../util/composition";
-import DatePicker from "primevue/calendar";
+import DatePicker from "primevue/datepicker";
 
 const props = defineProps(rendererProps<ControlElement>());
 const controlProps = useJsonFormsControl(props);

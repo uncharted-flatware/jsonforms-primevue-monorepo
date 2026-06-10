@@ -12,7 +12,14 @@ export default defineConfig({
     },
     sourcemap: true,
     rollupOptions: {
-      external: ['vue', '@jsonforms/core', '@jsonforms/vue', 'primevue'],
+      external: [
+        'vue',
+        '@jsonforms/core',
+        '@jsonforms/vue',
+        // Externalize ALL PrimeVue imports - both base and submodules
+        /^primevue\/.*/,
+        'primevue'
+      ],
       output: {
         globals: {
           vue: 'Vue',
