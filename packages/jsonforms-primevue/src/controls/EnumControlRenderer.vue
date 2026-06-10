@@ -8,7 +8,7 @@
         <div v-if="appliedOptions.displayOnly" :class="appliedOptions.compact ? 'text-900' : 'p-3 text-900'">
             {{ control.data || '' }}
         </div>
-        <Dropdown
+        <Select
             v-else
             :inputId="control.id + '-input'"
             :disabled="!control.enabled"
@@ -17,6 +17,7 @@
             :options="options"
             :model-value="control.data"
             @update:model-value="onChange"
+            appendTo="self"
         />
     </ControlWrapper>
 </template>
@@ -32,7 +33,7 @@ import {
 import { computed } from 'vue';
 import { default as ControlWrapper } from './ControlWrapper.vue';
 import { useControlCommon } from "../util/composition";
-import Dropdown from "primevue/dropdown";
+import Select from "primevue/select";
 
 const props = defineProps(rendererProps<ControlElement>());
 const controlProps = useJsonFormsEnumControl(props);
@@ -72,3 +73,8 @@ const options = computed(() => {
     return [];
 });
 </script>
+
+<!-- 
+  Note: Global PrimeVue styles removed - components now inherit from parent app's PrimeVue theme.
+  This prevents style pollution and ensures consistency with the consuming application.
+-->

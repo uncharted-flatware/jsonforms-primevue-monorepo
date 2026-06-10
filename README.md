@@ -3,8 +3,7 @@
 ## Motivation
 
 The JSONForms.io packages include integrations for vanilla HTML and Vuetify, but we need PrimeVue.
-This first version depends on PrimeVue 3.
-(Note PrimeVue 4 has breaking changes.)
+This version supports only PrimeVue 4
 
 ## Packages
 
