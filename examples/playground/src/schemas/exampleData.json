@@ -7,6 +7,17 @@
     "anEnum": "Option 2",
     "aDateTime": "2024-03-25T14:30:00Z",
     "aDuration": "P7D",
+    "rulesDemo": {
+      "showAdvancedSection": false,
+      "advancedSectionNotes": "Visible when “Show advanced section” is enabled",
+      "basicOnlyField": "Hidden when advanced section is shown",
+      "editingAllowed": true,
+      "editableField": "Disabled when “Allow editing” is off",
+      "forceLocked": false,
+      "lockedField": "Enabled unless “Force locked mode” is on",
+      "detailWithoutFailWhenUndefined": "May appear even when optionalCounter is missing from data",
+      "detailWithFailWhenUndefined": "Hidden until optionalCounter is set to 1 or more"
+    },
     "controlWrapper": {
       "defaultPlacement": "Default label placement example",
       "topPlacement": "Top label placement example", 

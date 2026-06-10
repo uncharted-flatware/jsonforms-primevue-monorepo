@@ -80,6 +80,111 @@
     },
     {
       "type": "Group",
+      "label": "UI Schema Rules (SHOW / HIDE / ENABLE / DISABLE)",
+      "options": {
+        "isToggleable": true,
+        "isExpanded": true
+      },
+      "elements": [
+        {
+          "type": "Label",
+          "text": "Toggle “Show advanced section” to exercise SHOW and HIDE on the fields below."
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/testing/properties/rulesDemo/properties/showAdvancedSection"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/testing/properties/rulesDemo/properties/advancedSectionNotes",
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#/properties/testing/properties/rulesDemo/properties/showAdvancedSection",
+              "schema": { "const": true }
+            }
+          }
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/testing/properties/rulesDemo/properties/basicOnlyField",
+          "rule": {
+            "effect": "HIDE",
+            "condition": {
+              "scope": "#/properties/testing/properties/rulesDemo/properties/showAdvancedSection",
+              "schema": { "const": true }
+            }
+          }
+        },
+        {
+          "type": "Label",
+          "text": "Toggle “Allow editing” and “Force locked mode” for DISABLE and ENABLE."
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/testing/properties/rulesDemo/properties/editingAllowed"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/testing/properties/rulesDemo/properties/editableField",
+          "rule": {
+            "effect": "DISABLE",
+            "condition": {
+              "scope": "#/properties/testing/properties/rulesDemo/properties/editingAllowed",
+              "schema": { "const": false }
+            }
+          }
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/testing/properties/rulesDemo/properties/forceLocked"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/testing/properties/rulesDemo/properties/lockedField",
+          "rule": {
+            "effect": "ENABLE",
+            "condition": {
+              "scope": "#/properties/testing/properties/rulesDemo/properties/forceLocked",
+              "schema": { "const": false }
+            }
+          }
+        },
+        {
+          "type": "Label",
+          "text": "optionalCounter is omitted from Example Data so it starts undefined. JSON Schema often validates undefined as matching rules like minimum; failWhenUndefined forces the condition to fail when the scoped value is missing."
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/testing/properties/rulesDemo/properties/optionalCounter"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/testing/properties/rulesDemo/properties/detailWithoutFailWhenUndefined",
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#/properties/testing/properties/rulesDemo/properties/optionalCounter",
+              "schema": { "minimum": 1 }
+            }
+          }
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/testing/properties/rulesDemo/properties/detailWithFailWhenUndefined",
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#/properties/testing/properties/rulesDemo/properties/optionalCounter",
+              "schema": { "minimum": 1 },
+              "failWhenUndefined": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "Group",
       "label": "ControlWrapper Options Showcase",
       "options": {
         "isToggleable": true,
