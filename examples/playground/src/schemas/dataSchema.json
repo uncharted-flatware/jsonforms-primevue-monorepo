@@ -66,6 +66,57 @@
           "title": "Duration",
           "format": "duration"
         },
+        "rulesDemo": {
+          "type": "object",
+          "title": "UI schema rules",
+          "description": "Toggle the booleans below to see SHOW, HIDE, ENABLE, and DISABLE rules in the UI schema",
+          "properties": {
+            "showAdvancedSection": {
+              "type": "boolean",
+              "title": "Show advanced section",
+              "default": false
+            },
+            "advancedSectionNotes": {
+              "type": "string",
+              "title": "Advanced notes (SHOW when toggle is on)"
+            },
+            "basicOnlyField": {
+              "type": "string",
+              "title": "Basic-only field (HIDE when advanced is on)"
+            },
+            "editingAllowed": {
+              "type": "boolean",
+              "title": "Allow editing",
+              "default": true
+            },
+            "editableField": {
+              "type": "string",
+              "title": "Editable field (DISABLE when editing is off)"
+            },
+            "forceLocked": {
+              "type": "boolean",
+              "title": "Force locked mode",
+              "default": false
+            },
+            "lockedField": {
+              "type": "string",
+              "title": "Locked field (ENABLE only when not forced locked)"
+            },
+            "optionalCounter": {
+              "type": "integer",
+              "title": "Optional counter",
+              "description": "Leave unset in Example Data (undefined) or set a number to compare rule behavior"
+            },
+            "detailWithoutFailWhenUndefined": {
+              "type": "string",
+              "title": "SHOW when counter passes { \"minimum\": 1 } (no failWhenUndefined)"
+            },
+            "detailWithFailWhenUndefined": {
+              "type": "string",
+              "title": "SHOW when counter exists and is ≥ 1 (failWhenUndefined: true)"
+            }
+          }
+        },
         "controlWrapper": {
           "type": "object",
           "title": "ControlWrapper Options Showcase",
