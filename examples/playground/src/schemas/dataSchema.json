@@ -385,6 +385,29 @@
         }
       }
     },
+    "middlewareDisplayOnlyDemo": {
+      "type": "object",
+      "title": "Middleware display-only demo",
+      "properties": {
+        "title": {
+          "type": "string",
+          "title": "Title"
+        },
+        "amount": {
+          "type": "number",
+          "title": "Amount"
+        },
+        "approved": {
+          "type": "boolean",
+          "title": "Approved"
+        },
+        "status": {
+          "type": "string",
+          "title": "Status",
+          "enum": ["Draft", "Submitted", "Closed"]
+        }
+      }
+    },
     "ufoSighting": {
       "type": "object",
       "title": "UFO Sighting Report",

@@ -83,7 +83,7 @@
       "label": "UI Schema Rules (SHOW / HIDE / ENABLE / DISABLE)",
       "options": {
         "isToggleable": true,
-        "isExpanded": true
+        "isExpanded": false
       },
       "elements": [
         {
@@ -188,7 +188,7 @@
       "label": "ControlWrapper Options Showcase",
       "options": {
         "isToggleable": true,
-        "isExpanded": true
+        "isExpanded": false
       },
       "elements": [
         {
@@ -319,7 +319,7 @@
           "label": "Space-Between Layout Examples",
           "options": {
             "isToggleable": true,
-            "isExpanded": true
+            "isExpanded": false
           },
           "elements": [
             {
@@ -502,7 +502,7 @@
           "label": "Accordion Example",
           "options": {
             "asAccordion": true,
-            "isExpanded": true
+            "isExpanded": false
           },
           "elements": [
             {
@@ -756,7 +756,7 @@
           "label": "Location Information",
           "options": {
             "isToggleable": true,
-            "isExpanded": true
+            "isExpanded": false
           },
           "elements": [
             {
@@ -793,7 +793,7 @@
           "label": "UFO Characteristics",
           "options": {
             "isToggleable": true,
-            "isExpanded": true
+            "isExpanded": false
           },
           "elements": [
             {
@@ -839,7 +839,7 @@
           "label": "Weather Conditions",
           "options": {
             "isToggleable": true,
-            "isExpanded": true
+            "isExpanded": false
           },
           "elements": [
             {
@@ -906,7 +906,7 @@
       "label": "Custom Renderers",
       "options": {
         "isToggleable": true,
-        "isExpanded": true
+        "isExpanded": false
       },
       "elements": [
         {
@@ -995,7 +995,7 @@
       "label": "Table Display Examples",
       "options": {
         "isToggleable": true,
-        "isExpanded": true
+        "isExpanded": false
       },
       "elements": [
         {
@@ -1047,7 +1047,7 @@
       "label": "References with Values",
       "options": {
         "isToggleable": true,
-        "isExpanded": true
+        "isExpanded": false
       },
       "elements": [
         {
@@ -1100,7 +1100,7 @@
       "label": "References with Values (Display Only)",
       "options": {
         "isToggleable": true,
-        "isExpanded": true
+        "isExpanded": false
       },
       "elements": [
         {
@@ -1142,6 +1142,43 @@
           }
         }
       ]
+    },
+    {
+      "type": "Group",
+      "label": "Middleware: displayOnly on INIT",
+      "options": {
+        "isToggleable": true,
+        "isExpanded": false
+      },
+      "elements": [
+        {
+          "type": "Label",
+          "text": "These controls omit displayOnly in the UI schema. Playground middleware applies it on INIT for this section only."
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/middlewareDisplayOnlyDemo/properties/title",
+          "options": {
+            "placeholder": "Would be editable without middleware"
+          }
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/middlewareDisplayOnlyDemo/properties/amount",
+          "options": {
+            "prefix": "$",
+            "suffix": " USD"
+          }
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/middlewareDisplayOnlyDemo/properties/approved"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/middlewareDisplayOnlyDemo/properties/status"
+        }
+      ]
     }
   ]
-} 
+}

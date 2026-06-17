@@ -16,4 +16,6 @@ Defines the UI layout and rendering instructions for input forms using JSON Form
 The **UI Schema Rules (SHOW / HIDE / ENABLE / DISABLE)** group demonstrates conditional visibility and enabled state via `rule` on controls (see [JSON Forms rules](https://jsonforms.io/docs/uischema/rules)).
 
 ### `exampleData.json`
-Contains sample data that matches the schema definitions. 
+Contains sample data that matches the schema definitions.
+
+The **Middleware: displayOnly on INIT** group uses `middlewareDisplayOnlyDemo` in the data schema. Its UI schema omits `displayOnly`; `examples/playground/src/middleware/displayOnlyOnInitMiddleware.ts` applies it on INIT for that scope only.

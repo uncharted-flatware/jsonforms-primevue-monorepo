@@ -104,6 +104,12 @@
       }
     ]
   },
+  "middlewareDisplayOnlyDemo": {
+    "title": "Quarterly review (read-only via middleware)",
+    "amount": 4250.5,
+    "approved": true,
+    "status": "Submitted"
+  },
   "ufoSighting": {
     "sightingId": "UFO-2024-001",
     "dateTime": "2024-03-25T21:30:00Z",

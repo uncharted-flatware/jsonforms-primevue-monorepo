@@ -19,6 +19,7 @@ import InputText from 'primevue/inputtext';
 import dataSchemaJson from './schemas/dataSchema.json';
 import uiSchemaJson from './schemas/uiSchema.json';
 import exampleDataJson from './schemas/exampleData.json';
+import { playgroundDisplayOnlyOnInitMiddleware } from './middleware/displayOnlyOnInitMiddleware';
 
 // mergeStyles combines all classes from both styles definitions into one
 const myStyles = mergeStyles(defaultStyles, { control: { label: "mylabel" } });
@@ -121,6 +122,7 @@ function onFormChanged(event: JsonFormsChangeEvent) {
                     :renderers="renderers"
                     :schema="dataSchema"
                     :uischema="uiSchema"
+                    :middleware="playgroundDisplayOnlyOnInitMiddleware"
                     @change="onFormChanged"
                     :ajv="handleDefaultsAjv"
                 />
