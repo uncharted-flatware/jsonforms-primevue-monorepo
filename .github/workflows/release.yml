@@ -47,4 +47,4 @@ jobs:
         working-directory: packages/jsonforms-primevue
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: yarn npm publish --access public --provenance
+        run: npm publish --access public --provenance
