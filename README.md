@@ -25,7 +25,7 @@ First npm release uses manifest bootstrap (`1.0.0` last released → **1.1.0** i
 
 ## Development
 
-Setup:
+Setup (Node.js 24 or newer; see `.nvmrc`):
 
 ```bash
 corepack enable

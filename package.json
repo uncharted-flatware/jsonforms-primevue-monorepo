@@ -1,12 +1,11 @@
 {
   "name": "@uncharted.software/jsonforms-primevue-monorepo",
-  "private": true,
   "version": "1.1.0",
   "description": "Monorepo for jsonforms-primevue package and example(s)",
   "author": "Derek Gray",
   "license": "Apache-2.0",
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
   },
   "packageManager": "yarn@4.7.0",
   "workspaces": [
