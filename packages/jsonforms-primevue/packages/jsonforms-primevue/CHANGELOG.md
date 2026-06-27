@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.3](https://github.com/unchartedsoftware/jsonforms-primevue-monorepo/compare/jsonforms-primevue-v1.1.2...jsonforms-primevue-v1.1.3) (2026-06-27)
+
+
+### Bug Fixes
+
+* re-trigger publish again ([59cc5c8](https://github.com/unchartedsoftware/jsonforms-primevue-monorepo/commit/59cc5c8f2f095b8607ef4d86a172d3452cdc7dc3))
+
 ## [1.1.2](https://github.com/unchartedsoftware/jsonforms-primevue-monorepo/compare/jsonforms-primevue-v1.1.1...jsonforms-primevue-v1.1.2) (2026-06-27)
 
 
