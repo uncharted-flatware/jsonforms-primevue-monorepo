@@ -10,6 +10,19 @@ This version supports only PrimeVue 4
 See the library [package README](./packages/jsonforms-primevue/README.md) for usage details.
 See the [playground](./examples/playground/README.md) for a live example to test your schemas.
 
+**Live playground:** https://unchartedsoftware.github.io/jsonforms-primevue-monorepo/
+
+## Releases and CI
+
+Pushes to `main` run [Release Please](https://github.com/googleapis/release-please) (opens release PRs; merging publishes `@unchartedsoftware/jsonforms-primevue` to npm) and deploy the playground to GitHub Pages.
+
+One-time setup:
+
+- **npm:** Add repo secret `NPM_TOKEN` (granular token with publish access to `@unchartedsoftware/jsonforms-primevue`).
+- **GitHub Pages:** Repo **Settings → Pages → Build and deployment → Source:** GitHub Actions.
+
+First npm release uses manifest bootstrap (`1.0.0` last released → **1.1.0** in the first Release PR). Use [Conventional Commits](https://www.conventionalcommits.org/) on `main` for later semver bumps.
+
 ## Development
 
 Setup:

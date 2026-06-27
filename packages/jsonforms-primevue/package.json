@@ -1,22 +1,59 @@
 {
   "name": "@unchartedsoftware/jsonforms-primevue",
   "version": "1.1.0",
-  "description": "PrimeVue renderers for JSON-Forms",
+  "description": "Vue 3 renderer set for JSON Forms (jsonforms.io) using PrimeVue 4",
   "type": "module",
-  "main": "dist/jsonforms-primevue.umd.js",
+  "main": "dist/jsonforms-primevue.cjs",
   "module": "dist/jsonforms-primevue.es.js",
   "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/jsonforms-primevue.es.js",
+      "require": "./dist/jsonforms-primevue.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "homepage": "https://unchartedsoftware.github.io/jsonforms-primevue-monorepo/",
+  "bugs": {
+    "url": "https://github.com/unchartedsoftware/jsonforms-primevue-monorepo/issues"
+  },
   "keywords": [
     "jsonforms",
-    "vue",
+    "json-forms",
+    "jsonforms.io",
     "primevue",
+    "primevue4",
+    "vue",
+    "vue3",
+    "vue-component",
     "json-schema",
+    "jsonschema",
     "uischema",
+    "ui-schema",
     "forms",
-    "library"
+    "dynamic-forms",
+    "form-renderer",
+    "schema-driven"
   ],
-  "author": "Derek Gray",
+  "author": "Derek Gray (Uncharted Software)",
   "license": "Apache-2.0",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unchartedsoftware/jsonforms-primevue-monorepo.git",
+    "directory": "packages/jsonforms-primevue"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "engines": {
     "node": ">=20"
   },

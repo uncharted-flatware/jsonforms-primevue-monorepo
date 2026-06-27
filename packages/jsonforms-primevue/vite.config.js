@@ -8,7 +8,8 @@ export default defineConfig({
     lib: {
       entry: './src/index.ts',
       name: 'JsonFormsPrimeVue',
-      fileName: (format) => `jsonforms-primevue.${format}.js`,
+      fileName: (format) =>
+        format === 'umd' ? 'jsonforms-primevue.cjs' : `jsonforms-primevue.${format}.js`,
     },
     sourcemap: true,
     rollupOptions: {
