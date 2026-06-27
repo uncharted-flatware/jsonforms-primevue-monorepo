@@ -1055,15 +1055,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@unchartedsoftware/jsonforms-playground@workspace:examples/playground":
+"@uncharted.software/jsonforms-playground@workspace:examples/playground":
   version: 0.0.0-use.local
-  resolution: "@unchartedsoftware/jsonforms-playground@workspace:examples/playground"
+  resolution: "@uncharted.software/jsonforms-playground@workspace:examples/playground"
   dependencies:
     "@jsonforms/core": "npm:3.5.1"
     "@jsonforms/vue": "npm:3.5.1"
     "@jsonforms/vue-vanilla": "npm:3.5.1"
     "@types/node": "npm:^22.5.5"
-    "@unchartedsoftware/jsonforms-primevue": "workspace:*"
+    "@uncharted.software/jsonforms-primevue": "workspace:*"
     "@vitejs/plugin-vue": "npm:^5.2.3"
     highlight.js: "npm:11.8.0"
     oxlint: "npm:^0.16.12"
@@ -1082,9 +1082,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@unchartedsoftware/jsonforms-primevue-monorepo@workspace:.":
+"@uncharted.software/jsonforms-primevue-monorepo@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@unchartedsoftware/jsonforms-primevue-monorepo@workspace:."
+  resolution: "@uncharted.software/jsonforms-primevue-monorepo@workspace:."
   dependencies:
     "@primevue/themes": "npm:^4.4.1"
     "@types/lodash-es": "npm:^4.17.12"
@@ -1092,9 +1092,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@unchartedsoftware/jsonforms-primevue@workspace:*, @unchartedsoftware/jsonforms-primevue@workspace:packages/jsonforms-primevue":
+"@uncharted.software/jsonforms-primevue@workspace:*, @uncharted.software/jsonforms-primevue@workspace:packages/jsonforms-primevue":
   version: 0.0.0-use.local
-  resolution: "@unchartedsoftware/jsonforms-primevue@workspace:packages/jsonforms-primevue"
+  resolution: "@uncharted.software/jsonforms-primevue@workspace:packages/jsonforms-primevue"
   dependencies:
     "@jsonforms/core": "npm:^3.5.1"
     "@jsonforms/vue": "npm:^3.5.1"

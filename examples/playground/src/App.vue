@@ -13,7 +13,7 @@ import 'highlight.js';
 // @ts-ignore
 import CodeEditor from 'simple-code-editor';
 import 'primeicons/primeicons.css';
-import primeVueRenderers from '@unchartedsoftware/jsonforms-primevue';
+import primeVueRenderers from '@uncharted.software/jsonforms-primevue';
 import { customRenderers } from './renderers';
 import InputText from 'primevue/inputtext';
 import dataSchemaJson from './schemas/dataSchema.json';

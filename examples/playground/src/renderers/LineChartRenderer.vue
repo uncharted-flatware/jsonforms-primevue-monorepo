@@ -17,7 +17,7 @@
 import { computed, ref, watch, onMounted, nextTick } from 'vue';
 import { type ControlElement } from '@jsonforms/core';
 import { rendererProps, useJsonFormsControl } from '@jsonforms/vue';
-import { ControlWrapper, useControlCommon } from '@unchartedsoftware/jsonforms-primevue';
+import { ControlWrapper, useControlCommon } from '@uncharted.software/jsonforms-primevue';
 import * as vegaEmbed from 'vega-embed';
 import type { TopLevelSpec } from 'vega-lite';
 

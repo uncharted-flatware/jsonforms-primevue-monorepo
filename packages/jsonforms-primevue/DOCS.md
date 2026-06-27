@@ -30,7 +30,7 @@ To use JSONForms PrimeVue in your application, you need to import the renderer s
 
 ```typescript
 import { JsonForms } from "@jsonforms/vue";
-import primeVueRenderers from "@unchartedsoftware/jsonforms-primevue";
+import primeVueRenderers from "@uncharted.software/jsonforms-primevue";
 import PrimeVue from 'primevue/config';
 import Tooltip from 'primevue/tooltip';
 

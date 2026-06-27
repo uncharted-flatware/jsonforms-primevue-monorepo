@@ -14,11 +14,11 @@ See the [playground](./examples/playground/README.md) for a live example to test
 
 ## Releases and CI
 
-Pushes to `main` run [Release Please](https://github.com/googleapis/release-please) (opens release PRs; merging publishes `@unchartedsoftware/jsonforms-primevue` to npm) and deploy the playground to GitHub Pages.
+Pushes to `main` run [Release Please](https://github.com/googleapis/release-please) (opens release PRs; merging publishes `@uncharted.software/jsonforms-primevue` to npm) and deploy the playground to GitHub Pages.
 
 One-time setup:
 
-- **npm:** Add repo secret `NPM_TOKEN` (granular token with publish access to `@unchartedsoftware/jsonforms-primevue`).
+- **npm:** Add repo secret `NPM_TOKEN` (granular token with publish access to `@uncharted.software/jsonforms-primevue`).
 - **GitHub Pages:** Repo **Settings → Pages → Build and deployment → Source:** GitHub Actions.
 
 First npm release uses manifest bootstrap (`1.0.0` last released → **1.1.0** in the first Release PR). Use [Conventional Commits](https://www.conventionalcommits.org/) on `main` for later semver bumps.

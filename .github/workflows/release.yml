@@ -40,7 +40,7 @@ jobs:
 
       - name: Build Library
         if: ${{ steps.release.outputs['packages/jsonforms-primevue--release_created'] == 'true' }}
-        run: yarn workspace @unchartedsoftware/jsonforms-primevue run build
+        run: yarn workspace @uncharted.software/jsonforms-primevue run build
 
       - name: Publish to npm
         if: ${{ steps.release.outputs['packages/jsonforms-primevue--release_created'] == 'true' }}

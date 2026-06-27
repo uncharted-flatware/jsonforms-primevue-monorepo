@@ -34,10 +34,10 @@ jobs:
         run: yarn install --immutable
 
       - name: Build Library
-        run: yarn workspace @unchartedsoftware/jsonforms-primevue run build
+        run: yarn workspace @uncharted.software/jsonforms-primevue run build
 
       - name: Build Playground for Pages
-        run: yarn workspace @unchartedsoftware/jsonforms-playground run build:pages
+        run: yarn workspace @uncharted.software/jsonforms-playground run build:pages
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
