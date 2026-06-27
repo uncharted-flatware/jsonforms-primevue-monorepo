@@ -3,14 +3,14 @@
   "version": "1.1.0",
   "description": "Vue 3 renderer set for JSON Forms (jsonforms.io) using PrimeVue 4",
   "type": "module",
-  "main": "dist/jsonforms-primevue.umd.js",
+  "main": "dist/jsonforms-primevue.cjs",
   "module": "dist/jsonforms-primevue.es.js",
   "types": "dist/types/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
       "import": "./dist/jsonforms-primevue.es.js",
-      "require": "./dist/jsonforms-primevue.umd.js"
+      "require": "./dist/jsonforms-primevue.cjs"
     },
     "./package.json": "./package.json"
   },
