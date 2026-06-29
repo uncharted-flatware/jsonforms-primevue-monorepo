@@ -30,12 +30,17 @@ function shouldApplyDisplayOnly(
   return !!scope && scope.startsWith(scopePrefix);
 }
 
+/** UI schemas from Vue props are reactive proxies; `structuredClone` cannot copy those. */
+function cloneUiSchema(uischema: UISchemaElement): UiElementWithChildren {
+  return JSON.parse(JSON.stringify(uischema)) as UiElementWithChildren;
+}
+
 /** Recursively set `displayOnly: true` on matching Control elements in a UI schema. */
 export function applyDisplayOnlyToControls(
   uischema: UISchemaElement,
   options?: ApplyDisplayOnlyOptions
 ): UISchemaElement {
-  const clone = structuredClone(uischema) as UiElementWithChildren;
+  const clone = cloneUiSchema(uischema);
   visitUiSchemaElement(clone, options?.scopePrefix);
   return clone;
 }

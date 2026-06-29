@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { reactive } from 'vue';
 import { INIT, Actions, coreReducer } from '@jsonforms/core';
 import {
   applyDisplayOnlyToControls,
@@ -32,6 +33,17 @@ describe('displayOnlyOnInitMiddleware', () => {
       expect(control.options.displayOnly).toBe(true);
     }
     expect(controls[1].options.prefix).toBe('$');
+  });
+
+  it('accepts Vue reactive UI schema (UPDATE_CORE path in playground)', () => {
+    const uischema = reactive({
+      type: 'Control',
+      scope: '#/properties/a',
+    });
+
+    expect(() => applyDisplayOnlyToControls(uischema as any)).not.toThrow();
+    const result = applyDisplayOnlyToControls(uischema as any);
+    expect((result as any).options.displayOnly).toBe(true);
   });
 
   it('sets displayOnly only for controls under a scope prefix', () => {
