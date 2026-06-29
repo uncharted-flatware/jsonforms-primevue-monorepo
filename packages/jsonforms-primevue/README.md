@@ -2,14 +2,20 @@
 
 ## Motivation
 
-The JSONForms.io packages include integrations for vanilla HTML and Veutify, but we need PrimeVue.
-This first version depends on PrimeVue 3.
-(Note PrimeVue 4 has breaking changes.)
+The JSONForms.io packages include integrations for vanilla HTML and Veutify, but we needed PrimeVue.
+In addition, we needed to support other new options such as:
+ - Display-only mode: Rather than just 'disabling' the control, we want to display the control as a read-only text display
+   - Allows JSONForms to be used not only to describe Input forms, but also to describe Output displays
+ - Label controls as captioned images
+ - Description display (always, tooltip)
+ - Layout options (default, space-between)
+ - Number control options (step, prefix, suffix)
+ - Date/Time control options (hourFormat)
 
 ## Installation
 
 ```bash
-yarn add @uncharted.software/jsonforms-primevue @jsonforms/core @jsonforms/vue primevue@3.50.0 primeflex
+yarn add @uncharted.software/jsonforms-primevue @jsonforms/core @jsonforms/vue primevue primeflex
 ```
 
 ## Usage
@@ -73,8 +79,9 @@ For detailed documentation on all available components, options, and customizati
  - [x] Group Layout renderer (with toggleable option to render as an accordion)
  - [x] HorizontalLayout / VerticalLayout styling
    - [ ] Wrap/no-wrap or grid type support
+ - [x] Tables
  - [ ] Error / invalid state feedback
- - [ ] Rules
-   - [ ] Disable 
-   - [ ] Visibility
+ - [x] Rules
+   - [x] Disable 
+   - [x] Visibility
  - [x] Image display (option on Label)

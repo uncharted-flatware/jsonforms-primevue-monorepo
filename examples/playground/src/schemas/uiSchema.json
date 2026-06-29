@@ -708,7 +708,7 @@
           "type": "Label",
           "text": "Label with Image",
           "options": {
-            "imageUrl": "/saucer.png",
+            "imageUrl": "saucer.png",
             "imageWidth": 200,
             "imageHeight": 200
           }
@@ -727,7 +727,7 @@
           "type": "Label",
           "text": "UFO Sighting Report",
           "options": {
-            "imageUrl": "/saucer.png",
+            "imageUrl": "saucer.png",
             "imageWidth": 200,
             "imageHeight": 200
           }

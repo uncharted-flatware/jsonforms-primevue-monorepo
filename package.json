@@ -24,5 +24,8 @@
   },
   "devDependencies": {
     "@types/lodash-es": "^4.17.12"
+  },
+  "resolutions": {
+    "@primeuix/styled": "0.7.4"
   }
 }

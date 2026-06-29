@@ -18,7 +18,7 @@
             :disabled="!control.enabled"
             :autofocus="appliedOptions.focus"
             :placeholder="appliedOptions.placeholder"
-            :model-value="control.data"
+            :model-value="datePickerValue"
             @update:model-value="onChange"
         />
     </ControlWrapper>
@@ -35,6 +35,7 @@ import {
 import { computed } from 'vue';
 import { default as ControlWrapper } from './ControlWrapper.vue';
 import { useControlCommon } from "../util/composition";
+import { jsonFormsDateTimeToDate } from '../util/dateTime';
 import DatePicker from "primevue/datepicker";
 
 const props = defineProps(rendererProps<ControlElement>());
@@ -55,6 +56,8 @@ const {
 const hourFormat = computed(() => {
     return appliedOptions.value.hourFormat === '24' ? '24' : '12';
 });
+
+const datePickerValue = computed(() => jsonFormsDateTimeToDate(control.value.data));
 
 const formattedDate = computed(() => {
     if (!control.value.data) {

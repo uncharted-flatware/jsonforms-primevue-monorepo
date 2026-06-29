@@ -4,6 +4,10 @@ import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
   plugins: [vue()],
+  test: {
+    environment: 'node',
+    include: ['src/**/*.test.ts'],
+  },
   build: {
     lib: {
       entry: './src/index.ts',
@@ -22,11 +26,16 @@ export default defineConfig({
         'primevue'
       ],
       output: {
-        globals: {
-          vue: 'Vue',
-          '@jsonforms/core': 'JsonFormsCore',
-          '@jsonforms/vue': 'JsonFormsVue',
-          primevue: 'PrimeVue',
+        globals(id) {
+          if (id === 'vue') return 'Vue';
+          if (id === '@jsonforms/core') return 'JsonFormsCore';
+          if (id === '@jsonforms/vue') return 'JsonFormsVue';
+          if (id === 'primevue') return 'PrimeVue';
+          if (id.startsWith('primevue/')) {
+            const segment = id.slice('primevue/'.length).split('/').pop() ?? '';
+            return segment.charAt(0).toUpperCase() + segment.slice(1);
+          }
+          return id;
         },
         exports: 'named'
       },

@@ -19,6 +19,7 @@ This documentation provides detailed information about the JSONForms PrimeVue re
   - [Group Layout](#group-layout)
   - [Horizontal Layout](#horizontal-layout)
   - [Vertical Layout](#vertical-layout)
+  - [Label](#label)
 - [Common Options](#common-options)
   - [Label Placement](#label-placement)
   - [Description Display](#description-display)
@@ -630,6 +631,46 @@ The Vertical Layout arranges elements vertically.
   ]
 }
 ```
+
+### Label
+
+The Label element displays static text in the form. It does not bind to schema data. Use it for section headings, instructions, or decorative content.
+
+**UI Schema Example (text only):**
+
+```json
+{
+  "type": "Label",
+  "text": "Personal details"
+}
+```
+
+**UI Schema Example (text with image):**
+
+When `options.imageUrl` is set, the label renders as a centered image inside a card, with the label text shown below the image and used as the image `alt` text.
+
+```json
+{
+  "type": "Label",
+  "text": "UFO Sighting Report",
+  "options": {
+    "imageUrl": "saucer.png",
+    "imageWidth": 200,
+    "imageHeight": 200
+  }
+}
+```
+
+**Options:**
+
+- `imageUrl`: URL of the image to display. When present, the label uses the image layout instead of plain text.
+- `imageWidth`: Optional width in pixels (applied to the `<img>` element).
+- `imageHeight`: Optional height in pixels (applied to the `<img>` element).
+
+**Notes:**
+
+- Image URLs are resolved like any static asset in your app (e.g. paths under `public/` in Vite). Use a relative path (e.g. `saucer.png`) or a full URL; a leading slash (`/saucer.png`) points at the site root and breaks when the app is hosted under a subpath (such as GitHub Pages project sites).
+- Label visibility follows the same JSON Forms rules as other UI elements (including rule-based show/hide).
 
 ## Common Options
 
