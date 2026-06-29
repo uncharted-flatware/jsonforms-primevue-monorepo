@@ -13,3 +13,5 @@
 **/dist/
 
 packages/jsonforms-primevue/tsconfig.tsbuildinfo
+
+.cursor/
