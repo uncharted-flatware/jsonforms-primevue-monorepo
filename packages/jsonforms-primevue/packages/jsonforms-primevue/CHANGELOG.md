@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.6](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/compare/jsonforms-primevue-v1.1.5...jsonforms-primevue-v1.1.6) (2026-06-29)
+
+
+### Bug Fixes
+
+* new repo URL in package.json ([c893181](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/commit/c893181bdd84a0fd0d3883161f0c799498e032a5))
+* re-trigger publish ([6a537e2](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/commit/6a537e260db6beb3fb025fd1cfa3cd9711c98132))
+
 ## [1.1.5](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/compare/jsonforms-primevue-v1.1.4...jsonforms-primevue-v1.1.5) (2026-06-29)
 
 
