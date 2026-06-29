@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.5](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/compare/jsonforms-primevue-v1.1.4...jsonforms-primevue-v1.1.5) (2026-06-29)
+
+
+### Bug Fixes
+
+* re-trigger publish ([27ffd45](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/commit/27ffd453289642c8b57c2cb46ffb7cc13c1b4a6a))
+* upgrade to PrimeVue 4.4, fixing Date picker, and image display ([28bbf25](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/commit/28bbf25ff6537821668c7feb368d87a2eda8818c))
+
 ## [1.1.4](https://github.com/unchartedsoftware/jsonforms-primevue-monorepo/compare/jsonforms-primevue-v1.1.3...jsonforms-primevue-v1.1.4) (2026-06-27)
 
 
