@@ -10,7 +10,7 @@ This version supports only PrimeVue 4
 See the library [package README](./packages/jsonforms-primevue/README.md) for usage details.
 See the [playground](./examples/playground/README.md) for a live example to test your schemas.
 
-**Live playground:** https://unchartedsoftware.github.io/jsonforms-primevue-monorepo/
+**Live playground:** https://uncharted-flatware.github.io/jsonforms-primevue-monorepo/
 
 ## Releases and CI
 

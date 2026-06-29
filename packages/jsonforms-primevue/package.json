@@ -17,9 +17,9 @@
   "sideEffects": [
     "**/*.css"
   ],
-  "homepage": "https://unchartedsoftware.github.io/jsonforms-primevue-monorepo/",
+  "homepage": "https://uncharted-flatware.github.io/jsonforms-primevue-monorepo/",
   "bugs": {
-    "url": "https://github.com/unchartedsoftware/jsonforms-primevue-monorepo/issues"
+    "url": "https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/issues"
   },
   "keywords": [
     "jsonforms",
@@ -48,7 +48,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/unchartedsoftware/jsonforms-primevue-monorepo.git",
+    "url": "git+https://github.com/uncharted-flatware/jsonforms-primevue-monorepo.git",
     "directory": "packages/jsonforms-primevue"
   },
   "publishConfig": {
