@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/compare/jsonforms-primevue-v1.2.0...jsonforms-primevue-v1.3.0) (2026-06-30)
+
+
+### Features
+
+* format enums as radio buttons ([#38](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/issues/38)) ([494341c](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/commit/494341c3b01bb89af9f10df5b38e3d3c72c49a7f))
+
 ## [1.2.0](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/compare/jsonforms-primevue-v1.1.6...jsonforms-primevue-v1.2.0) (2026-06-30)
 
 
