@@ -8,6 +8,29 @@
         <div v-if="appliedOptions.displayOnly" :class="appliedOptions.compact ? 'text-900' : 'p-3 text-900'">
             {{ control.data || '' }}
         </div>
+        <RadioButtonGroup
+            v-else-if="isRadioFormat"
+            :name="control.id + '-radio-group'"
+            :model-value="control.data"
+            class="flex flex-column gap-2"
+            @update:model-value="onChange"
+        >
+            <div
+                v-for="(option, index) in options"
+                :key="String(option)"
+                class="flex align-items-center gap-2"
+            >
+                <RadioButton
+                    :input-id="control.id + '-radio-' + index"
+                    :value="option"
+                    :disabled="!control.enabled"
+                />
+                <label
+                    :for="control.id + '-radio-' + index"
+                    class="cursor-pointer"
+                >{{ option }}</label>
+            </div>
+        </RadioButtonGroup>
         <Select
             v-else
             :inputId="control.id + '-input'"
@@ -33,7 +56,10 @@ import {
 import { computed } from 'vue';
 import { default as ControlWrapper } from './ControlWrapper.vue';
 import { useControlCommon } from "../util/composition";
+import { getEnumValuesFromControl } from '../util/enumOptions';
 import Select from "primevue/select";
+import RadioButton from 'primevue/radiobutton';
+import RadioButtonGroup from 'primevue/radiobuttongroup';
 
 const props = defineProps(rendererProps<ControlElement>());
 const controlProps = useJsonFormsEnumControl(props);
@@ -47,30 +73,14 @@ const {
     onChange
 } = controlCommon;
 
-const options = computed(() => {
+const isRadioFormat = computed(() => appliedOptions.value.format === 'radio');
 
-    // FIRST: Check schema.enum - this should be the primary source
-    if (control.value.schema && control.value.schema.enum) {
-        return control.value.schema.enum;
+const options = computed(() => {
+    const values = getEnumValuesFromControl(control.value);
+    if (values.length === 0) {
+        console.warn('No enum options found for:', control.value.path);
     }
-    
-    // SECOND: Use JSONForms control options if available (for compatibility)
-    if (control.value.options && control.value.options.length > 0) {
-        return control.value.options.map(option => option.value);
-    }
-    
-    // THIRD: Check for oneOf enum pattern
-    if (control.value.schema && control.value.schema.oneOf) {
-        const enumValues = control.value.schema.oneOf
-            .filter((item: any) => item.const !== undefined)
-            .map((item: any) => item.const);
-        if (enumValues.length > 0) {
-            return enumValues;
-        }
-    }
-    
-    console.warn('No enum options found for:', control.value.path);
-    return [];
+    return values;
 });
 </script>
 

@@ -9,6 +9,9 @@ export interface Options {
 
     // Relevant to most controls
     labelPlacement?: 'left' | 'right' | 'float' | 'hide' | 'top';
+
+    /** Enum controls: `select` (default) or `radio` */
+    format?: 'select' | 'radio';
     
     // Layout options
     layout?: 'default' | 'space-between';

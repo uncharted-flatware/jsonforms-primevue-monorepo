@@ -37,6 +37,16 @@
             "Option 3"
           ]
         },
+        "anEnumRadio": {
+          "type": "string",
+          "title": "Enum Radio Value",
+          "description": "The same choices rendered as radio buttons",
+          "enum": [
+            "Option 1",
+            "Option 2",
+            "Option 3"
+          ]
+        },
         "aDateTime": {
           "type": "string",
           "title": "Date Time",

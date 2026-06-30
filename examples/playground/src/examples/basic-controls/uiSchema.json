@@ -46,11 +46,22 @@
     },
     {
       "type": "Label",
-      "text": "Enum Control"
+      "text": "Enum Control (Dropdown)"
     },
     {
       "type": "Control",
       "scope": "#/properties/testing/properties/anEnum"
+    },
+    {
+      "type": "Label",
+      "text": "Enum Control (Radio)"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/anEnumRadio",
+      "options": {
+        "format": "radio"
+      }
     },
     {
       "type": "Label",
