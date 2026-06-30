@@ -1,0 +1,91 @@
+{
+  "type": "object",
+  "definitions": {},
+  "properties": {
+    "testing": {
+      "type": "object",
+      "properties": {
+        "controlWrapper": {
+          "type": "object",
+          "title": "ControlWrapper Options Showcase",
+          "description": "Demonstrates all available options for the ControlWrapper component",
+          "required": [
+            "requiredField"
+          ],
+          "properties": {
+            "defaultPlacement": {
+              "type": "string",
+              "title": "Default Label Placement",
+              "description": "This field uses the default label placement (left)"
+            },
+            "topPlacement": {
+              "type": "string",
+              "title": "Top Label Placement",
+              "description": "This field has the label placed on top"
+            },
+            "rightPlacement": {
+              "type": "string",
+              "title": "Right Label Placement",
+              "description": "This field has the label on the right side"
+            },
+            "floatPlacement": {
+              "type": "string",
+              "title": "Float Label Placement",
+              "description": "This field uses a floating label"
+            },
+            "hiddenLabel": {
+              "type": "string",
+              "title": "Hidden Label",
+              "description": "This field has no visible label"
+            },
+            "tooltipDescription": {
+              "type": "string",
+              "title": "Tooltip Description",
+              "description": "This description appears as a tooltip when hovering over the info icon"
+            },
+            "alwaysDescription": {
+              "type": "string",
+              "title": "Always Visible Description",
+              "description": "This description is always visible below the field"
+            },
+            "requiredField": {
+              "type": "string",
+              "title": "Required Field",
+              "description": "This field demonstrates required styling"
+            },
+            "visibleField": {
+              "type": "string",
+              "title": "Visible Field",
+              "description": "This field demonstrates visibility control"
+            },
+            "focusedField": {
+              "type": "string",
+              "title": "Focused Field",
+              "description": "This field demonstrates focus state"
+            },
+            "spaceBetweenLeft": {
+              "type": "string",
+              "title": "Space Between (Left Label)",
+              "description": "Label on left, field on right with space between"
+            },
+            "spaceBetweenRight": {
+              "type": "string",
+              "title": "Space Between (Right Label)",
+              "description": "Field on left, label on right with space between"
+            },
+            "spaceBetweenShort": {
+              "type": "string",
+              "title": "Short",
+              "description": "Short label with space-between layout"
+            },
+            "spaceBetweenLong": {
+              "type": "string",
+              "title": "Very Long Label Name That Takes Up More Space",
+              "description": "Long label with space-between layout"
+            }
+          }
+        }
+      }
+    }
+  }
+}

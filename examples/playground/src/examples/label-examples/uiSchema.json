@@ -1,0 +1,18 @@
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Label",
+      "text": "Basic Label Example"
+    },
+    {
+      "type": "Label",
+      "text": "Label with Image",
+      "options": {
+        "imageUrl": "saucer.png",
+        "imageWidth": 200,
+        "imageHeight": 200
+      }
+    }
+  ]
+}

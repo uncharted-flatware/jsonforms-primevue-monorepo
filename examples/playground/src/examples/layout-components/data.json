@@ -1,0 +1,6 @@
+{
+  "testing": {
+    "aString": "Example string value",
+    "aNumber": 1234.56
+  }
+}

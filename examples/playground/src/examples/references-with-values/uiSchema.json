@@ -1,0 +1,48 @@
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Control",
+      "scope": "#/properties/temp/properties/references with values",
+      "options": {
+        "elementLabelProp": "ref.id",
+        "emptyMessage": "No references added yet",
+        "labelPlacement": "top",
+        "showSortButtons": true,
+        "detail": {
+          "type": "HorizontalLayout",
+          "options": {
+            "isWrappingEnabled": true
+          },
+          "elements": [
+            {
+              "type": "Control",
+              "scope": "#/properties/ref/properties/type",
+              "options": {
+                "placeholder": "Enter reference type",
+                "labelPlacement": "hide"
+              }
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/ref/properties/id",
+              "options": {
+                "placeholder": "Enter reference ID",
+                "labelPlacement": "hide"
+              }
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/value",
+              "options": {
+                "prefix": "$",
+                "suffix": " USD",
+                "labelPlacement": "hide"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

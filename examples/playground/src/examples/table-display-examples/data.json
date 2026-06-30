@@ -1,0 +1,43 @@
+{
+  "testing": {
+    "tasks": [
+      {
+        "name": "Setup Development Environment",
+        "priority": "High",
+        "isCompleted": false,
+        "dueDate": "2024-03-26T09:00:00Z"
+      },
+      {
+        "name": "Write Unit Tests",
+        "priority": "Medium",
+        "isCompleted": true,
+        "dueDate": "2024-03-24T16:00:00Z"
+      }
+    ]
+  },
+  "temp": {
+    "references with values": [
+      {
+        "ref": {
+          "type": "product",
+          "id": "PROD-001"
+        },
+        "value": 42.5
+      },
+      {
+        "ref": {
+          "type": "service",
+          "id": "SVC-002"
+        },
+        "value": 99.99
+      },
+      {
+        "ref": {
+          "type": "product",
+          "id": "PROD-003"
+        },
+        "value": 15.75
+      }
+    ]
+  }
+}

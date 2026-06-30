@@ -1,0 +1,36 @@
+{
+  "ufoSighting": {
+    "sightingId": "UFO-2024-001",
+    "dateTime": "2024-03-25T21:30:00Z",
+    "location": {
+      "city": "Roswell",
+      "state": "New Mexico",
+      "coordinates": "33.3943° N, 104.5230° W"
+    },
+    "description": "Observed a bright, metallic disc-shaped object hovering approximately 1000 feet above ground level. The object remained stationary for about 5 minutes before rapidly ascending and disappearing into the clouds. No sound was detected during the observation.",
+    "witnessDetails": [
+      {
+        "name": "John Smith",
+        "contact": "john.smith@email.com",
+        "statement": "I was walking my dog when I noticed an unusual light in the sky. At first, I thought it was a plane, but it was completely silent and moving in ways that no aircraft I've seen could move."
+      },
+      {
+        "name": "Jane Doe",
+        "contact": "jane.doe@email.com",
+        "statement": "I was in my backyard when I saw the object. It was definitely not a drone or any conventional aircraft I'm familiar with. The way it moved was unlike anything I've ever seen."
+      }
+    ],
+    "characteristics": {
+      "shape": "Saucer",
+      "color": "Metallic silver with blue lights",
+      "size": "Approximately 50 feet in diameter",
+      "speed": "Unknown, but extremely fast when it departed",
+      "altitude": "Initially at 1000 feet, then rapidly ascended"
+    },
+    "weatherConditions": {
+      "temperature": "72°F",
+      "visibility": "Clear",
+      "cloudCover": "Partly cloudy"
+    }
+  }
+}

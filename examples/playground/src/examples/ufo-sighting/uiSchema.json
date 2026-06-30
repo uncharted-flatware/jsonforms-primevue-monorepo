@@ -1,0 +1,181 @@
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Label",
+      "text": "UFO Sighting Report",
+      "options": {
+        "imageUrl": "saucer.png",
+        "imageWidth": 200,
+        "imageHeight": 200
+      }
+    },
+    {
+      "type": "HorizontalLayout",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/ufoSighting/properties/sightingId",
+          "options": {
+            "placeholder": "Enter sighting ID"
+          }
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/ufoSighting/properties/dateTime"
+        }
+      ],
+      "options": {
+        "isWrappingEnabled": true
+      }
+    },
+    {
+      "type": "Group",
+      "label": "Location Information",
+      "options": {
+        "isToggleable": true,
+        "isExpanded": false
+      },
+      "elements": [
+        {
+          "type": "HorizontalLayout",
+          "elements": [
+            {
+              "type": "Control",
+              "scope": "#/properties/ufoSighting/properties/location/properties/city"
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/ufoSighting/properties/location/properties/state"
+            }
+          ],
+          "options": {
+            "isWrappingEnabled": true
+          }
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/ufoSighting/properties/location/properties/coordinates"
+        }
+      ]
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/ufoSighting/properties/description",
+      "options": {
+        "multi": true
+      }
+    },
+    {
+      "type": "Group",
+      "label": "UFO Characteristics",
+      "options": {
+        "isToggleable": true,
+        "isExpanded": false
+      },
+      "elements": [
+        {
+          "type": "HorizontalLayout",
+          "elements": [
+            {
+              "type": "Control",
+              "scope": "#/properties/ufoSighting/properties/characteristics/properties/shape"
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/ufoSighting/properties/characteristics/properties/color"
+            }
+          ],
+          "options": {
+            "isWrappingEnabled": true
+          }
+        },
+        {
+          "type": "HorizontalLayout",
+          "elements": [
+            {
+              "type": "Control",
+              "scope": "#/properties/ufoSighting/properties/characteristics/properties/size"
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/ufoSighting/properties/characteristics/properties/speed"
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/ufoSighting/properties/characteristics/properties/altitude"
+            }
+          ],
+          "options": {
+            "isWrappingEnabled": true
+          }
+        }
+      ]
+    },
+    {
+      "type": "Group",
+      "label": "Weather Conditions",
+      "options": {
+        "isToggleable": true,
+        "isExpanded": false
+      },
+      "elements": [
+        {
+          "type": "HorizontalLayout",
+          "elements": [
+            {
+              "type": "Control",
+              "scope": "#/properties/ufoSighting/properties/weatherConditions/properties/temperature"
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/ufoSighting/properties/weatherConditions/properties/visibility"
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/ufoSighting/properties/weatherConditions/properties/cloudCover"
+            }
+          ],
+          "options": {
+            "isWrappingEnabled": true
+          }
+        }
+      ]
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/ufoSighting/properties/witnessDetails",
+      "options": {
+        "elementLabelProp": "name",
+        "detail": {
+          "type": "VerticalLayout",
+          "elements": [
+            {
+              "type": "HorizontalLayout",
+              "elements": [
+                {
+                  "type": "Control",
+                  "scope": "#/properties/name"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/contact"
+                }
+              ],
+              "options": {
+                "isWrappingEnabled": true
+              }
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/statement",
+              "options": {
+                "multi": true
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

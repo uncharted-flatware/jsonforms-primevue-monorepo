@@ -1,0 +1,119 @@
+{
+  "type": "object",
+  "definitions": {},
+  "properties": {
+    "ufoSighting": {
+      "type": "object",
+      "title": "UFO Sighting Report",
+      "properties": {
+        "sightingId": {
+          "type": "string",
+          "title": "Sighting ID",
+          "description": "Unique identifier for the sighting"
+        },
+        "dateTime": {
+          "type": "string",
+          "format": "date-time",
+          "title": "Date and Time",
+          "description": "When the sighting occurred"
+        },
+        "location": {
+          "type": "object",
+          "title": "Location",
+          "properties": {
+            "city": {
+              "type": "string",
+              "title": "City"
+            },
+            "state": {
+              "type": "string",
+              "title": "State"
+            },
+            "coordinates": {
+              "type": "string",
+              "title": "Coordinates",
+              "description": "Latitude and Longitude"
+            }
+          }
+        },
+        "description": {
+          "type": "string",
+          "title": "Description",
+          "description": "Detailed description of the sighting"
+        },
+        "witnessDetails": {
+          "type": "array",
+          "title": "Witness Details",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "title": "Name"
+              },
+              "contact": {
+                "type": "string",
+                "title": "Contact Information"
+              },
+              "statement": {
+                "type": "string",
+                "title": "Witness Statement"
+              }
+            }
+          }
+        },
+        "characteristics": {
+          "type": "object",
+          "title": "UFO Characteristics",
+          "properties": {
+            "shape": {
+              "type": "string",
+              "enum": [
+                "Saucer",
+                "Cigar",
+                "Triangle",
+                "Sphere",
+                "Other"
+              ],
+              "title": "Shape"
+            },
+            "color": {
+              "type": "string",
+              "title": "Color"
+            },
+            "size": {
+              "type": "string",
+              "title": "Estimated Size"
+            },
+            "speed": {
+              "type": "string",
+              "title": "Estimated Speed"
+            },
+            "altitude": {
+              "type": "string",
+              "title": "Estimated Altitude"
+            }
+          }
+        },
+        "weatherConditions": {
+          "type": "object",
+          "title": "Weather Conditions",
+          "properties": {
+            "temperature": {
+              "type": "string",
+              "title": "Temperature"
+            },
+            "visibility": {
+              "type": "string",
+              "title": "Visibility"
+            },
+            "cloudCover": {
+              "type": "string",
+              "title": "Cloud Cover"
+            }
+          }
+        }
+      }
+    }
+  }
+}

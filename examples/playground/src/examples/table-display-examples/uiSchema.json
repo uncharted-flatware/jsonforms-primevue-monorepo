@@ -1,0 +1,47 @@
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Label",
+      "text": "Array as Table (Editable)"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/tasks",
+      "options": {
+        "displayAsTable": true,
+        "elementLabelProp": "name",
+        "emptyMessage": "No tasks added yet",
+        "showSortButtons": true
+      }
+    },
+    {
+      "type": "Label",
+      "text": "Array as Table (Display Only)"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/tasks",
+      "options": {
+        "displayAsTable": true,
+        "displayOnly": true,
+        "elementLabelProp": "name",
+        "emptyMessage": "No tasks to display"
+      }
+    },
+    {
+      "type": "Label",
+      "text": "References with Values - Table View"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/temp/properties/references with values",
+      "options": {
+        "displayAsTable": true,
+        "elementLabelProp": "ref.id",
+        "emptyMessage": "No references added yet",
+        "showSortButtons": true
+      }
+    }
+  ]
+}

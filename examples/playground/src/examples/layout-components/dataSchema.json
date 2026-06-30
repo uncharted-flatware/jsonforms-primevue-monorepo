@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "definitions": {},
+  "properties": {
+    "testing": {
+      "type": "object",
+      "properties": {
+        "aString": {
+          "type": "string",
+          "title": "String Value",
+          "description": "A simple string input"
+        },
+        "aNumber": {
+          "type": "number",
+          "title": "Number Value",
+          "description": "A number input with currency formatting"
+        }
+      }
+    }
+  }
+}

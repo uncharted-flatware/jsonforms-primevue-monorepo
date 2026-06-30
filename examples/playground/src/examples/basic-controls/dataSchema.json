@@ -1,0 +1,53 @@
+{
+  "type": "object",
+  "definitions": {},
+  "properties": {
+    "testing": {
+      "type": "object",
+      "properties": {
+        "aString": {
+          "type": "string",
+          "title": "String Value",
+          "description": "A simple string input"
+        },
+        "aNumber": {
+          "type": "number",
+          "title": "Number Value",
+          "description": "A number input with currency formatting"
+        },
+        "anInteger": {
+          "type": "integer",
+          "title": "Integer Value",
+          "description": "An integer input with item count formatting",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "aBoolean": {
+          "type": "boolean",
+          "title": "Boolean Value",
+          "description": "A boolean toggle"
+        },
+        "anEnum": {
+          "type": "string",
+          "title": "Enum Value",
+          "description": "A dropdown with predefined options",
+          "enum": [
+            "Option 1",
+            "Option 2",
+            "Option 3"
+          ]
+        },
+        "aDateTime": {
+          "type": "string",
+          "title": "Date Time",
+          "format": "date-time"
+        },
+        "aDuration": {
+          "type": "string",
+          "title": "Duration",
+          "format": "duration"
+        }
+      }
+    }
+  }
+}

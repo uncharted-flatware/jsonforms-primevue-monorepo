@@ -1,0 +1,11 @@
+{
+  "testing": {
+    "aString": "Example string value",
+    "aNumber": 1234.56,
+    "anInteger": 42,
+    "aBoolean": true,
+    "anEnum": "Option 2",
+    "aDateTime": "2024-03-25T14:30:00Z",
+    "aDuration": "P7D"
+  }
+}

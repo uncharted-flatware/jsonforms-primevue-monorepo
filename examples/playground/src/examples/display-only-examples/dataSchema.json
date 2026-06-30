@@ -1,0 +1,97 @@
+{
+  "type": "object",
+  "definitions": {},
+  "properties": {
+    "displayOnlyTest": {
+      "type": "object",
+      "properties": {
+        "stringValue": {
+          "type": "string",
+          "title": "String Value",
+          "description": "A string value for display-only testing"
+        },
+        "numberValue": {
+          "type": "number",
+          "title": "Number Value",
+          "description": "A number value for display-only testing"
+        },
+        "integerValue": {
+          "type": "integer",
+          "title": "Integer Value",
+          "description": "An integer value for display-only testing",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "booleanValue": {
+          "type": "boolean",
+          "title": "Boolean Value",
+          "description": "A boolean value for display-only testing"
+        },
+        "enumValue": {
+          "type": "string",
+          "title": "Enum Value",
+          "description": "An enum value for display-only testing",
+          "enum": [
+            "Option 1",
+            "Option 2",
+            "Option 3"
+          ]
+        },
+        "dateTimeValue": {
+          "type": "string",
+          "title": "Date/Time Value",
+          "description": "A date/time value for display-only testing",
+          "format": "date-time"
+        },
+        "durationValue": {
+          "type": "string",
+          "title": "Duration Value",
+          "description": "A duration value for display-only testing",
+          "format": "duration"
+        },
+        "arrayValue": {
+          "type": "array",
+          "title": "Array Value",
+          "description": "An array for display-only testing",
+          "items": {
+            "type": "string"
+          }
+        },
+        "numberArrayValue": {
+          "type": "array",
+          "title": "Number Array Value",
+          "description": "A number array for display-only testing",
+          "items": {
+            "type": "number"
+          }
+        },
+        "booleanArrayValue": {
+          "type": "array",
+          "title": "Boolean Array Value",
+          "description": "A boolean array for display-only testing",
+          "items": {
+            "type": "boolean"
+          }
+        },
+        "objectArrayValue": {
+          "type": "array",
+          "title": "Object Array Value",
+          "description": "An object array for display-only testing",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "title": "Name"
+              },
+              "status": {
+                "type": "string",
+                "title": "Status"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

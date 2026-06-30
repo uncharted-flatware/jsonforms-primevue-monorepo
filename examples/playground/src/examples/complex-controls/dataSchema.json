@@ -1,0 +1,116 @@
+{
+  "type": "object",
+  "definitions": {},
+  "properties": {
+    "testing": {
+      "type": "object",
+      "properties": {
+        "tasks": {
+          "type": "array",
+          "title": "Task List",
+          "description": "A list of tasks with different properties",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "title": "Task Name",
+                "description": "The name of the task"
+              },
+              "priority": {
+                "type": "string",
+                "enum": [
+                  "Low",
+                  "Medium",
+                  "High"
+                ],
+                "title": "Priority",
+                "description": "The priority level of the task"
+              },
+              "isCompleted": {
+                "type": "boolean",
+                "title": "Completed",
+                "description": "Whether the task is completed"
+              },
+              "dueDate": {
+                "type": "string",
+                "format": "date-time",
+                "title": "Due Date",
+                "description": "When the task is due"
+              }
+            },
+            "required": [
+              "name",
+              "priority"
+            ]
+          }
+        },
+        "advancedTasks": {
+          "type": "array",
+          "title": "Advanced Task List",
+          "description": "A list of tasks with custom layout",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "title": "Task Name",
+                "description": "The name of the task"
+              },
+              "priority": {
+                "type": "string",
+                "enum": [
+                  "Low",
+                  "Medium",
+                  "High"
+                ],
+                "title": "Priority",
+                "description": "The priority level of the task"
+              },
+              "isCompleted": {
+                "type": "boolean",
+                "title": "Completed",
+                "description": "Whether the task is completed"
+              },
+              "dueDate": {
+                "type": "string",
+                "format": "date-time",
+                "title": "Due Date",
+                "description": "When the task is due"
+              }
+            },
+            "required": [
+              "name",
+              "priority"
+            ]
+          }
+        },
+        "anObject": {
+          "type": "object",
+          "title": "Object Example",
+          "description": "An example of an object control",
+          "properties": {
+            "name": {
+              "type": "string",
+              "title": "Name",
+              "description": "The name of the object"
+            },
+            "description": {
+              "type": "string",
+              "title": "Description",
+              "description": "A description of the object"
+            },
+            "tags": {
+              "type": "array",
+              "title": "Tags",
+              "description": "Tags associated with the object",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
