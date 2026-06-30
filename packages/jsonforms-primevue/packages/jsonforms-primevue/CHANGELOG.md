@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/compare/jsonforms-primevue-v1.1.6...jsonforms-primevue-v1.2.0) (2026-06-30)
+
+
+### Features
+
+* support 'multi' and 'rows' options on string input for multilin… ([1bd0740](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/commit/1bd0740ca75b282f712d6932ce6bcf19b86952c3))
+* support 'multi' and 'rows' options on string input for multiline text ([88caabb](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/commit/88caabb3606c5e8773dde5d56c8c5b01f10121cc))
+
 ## [1.1.6](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/compare/jsonforms-primevue-v1.1.5...jsonforms-primevue-v1.1.6) (2026-06-29)
 
 
