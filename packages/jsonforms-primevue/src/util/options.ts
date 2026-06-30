@@ -16,6 +16,10 @@ export interface Options {
     // Description display options
     descriptionDisplay?: 'always' | 'tooltip';
 
+    // String controls (see isMultiLineControl in @jsonforms/core)
+    multi?: boolean;
+    rows?: number;
+
     // Relevant to number controls
     step?: number;
     prefix?: string;

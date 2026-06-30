@@ -33,6 +33,11 @@
           "title": "String Value",
           "description": "A simple string input"
         },
+        "aMultiLineString": {
+          "type": "string",
+          "title": "Multi-line String",
+          "description": "A string rendered as a textarea when multi is enabled in the UI schema"
+        },
         "aNumber": {
           "type": "number",
           "title": "Number Value",
@@ -305,6 +310,11 @@
           "type": "string",
           "title": "String Value",
           "description": "A string value for display-only testing"
+        },
+        "multiLineStringValue": {
+          "type": "string",
+          "title": "Multi-line String Value",
+          "description": "A multi-line string for display-only testing"
         },
         "numberValue": {
           "type": "number",

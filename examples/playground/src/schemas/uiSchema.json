@@ -22,6 +22,19 @@
         },
         {
           "type": "Label",
+          "text": "Multi-line String Control"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/testing/properties/aMultiLineString",
+          "options": {
+            "multi": true,
+            "rows": 5,
+            "placeholder": "Enter multiple lines of text"
+          }
+        },
+        {
+          "type": "Label",
           "text": "Number Control"
         },
         {
@@ -597,6 +610,14 @@
               "scope": "#/properties/displayOnlyTest/properties/stringValue",
               "options": {
                 "displayOnly": true
+              }
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/displayOnlyTest/properties/multiLineStringValue",
+              "options": {
+                "displayOnly": true,
+                "multi": true
               }
             },
             {

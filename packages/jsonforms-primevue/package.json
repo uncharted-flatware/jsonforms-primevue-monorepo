@@ -12,6 +12,7 @@
       "import": "./dist/jsonforms-primevue.es.js",
       "require": "./dist/jsonforms-primevue.cjs"
     },
+    "./style.css": "./dist/jsonforms-primevue.css",
     "./package.json": "./package.json"
   },
   "sideEffects": [
