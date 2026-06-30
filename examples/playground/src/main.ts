@@ -1,4 +1,5 @@
 import '@jsonforms/vue-vanilla/vanilla.css';
+import '@uncharted.software/jsonforms-primevue/style.css';
 import 'primeflex/primeflex.css';
 import 'primeicons/primeicons.css';
 

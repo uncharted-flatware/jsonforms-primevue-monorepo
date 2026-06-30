@@ -119,8 +119,21 @@ The String Control renders a text input field for string values.
 - `descriptionDisplay`: How to display the description (see [Description Display](#description-display))
 - `labelPlacement`: Where to place the label (see [Label Placement](#label-placement))
 - `displayOnly`: Set to `true` to render the field as read-only text display
+- `multi`: Set to `true` to render a multi-line textarea instead of a single-line input
+- `rows`: Number of visible text rows when `multi` is `true` (default: `3`)
 
-### Number Control
+**Multi-line UI Schema Example:**
+```json
+{
+  "type": "Control",
+  "scope": "#/properties/description",
+  "options": {
+    "multi": true,
+    "rows": 5,
+    "placeholder": "Enter description"
+  }
+}
+```
 
 The Number Control renders a numeric input field for decimal numbers.
 

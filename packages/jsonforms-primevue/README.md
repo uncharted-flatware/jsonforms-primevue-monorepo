@@ -32,6 +32,7 @@ In your own app, import and add the ranked renderer configurations and supply th
 <script lang="ts">
 import { JsonForms } from "@jsonforms/vue";
 import primeVueRenderers from "@uncharted.software/jsonforms-primevue";
+import "@uncharted.software/jsonforms-primevue/style.css";
 import PrimeVue from 'primevue/config';
 import Tooltip from 'primevue/tooltip';
 

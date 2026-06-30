@@ -1,6 +1,7 @@
 {
   "testing": {
     "aString": "Example string value",
+    "aMultiLineString": "First line of text\nSecond line of text",
     "aNumber": 1234.56,
     "anInteger": 42,
     "aBoolean": true,
@@ -72,6 +73,7 @@
   },
   "displayOnlyTest": {
     "stringValue": "This is a display-only string value",
+    "multiLineStringValue": "Line one of display-only text\nLine two of display-only text\nLine three",
     "numberValue": 1234.56,
     "integerValue": 42,
     "booleanValue": true,
