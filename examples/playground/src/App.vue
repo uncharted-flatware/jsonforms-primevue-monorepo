@@ -1,12 +1,10 @@
 declare module 'simple-code-editor';
 
 <script setup lang="ts">
-import { computed, defineComponent, reactive, ref, shallowRef, watch } from "vue";
+import { computed, ref, shallowRef, watch } from "vue";
 import { JsonForms, JsonFormsChangeEvent } from "@jsonforms/vue";
 import { createAjv } from '@jsonforms/core';
 import {
-    defaultStyles,
-    mergeStyles,
     vanillaRenderers,
 } from "@jsonforms/vue-vanilla";
 import 'highlight.js';
@@ -15,31 +13,47 @@ import CodeEditor from 'simple-code-editor';
 import 'primeicons/primeicons.css';
 import primeVueRenderers from '@uncharted.software/jsonforms-primevue';
 import { customRenderers } from './renderers';
-import InputText from 'primevue/inputtext';
-import dataSchemaJson from './schemas/dataSchema.json';
-import uiSchemaJson from './schemas/uiSchema.json';
-import exampleDataJson from './schemas/exampleData.json';
+import Select from 'primevue/select';
+import { playgroundExamples } from './examples/loadPlaygroundExamples';
 import { playgroundDisplayOnlyOnInitMiddleware } from './middleware/displayOnlyOnInitMiddleware';
-
-// mergeStyles combines all classes from both styles definitions into one
-const myStyles = mergeStyles(defaultStyles, { control: { label: "mylabel" } });
 
 defineOptions({
     name: "App"
 });
 
+const exampleOptions = playgroundExamples.map((ex) => ({
+    label: ex.meta.label,
+    value: ex.id,
+}));
+
+const selectedExampleId = ref(playgroundExamples[0]?.id ?? '');
+
+const activeExample = computed(() =>
+    playgroundExamples.find((ex) => ex.id === selectedExampleId.value)
+);
+
 const errorMessage = ref('');
 
-const dataSchemaString = ref(JSON.stringify(dataSchemaJson, null, 2));
+const dataSchemaString = ref('');
+const uiSchemaString = ref('');
+const exampleDataString = ref('');
 
-const uiSchemaString = ref(JSON.stringify(uiSchemaJson, null, 2));
+function applyExampleToEditors(id: string) {
+    const ex = playgroundExamples.find((e) => e.id === id);
+    if (!ex) return;
+    errorMessage.value = '';
+    dataSchemaString.value = JSON.stringify(ex.dataSchema, null, 2);
+    uiSchemaString.value = JSON.stringify(ex.uiSchema, null, 2);
+    exampleDataString.value = JSON.stringify(ex.data, null, 2);
+}
 
-const exampleDataString = ref(JSON.stringify(exampleDataJson, null, 2));
+watch(
+    selectedExampleId,
+    (id) => applyExampleToEditors(id),
+    { immediate: true }
+);
 
-
-// Something that has to be done to support `default` in the data_schema
 const handleDefaultsAjv = shallowRef(createAjv({ useDefaults: true }));
-
 
 const dataSchema = computed(() => {
     try {
@@ -63,6 +77,12 @@ const exampleData = computed(() => {
     }
 });
 
+const formMiddleware = computed(() =>
+    selectedExampleId.value === 'middleware-display-only-on-init'
+        ? playgroundDisplayOnlyOnInitMiddleware
+        : undefined
+);
+
 const renderers = Object.freeze([
     ...primeVueRenderers,
     ...vanillaRenderers,
@@ -83,6 +103,20 @@ function onFormChanged(event: JsonFormsChangeEvent) {
     <div class="flex flex-column max-h-full gap-3">
 
         <h1>JSON Forms Playground</h1>
+
+        <div class="flex flex-row align-items-center gap-2">
+            <label for="example-select" class="font-semibold">Example</label>
+            <Select
+                input-id="example-select"
+                v-model="selectedExampleId"
+                :options="exampleOptions"
+                option-label="label"
+                option-value="value"
+                class="w-full md:w-30rem"
+            />
+        </div>
+
+        <p v-if="errorMessage" class="text-red-500">{{ errorMessage }}</p>
         
         <div class="flex flex-row align-content-flex-start max-w-full gap=3">
             <div class="flex flex-column flex-grow-0 m3">
@@ -118,11 +152,13 @@ function onFormChanged(event: JsonFormsChangeEvent) {
                 <h3>Rendered Form</h3>
 
                 <JsonForms
+                    v-if="activeExample"
+                    :key="selectedExampleId"
                     :data="exampleData"
                     :renderers="renderers"
                     :schema="dataSchema"
                     :uischema="uiSchema"
-                    :middleware="playgroundDisplayOnlyOnInitMiddleware"
+                    :middleware="formMiddleware"
                     @change="onFormChanged"
                     :ajv="handleDefaultsAjv"
                 />

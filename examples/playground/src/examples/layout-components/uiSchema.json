@@ -1,0 +1,87 @@
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Label",
+      "text": "Group Layout (Accordion)"
+    },
+    {
+      "type": "Group",
+      "label": "Accordion Example",
+      "options": {
+        "asAccordion": true,
+        "isExpanded": false
+      },
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/testing/properties/aString"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/testing/properties/aNumber"
+        }
+      ]
+    },
+    {
+      "type": "Label",
+      "text": "Horizontal Layout"
+    },
+    {
+      "type": "HorizontalLayout",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/testing/properties/aString"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/testing/properties/aNumber"
+        }
+      ]
+    },
+    {
+      "type": "Label",
+      "text": "Vertical Layout"
+    },
+    {
+      "type": "VerticalLayout",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/testing/properties/aString"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/testing/properties/aNumber"
+        }
+      ]
+    },
+    {
+      "type": "Label",
+      "text": "Horizontal Layout with Space-Between"
+    },
+    {
+      "type": "HorizontalLayout",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/testing/properties/aString",
+          "options": {
+            "placeholder": "Left side field"
+          }
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/testing/properties/aNumber",
+          "options": {
+            "placeholder": "Right side field"
+          }
+        }
+      ],
+      "options": {
+        "layout": "space-between"
+      }
+    }
+  ]
+}

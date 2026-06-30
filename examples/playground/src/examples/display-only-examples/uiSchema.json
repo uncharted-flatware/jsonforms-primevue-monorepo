@@ -1,0 +1,110 @@
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Label",
+      "text": "Basic Controls in Display Mode"
+    },
+    {
+      "type": "VerticalLayout",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/displayOnlyTest/properties/stringValue",
+          "options": {
+            "displayOnly": true
+          }
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/displayOnlyTest/properties/numberValue",
+          "options": {
+            "displayOnly": true,
+            "prefix": "$",
+            "suffix": " USD"
+          }
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/displayOnlyTest/properties/integerValue",
+          "options": {
+            "displayOnly": true,
+            "prefix": "#",
+            "suffix": " items"
+          }
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/displayOnlyTest/properties/booleanValue",
+          "options": {
+            "displayOnly": true
+          }
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/displayOnlyTest/properties/enumValue",
+          "options": {
+            "displayOnly": true
+          }
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/displayOnlyTest/properties/dateTimeValue",
+          "options": {
+            "displayOnly": true
+          }
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/displayOnlyTest/properties/durationValue",
+          "options": {
+            "displayOnly": true
+          }
+        }
+      ]
+    },
+    {
+      "type": "Label",
+      "text": "Complex Controls in Display Mode"
+    },
+    {
+      "type": "VerticalLayout",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/displayOnlyTest/properties/arrayValue",
+          "options": {
+            "displayOnly": true,
+            "emptyMessage": "No items to display"
+          }
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/displayOnlyTest/properties/numberArrayValue",
+          "options": {
+            "displayOnly": true,
+            "emptyMessage": "No items to display"
+          }
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/displayOnlyTest/properties/booleanArrayValue",
+          "options": {
+            "displayOnly": true,
+            "emptyMessage": "No items to display"
+          }
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/displayOnlyTest/properties/objectArrayValue",
+          "options": {
+            "displayOnly": true,
+            "elementLabelProp": "name",
+            "emptyMessage": "No objects to display",
+            "detail": "GENERATED"
+          }
+        }
+      ]
+    }
+  ]
+}

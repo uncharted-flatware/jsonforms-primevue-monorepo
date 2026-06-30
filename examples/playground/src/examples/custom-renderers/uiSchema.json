@@ -1,0 +1,126 @@
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Label",
+      "text": "Line Chart with Error Band (Encoding-based)"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/lineChartData",
+      "options": {
+        "title": "Temperature Over Time (Error Band)",
+        "encoding": {
+          "x": {
+            "field": "timestamp",
+            "type": "temporal"
+          },
+          "y": {
+            "field": "value",
+            "type": "quantitative"
+          },
+          "yError": {
+            "field": "errorLow",
+            "type": "quantitative"
+          },
+          "yError2": {
+            "field": "errorHigh",
+            "type": "quantitative"
+          }
+        },
+        "showAsErrorBand": true,
+        "width": 400,
+        "height": 300,
+        "displayOnly": true
+      }
+    },
+    {
+      "type": "Label",
+      "text": "Line Chart with Error Bars (Encoding-based)"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/lineChartData",
+      "options": {
+        "title": "Temperature Over Time (Error Bars)",
+        "encoding": {
+          "x": {
+            "field": "timestamp",
+            "type": "temporal"
+          },
+          "y": {
+            "field": "value",
+            "type": "quantitative"
+          },
+          "yError": {
+            "field": "errorLow",
+            "type": "quantitative"
+          },
+          "yError2": {
+            "field": "errorHigh",
+            "type": "quantitative"
+          }
+        },
+        "showAsErrorBand": false,
+        "width": 400,
+        "height": 300,
+        "displayOnly": true
+      }
+    },
+    {
+      "type": "Label",
+      "text": "Simple Line Chart (No Errors)"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/lineChartData",
+      "options": {
+        "title": "Simple Line Chart",
+        "encoding": {
+          "x": {
+            "field": "timestamp",
+            "type": "temporal"
+          },
+          "y": {
+            "field": "value",
+            "type": "quantitative"
+          }
+        },
+        "width": 400,
+        "height": 300,
+        "displayOnly": true
+      }
+    },
+    {
+      "type": "Label",
+      "text": "Multi-Category Line Chart with Legend"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/multiCategoryChartData",
+      "options": {
+        "title": "Temperature by Sensor (Multiple Categories)",
+        "encoding": {
+          "x": {
+            "field": "timestamp",
+            "type": "temporal",
+            "title": "Time"
+          },
+          "y": {
+            "field": "temperature",
+            "type": "quantitative",
+            "title": "Temperature (°C)"
+          },
+          "color": {
+            "field": "sensor",
+            "type": "nominal",
+            "title": "Sensor"
+          }
+        },
+        "width": 400,
+        "height": 300,
+        "displayOnly": true
+      }
+    }
+  ]
+}

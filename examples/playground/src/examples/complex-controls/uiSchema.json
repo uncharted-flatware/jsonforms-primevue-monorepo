@@ -1,0 +1,104 @@
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Label",
+      "text": "Array Control - Default Detail"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/tasks",
+      "options": {
+        "elementLabelProp": "name",
+        "emptyMessage": "No tasks added yet",
+        "showSortButtons": true,
+        "detail": "DEFAULT"
+      }
+    },
+    {
+      "type": "Label",
+      "text": "Array Control - Generated Detail"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/tasks",
+      "options": {
+        "elementLabelProp": "name",
+        "emptyMessage": "No tasks added yet",
+        "showSortButtons": true,
+        "detail": "GENERATED"
+      }
+    },
+    {
+      "type": "Label",
+      "text": "Array Control - Custom Layout"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/advancedTasks",
+      "options": {
+        "elementLabelProp": "name",
+        "emptyMessage": "No advanced tasks added yet",
+        "showSortButtons": true,
+        "detail": {
+          "type": "HorizontalLayout",
+          "elements": [
+            {
+              "type": "VerticalLayout",
+              "elements": [
+                {
+                  "type": "Control",
+                  "scope": "#/properties/name"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/priority"
+                }
+              ]
+            },
+            {
+              "type": "VerticalLayout",
+              "elements": [
+                {
+                  "type": "Control",
+                  "scope": "#/properties/isCompleted"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/dueDate"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Label",
+      "text": "Single Object Control"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/anObject",
+      "options": {
+        "detail": {
+          "type": "VerticalLayout",
+          "elements": [
+            {
+              "type": "Control",
+              "scope": "#/properties/name"
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/description"
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/tags"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Label",
+      "text": "These controls omit displayOnly in the UI schema. Playground middleware applies it on INIT for this section only."
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/middlewareDisplayOnlyDemo/properties/title",
+      "options": {
+        "placeholder": "Would be editable without middleware"
+      }
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/middlewareDisplayOnlyDemo/properties/amount",
+      "options": {
+        "prefix": "$",
+        "suffix": " USD"
+      }
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/middlewareDisplayOnlyDemo/properties/approved"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/middlewareDisplayOnlyDemo/properties/status"
+    }
+  ]
+}

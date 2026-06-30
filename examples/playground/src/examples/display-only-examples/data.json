@@ -1,0 +1,44 @@
+{
+  "displayOnlyTest": {
+    "stringValue": "This is a display-only string value",
+    "numberValue": 1234.56,
+    "integerValue": 42,
+    "booleanValue": true,
+    "enumValue": "Option 2",
+    "dateTimeValue": "2024-03-25T14:30:00Z",
+    "durationValue": "P7D",
+    "arrayValue": [
+      "First item",
+      "Second item",
+      "Third item"
+    ],
+    "numberArrayValue": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "booleanArrayValue": [
+      true,
+      false,
+      true,
+      false,
+      true
+    ],
+    "objectArrayValue": [
+      {
+        "name": "Project Alpha",
+        "status": "Active"
+      },
+      {
+        "name": "Project Beta",
+        "status": "Completed"
+      },
+      {
+        "name": "Project Gamma",
+        "status": "Pending"
+      }
+    ]
+  }
+}

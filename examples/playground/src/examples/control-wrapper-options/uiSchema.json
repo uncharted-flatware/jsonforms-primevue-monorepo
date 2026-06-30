@@ -1,0 +1,188 @@
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Label",
+      "text": "Label Placement Options"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/controlWrapper/properties/defaultPlacement",
+      "options": {
+        "placeholder": "Default (left) label placement"
+      }
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/controlWrapper/properties/topPlacement",
+      "options": {
+        "labelPlacement": "top",
+        "placeholder": "Label appears above the field"
+      }
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/controlWrapper/properties/rightPlacement",
+      "options": {
+        "labelPlacement": "right",
+        "placeholder": "Label appears to the right"
+      }
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/controlWrapper/properties/floatPlacement",
+      "options": {
+        "labelPlacement": "float",
+        "placeholder": "Floating label inside field"
+      }
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/controlWrapper/properties/hiddenLabel",
+      "options": {
+        "labelPlacement": "hide",
+        "placeholder": "No label displayed"
+      }
+    },
+    {
+      "type": "Label",
+      "text": "Description Display Options"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/controlWrapper/properties/tooltipDescription",
+      "options": {
+        "descriptionDisplay": "tooltip",
+        "placeholder": "Hover over the info icon to see description"
+      }
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/controlWrapper/properties/alwaysDescription",
+      "options": {
+        "descriptionDisplay": "always",
+        "placeholder": "Description is always visible below"
+      }
+    },
+    {
+      "type": "Label",
+      "text": "Field State Options"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/controlWrapper/properties/requiredField",
+      "options": {
+        "placeholder": "This field is required"
+      }
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/controlWrapper/properties/visibleField",
+      "options": {
+        "placeholder": "This field is visible"
+      }
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/controlWrapper/properties/focusedField",
+      "options": {
+        "focus": true,
+        "placeholder": "This field receives focus when the form loads"
+      }
+    },
+    {
+      "type": "Label",
+      "text": "Combined Options Examples"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/controlWrapper/properties/floatPlacement",
+      "options": {
+        "labelPlacement": "float",
+        "descriptionDisplay": "always",
+        "placeholder": "Float label with always-visible description"
+      },
+      "label": "Float + Always Description"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/controlWrapper/properties/topPlacement",
+      "options": {
+        "labelPlacement": "top",
+        "descriptionDisplay": "tooltip",
+        "placeholder": "Top label with tooltip description"
+      },
+      "label": "Top + Tooltip Description"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/controlWrapper/properties/rightPlacement",
+      "options": {
+        "labelPlacement": "right",
+        "descriptionDisplay": "always",
+        "placeholder": "Right label with always-visible description"
+      },
+      "label": "Right + Always Description"
+    },
+    {
+      "type": "Group",
+      "label": "Space-Between Layout Examples",
+      "options": {
+        "isToggleable": true,
+        "isExpanded": false
+      },
+      "elements": [
+        {
+          "type": "Label",
+          "text": "Space-Between Layout - Label and field fill width with space between"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/testing/properties/controlWrapper/properties/spaceBetweenLeft",
+          "options": {
+            "labelPlacement": "left",
+            "layout": "space-between",
+            "placeholder": "Field on right side"
+          }
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/testing/properties/controlWrapper/properties/spaceBetweenRight",
+          "options": {
+            "labelPlacement": "right",
+            "layout": "space-between",
+            "placeholder": "Field on left side"
+          }
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/testing/properties/controlWrapper/properties/spaceBetweenShort",
+          "options": {
+            "labelPlacement": "left",
+            "layout": "space-between",
+            "placeholder": "Short label, full width"
+          }
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/testing/properties/controlWrapper/properties/spaceBetweenLong",
+          "options": {
+            "labelPlacement": "left",
+            "layout": "space-between",
+            "placeholder": "Long label, still full width"
+          }
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/testing/properties/controlWrapper/properties/spaceBetweenLong",
+          "options": {
+            "labelPlacement": "right",
+            "layout": "space-between",
+            "placeholder": "Field first, long label right"
+          },
+          "label": "Long Label on Right"
+        }
+      ]
+    }
+  ]
+}

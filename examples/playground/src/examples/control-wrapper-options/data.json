@@ -1,0 +1,20 @@
+{
+  "testing": {
+    "controlWrapper": {
+      "defaultPlacement": "Default label placement example",
+      "topPlacement": "Top label placement example",
+      "rightPlacement": "Right label placement example",
+      "floatPlacement": "Float label placement example",
+      "hiddenLabel": "Field with hidden label example",
+      "tooltipDescription": "Tooltip description example",
+      "alwaysDescription": "Always visible description example",
+      "requiredField": "Required field example",
+      "visibleField": "Visible field example",
+      "focusedField": "Focused field example",
+      "spaceBetweenLeft": "Left label example",
+      "spaceBetweenRight": "Right label example",
+      "spaceBetweenShort": "Short text",
+      "spaceBetweenLong": "Long label text"
+    }
+  }
+}

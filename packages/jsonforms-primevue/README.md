@@ -69,14 +69,12 @@ For detailed documentation on all available components, options, and customizati
      - [x] as strings 
      - [x] as dropdown
      - [ ] as oneOf (to support value vs label for each item)
-     - [ ] as 'radio' option
+     - [x] as 'radio' option
    - [x] Boolean (checkbox)
    - [ ] Date
    - [x] Date-Time
    - [x] Label placement options (float | left | right)
    - [x] Description display & options (always | tooltip)
-   - [ ] Support default values
-   - [ ] Radio options
  - [x] Group Layout renderer (with toggleable option to render as an accordion)
  - [x] HorizontalLayout / VerticalLayout styling
    - [ ] Wrap/no-wrap or grid type support

@@ -1,0 +1,27 @@
+{
+  "temp": {
+    "references with values": [
+      {
+        "ref": {
+          "type": "product",
+          "id": "PROD-001"
+        },
+        "value": 42.5
+      },
+      {
+        "ref": {
+          "type": "service",
+          "id": "SVC-002"
+        },
+        "value": 99.99
+      },
+      {
+        "ref": {
+          "type": "product",
+          "id": "PROD-003"
+        },
+        "value": 15.75
+      }
+    ]
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "type": "object",
+  "definitions": {},
+  "properties": {
+    "testing": {
+      "type": "object",
+      "properties": {
+        "tasks": {
+          "type": "array",
+          "title": "Task List",
+          "description": "A list of tasks with different properties",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "title": "Task Name",
+                "description": "The name of the task"
+              },
+              "priority": {
+                "type": "string",
+                "enum": [
+                  "Low",
+                  "Medium",
+                  "High"
+                ],
+                "title": "Priority",
+                "description": "The priority level of the task"
+              },
+              "isCompleted": {
+                "type": "boolean",
+                "title": "Completed",
+                "description": "Whether the task is completed"
+              },
+              "dueDate": {
+                "type": "string",
+                "format": "date-time",
+                "title": "Due Date",
+                "description": "When the task is due"
+              }
+            },
+            "required": [
+              "name",
+              "priority"
+            ]
+          }
+        }
+      }
+    },
+    "temp": {
+      "type": "object",
+      "properties": {
+        "references with values": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "ref": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "type",
+                  "id"
+                ]
+              },
+              "value": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "ref",
+              "value"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

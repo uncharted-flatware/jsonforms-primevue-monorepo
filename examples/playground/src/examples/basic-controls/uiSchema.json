@@ -1,0 +1,83 @@
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Label",
+      "text": "String Control"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/aString",
+      "options": {
+        "placeholder": "Enter a string value"
+      }
+    },
+    {
+      "type": "Label",
+      "text": "Number Control"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/aNumber",
+      "options": {
+        "prefix": "$",
+        "suffix": " USD"
+      }
+    },
+    {
+      "type": "Label",
+      "text": "Integer Control"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/anInteger",
+      "options": {
+        "prefix": "#",
+        "suffix": " items"
+      }
+    },
+    {
+      "type": "Label",
+      "text": "Boolean Control"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/aBoolean"
+    },
+    {
+      "type": "Label",
+      "text": "Enum Control (Dropdown)"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/anEnum"
+    },
+    {
+      "type": "Label",
+      "text": "Enum Control (Radio)"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/anEnumRadio",
+      "options": {
+        "format": "radio"
+      }
+    },
+    {
+      "type": "Label",
+      "text": "Date-Time Control"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/aDateTime"
+    },
+    {
+      "type": "Label",
+      "text": "Duration Control"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/aDuration"
+    }
+  ]
+}

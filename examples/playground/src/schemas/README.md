@@ -1,21 +1,5 @@
-# Schema Documentation
+# Schema documentation (legacy location)
 
-This directory contains the JSON Schema definitions for the playground application.
+Playground examples now live in [`../examples/`](../examples/README.md) — one directory per demo with `dataSchema.json`, `uiSchema.json`, `data.json`, and `meta.json`.
 
-## Schema Files
-
-### `dataSchema.json`
-The main schema file that defines the structure for form inputs and UI controls. This includes:
-- Testing controls (strings, numbers, booleans, enums, etc.)
-- Display-only test controls
-- Complex object examples (UFO sighting reports)
-
-### `uiSchema.json`
-Defines the UI layout and rendering instructions for input forms using JSON Forms.
-
-The **UI Schema Rules (SHOW / HIDE / ENABLE / DISABLE)** group demonstrates conditional visibility and enabled state via `rule` on controls (see [JSON Forms rules](https://jsonforms.io/docs/uischema/rules)).
-
-### `exampleData.json`
-Contains sample data that matches the schema definitions.
-
-The **Middleware: displayOnly on INIT** group uses `middlewareDisplayOnlyDemo` in the data schema. Its UI schema omits `displayOnly`; `examples/playground/src/middleware/displayOnlyOnInitMiddleware.ts` applies it on INIT for that scope only.
+This folder is kept for documentation links only; it no longer contains monolithic schema files.

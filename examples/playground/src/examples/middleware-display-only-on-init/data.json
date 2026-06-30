@@ -1,0 +1,8 @@
+{
+  "middlewareDisplayOnlyDemo": {
+    "title": "Quarterly review (read-only via middleware)",
+    "amount": 4250.5,
+    "approved": true,
+    "status": "Submitted"
+  }
+}
