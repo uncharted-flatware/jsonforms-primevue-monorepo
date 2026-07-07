@@ -45,6 +45,4 @@ jobs:
       - name: Publish to npm
         if: ${{ steps.release.outputs['packages/jsonforms-primevue--release_created'] == 'true' }}
         working-directory: packages/jsonforms-primevue
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish --access public --provenance
+        run: npm publish --access public
