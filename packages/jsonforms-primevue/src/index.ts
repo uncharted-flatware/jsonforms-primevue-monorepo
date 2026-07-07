@@ -14,7 +14,8 @@ import {
     isObjectControl,
     or,
     isPrimitiveArrayControl,
-    isObjectArrayControl
+    isObjectArrayControl,
+    type JsonFormsRendererRegistryEntry
 } from '@jsonforms/core';
 
 import ControlWrapper from './controls/ControlWrapper.vue';
@@ -37,7 +38,7 @@ import Tooltip from 'primevue/tooltip';
 import { useControlCommon } from './util/composition';
 
 // List of tester/ranking + renderer presets
-const renderers = [
+const renderers: JsonFormsRendererRegistryEntry[] = [
     { tester: rankWith(2, and(isStringControl, not(isEnumControl))), renderer: StringControlRenderer },
     { tester: rankWith(3, isEnumControl), renderer: EnumControlRenderer },
     { tester: rankWith(3, isNumberControl), renderer: NumberControlRenderer },
@@ -76,6 +77,8 @@ export {
     // Utilities
     useControlCommon
 };
+
+export type { Options } from './util/options';
 
 // Note: To use the tooltip feature, you must register the directive in your app:
 // app.directive('tooltip', Tooltip);

@@ -1,9 +1,20 @@
 // vite.config.js
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import dts from 'vite-plugin-dts';
 
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    dts({
+      include: ['src/**/*.ts', 'src/**/*.vue'],
+      exclude: ['src/**/*.test.ts'],
+      outDir: 'dist/types',
+      entryRoot: 'src',
+      tsconfigPath: './tsconfig.build.json',
+      rollupTypes: false,
+    }),
+  ],
   test: {
     environment: 'node',
     include: ['src/**/*.test.ts'],

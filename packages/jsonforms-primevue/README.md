@@ -75,6 +75,7 @@ For detailed documentation on all available components, options, and customizati
    - [x] Date-Time
    - [x] Label placement options (float | left | right)
    - [x] Description display & options (always | tooltip)
+ - [ ] Categories/Category layout renderer
  - [x] Group Layout renderer (with toggleable option to render as an accordion)
  - [x] HorizontalLayout / VerticalLayout styling
    - [ ] Wrap/no-wrap or grid type support
