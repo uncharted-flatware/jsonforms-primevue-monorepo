@@ -85,3 +85,6 @@ For detailed documentation on all available components, options, and customizati
    - [x] Disable 
    - [x] Visibility
  - [x] Image display (option on Label)
+
+ ---
+ 2026-07-07

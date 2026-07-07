@@ -6,7 +6,7 @@ on:
       - main
 
 permissions:
-  contents: write
+  contents: read
   pull-requests: write
   id-token: write
 
@@ -45,4 +45,4 @@ jobs:
       - name: Publish to npm
         if: ${{ steps.release.outputs['packages/jsonforms-primevue--release_created'] == 'true' }}
         working-directory: packages/jsonforms-primevue
-        run: npm publish --access public
+        run: npm publish --access public --provenance
