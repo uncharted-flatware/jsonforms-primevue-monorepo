@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/compare/jsonforms-primevue-v1.3.0...jsonforms-primevue-v1.3.1) (2026-07-07)
+
+
+### Bug Fixes
+
+* export types ([6bde96b](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/commit/6bde96b703acfee45856fdd49b3508cc2192118c))
+
 ## [1.3.0](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/compare/jsonforms-primevue-v1.2.0...jsonforms-primevue-v1.3.0) (2026-06-30)
 
 
