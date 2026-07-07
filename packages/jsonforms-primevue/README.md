@@ -2,7 +2,7 @@
 
 ## Motivation
 
-The JSONForms.io packages include integrations for vanilla HTML and Veutify, but we needed PrimeVue.
+The JSONForms.io packages include integrations for vanilla HTML and Vuetify, but we needed PrimeVue.
 In addition, we needed to support other new options such as:
  - Display-only mode: Rather than just 'disabling' the control, we want to display the control as a read-only text display
    - Allows JSONForms to be used not only to describe Input forms, but also to describe Output displays

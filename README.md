@@ -18,7 +18,7 @@ Pushes to `main` run [Release Please](https://github.com/googleapis/release-plea
 
 One-time setup:
 
-- **npm:** Add repo secret `NPM_TOKEN` (granular token with publish access to `@uncharted.software/jsonforms-primevue`).
+- **npm:** Configure [trusted publishing](https://docs.npmjs.com/trusted-publishers) on `@uncharted.software/jsonforms-primevue` for workflow `release.yml` (GitHub environment `npm` is optional). Merging a Release Please PR runs `npm publish` via OIDC—no long-lived publish token.
 - **GitHub Pages:** Repo **Settings → Pages → Build and deployment → Source:** GitHub Actions.
 
 First npm release uses manifest bootstrap (`1.0.0` last released → **1.1.0** in the first Release PR). Use [Conventional Commits](https://www.conventionalcommits.org/) on `main` for later semver bumps.
@@ -43,6 +43,3 @@ Run the development server (playground)
 ```bash
 yarn dev
 ```
-
----
-x
