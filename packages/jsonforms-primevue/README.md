@@ -87,4 +87,4 @@ For detailed documentation on all available components, options, and customizati
  - [x] Image display (option on Label)
 
  ---
- 2026-07-07
+ 2026-07-08
