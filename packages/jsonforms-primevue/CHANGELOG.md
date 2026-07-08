@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.3.3](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/compare/jsonforms-primevue-v1.3.2...jsonforms-primevue-v1.3.3) (2026-07-08)
+
+
+### Bug Fixes
+
+* changelog location ([544508c](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/commit/544508c4c6d0b0ebc24bfd411d2dce4739930b89))
+* trigger release ([fad4a66](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/commit/fad4a6649c0dec33546198cb59b112419c23f1c4))
+* try publish again... ([1528467](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/commit/15284673c35c42e1b84edff14c7de891e7f5ecd7))
+
 ## [1.3.2](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/compare/jsonforms-primevue-v1.3.1...jsonforms-primevue-v1.3.2) (2026-07-07)
 
 
