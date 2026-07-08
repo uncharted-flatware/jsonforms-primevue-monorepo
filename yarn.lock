@@ -489,40 +489,40 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jsonforms/core@npm:3.5.1, @jsonforms/core@npm:^3.5.1":
-  version: 3.5.1
-  resolution: "@jsonforms/core@npm:3.5.1"
+"@jsonforms/core@npm:3.7.0":
+  version: 3.7.0
+  resolution: "@jsonforms/core@npm:3.7.0"
   dependencies:
     "@types/json-schema": "npm:^7.0.3"
     ajv: "npm:^8.6.1"
     ajv-formats: "npm:^2.1.0"
     lodash: "npm:^4.17.21"
-  checksum: 10c0/61ee662004033ef5d31aeea0fd44273fb3fa2d9ee40c750c45a017bac35207d3f45acca11d80f134d3cd3c4663b332c08309b374b858a036d38f64b66ea4d336
+  checksum: 10c0/763ff255cfee731766331e616c47dc73eac6edfdca343ff5c0eb801079c3b2968bb67215ee91dc1fc1f4fb7e23ee92463e6481e58454504887272bbbb25af5c9
   languageName: node
   linkType: hard
 
-"@jsonforms/vue-vanilla@npm:3.5.1":
-  version: 3.5.1
-  resolution: "@jsonforms/vue-vanilla@npm:3.5.1"
+"@jsonforms/vue-vanilla@npm:3.7.0":
+  version: 3.7.0
+  resolution: "@jsonforms/vue-vanilla@npm:3.7.0"
   dependencies:
     lodash: "npm:^4.17.21"
   peerDependencies:
-    "@jsonforms/core": 3.5.1
-    "@jsonforms/vue": 3.5.1
-    vue: ^3.2.26
-  checksum: 10c0/0086d7fcf7fe6fedf3060d807a60f6d623e2b4f460be7d9fb8d8a6f4fb01ce2d7c574172330f2f68ecf28808cc9d5c05b1c65c64e4be0003a7875bbc260775a0
+    "@jsonforms/core": 3.7.0
+    "@jsonforms/vue": 3.7.0
+    vue: ^3.5.0
+  checksum: 10c0/a65432803e8d47b3c1baef8c6582f1f7493211c4cbdb82dcc8984d07ae112ec2075a876aebcaadaeceb1293441bde67a812605c094a6d76b6046aea5d56b7e3a
   languageName: node
   linkType: hard
 
-"@jsonforms/vue@npm:3.5.1, @jsonforms/vue@npm:^3.5.1":
-  version: 3.5.1
-  resolution: "@jsonforms/vue@npm:3.5.1"
+"@jsonforms/vue@npm:3.7.0":
+  version: 3.7.0
+  resolution: "@jsonforms/vue@npm:3.7.0"
   dependencies:
     lodash: "npm:^4.17.21"
   peerDependencies:
-    "@jsonforms/core": 3.5.1
-    vue: ^3.2.26
-  checksum: 10c0/ee8254ebc62b3c268a1a4cc3a2d3e4c0142799fdccc5ae9fa645aa5306142e86427b07258fa301768073ab4442e1b93db619cc879dae3e3903d059e07b31609c
+    "@jsonforms/core": 3.7.0
+    vue: ^3.5.0
+  checksum: 10c0/c83bea4df8d19afd7aa2f1b14a682388b1b25fccdd4162606af2dc35ef115228b6566c5b3e6e775b83859c22c1bc3dae807b94ebeb3632c73f76e2078a0a00cb
   languageName: node
   linkType: hard
 
@@ -1094,16 +1094,16 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@uncharted.software/jsonforms-playground@workspace:examples/playground"
   dependencies:
-    "@jsonforms/core": "npm:3.5.1"
-    "@jsonforms/vue": "npm:3.5.1"
-    "@jsonforms/vue-vanilla": "npm:3.5.1"
+    "@jsonforms/core": "npm:3.7.0"
+    "@jsonforms/vue": "npm:3.7.0"
+    "@jsonforms/vue-vanilla": "npm:3.7.0"
     "@primeuix/themes": "npm:^1.2.5"
     "@types/node": "npm:^24.0.0"
     "@uncharted.software/jsonforms-primevue": "workspace:*"
     "@vitejs/plugin-vue": "npm:^5.2.3"
     highlight.js: "npm:11.8.0"
     oxlint: "npm:^0.16.12"
-    primeflex: "npm:3.3.1"
+    primeflex: "npm:4.0.0"
     primeicons: "npm:7.0.0"
     primevue: "npm:4.4.1"
     simple-code-editor: "npm:2.0.9"
@@ -1132,8 +1132,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@uncharted.software/jsonforms-primevue@workspace:packages/jsonforms-primevue"
   dependencies:
-    "@jsonforms/core": "npm:^3.5.1"
-    "@jsonforms/vue": "npm:^3.5.1"
+    "@jsonforms/core": "npm:3.7.0"
+    "@jsonforms/vue": "npm:3.7.0"
     "@types/lodash": "npm:^4"
     "@types/lodash-es": "npm:^4.17.12"
     "@types/node": "npm:^24.0.0"
@@ -1142,7 +1142,7 @@ __metadata:
     "@vue/tsconfig": "npm:^0.5.1"
     lodash: "npm:^4.18.1"
     oxlint: "npm:^0.16.12"
-    primeflex: "npm:3.3.1"
+    primeflex: "npm:4.0.0"
     primeicons: "npm:7.0.0"
     primevue: "npm:4.4.1"
     typescript: "npm:^5.6.2"
@@ -1153,9 +1153,9 @@ __metadata:
     vue: "npm:^3.5.0"
     vue-tsc: "npm:^2.1.6"
   peerDependencies:
-    "@jsonforms/core": 3.5.1
-    "@jsonforms/vue": 3.5.1
-    primeflex: ^3.3.1
+    "@jsonforms/core": 3.7.0
+    "@jsonforms/vue": 3.7.0
+    primeflex: ^4.0.0
     primevue: ^4.4.0
     vue: ^3.5.0
   languageName: unknown
@@ -3250,10 +3250,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"primeflex@npm:3.3.1":
-  version: 3.3.1
-  resolution: "primeflex@npm:3.3.1"
-  checksum: 10c0/6ab3e8fca36b2d0e1dfe7bfde2d80570f12ff6d8fbd43fe427e0dba29dfd4fe96b91a7b78c22023f01d142b11741811d9a2810e1e32c23c5da64a1462f66705b
+"primeflex@npm:4.0.0":
+  version: 4.0.0
+  resolution: "primeflex@npm:4.0.0"
+  checksum: 10c0/36516c2fc657aca018115bdceef601326d83f25b24c342c0b9bdc4ec92115e58735f0f628494d431ae9b9a441899bfbbca2159160954d70fa3ed7f6e2a95c8bf
   languageName: node
   linkType: hard
 

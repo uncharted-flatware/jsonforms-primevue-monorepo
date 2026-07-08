@@ -74,15 +74,15 @@
     "ci": "yarn build && yarn test:types && yarn lint && yarn lint:fix && yarn format && yarn format:ci && yarn test:unit:ci"
   },
   "peerDependencies": {
-    "@jsonforms/core": "3.5.1",
-    "@jsonforms/vue": "3.5.1",
-    "primeflex": "^3.3.1",
+    "@jsonforms/core": "3.7.0",
+    "@jsonforms/vue": "3.7.0",
+    "primeflex": "^4.0.0",
     "primevue": "^4.4.0",
     "vue": "^3.5.0"
   },
   "devDependencies": {
-    "@jsonforms/core": "^3.5.1",
-    "@jsonforms/vue": "^3.5.1",
+    "@jsonforms/core": "3.7.0",
+    "@jsonforms/vue": "3.7.0",
     "@types/lodash": "^4",
     "@types/lodash-es": "^4.17.12",
     "@types/node": "^24.0.0",
@@ -90,7 +90,7 @@
     "@vitejs/plugin-vue": "^5.2.3",
     "@vue/tsconfig": "^0.5.1",
     "oxlint": "^0.16.12",
-    "primeflex": "3.3.1",
+    "primeflex": "4.0.0",
     "primeicons": "7.0.0",
     "primevue": "4.4.1",
     "typescript": "^5.6.2",
