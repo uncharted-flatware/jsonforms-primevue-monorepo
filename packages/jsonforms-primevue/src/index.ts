@@ -1,3 +1,5 @@
+import './jsonforms-layout.css';
+
 import {
     and,
     not,

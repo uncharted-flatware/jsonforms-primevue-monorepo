@@ -5,11 +5,12 @@
         :applied-options="appliedOptions"
         :display-value="formattedDuration"
     >
-        <div v-if="appliedOptions.displayOnly" :class="appliedOptions.compact ? 'text-900' : 'p-3 text-900'">
+        <div v-if="appliedOptions.displayOnly" :class="displayOnlyClasses">
             {{ formattedDuration }}
         </div>
         <InputNumber
             v-else
+            fluid
             :id="control.id"
             :inputId="control.id + '-input'"
             :disabled="!control.enabled"
@@ -20,7 +21,6 @@
             :max="365"
             :step="1"
             showButtons
-            inputClass="w-5rem"
             @update:model-value="onChange"
         />
     </ControlWrapper>
@@ -78,7 +78,12 @@ const formattedDuration = computed(() => {
     
     return days === 1 ? '1 day' : `${days} days`;
 });
-</script>
 
-<style scoped>
-</style>
+const displayOnlyClasses = computed(() => {
+    const classes = ['jsonforms-display-value'];
+    if (!appliedOptions.value.compact) {
+        classes.push('jsonforms-display-value--padded');
+    }
+    return classes.join(' ');
+});
+</script>

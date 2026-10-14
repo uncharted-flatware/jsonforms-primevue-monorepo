@@ -5,11 +5,12 @@
         :applied-options="appliedOptions"
         :display-value="formattedDate"
     >
-        <div v-if="appliedOptions.displayOnly" :class="appliedOptions.compact ? 'text-900' : 'p-3 text-900'">
+        <div v-if="appliedOptions.displayOnly" :class="displayOnlyClasses">
             {{ formattedDate }}
         </div>
         <DatePicker
             v-else
+            fluid
             :id="control.id"
             :inputId="control.id + '-input'"
             showTime
@@ -70,5 +71,13 @@ const formattedDate = computed(() => {
     } catch (e) {
         return control.value.data;
     }
+});
+
+const displayOnlyClasses = computed(() => {
+    const classes = ['jsonforms-display-value'];
+    if (!appliedOptions.value.compact) {
+        classes.push('jsonforms-display-value--padded');
+    }
+    return classes.join(' ');
 });
 </script>

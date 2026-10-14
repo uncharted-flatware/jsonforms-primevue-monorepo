@@ -5,11 +5,12 @@
         :applied-options="appliedOptions"
         :display-value="formatDisplayValue"
     >
-        <div v-if="appliedOptions.displayOnly" :class="appliedOptions.compact ? 'text-900' : 'p-3 text-900'">
+        <div v-if="appliedOptions.displayOnly" :class="displayOnlyClasses">
             {{ formatDisplayValue }}
         </div>
         <InputNumber
             v-else
+            fluid
             :id="control.id"
             :inputId="control.id + '-input'"
             :prefix="appliedOptions.prefix"
@@ -69,5 +70,13 @@ const formatDisplayValue = computed(() => {
     const prefix = appliedOptions.value.prefix || '';
     const suffix = appliedOptions.value.suffix || '';
     return `${prefix}${control.value.data}${suffix}`;
+});
+
+const displayOnlyClasses = computed(() => {
+    const classes = ['jsonforms-display-value'];
+    if (!appliedOptions.value.compact) {
+        classes.push('jsonforms-display-value--padded');
+    }
+    return classes.join(' ');
 });
 </script>

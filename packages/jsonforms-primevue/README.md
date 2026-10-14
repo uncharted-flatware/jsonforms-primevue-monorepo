@@ -15,7 +15,7 @@ In addition, we needed to support other new options such as:
 ## Installation
 
 ```bash
-yarn add @uncharted.software/jsonforms-primevue @jsonforms/core @jsonforms/vue primevue primeflex
+yarn add @uncharted.software/jsonforms-primevue @jsonforms/core @jsonforms/vue primevue
 ```
 
 ## Usage

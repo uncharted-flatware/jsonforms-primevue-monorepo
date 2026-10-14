@@ -1,0 +1,214 @@
+@layer jsonforms {
+  :where(.jsonforms-layout) {
+    margin-bottom: var(--p-content-gap, 0.75rem);
+  }
+
+  :where(.jsonforms-stack),
+  :where(.jsonforms-stack--compact),
+  :where(.jsonforms-stack--loose) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  :where(.jsonforms-stack) {
+    gap: var(--p-content-gap, 0.75rem);
+  }
+
+  :where(.jsonforms-stack--compact) {
+    gap: calc(var(--p-content-gap, 0.75rem) * 0.35);
+  }
+
+  :where(.jsonforms-stack--loose) {
+    gap: calc(var(--p-content-gap, 0.75rem) * 1.25);
+  }
+
+  :where(.jsonforms-row) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: var(--p-content-gap, 0.75rem);
+    width: 100%;
+  }
+
+  :where(.jsonforms-row--wrap) {
+    flex-wrap: wrap;
+  }
+
+  :where(.jsonforms-row--between) {
+    justify-content: space-between;
+  }
+
+  :where(.jsonforms-row--actions) {
+    gap: calc(var(--p-content-gap, 0.75rem) * 0.5);
+  }
+
+  :where(.jsonforms-row--end) {
+    justify-content: flex-end;
+  }
+
+  :where(.jsonforms-row--start) {
+    justify-content: flex-start;
+  }
+
+  :where(.jsonforms-control) {
+    margin-bottom: var(--p-content-gap, 0.75rem);
+    width: 100%;
+  }
+
+  :where(.jsonforms-control--label-top) {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--p-content-gap, 0.75rem) * 0.5);
+  }
+
+  :where(.jsonforms-control--label-inline) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: calc(var(--p-content-gap, 0.75rem) * 0.5);
+  }
+
+  :where(.jsonforms-control--layout-between) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  :where(.jsonforms-control__widget) {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  :where(.jsonforms-control--label-inline) .jsonforms-control__widget,
+  :where(.jsonforms-control--layout-between) .jsonforms-control__widget {
+    flex: 1 1 0;
+  }
+
+  :where(.jsonforms-control--label-top) .jsonforms-control__widget,
+  :where(.jsonforms-control--label-inline) .jsonforms-control__widget,
+  :where(.jsonforms-control--layout-between) .jsonforms-control__widget {
+    width: 100%;
+  }
+
+  :where(.jsonforms-control__label) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-weight: 500;
+    font-size: var(--p-form-field-sm-font-size, var(--text-size-small, 0.875rem));
+    color: var(--p-text-color, var(--text-color));
+    min-width: fit-content;
+  }
+
+  :where(.jsonforms-control__info) {
+    display: inline-flex;
+    align-items: center;
+    color: var(--p-primary-color, var(--primary-color));
+    cursor: pointer;
+  }
+
+  :where(.jsonforms-control__description) {
+    width: 100%;
+    margin-top: 0.25rem;
+    padding: 0.5rem;
+    background: var(--p-content-background, var(--surface-50));
+    border: 1px solid var(--p-content-border-color, var(--surface-border));
+    border-radius: var(--p-content-border-radius, 4px);
+    font-size: var(--p-form-field-sm-font-size, var(--text-size-small, 0.875rem));
+    color: var(--p-text-muted-color, var(--text-color-secondary));
+  }
+
+  :where(.jsonforms-display-value) {
+    color: var(--p-text-color, var(--text-color));
+  }
+
+  :where(.jsonforms-display-value--padded) {
+    padding: var(--p-content-padding, 0.75rem);
+  }
+
+  :where(.jsonforms-display-value--compact-pad) {
+    padding: calc(var(--p-content-padding, 0.75rem) * 0.5);
+  }
+
+  :where(.jsonforms-display-boolean--true) {
+    color: var(--p-green-500, var(--green-500, currentColor));
+  }
+
+  :where(.jsonforms-display-boolean--false) {
+    color: var(--p-red-500, var(--red-500, currentColor));
+  }
+
+  :where(.jsonforms-array-empty) {
+    text-align: center;
+    padding: var(--p-content-padding, 0.75rem);
+    color: var(--p-text-muted-color, var(--text-color-secondary));
+  }
+
+  :where(.jsonforms-array-actions) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  :where(.jsonforms-array-item) {
+    margin-bottom: var(--p-content-gap, 0.75rem);
+  }
+
+  :where(.jsonforms-array-item__header) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--p-content-gap, 0.75rem);
+    width: 100%;
+  }
+
+  :where(.jsonforms-array-item__title) {
+    font-weight: 600;
+    color: var(--p-text-color, var(--text-color));
+  }
+
+  :where(.jsonforms-array-primitive-marker) {
+    font-size: 0.4rem;
+    color: var(--p-text-muted-color, var(--text-color-secondary));
+  }
+
+  :where(.jsonforms-array-primitive-row) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  :where(.jsonforms-array-primitive-content) {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  :where(.jsonforms-radio-option) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: calc(var(--p-content-gap, 0.75rem) * 0.5);
+  }
+
+  :where(.jsonforms-radio-option label) {
+    cursor: pointer;
+  }
+
+  :where(.jsonforms-label-card) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  :where(.jsonforms-label-caption) {
+    font-size: var(--p-form-field-sm-font-size, var(--text-size-small, 0.875rem));
+    color: var(--p-text-muted-color, var(--text-color-secondary));
+  }
+
+}

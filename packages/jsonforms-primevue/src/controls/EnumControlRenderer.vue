@@ -5,34 +5,32 @@
         :applied-options="appliedOptions"
         :display-value="control.data"
     >
-        <div v-if="appliedOptions.displayOnly" :class="appliedOptions.compact ? 'text-900' : 'p-3 text-900'">
+        <div v-if="appliedOptions.displayOnly" :class="displayOnlyClasses">
             {{ control.data || '' }}
         </div>
         <RadioButtonGroup
             v-else-if="isRadioFormat"
             :name="control.id + '-radio-group'"
             :model-value="control.data"
-            class="flex flex-column gap-2"
+            class="jsonforms-stack"
             @update:model-value="onChange"
         >
             <div
                 v-for="(option, index) in options"
                 :key="String(option)"
-                class="flex align-items-center gap-2"
+                class="jsonforms-radio-option"
             >
                 <RadioButton
                     :input-id="control.id + '-radio-' + index"
                     :value="option"
                     :disabled="!control.enabled"
                 />
-                <label
-                    :for="control.id + '-radio-' + index"
-                    class="cursor-pointer"
-                >{{ option }}</label>
+                <label :for="control.id + '-radio-' + index">{{ option }}</label>
             </div>
         </RadioButtonGroup>
         <Select
             v-else
+            fluid
             :inputId="control.id + '-input'"
             :disabled="!control.enabled"
             :autofocus="appliedOptions.focus"
@@ -82,9 +80,12 @@ const options = computed(() => {
     }
     return values;
 });
-</script>
 
-<!-- 
-  Note: Global PrimeVue styles removed - components now inherit from parent app's PrimeVue theme.
-  This prevents style pollution and ensures consistency with the consuming application.
--->
+const displayOnlyClasses = computed(() => {
+    const classes = ['jsonforms-display-value'];
+    if (!appliedOptions.value.compact) {
+        classes.push('jsonforms-display-value--padded');
+    }
+    return classes.join(' ');
+});
+</script>

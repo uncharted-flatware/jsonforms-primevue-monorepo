@@ -4,67 +4,62 @@
     :is-focused="isFocused"
     :applied-options="appliedOptions"
   >
-    <div :class="appliedOptions.displayOnly ? 'flex flex-column gap-1' : 'flex flex-column gap-3'">
-      <div class="flex justify-content-end" v-if="control.enabled && !appliedOptions.displayOnly && !appliedOptions.displayAsTable">
-        <div class="flex gap-2">
+    <div :class="arrayRootClasses">
+      <div class="jsonforms-row jsonforms-row--end" v-if="control.enabled && !appliedOptions.displayOnly && !appliedOptions.displayAsTable">
+        <div class="jsonforms-array-actions">
           <Button
             :disabled="!control.enabled"
+            size="small"
             @click="addItem"
             v-tooltip.top="'Add Item'"
-            class="p-button-sm"
-          >
-            <i class="pi pi-plus"></i>
-          </Button>
+            icon="pi pi-plus"
+          />
         </div>
       </div>
       
-      <div v-if="!control.data || control.data.length === 0" class="text-500 text-center p-3">
+      <div v-if="!control.data || control.data.length === 0" class="jsonforms-array-empty">
         {{ appliedOptions.emptyMessage || 'No items found' }}
       </div>
 
       <!-- Table Display Mode -->
-      <div v-else-if="appliedOptions.displayAsTable && !isPrimitiveArray" class="flex flex-column gap-2">
+      <div v-else-if="appliedOptions.displayAsTable && !isPrimitiveArray" class="jsonforms-stack">
         <DataTable 
           :value="control.data"
           :resizableColumns="true"
           :tableStyle="{ minWidth: '50rem' }"
-          class="p-datatable-sm"
         >
           <!-- Action column for non-displayOnly mode -->
           <Column v-if="!appliedOptions.displayOnly" header="Actions" :style="{ width: '10rem' }" frozen alignFrozen="right">
             <template #body="{ index }">
-              <div class="flex gap-1">
+              <div class="jsonforms-array-actions">
                 <template v-if="appliedOptions.showSortButtons">
                   <Button
                     @click="moveItem(index, index - 1)"
                     :disabled="index === 0"
                     v-tooltip.top="'Move Up'"
-                    class="p-button-sm"
+                    size="small"
                     text
                     severity="secondary"
-                  >
-                    <i class="pi pi-chevron-up"></i>
-                  </Button>
+                    icon="pi pi-chevron-up"
+                  />
                   <Button
                     @click="moveItem(index, index + 1)"
                     :disabled="index === control.data.length - 1"
                     v-tooltip.top="'Move Down'"
-                    class="p-button-sm"
+                    size="small"
                     text
                     severity="secondary"
-                  >
-                    <i class="pi pi-chevron-down"></i>
-                  </Button>
+                    icon="pi pi-chevron-down"
+                  />
                 </template>
                 <Button
                   @click="removeItem(index)"
                   v-tooltip.top="'Remove Item'"
-                  class="p-button-sm"
+                  size="small"
                   severity="danger"
                   text
-                >
-                  <i class="pi pi-trash"></i>
-                </Button>
+                  icon="pi pi-trash"
+                />
               </div>
             </template>
           </Column>
@@ -78,7 +73,7 @@
             :style="{ minWidth: '12rem' }"
           >
             <template #body="{ data, index }">
-              <div style="padding: 2px; margin: 1px;">
+              <div>
                 <DispatchRenderer
                   :schema="property.schema"
                   :uischema="{ 
@@ -96,7 +91,6 @@
                   :cells="control.cells"
                   :data="data[property.key]"
                   @change="handleCellChange(index, property.key)"
-                  class="w-full"
                 />
               </div>
             </template>
@@ -104,28 +98,27 @@
         </DataTable>
 
         <!-- Add button for table mode -->
-        <div class="flex justify-content-start" v-if="control.enabled && !appliedOptions.displayOnly">
+        <div class="jsonforms-row jsonforms-row--start" v-if="control.enabled && !appliedOptions.displayOnly">
           <Button
             :disabled="!control.enabled"
+            size="small"
+            label="Add Row"
+            icon="pi pi-plus"
             @click="addItem"
             v-tooltip.top="'Add Item'"
-            class="p-button-sm"
-          >
-            <i class="pi pi-plus mr-1"></i>
-            Add Row
-          </Button>
+          />
         </div>
       </div>
 
       <!-- Simple display for primitive arrays in displayOnly mode -->
-      <div v-else-if="appliedOptions.displayOnly && isPrimitiveArray" class="flex flex-column gap-1">
+      <div v-else-if="appliedOptions.displayOnly && isPrimitiveArray" class="jsonforms-stack--compact">
         <div 
           v-for="(item, index) in control.data" 
           :key="`${control.path}-${index}`" 
-          class="flex align-items-center gap-1"
+          class="jsonforms-array-primitive-row"
         >
-          <i class="pi pi-circle-fill text-300" style="font-size: 0.4rem;"></i>
-          <div class="flex-1">
+          <i class="pi pi-circle-fill jsonforms-array-primitive-marker"></i>
+          <div class="jsonforms-array-primitive-content">
             <DispatchRenderer
               :schema="itemSchema"
               :uischema="{ type: 'Control', scope: '#', options: { displayOnly: true, compact: true, labelPlacement: appliedOptions.labelPlacement } } as any"
@@ -134,14 +127,13 @@
               :renderers="control.renderers"
               :cells="control.cells"
               :data="item"
-              class="w-full"
             />
           </div>
         </div>
       </div>
 
       <!-- Compact display for object arrays in displayOnly mode -->
-      <div v-else-if="appliedOptions.displayOnly" class="flex flex-column gap-1">
+      <div v-else-if="appliedOptions.displayOnly" class="jsonforms-stack--compact">
         <div 
           v-for="(item, index) in control.data" 
           :key="`${control.path}-${index}`"
@@ -161,58 +153,50 @@
       </div>
 
       <!-- Complex display mode for objects or non-displayOnly mode -->
-      <div v-else class="flex flex-column gap-3">
-        <div 
-          v-for="(item, index) in control.data" 
-          :key="`${control.path}-${index}`" 
-          class="border-1 border-300 border-round p-3"
+      <div v-else class="jsonforms-stack--loose">
+        <Panel
+          v-for="(item, index) in control.data"
+          :key="`${control.path}-${index}`"
+          class="jsonforms-array-item"
         >
-          <!-- Item header with label and controls -->
-          <div class="flex justify-content-between align-items-center mb-2">
-            <div class="flex align-items-center gap-2">
-              <span class="font-semibold text-900">
+          <template #header>
+            <div class="jsonforms-array-item__header">
+              <span class="jsonforms-array-item__title">
                 {{ getItemLabel(item, index) }}
               </span>
-            </div>
-            <!-- Action buttons, only visible if editable -->
-            <div class="flex gap-1" v-if="control.enabled && !appliedOptions.displayOnly">
-              <!-- Sort buttons -->
-              <template v-if="appliedOptions.showSortButtons">
+              <div class="jsonforms-array-actions" v-if="control.enabled && !appliedOptions.displayOnly">
+                <template v-if="appliedOptions.showSortButtons">
+                  <Button
+                    @click="moveItem(index, index - 1)"
+                    :disabled="index === 0"
+                    v-tooltip.top="'Move Up'"
+                    size="small"
+                    text
+                    severity="secondary"
+                    icon="pi pi-chevron-up"
+                  />
+                  <Button
+                    @click="moveItem(index, index + 1)"
+                    :disabled="index === control.data.length - 1"
+                    v-tooltip.top="'Move Down'"
+                    size="small"
+                    text
+                    severity="secondary"
+                    icon="pi pi-chevron-down"
+                  />
+                </template>
                 <Button
-                  @click="moveItem(index, index - 1)"
-                  :disabled="index === 0"
-                  v-tooltip.top="'Move Up'"
-                  class="p-button-sm"
+                  @click="removeItem(index)"
+                  v-tooltip.top="'Remove Item'"
+                  size="small"
+                  severity="danger"
                   text
-                  severity="secondary"
-                >
-                  <i class="pi pi-chevron-up"></i>
-                </Button>
-                <Button
-                  @click="moveItem(index, index + 1)"
-                  :disabled="index === control.data.length - 1"
-                  v-tooltip.top="'Move Down'"
-                  class="p-button-sm"
-                  text
-                  severity="secondary"
-                >
-                  <i class="pi pi-chevron-down"></i>
-                </Button>
-              </template>
-              <!-- Remove button -->
-              <Button
-                @click="removeItem(index)"
-                v-tooltip.top="'Remove Item'"
-                class="p-button-sm"
-                severity="danger"
-                text
-              >
-                <i class="pi pi-trash"></i>
-              </Button>
+                  icon="pi pi-trash"
+                />
+              </div>
             </div>
-          </div>
+          </template>
 
-          <!-- Item content -->
           <ArrayItemRenderer
             :schema="itemSchema"
             :uischema="getItemUiSchema()"
@@ -224,7 +208,7 @@
             @change="handleItemChange(index)"
             :readonly="!control.enabled || appliedOptions.displayOnly"
           />
-        </div>
+        </Panel>
       </div>
     </div>
   </ControlWrapper>
@@ -238,6 +222,7 @@ import { default as ControlWrapper } from './ControlWrapper.vue';
 import { useControlCommon } from '../util/composition';
 import { composePaths } from '@jsonforms/core';
 import Button from 'primevue/button';
+import Panel from 'primevue/panel';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import ArrayItemRenderer from './ArrayItemRenderer.vue';
@@ -255,6 +240,10 @@ const {
   isFocused,
   onChange
 } = controlCommon;
+
+const arrayRootClasses = computed(() =>
+  appliedOptions.value.displayOnly ? 'jsonforms-stack--compact' : 'jsonforms-stack--loose'
+);
 
 // Check if the array contains primitive values (string, number, boolean)
 const isPrimitiveArray = computed(() => {
