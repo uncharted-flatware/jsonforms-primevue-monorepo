@@ -32,6 +32,11 @@ const activeExample = computed(() =>
     playgroundExamples.find((ex) => ex.id === selectedExampleId.value)
 );
 
+const formContainerClass = computed(() => {
+    const hostClass = activeExample.value?.meta.playgroundHostClass;
+    return hostClass ? { [hostClass]: true } : undefined;
+});
+
 const errorMessage = ref('');
 
 const dataSchemaString = ref('');
@@ -148,7 +153,7 @@ function onFormChanged(event: JsonFormsChangeEvent) {
                     v-model="exampleDataString"
                 />
             </div>
-            <div class="form-container p-3">
+            <div class="form-container p-3" :class="formContainerClass">
                 <h3>Rendered Form</h3>
 
                 <JsonForms

@@ -1,6 +1,8 @@
 export type PlaygroundExampleMeta = {
   label: string;
   order: number;
+  /** Applied to `.form-container` when this example is selected (host-app CSS demos). */
+  playgroundHostClass?: string;
 };
 
 export type PlaygroundExample = {

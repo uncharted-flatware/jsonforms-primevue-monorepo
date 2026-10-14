@@ -5,11 +5,12 @@
         :applied-options="appliedOptions"
         :display-value="formatDisplayValue"
     >
-        <div v-if="appliedOptions.displayOnly" :class="appliedOptions.compact ? 'text-900' : 'p-3 text-900'">
+        <div v-if="appliedOptions.displayOnly" :class="displayOnlyClasses">
             {{ formatDisplayValue }}
         </div>
         <InputNumber
             v-else
+            fluid
             :id="control.id"
             :inputId="control.id + '-input'"
             :showButtons="true"
@@ -21,7 +22,6 @@
             :disabled="!control.enabled"
             :autofocus="appliedOptions.focus"
             :placeholder="appliedOptions.placeholder"
-            inputClass="w-5rem"
             :model-value="control.data"
             @update:model-value="onChange"
         />
@@ -72,42 +72,12 @@ const formatDisplayValue = computed(() => {
     const suffix = appliedOptions.value.suffix || '';
     return `${prefix}${control.value.data}${suffix}`;
 });
+
+const displayOnlyClasses = computed(() => {
+    const classes = ['jsonforms-display-value'];
+    if (!appliedOptions.value.compact) {
+        classes.push('jsonforms-display-value--padded');
+    }
+    return classes.join(' ');
+});
 </script>
-
-<style scoped>
-/* Scoped styles for disabled InputNumber components */
-:deep(.p-inputnumber[disabled]),
-:deep(.p-inputnumber.p-disabled),
-:deep(.p-inputnumber.p-component[disabled]),
-:deep(.p-inputnumber.p-component.p-disabled) {
-    opacity: 1 !important;
-}
-
-:deep(.p-inputnumber[disabled] .p-inputnumber-input),
-:deep(.p-inputnumber.p-disabled .p-inputnumber-input),
-:deep(.p-inputnumber.p-component[disabled] .p-inputnumber-input),
-:deep(.p-inputnumber.p-component.p-disabled .p-inputnumber-input) {
-    background: var(--surface-100, #f8f9fa) !important;
-    color: var(--text-color-secondary) !important;
-    cursor: not-allowed !important;
-    opacity: 0.6 !important;
-}
-
-:deep(.p-inputnumber[disabled] .p-inputnumber-button),
-:deep(.p-inputnumber.p-disabled .p-inputnumber-button),
-:deep(.p-inputnumber.p-component[disabled] .p-inputnumber-button),
-:deep(.p-inputnumber.p-component.p-disabled .p-inputnumber-button) {
-    background: var(--surface-100, #f8f9fa) !important;
-    color: var(--text-color-secondary) !important;
-    cursor: not-allowed !important;
-    opacity: 0.6 !important;
-    pointer-events: none !important;
-}
-
-:deep(.p-inputnumber[disabled] .p-inputnumber-button-group),
-:deep(.p-inputnumber.p-disabled .p-inputnumber-button-group),
-:deep(.p-inputnumber.p-component[disabled] .p-inputnumber-button-group),
-:deep(.p-inputnumber.p-component.p-disabled .p-inputnumber-button-group) {
-    background: var(--surface-100, #f8f9fa) !important;
-}
-</style>

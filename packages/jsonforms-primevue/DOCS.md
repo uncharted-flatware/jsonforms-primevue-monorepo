@@ -23,6 +23,9 @@ This documentation provides detailed information about the JSONForms PrimeVue re
 - [Common Options](#common-options)
   - [Label Placement](#label-placement)
   - [Description Display](#description-display)
+- [Styling](#styling)
+  - [Hook classes reference](#hook-classes-reference)
+  - [Field sizing in the host app](#field-sizing-in-the-host-app)
 - [Advanced Features](#advanced-features)
 
 ## Basic Usage
@@ -904,6 +907,109 @@ In your UI schema, you can specify how descriptions should be displayed using th
   }
 }
 ```
+
+## Styling
+
+JSONForms PrimeVue does not ship a PrimeVue theme and does not require PrimeFlex. Form controls use your application's PrimeVue preset (Aura, Lara, etc.). The optional stylesheet only provides structural layout hooks:
+
+```typescript
+import '@uncharted.software/jsonforms-primevue/style.css';
+```
+
+Rules are declared in the `@layer jsonforms` layer so you can override them without fighting component specificity.
+
+All hooks below are defined in [`src/jsonforms-layout.css`](src/jsonforms-layout.css) and applied from the built-in renderers. Override them from your app (typically in a higher-priority `@layer` or without a layer). PrimeVue widget classes (for example `.p-inputnumber`) are **not** part of this package but are stable targets inside `.jsonforms-control`.
+
+### Hook classes reference
+
+#### Layout
+
+| Class | Where used | Purpose |
+|-------|------------|---------|
+| `jsonforms-layout` | Group (panel/accordion), horizontal layout root, vertical layout root | Marks a layout region; adds bottom spacing between major sections |
+
+#### Vertical stacks (`flex` column + gap)
+
+| Class | Where used | Purpose |
+|-------|------------|---------|
+| `jsonforms-stack` | Enum radio group, array item body | Default vertical gap between children |
+| `jsonforms-stack--compact` | Compact arrays, multiline display-only strings | Tighter vertical gap |
+| `jsonforms-stack--loose` | Vertical layout, group innards, array edit mode | Looser vertical gap |
+
+#### Horizontal rows (`flex` row + gap)
+
+| Class | Where used | Purpose |
+|-------|------------|---------|
+| `jsonforms-row` | Boolean display-only | Default horizontal row (nowrap, centered) |
+| `jsonforms-row--wrap` | Horizontal layout when `isWrappingEnabled` | Allow wrapped horizontal items |
+| `jsonforms-row--between` | Horizontal layout when `layout: 'space-between'` | `justify-content: space-between` |
+| `jsonforms-row--actions` | *(stylesheet only)* | Tighter gap for button groups; combine with `jsonforms-row` if needed |
+| `jsonforms-row--end` | Array add button (non-table) | Align row content to the end |
+| `jsonforms-row--start` | Array “Add row” under table | Align row content to the start |
+
+#### Control wrapper (`ControlWrapper`)
+
+| Class | When applied | Purpose |
+|-------|----------------|---------|
+| `jsonforms-control` | Every control | Full-width block; bottom margin between fields |
+| `jsonforms-control--label-top` | `labelPlacement: 'top'` | Label above control |
+| `jsonforms-control--label-inline` | Default left/right label | Label and widget on one row |
+| `jsonforms-control--layout-between` | `layout: 'space-between'` on control options | Label and widget at opposite ends |
+| `jsonforms-control__widget` | Wrapper around each control’s PrimeVue field | Fills remaining width on inline / space-between rows when combined with PrimeVue `fluid` on inputs |
+| `jsonforms-control__label` | Visible labels | Label text and optional info icon |
+| `jsonforms-control__info` | Description tooltip icon | Info icon next to label |
+| `jsonforms-control__description` | `descriptionDisplay: 'always'` | Always-visible description panel |
+
+`labelPlacement: 'float'` and `'hide'` use `jsonforms-control` without an extra layout modifier (float uses PrimeVue `FloatLabel`; hide omits the label).
+
+#### Display-only values
+
+| Class | When applied | Purpose |
+|-------|----------------|---------|
+| `jsonforms-display-value` | `displayOnly` on string, number, integer, enum, date-time, duration | Base text color for read-only values |
+| `jsonforms-display-value--padded` | `displayOnly` and not `compact` | Padding around read-only value |
+| `jsonforms-display-value--compact-pad` | `displayOnly` compact string | Smaller padding (strings) |
+| `jsonforms-display-boolean--true` | Boolean `displayOnly`, true | Icon color for “yes” |
+| `jsonforms-display-boolean--false` | Boolean `displayOnly`, false | Icon color for “no” |
+
+#### Array control
+
+| Class | Where used | Purpose |
+|-------|------------|---------|
+| `jsonforms-array-empty` | No array items | Empty-state message |
+| `jsonforms-array-actions` | Table action column, item headers, top add button | Horizontal group of array buttons |
+| `jsonforms-array-item` | Editable object array entries | Wrapper on PrimeVue `Panel` per item |
+| `jsonforms-array-item__header` | Panel header slot | Title + actions row |
+| `jsonforms-array-item__title` | Item title in header | Item label text |
+| `jsonforms-array-primitive-row` | Display-only primitive list items | Bullet row layout |
+| `jsonforms-array-primitive-marker` | Bullet icon in primitive list | Small list marker styling |
+| `jsonforms-array-primitive-content` | Primitive list cell | Grows to fill row beside marker |
+
+#### Enum and label renderers
+
+| Class | Where used | Purpose |
+|-------|------------|---------|
+| `jsonforms-radio-option` | Enum `format: 'radio'` | One radio + label row |
+| `jsonforms-label-card` | Label with image | Centers image card content |
+| `jsonforms-label-caption` | Caption under label image | Muted caption text |
+
+The repository includes [`wrap-css.js`](wrap-css.js), an optional post-build script that prefixes selectors with `.jsonforms-container`. That class is **not** emitted by the default package build; use it only if you run the script and wrap `<JsonForms>` in an element with `class="jsonforms-container"`.
+
+### Field sizing in the host app
+
+Built-in renderers place each field inside `jsonforms-control__widget` and pass PrimeVue `fluid` on text, number, select, and date controls so widgets fill that wrapper on label-inline rows. The package does **not** set fixed pixel widths.
+
+Optional host overrides (unlayered CSS, or a layer ordered after PrimeVue when `cssLayer: true`):
+
+```css
+.jsonforms-control__widget .p-inputnumber,
+.jsonforms-control__widget .p-inputtext {
+  min-width: 12rem;
+  max-width: 24rem;
+}
+```
+
+Customize further via these hooks, PrimeVue design tokens, or per-control pass-through (`pt`) in your own renderer extensions.
 
 ## Advanced Features
 

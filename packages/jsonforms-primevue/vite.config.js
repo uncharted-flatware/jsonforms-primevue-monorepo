@@ -26,6 +26,7 @@ export default defineConfig({
       fileName: (format) =>
         format === 'umd' ? 'jsonforms-primevue.cjs' : `jsonforms-primevue.${format}.js`,
     },
+    cssCodeSplit: false,
     sourcemap: true,
     rollupOptions: {
       external: [

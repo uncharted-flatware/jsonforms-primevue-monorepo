@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-column w-full">
+  <div class="jsonforms-stack">
     <DispatchRenderer
       :schema="props.schema"
       :uischema="effectiveUiSchema"
@@ -9,7 +9,6 @@
       :cells="props.cells"
       :data="props.data"
       @change="handleChange"
-      class="w-full"
     />
   </div>
 </template>
@@ -58,19 +57,15 @@ const emit = defineEmits<{
   change: [event: { data: any }]
 }>();
 
-// Use the provided UI schema, or create a simple control as fallback
 const effectiveUiSchema = computed(() => {
-  // If we have a custom UI schema (not just a simple control), use it as-is
   if (props.uischema && props.uischema.type !== 'Control') {
     const uischema = { ...props.uischema } as any;
     if (props.readonly) {
-      // Add displayOnly option to all controls
       addDisplayOnlyOption(uischema);
     }
     return uischema;
   }
   
-  // For simple controls or fallback, create a basic control
   const baseSchema = {
     type: 'Control' as const,
     scope: '#',
@@ -81,7 +76,6 @@ const effectiveUiSchema = computed(() => {
   
   if (props.readonly) {
     baseSchema.options.displayOnly = true;
-    // Preserve compact option if it was passed from parent
     if ((props.uischema as any)?.options?.compact) {
       baseSchema.options.compact = true;
     }
@@ -90,12 +84,10 @@ const effectiveUiSchema = computed(() => {
   return baseSchema;
 });
 
-// Add displayOnly option to UI schema
 const addDisplayOnlyOption = (uischema: any) => {
   if (uischema.type === 'Control') {
     uischema.options = uischema.options || {};
     uischema.options.displayOnly = true;
-    // Preserve compact option if it was passed from parent
     if ((props.uischema as any)?.options?.compact) {
       uischema.options.compact = true;
     }
@@ -105,17 +97,14 @@ const addDisplayOnlyOption = (uischema: any) => {
 };
 
 const handleChange = (event: any) => {
-  // Handle different possible event structures from DispatchRenderer
   let newValue;
   
   if (event && typeof event === 'object' && 'data' in event) {
-    // Standard JsonForms change event: { data: value, errors: [...] }
     newValue = event.data;
   } else {
-    // Direct value
     newValue = event;
   }
   
   emit('change', { data: newValue });
 };
-</script> 
+</script>

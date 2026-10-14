@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.4.0] - Unreleased
+
+### Changed
+
+* Replace PrimeFlex utility classes with semantic `jsonforms-*` layout hooks and token-based package CSS.
+* Remove scoped `:deep()` overrides on PrimeVue inputs and panels so forms follow the host app's PrimeVue theme.
+* Drop `primeflex` as a peer dependency (optional in your app for non-form layout only).
+* Stop setting fixed or full-width sizes on inputs; field width is controlled by the host app and PrimeVue.
+
 ## [1.3.4](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/compare/jsonforms-primevue-v1.3.3...jsonforms-primevue-v1.3.4) (2026-07-08)
 
 

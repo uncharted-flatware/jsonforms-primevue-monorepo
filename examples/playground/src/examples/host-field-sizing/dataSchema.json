@@ -1,0 +1,56 @@
+{
+  "type": "object",
+  "properties": {
+    "sizing": {
+      "type": "object",
+      "title": "Host field sizing",
+      "description": "Demonstrates host-app CSS on jsonforms layout hooks and PrimeVue widgets",
+      "properties": {
+        "baselineString": {
+          "type": "string",
+          "title": "Baseline string (package default)",
+          "description": "Fluid field fills the row when host CSS does not override the widget"
+        },
+        "aString": {
+          "type": "string",
+          "title": "String",
+          "description": "Narrow text input"
+        },
+        "aNumber": {
+          "type": "number",
+          "title": "Number",
+          "description": "Narrow number input"
+        },
+        "anInteger": {
+          "type": "integer",
+          "title": "Integer",
+          "description": "Narrow integer input",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "aBoolean": {
+          "type": "boolean",
+          "title": "Boolean",
+          "description": "Checkbox keeps its natural width"
+        },
+        "anEnum": {
+          "type": "string",
+          "title": "Enum (select)",
+          "description": "Narrow dropdown",
+          "enum": ["Option 1", "Option 2", "Option 3"]
+        },
+        "anEnumRadio": {
+          "type": "string",
+          "title": "Enum (radio)",
+          "description": "Radio group uses natural width",
+          "enum": ["Option 1", "Option 2", "Option 3"]
+        },
+        "aDateTime": {
+          "type": "string",
+          "title": "Date-time",
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}

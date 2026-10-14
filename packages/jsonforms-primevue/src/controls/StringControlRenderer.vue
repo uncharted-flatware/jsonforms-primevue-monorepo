@@ -37,9 +37,13 @@ const formatDisplayValue = computed(() => {
     return `${prefix}${control.value.data}${suffix}`;
 });
 
-const displayOnlyClasses = computed(() =>
-    appliedOptions.value.compact ? 'text-900' : 'p-2 text-900'
-);
+const displayOnlyClasses = computed(() => {
+    const classes = ['jsonforms-display-value'];
+    if (!appliedOptions.value.compact) {
+        classes.push('jsonforms-display-value--compact-pad');
+    }
+    return classes.join(' ');
+});
 
 const isDisplayOnlyMultiline = computed(() => {
     if (!appliedOptions.value.displayOnly) {
@@ -69,7 +73,7 @@ const textareaRows = computed(() => appliedOptions.value.rows ?? 3);
         <div v-if="appliedOptions.displayOnly" :class="displayOnlyClasses">
             <div
                 v-if="isDisplayOnlyMultiline"
-                class="flex flex-column"
+                class="jsonforms-stack--compact"
             >
                 <span
                     v-for="(segment, index) in displayOnlyLineSegments"
@@ -80,6 +84,7 @@ const textareaRows = computed(() => appliedOptions.value.rows ?? 3);
         </div>
         <Textarea
             v-else-if="isMultiLine"
+            fluid
             :id="control.id"
             :inputId="control.id + '-input'"
             :model-value="control.data"
@@ -91,6 +96,7 @@ const textareaRows = computed(() => appliedOptions.value.rows ?? 3);
         />
         <InputText
             v-else
+            fluid
             :id="control.id"
             :inputId="control.id + '-input'"
             :model-value="control.data"
@@ -101,30 +107,3 @@ const textareaRows = computed(() => appliedOptions.value.rows ?? 3);
         />
     </ControlWrapper>
 </template>
-
-<style scoped>
-/* Scoped styles for text inputs within this control */
-:deep(.p-inputtext),
-:deep(.p-textarea) {
-    border: 1px solid var(--surface-border) !important;
-    border-radius: 4px !important;
-    padding: 0.5rem 0.75rem !important;
-    background: var(--surface-0, #ffffff) !important;
-    width: 100%;
-    font-size: var(--text-size, 1rem);
-    transition: border-color 0.2s;
-}
-
-:deep(.p-inputtext:focus),
-:deep(.p-textarea:focus) {
-    outline: none;
-    border-color: var(--primary-color, #f02896) !important;
-    box-shadow: 0 0 0 0.2rem rgba(240, 40, 150, 0.25);
-}
-
-:deep(.p-inputtext:disabled),
-:deep(.p-textarea:disabled) {
-    background: var(--surface-100, #f8f9fa) !important;
-    opacity: 0.6;
-}
-</style>

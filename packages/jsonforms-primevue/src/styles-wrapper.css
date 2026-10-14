@@ -1,4 +1,2 @@
-/* Wrap all jsonforms styles in a lower-priority layer to prevent interference with host app */
-@layer jsonforms {
-  /* This file imports the actual styles which will be wrapped in the layer */
-}
+/* Layout hooks live in jsonforms-layout.css (@layer jsonforms). */
+@import './jsonforms-layout.css';

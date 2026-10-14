@@ -18,12 +18,12 @@ const layoutCommon = useLayoutCommon(layoutProps);
 const { appliedOptions, layout } = layoutCommon;
 
 const layoutClasses = computed(() => {
+    const classes = ['jsonforms-layout', 'jsonforms-row'];
     if (appliedOptions.value.isWrappingEnabled) {
-        return 'flex flex-row flex-wrap align-items-center gap-3';
+        classes.push('jsonforms-row--wrap');
     } else if (appliedOptions.value.layout === 'space-between') {
-        return 'flex flex-row flex-nowrap align-items-center justify-content-between w-full';
-    } else {
-        return 'flex flex-row flex-nowrap align-items-center gap-3';
+        classes.push('jsonforms-row--between');
     }
+    return classes.join(' ');
 });
 </script>

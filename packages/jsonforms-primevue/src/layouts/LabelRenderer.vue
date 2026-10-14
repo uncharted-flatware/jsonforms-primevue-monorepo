@@ -1,9 +1,9 @@
 <template>
     <If v-if="label.visible">
         <If v-if="hasImage">
-            <Card class="flex flex-column align-items-center">
+            <Card class="jsonforms-label-card">
                 <template #content>
-                    <div class="flex flex-column align-items-center gap-2">
+                    <div class="jsonforms-stack jsonforms-label-card">
                         <img
                             :src="imageUrl"
                             :alt="label.text"
@@ -11,7 +11,7 @@
                             :height="height"
                             :style="imageStyle"
                         />
-                        <span class="text-sm text-500">{{ label.text }}</span>
+                        <span class="jsonforms-label-caption">{{ label.text }}</span>
                     </div>
                 </template>
             </Card>

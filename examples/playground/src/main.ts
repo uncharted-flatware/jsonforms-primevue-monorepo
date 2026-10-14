@@ -1,5 +1,6 @@
 import '@jsonforms/vue-vanilla/vanilla.css';
 import '@uncharted.software/jsonforms-primevue/style.css';
+import './playground-host-field-sizing.css';
 import 'primeflex/primeflex.css';
 import 'primeicons/primeicons.css';
 
