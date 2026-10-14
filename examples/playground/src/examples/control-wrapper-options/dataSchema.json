@@ -63,25 +63,25 @@
               "title": "Focused Field",
               "description": "This field demonstrates focus state"
             },
-            "spaceBetweenLeft": {
+            "layoutLeftDefault": {
               "type": "string",
-              "title": "Space Between (Left Label)",
-              "description": "Label on left, field on right with space between"
+              "title": "Very long configuration setting name",
+              "description": "Same label length as the row below; only layout differs"
             },
-            "spaceBetweenRight": {
+            "layoutLeftSpaceBetween": {
               "type": "string",
-              "title": "Space Between (Right Label)",
-              "description": "Field on left, label on right with space between"
+              "title": "Very long configuration setting name",
+              "description": "Same label length as the row above; only layout differs"
             },
-            "spaceBetweenShort": {
+            "layoutRightDefault": {
               "type": "string",
-              "title": "Short",
-              "description": "Short label with space-between layout"
+              "title": "Very long configuration setting name",
+              "description": "Right label, default layout"
             },
-            "spaceBetweenLong": {
+            "layoutRightSpaceBetween": {
               "type": "string",
-              "title": "Very Long Label Name That Takes Up More Space",
-              "description": "Long label with space-between layout"
+              "title": "Very long configuration setting name",
+              "description": "Right label, space-between layout"
             }
           }
         }

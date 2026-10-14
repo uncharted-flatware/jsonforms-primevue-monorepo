@@ -11,10 +11,10 @@
       "requiredField": "Required field example",
       "visibleField": "Visible field example",
       "focusedField": "Focused field example",
-      "spaceBetweenLeft": "Left label example",
-      "spaceBetweenRight": "Right label example",
-      "spaceBetweenShort": "Short text",
-      "spaceBetweenLong": "Long label text"
+      "layoutLeftDefault": "Default layout value",
+      "layoutLeftSpaceBetween": "Space-between layout value",
+      "layoutRightDefault": "Default layout value",
+      "layoutRightSpaceBetween": "Space-between layout value"
     }
   }
 }

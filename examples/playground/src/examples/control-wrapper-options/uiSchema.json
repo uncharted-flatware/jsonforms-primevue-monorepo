@@ -126,61 +126,65 @@
     },
     {
       "type": "Group",
-      "label": "Space-Between Layout Examples",
+      "label": "Control layout option (default vs space-between)",
       "options": {
         "isToggleable": true,
-        "isExpanded": false
+        "isExpanded": true
       },
       "elements": [
         {
           "type": "Label",
-          "text": "Space-Between Layout - Label and field fill width with space between"
+          "text": "options.layout on a Control (left or right label only). Both rows use the same long label and a full-width fluid field; compare the gap between label and field. For spreading multiple controls across a row, see Layout Components → Horizontal Layout with Space-Between."
+        },
+        {
+          "type": "Label",
+          "text": "Left label — default (layout omitted): inline row with gap between label and field"
         },
         {
           "type": "Control",
-          "scope": "#/properties/testing/properties/controlWrapper/properties/spaceBetweenLeft",
+          "scope": "#/properties/testing/properties/controlWrapper/properties/layoutLeftDefault",
           "options": {
             "labelPlacement": "left",
-            "layout": "space-between",
-            "placeholder": "Field on right side"
+            "placeholder": "Default layout"
           }
         },
         {
+          "type": "Label",
+          "text": "Left label — layout: \"space-between\": same row, no gap before the field"
+        },
+        {
           "type": "Control",
-          "scope": "#/properties/testing/properties/controlWrapper/properties/spaceBetweenRight",
+          "scope": "#/properties/testing/properties/controlWrapper/properties/layoutLeftSpaceBetween",
+          "options": {
+            "labelPlacement": "left",
+            "layout": "space-between",
+            "placeholder": "Space-between layout"
+          }
+        },
+        {
+          "type": "Label",
+          "text": "Right label — default (layout omitted)"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/testing/properties/controlWrapper/properties/layoutRightDefault",
+          "options": {
+            "labelPlacement": "right",
+            "placeholder": "Default layout"
+          }
+        },
+        {
+          "type": "Label",
+          "text": "Right label — layout: \"space-between\""
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/testing/properties/controlWrapper/properties/layoutRightSpaceBetween",
           "options": {
             "labelPlacement": "right",
             "layout": "space-between",
-            "placeholder": "Field on left side"
+            "placeholder": "Space-between layout"
           }
-        },
-        {
-          "type": "Control",
-          "scope": "#/properties/testing/properties/controlWrapper/properties/spaceBetweenShort",
-          "options": {
-            "labelPlacement": "left",
-            "layout": "space-between",
-            "placeholder": "Short label, full width"
-          }
-        },
-        {
-          "type": "Control",
-          "scope": "#/properties/testing/properties/controlWrapper/properties/spaceBetweenLong",
-          "options": {
-            "labelPlacement": "left",
-            "layout": "space-between",
-            "placeholder": "Long label, still full width"
-          }
-        },
-        {
-          "type": "Control",
-          "scope": "#/properties/testing/properties/controlWrapper/properties/spaceBetweenLong",
-          "options": {
-            "labelPlacement": "right",
-            "layout": "space-between",
-            "placeholder": "Field first, long label right"
-          },
-          "label": "Long Label on Right"
         }
       ]
     }

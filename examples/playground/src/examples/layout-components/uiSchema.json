@@ -25,7 +25,7 @@
     },
     {
       "type": "Label",
-      "text": "Horizontal Layout"
+      "text": "Horizontal Layout (default row — fields stay together with gap)"
     },
     {
       "type": "HorizontalLayout",
@@ -59,7 +59,7 @@
     },
     {
       "type": "Label",
-      "text": "Horizontal Layout with Space-Between"
+      "text": "Horizontal Layout with layout: \"space-between\" — pushes child controls toward the left and right edges of the row"
     },
     {
       "type": "HorizontalLayout",
