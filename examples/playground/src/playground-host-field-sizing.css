@@ -1,0 +1,42 @@
+/* Host sizing demo for playground example "host-field-sizing" (unlayered so it overrides @layer jsonforms). */
+
+.playground-host-field-sizing .p-panel:last-of-type .jsonforms-control--label-inline .jsonforms-control__widget,
+.playground-host-field-sizing .p-panel:last-of-type .jsonforms-control--layout-between .jsonforms-control__widget {
+  flex: 0 1 auto;
+  width: auto;
+}
+
+.playground-host-field-sizing .p-panel:last-of-type .jsonforms-control__widget .p-inputtext {
+  width: 14rem;
+  max-width: 100%;
+}
+
+.playground-host-field-sizing .p-panel:last-of-type .jsonforms-control__widget .p-inputnumber {
+  width: 8rem;
+  max-width: 100%;
+}
+
+.playground-host-field-sizing .p-panel:last-of-type .jsonforms-control__widget .p-select {
+  width: 11rem;
+  max-width: 100%;
+}
+
+.playground-host-field-sizing .p-panel:last-of-type .jsonforms-control__widget .p-datepicker {
+  width: 13rem;
+  max-width: 100%;
+}
+
+.playground-host-field-sizing .p-panel:last-of-type .jsonforms-stack--loose > label {
+  display: block;
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  color: var(--p-text-muted-color, var(--text-color-secondary));
+}
+
+.playground-host-field-sizing .p-panel:last-of-type .jsonforms-stack--loose > label:first-child {
+  margin-top: 0;
+}

@@ -1,0 +1,12 @@
+{
+  "sizing": {
+    "baselineString": "Full-width fluid default",
+    "aString": "Narrow text",
+    "aNumber": 42.5,
+    "anInteger": 7,
+    "aBoolean": true,
+    "anEnum": "Option 2",
+    "anEnumRadio": "Option 1",
+    "aDateTime": "2026-10-14T16:00:00.000Z"
+  }
+}

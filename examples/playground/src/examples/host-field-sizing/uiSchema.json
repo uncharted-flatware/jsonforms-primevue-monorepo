@@ -1,0 +1,98 @@
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Label",
+      "text": "This example adds playgroundHostClass on the form container (see meta.json). Host CSS in playground-host-field-sizing.css overrides package layout hooks so fields do not stretch across the row."
+    },
+    {
+      "type": "Group",
+      "label": "Package default — fluid field fills the row",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/sizing/properties/baselineString",
+          "options": {
+            "placeholder": "Default fluid width"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Group",
+      "label": "Host overrides — constrained widget widths",
+      "elements": [
+        {
+          "type": "Label",
+          "text": "Shared widget rule (constrained group panel only):\n.playground-host-field-sizing .p-panel:last-of-type .jsonforms-control--label-inline .jsonforms-control__widget {\n  flex: 0 1 auto;\n  width: auto;\n}"
+        },
+        {
+          "type": "Label",
+          "text": "String — .playground-host-field-sizing .p-panel:last-of-type .jsonforms-control__widget .p-inputtext {\n  width: 14rem;\n  max-width: 100%;\n}"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/sizing/properties/aString",
+          "options": {
+            "placeholder": "14rem wide"
+          }
+        },
+        {
+          "type": "Label",
+          "text": "Number / integer — .playground-host-field-sizing .p-panel:last-of-type .jsonforms-control__widget .p-inputnumber {\n  width: 8rem;\n  max-width: 100%;\n}"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/sizing/properties/aNumber",
+          "options": {
+            "prefix": "$",
+            "suffix": " USD"
+          }
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/sizing/properties/anInteger",
+          "options": {
+            "prefix": "#",
+            "suffix": " items"
+          }
+        },
+        {
+          "type": "Label",
+          "text": "Boolean — only the shared widget flex rule; Checkbox keeps its natural size (no width on .p-checkbox)."
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/sizing/properties/aBoolean"
+        },
+        {
+          "type": "Label",
+          "text": "Enum (select) — .playground-host-field-sizing .p-panel:last-of-type .jsonforms-control__widget .p-select {\n  width: 11rem;\n  max-width: 100%;\n}"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/sizing/properties/anEnum"
+        },
+        {
+          "type": "Label",
+          "text": "Enum (radio) — only the shared widget flex rule; .jsonforms-stack inside the widget sizes to content."
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/sizing/properties/anEnumRadio",
+          "options": {
+            "format": "radio"
+          }
+        },
+        {
+          "type": "Label",
+          "text": "Date-time — .playground-host-field-sizing .p-panel:last-of-type .jsonforms-control__widget .p-datepicker {\n  width: 13rem;\n  max-width: 100%;\n}"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/sizing/properties/aDateTime"
+        }
+      ]
+    }
+  ]
+}

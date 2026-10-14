@@ -6,7 +6,7 @@ Each demo lives in its own directory under `src/examples/<slug>/`. The playgroun
 
 | File | Purpose |
 |------|---------|
-| `meta.json` | `{ "label": "Display name", "order": 1 }` — dropdown label and sort order |
+| `meta.json` | `{ "label": "Display name", "order": 1 }` — dropdown label and sort order. Optional `playgroundHostClass` adds a class on the rendered form container for host-CSS demos (see `host-field-sizing`). |
 | `dataSchema.json` | JSON Schema root for this demo |
 | `uiSchema.json` | UI layout for this demo only |
 | `data.json` | Instance data matching the schema |
