@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/compare/jsonforms-primevue-v1.3.4...jsonforms-primevue-v1.4.0) (2026-10-14)
+
+
+### Features
+
+* remove primeflex and add more flexible styling ([#52](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/issues/52)) ([7455a00](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/commit/7455a00e5dee08477ff4f228650fafde4c3a88d1))
+
 ## [1.4.0] - Unreleased
 
 ### Changed
