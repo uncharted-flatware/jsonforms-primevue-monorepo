@@ -1,0 +1,32 @@
+{
+  "type": "object",
+  "properties": {
+    "notes": {
+      "type": "string",
+      "description": "Hover the info icon next to the label (tooltip mode)."
+    },
+    "approved": {
+      "type": "boolean"
+    },
+    "rejected": {
+      "type": "boolean"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string" },
+          "done": { "type": "boolean" }
+        },
+        "required": ["title"]
+      }
+    }
+  }
+}

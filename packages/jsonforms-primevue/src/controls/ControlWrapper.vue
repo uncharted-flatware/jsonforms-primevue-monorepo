@@ -12,7 +12,7 @@
                 <label :for="id + '-input'" class="jsonforms-control__label">
                     {{ label }}
                     <span v-if="showDescriptionIcon" :id="id + '-info'" class="jsonforms-control__info" v-tooltip="description">
-                        <InfoCircle />
+                        <JsonFormsIcon name="info" />
                     </span>
                 </label>
             </FloatLabel>
@@ -22,7 +22,7 @@
                 <label :for="id + '-input'" class="jsonforms-control__label">
                     {{ label }}
                     <span v-if="showDescriptionIcon" :id="id + '-info'" class="jsonforms-control__info" v-tooltip="description">
-                        <InfoCircle />
+                        <JsonFormsIcon name="info" />
                     </span>
                 </label>
             </If>
@@ -38,7 +38,7 @@
                 <label :for="id + '-input'" class="jsonforms-control__label">
                     {{ label }}
                     <span v-if="showDescriptionIcon" :id="id + '-info'" class="jsonforms-control__info" v-tooltip="description">
-                        <InfoCircle />
+                        <JsonFormsIcon name="info" />
                     </span>
                 </label>
             </If>
@@ -53,7 +53,7 @@
                 <label :for="id + '-input'" class="jsonforms-control__label">
                     {{ label }}
                     <span v-if="showDescriptionIcon" :id="id + '-info'" class="jsonforms-control__info" v-tooltip="description">
-                        <InfoCircle />
+                        <JsonFormsIcon name="info" />
                     </span>
                 </label>
             </If>
@@ -74,7 +74,7 @@ import type { PropType } from 'vue';
 import type { Options } from '../util/options';
 import { If, Else, ElseIf } from '../components/blocks';
 import FloatLabel from 'primevue/floatlabel';
-import InfoCircle from '@primevue/icons/infocircle';
+import { JsonFormsIcon } from '../icons';
 
 const props = defineProps({
     id: {

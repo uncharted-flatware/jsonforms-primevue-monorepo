@@ -12,6 +12,6 @@
 **/node_modules/
 **/dist/
 
-packages/jsonforms-primevue/tsconfig.tsbuildinfo
+*.tsbuildinfo
 
 .cursor/

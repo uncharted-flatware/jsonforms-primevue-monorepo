@@ -2,8 +2,6 @@ import '@jsonforms/vue-vanilla/vanilla.css';
 import '@uncharted.software/jsonforms-primevue/style.css';
 import './playground-host-field-sizing.css';
 import 'primeflex/primeflex.css';
-import 'primeicons/primeicons.css';
-
 import App from '@/App.vue';
 import { createApp } from 'vue';
 import PrimeVue from 'primevue/config';

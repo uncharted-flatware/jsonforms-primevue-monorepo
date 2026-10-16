@@ -89,7 +89,6 @@
     "@vitejs/plugin-vue": "^5.2.3",
     "@vue/tsconfig": "^0.5.1",
     "oxlint": "^0.16.12",
-    "primeicons": "7.0.0",
     "primevue": "4.4.1",
     "typescript": "^5.6.2",
     "vite": "^6.4.3",

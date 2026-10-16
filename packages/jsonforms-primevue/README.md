@@ -56,6 +56,8 @@ app.directive('tooltip', Tooltip);
 
 For detailed documentation on all available components, options, and customization features, please refer to the [Documentation](./DOCS.md).
 
+Built-in UI icons use inline SVG defaults (no PrimeIcons dependency). To use another icon set (for example Phosphor), call `provideJsonFormsPrimeVueIcons` in app setup — see [Icons](./DOCS.md#icons) in the documentation.
+
 ## Roadmap / TODO
 
  - [ ] Basic controls for all types

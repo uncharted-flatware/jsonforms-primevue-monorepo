@@ -12,8 +12,11 @@
             size="small"
             @click="addItem"
             v-tooltip.top="'Add Item'"
-            icon="pi pi-plus"
-          />
+          >
+            <template #icon>
+              <JsonFormsIcon name="plus" />
+            </template>
+          </Button>
         </div>
       </div>
       
@@ -40,8 +43,11 @@
                     size="small"
                     text
                     severity="secondary"
-                    icon="pi pi-chevron-up"
-                  />
+                  >
+                    <template #icon>
+                      <JsonFormsIcon name="chevronUp" />
+                    </template>
+                  </Button>
                   <Button
                     @click="moveItem(index, index + 1)"
                     :disabled="index === control.data.length - 1"
@@ -49,8 +55,11 @@
                     size="small"
                     text
                     severity="secondary"
-                    icon="pi pi-chevron-down"
-                  />
+                  >
+                    <template #icon>
+                      <JsonFormsIcon name="chevronDown" />
+                    </template>
+                  </Button>
                 </template>
                 <Button
                   @click="removeItem(index)"
@@ -58,8 +67,11 @@
                   size="small"
                   severity="danger"
                   text
-                  icon="pi pi-trash"
-                />
+                >
+                  <template #icon>
+                    <JsonFormsIcon name="trash" />
+                  </template>
+                </Button>
               </div>
             </template>
           </Column>
@@ -103,10 +115,13 @@
             :disabled="!control.enabled"
             size="small"
             label="Add Row"
-            icon="pi pi-plus"
             @click="addItem"
             v-tooltip.top="'Add Item'"
-          />
+          >
+            <template #icon>
+              <JsonFormsIcon name="plus" />
+            </template>
+          </Button>
         </div>
       </div>
 
@@ -117,7 +132,10 @@
           :key="`${control.path}-${index}`" 
           class="jsonforms-array-primitive-row"
         >
-          <i class="pi pi-circle-fill jsonforms-array-primitive-marker"></i>
+          <JsonFormsIcon
+            name="circleFill"
+            class="jsonforms-array-primitive-marker"
+          />
           <div class="jsonforms-array-primitive-content">
             <DispatchRenderer
               :schema="itemSchema"
@@ -173,8 +191,11 @@
                     size="small"
                     text
                     severity="secondary"
-                    icon="pi pi-chevron-up"
-                  />
+                  >
+                    <template #icon>
+                      <JsonFormsIcon name="chevronUp" />
+                    </template>
+                  </Button>
                   <Button
                     @click="moveItem(index, index + 1)"
                     :disabled="index === control.data.length - 1"
@@ -182,8 +203,11 @@
                     size="small"
                     text
                     severity="secondary"
-                    icon="pi pi-chevron-down"
-                  />
+                  >
+                    <template #icon>
+                      <JsonFormsIcon name="chevronDown" />
+                    </template>
+                  </Button>
                 </template>
                 <Button
                   @click="removeItem(index)"
@@ -191,8 +215,11 @@
                   size="small"
                   severity="danger"
                   text
-                  icon="pi pi-trash"
-                />
+                >
+                  <template #icon>
+                    <JsonFormsIcon name="trash" />
+                  </template>
+                </Button>
               </div>
             </div>
           </template>
@@ -228,6 +255,7 @@ import Column from 'primevue/column';
 import ArrayItemRenderer from './ArrayItemRenderer.vue';
 import get from 'lodash/get';
 import { DispatchRenderer } from '@jsonforms/vue';
+import { JsonFormsIcon } from '../icons';
 
 const props = defineProps(rendererProps<ControlElement>());
 const controlProps = useJsonFormsControl(props);

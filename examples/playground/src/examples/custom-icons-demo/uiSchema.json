@@ -1,0 +1,61 @@
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Label",
+      "text": "Selecting this example registers Phosphor icons via provideJsonFormsPrimeVueIcons. Switch to any other example to see the built-in SVG defaults."
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/notes",
+      "options": {
+        "descriptionDisplay": "tooltip"
+      }
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/approved",
+      "label": "Approved (display-only)",
+      "options": {
+        "displayOnly": true
+      }
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/rejected",
+      "label": "Rejected (display-only)",
+      "options": {
+        "displayOnly": true
+      }
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/tags",
+      "label": "Tags (check markers)",
+      "options": {
+        "displayOnly": true
+      }
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/tasks",
+      "label": "Tasks (array actions)",
+      "options": {
+        "showSortButtons": true,
+        "detail": {
+          "type": "VerticalLayout",
+          "elements": [
+            {
+              "type": "Control",
+              "scope": "#/properties/title"
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/done"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

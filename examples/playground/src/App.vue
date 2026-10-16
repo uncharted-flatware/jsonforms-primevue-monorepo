@@ -1,7 +1,7 @@
 declare module 'simple-code-editor';
 
 <script setup lang="ts">
-import { computed, ref, shallowRef, watch } from "vue";
+import { computed, provide, ref, shallowRef, watch } from "vue";
 import { JsonForms, JsonFormsChangeEvent } from "@jsonforms/vue";
 import { createAjv } from '@jsonforms/core';
 import {
@@ -10,11 +10,17 @@ import {
 import 'highlight.js';
 // @ts-ignore
 import CodeEditor from 'simple-code-editor';
-import 'primeicons/primeicons.css';
-import primeVueRenderers from '@uncharted.software/jsonforms-primevue';
+import primeVueRenderers, {
+    JSONFORMS_PRIMEVUE_ICONS_KEY,
+} from '@uncharted.software/jsonforms-primevue';
 import { customRenderers } from './renderers';
 import Select from 'primevue/select';
 import { playgroundExamples } from './examples/loadPlaygroundExamples';
+import {
+    CUSTOM_ICONS_DEMO_EXAMPLE_ID,
+    playgroundIconRegistry,
+    syncPlaygroundIconRegistry,
+} from './playgroundIconRegistry';
 import { playgroundDisplayOnlyOnInitMiddleware } from './middleware/displayOnlyOnInitMiddleware';
 
 defineOptions({
@@ -25,6 +31,8 @@ const exampleOptions = playgroundExamples.map((ex) => ({
     label: ex.meta.label,
     value: ex.id,
 }));
+
+provide(JSONFORMS_PRIMEVUE_ICONS_KEY, playgroundIconRegistry);
 
 const selectedExampleId = ref(playgroundExamples[0]?.id ?? '');
 
@@ -54,9 +62,14 @@ function applyExampleToEditors(id: string) {
 
 watch(
     selectedExampleId,
-    (id) => applyExampleToEditors(id),
+    (id) => {
+        syncPlaygroundIconRegistry(id);
+        applyExampleToEditors(id);
+    },
     { immediate: true }
 );
+
+const jsonFormsRenderKey = computed(() => selectedExampleId.value);
 
 const handleDefaultsAjv = shallowRef(createAjv({ useDefaults: true }));
 
@@ -120,6 +133,15 @@ function onFormChanged(event: JsonFormsChangeEvent) {
                 class="w-full md:w-30rem"
             />
         </div>
+        <p
+            v-if="selectedExampleId === CUSTOM_ICONS_DEMO_EXAMPLE_ID"
+            class="playground-icon-set-banner m-0 text-sm"
+        >
+            <strong>Icon set: Phosphor (filled)</strong> — registered via
+            <code>provide(JSONFORMS_PRIMEVUE_ICONS_KEY, playgroundIconRegistry)</code>.
+            Pick any other example for <strong>built-in SVG</strong> (thin strokes; see
+            <code>packages/jsonforms-primevue/src/icons/defaults.ts</code>).
+        </p>
 
         <p v-if="errorMessage" class="text-red-500">{{ errorMessage }}</p>
         
@@ -158,7 +180,7 @@ function onFormChanged(event: JsonFormsChangeEvent) {
 
                 <JsonForms
                     v-if="activeExample"
-                    :key="selectedExampleId"
+                    :key="jsonFormsRenderKey"
                     :data="exampleData"
                     :renderers="renderers"
                     :schema="dataSchema"
@@ -191,5 +213,13 @@ function onFormChanged(event: JsonFormsChangeEvent) {
 
 .footer {
     height: 40px;
+}
+
+.playground-icon-set-banner {
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    background: var(--p-highlight-background, #f3e8ff);
+    color: var(--p-text-color, #2c3e50);
+    border: 1px solid var(--p-highlight-border-color, #d8b4fe);
 }
 </style>
