@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/compare/jsonforms-primevue-v1.4.0...jsonforms-primevue-v1.5.0) (2026-10-16)
+
+
+### Features
+
+* add injectable icon registry without PrimeIcons dependency ([#56](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/issues/56)) ([0cf6e12](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/commit/0cf6e12a005eaf8d3592b0ff6d8df197199f57ac))
+
 ## [1.4.0](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/compare/jsonforms-primevue-v1.3.4...jsonforms-primevue-v1.4.0) (2026-10-14)
 
 
