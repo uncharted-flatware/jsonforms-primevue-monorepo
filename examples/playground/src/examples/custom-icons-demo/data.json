@@ -1,0 +1,10 @@
+{
+  "notes": "Example value",
+  "approved": true,
+  "rejected": false,
+  "tags": ["alpha", "beta", "gamma"],
+  "tasks": [
+    { "title": "First task", "done": false },
+    { "title": "Second task", "done": true }
+  ]
+}

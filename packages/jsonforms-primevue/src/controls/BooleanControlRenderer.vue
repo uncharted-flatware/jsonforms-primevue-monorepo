@@ -5,17 +5,19 @@
         :applied-options="appliedOptions"
         :display-value="control.data ? 'Yes' : 'No'"
     >
-        <div v-if="appliedOptions.displayOnly" class="jsonforms-row">
-            <i
+        <div v-if="appliedOptions.displayOnly" class="jsonforms-row jsonforms-display-boolean-value">
+            <JsonFormsIcon
                 v-if="control.data"
-                class="pi pi-check jsonforms-display-boolean--true"
+                name="check"
+                class="jsonforms-display-boolean--true"
                 aria-label="Yes"
-            ></i>
-            <i
+            />
+            <JsonFormsIcon
                 v-else
-                class="pi pi-times jsonforms-display-boolean--false"
+                name="close"
+                class="jsonforms-display-boolean--false"
                 aria-label="No"
-            ></i>
+            />
         </div>
         <Checkbox
             v-else
@@ -41,6 +43,7 @@ import {
 } from '@jsonforms/vue';
 import Checkbox from 'primevue/checkbox';
 import { default as ControlWrapper } from './ControlWrapper.vue';
+import { JsonFormsIcon } from '../icons';
 import { useControlCommon } from "../util/composition";
 
 const props = defineProps(rendererProps<ControlElement>());

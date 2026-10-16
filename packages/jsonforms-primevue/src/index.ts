@@ -38,6 +38,13 @@ import LabelRenderer from './layouts/LabelRenderer.vue';
 import DurationControlRenderer from "./controls/DurationControlRenderer.vue";
 import Tooltip from 'primevue/tooltip';
 import { useControlCommon } from './util/composition';
+import {
+    defaultJsonFormsPrimeVueIcons,
+    JSONFORMS_PRIMEVUE_ICONS_KEY,
+    JsonFormsIcon,
+    provideJsonFormsPrimeVueIcons,
+    useJsonFormsPrimeVueIcons,
+} from './icons';
 
 // List of tester/ranking + renderer presets
 const renderers: JsonFormsRendererRegistryEntry[] = [
@@ -77,10 +84,21 @@ export {
     // Directives
     Tooltip,
     // Utilities
-    useControlCommon
+    useControlCommon,
+    // Icons
+    JsonFormsIcon,
+    JSONFORMS_PRIMEVUE_ICONS_KEY,
+    defaultJsonFormsPrimeVueIcons,
+    provideJsonFormsPrimeVueIcons,
+    useJsonFormsPrimeVueIcons,
 };
 
 export type { Options } from './util/options';
+export type {
+    JsonFormsPrimeVueIconName,
+    JsonFormsPrimeVueIconOverrides,
+    JsonFormsPrimeVueIcons,
+} from './icons';
 
 // Note: To use the tooltip feature, you must register the directive in your app:
 // app.directive('tooltip', Tooltip);

@@ -16,7 +16,7 @@ describe('loadPlaygroundExamples', () => {
 
   it('each example has required files and valid uiSchema layout', () => {
     const examples = loadPlaygroundExamples();
-    expect(examples.length).toBe(14);
+    expect(examples.length).toBe(15);
 
     for (const ex of examples) {
       expect(ex.id).toBeTruthy();

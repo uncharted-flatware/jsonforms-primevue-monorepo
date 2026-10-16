@@ -908,6 +908,50 @@ In your UI schema, you can specify how descriptions should be displayed using th
 }
 ```
 
+## Icons
+
+Built-in renderers use a small set of semantic icons (array actions, description tooltip, boolean display-only, and similar). The package ships **inline SVG defaults** and does **not** require [PrimeIcons](https://www.npmjs.com/package/primeicons) or `@primevue/icons`.
+
+Override any icon by calling `provideJsonFormsPrimeVueIcons` in your app setup (for example with [Phosphor](https://phosphoricons.com/)):
+
+```typescript
+import {
+  PhCaretDown,
+  PhCaretUp,
+  PhCheck,
+  PhCircle,
+  PhInfo,
+  PhPlus,
+  PhTrash,
+  PhX,
+} from '@phosphor-icons/vue';
+import { provideJsonFormsPrimeVueIcons } from '@uncharted.software/jsonforms-primevue';
+
+provideJsonFormsPrimeVueIcons({
+  info: PhInfo,
+  plus: PhPlus,
+  chevronUp: PhCaretUp,
+  chevronDown: PhCaretDown,
+  trash: PhTrash,
+  check: PhCheck,
+  close: PhX,
+  circleFill: PhCircle,
+});
+```
+
+| Key | Used for |
+|-----|----------|
+| `info` | Description tooltip next to the label |
+| `plus` | Add array item / row |
+| `chevronUp`, `chevronDown` | Reorder array items |
+| `trash` | Remove array item |
+| `check`, `close` | Boolean display-only true / false |
+| `circleFill` | Primitive array list marker |
+
+Custom renderers can use the same registry via `useJsonFormsPrimeVueIcons()` or the exported `JsonFormsIcon` component.
+
+**PrimeVue widgets:** controls such as `DatePicker` with `showIcon` still use PrimeVue’s own icon configuration. Configure those in your PrimeVue theme or pass-through options separately from this registry.
+
 ## Styling
 
 JSONForms PrimeVue does not ship a PrimeVue theme and does not require PrimeFlex. Form controls use your application's PrimeVue preset (Aura, Lara, etc.). The optional stylesheet only provides structural layout hooks:
