@@ -65,6 +65,36 @@
     },
     {
       "type": "Label",
+      "text": "Labelled Enum (oneOf dropdown)"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/aLabelledEnum"
+    },
+    {
+      "type": "Label",
+      "text": "Labelled Enum (oneOf display only)"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/aLabelledEnum",
+      "options": {
+        "displayOnly": true
+      }
+    },
+    {
+      "type": "Label",
+      "text": "Labelled Enum (oneOf radio)"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/testing/properties/aLabelledEnumRadio",
+      "options": {
+        "format": "radio"
+      }
+    },
+    {
+      "type": "Label",
       "text": "Date-Time Control"
     },
     {

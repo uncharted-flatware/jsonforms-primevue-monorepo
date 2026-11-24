@@ -70,7 +70,7 @@ Built-in UI icons use inline SVG defaults (no PrimeIcons dependency). To use ano
    - [ ] Enum
      - [x] as strings 
      - [x] as dropdown
-     - [ ] as oneOf (to support value vs label for each item)
+     - [x] as oneOf (to support value vs label for each item)
      - [x] as 'radio' option
    - [x] Boolean (checkbox)
    - [ ] Date

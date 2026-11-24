@@ -285,8 +285,32 @@ The Enum Control renders a dropdown for selecting from a list of predefined valu
 }
 ```
 
+**Labelled enum (`oneOf`):**
+
+Use `oneOf` with `const` and `title` when the stored value should differ from the label shown in the UI (for example country codes):
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "country": {
+      "type": "string",
+      "title": "Country",
+      "oneOf": [
+        { "const": "CA", "title": "Canada" },
+        { "const": "US", "title": "United States" },
+        { "const": "DE", "title": "Germany" }
+      ]
+    }
+  }
+}
+```
+
+The form stores the `const` value (`"CA"`) while the dropdown or radio control displays each option's `title`. With `displayOnly: true`, the selected option's title is shown instead of the raw const.
+
 **Options:**
 - All common options (placeholder, focus, descriptionDisplay, labelPlacement, displayOnly)
+- `format: "radio"` — same labelled options as radio buttons
 
 ### Date-Time Control
 
@@ -723,7 +747,7 @@ In your UI schema, you can enable display-only mode using the `displayOnly` opti
 - **String Control**: Displays the text value with any configured prefix/suffix
 - **Number/Integer Control**: Displays the formatted number with prefix/suffix
 - **Boolean Control**: Shows a checkmark (✓) or X (✗) icon
-- **Enum Control**: Displays the selected value as text
+- **Enum Control**: Displays the selected value as text (for `oneOf` labelled enums, the option title is shown)
 - **Date-Time Control**: Shows the formatted date and time
 - **Duration Control**: Displays the formatted duration (e.g., "5 days")
 - **Array Control**: Hides add/remove buttons and renders all items in display-only mode

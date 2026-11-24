@@ -47,6 +47,26 @@
             "Option 3"
           ]
         },
+        "aLabelledEnum": {
+          "type": "string",
+          "title": "Country",
+          "description": "Labelled enum via oneOf (stores code, shows name)",
+          "oneOf": [
+            { "const": "CA", "title": "Canada" },
+            { "const": "US", "title": "United States" },
+            { "const": "DE", "title": "Germany" }
+          ]
+        },
+        "aLabelledEnumRadio": {
+          "type": "string",
+          "title": "Country (radio)",
+          "description": "Same labelled enum rendered as radio buttons",
+          "oneOf": [
+            { "const": "CA", "title": "Canada" },
+            { "const": "US", "title": "United States" },
+            { "const": "DE", "title": "Germany" }
+          ]
+        },
         "aDateTime": {
           "type": "string",
           "title": "Date Time",

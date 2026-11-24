@@ -3,10 +3,10 @@
         v-bind="controlWrapper"
         :is-focused="isFocused"
         :applied-options="appliedOptions"
-        :display-value="control.data"
+        :display-value="displayValue"
     >
         <div v-if="appliedOptions.displayOnly" :class="displayOnlyClasses">
-            {{ control.data || '' }}
+            {{ displayValue }}
         </div>
         <RadioButtonGroup
             v-else-if="isRadioFormat"
@@ -17,15 +17,15 @@
         >
             <div
                 v-for="(option, index) in options"
-                :key="String(option)"
+                :key="String(option.value)"
                 class="jsonforms-radio-option"
             >
                 <RadioButton
                     :input-id="control.id + '-radio-' + index"
-                    :value="option"
+                    :value="option.value"
                     :disabled="!control.enabled"
                 />
-                <label :for="control.id + '-radio-' + index">{{ option }}</label>
+                <label :for="control.id + '-radio-' + index">{{ option.label }}</label>
             </div>
         </RadioButtonGroup>
         <Select
@@ -36,6 +36,8 @@
             :autofocus="appliedOptions.focus"
             :placeholder="appliedOptions.placeholder"
             :options="options"
+            optionLabel="label"
+            optionValue="value"
             :model-value="control.data"
             @update:model-value="onChange"
             appendTo="self"
@@ -54,7 +56,10 @@ import {
 import { computed } from 'vue';
 import { default as ControlWrapper } from './ControlWrapper.vue';
 import { useControlCommon } from "../util/composition";
-import { getEnumValuesFromControl } from '../util/enumOptions';
+import {
+    enumDisplayLabelForValue,
+    getEnumOptionsFromControl,
+} from '../util/enumOptions';
 import Select from "primevue/select";
 import RadioButton from 'primevue/radiobutton';
 import RadioButtonGroup from 'primevue/radiobuttongroup';
@@ -74,12 +79,16 @@ const {
 const isRadioFormat = computed(() => appliedOptions.value.format === 'radio');
 
 const options = computed(() => {
-    const values = getEnumValuesFromControl(control.value);
-    if (values.length === 0) {
+    const enumOptions = getEnumOptionsFromControl(control.value);
+    if (enumOptions.length === 0) {
         console.warn('No enum options found for:', control.value.path);
     }
-    return values;
+    return enumOptions;
 });
+
+const displayValue = computed(() =>
+    enumDisplayLabelForValue(control.value.data, options.value)
+);
 
 const displayOnlyClasses = computed(() => {
     const classes = ['jsonforms-display-value'];

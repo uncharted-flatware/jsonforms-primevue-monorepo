@@ -2,12 +2,9 @@ import './jsonforms-layout.css';
 
 import {
     and,
-    not,
     rankWith,
-    isStringControl,
     isNumberControl,
     isBooleanControl,
-    isEnumControl,
     isLayout,
     isIntegerControl,
     isDateTimeControl,
@@ -45,11 +42,17 @@ import {
     provideJsonFormsPrimeVueIcons,
     useJsonFormsPrimeVueIcons,
 } from './icons';
+import {
+    enumControlTester,
+    oneOfEnumControlTester,
+    stringControlTester,
+} from './rendererTesters';
 
 // List of tester/ranking + renderer presets
 const renderers: JsonFormsRendererRegistryEntry[] = [
-    { tester: rankWith(2, and(isStringControl, not(isEnumControl))), renderer: StringControlRenderer },
-    { tester: rankWith(3, isEnumControl), renderer: EnumControlRenderer },
+    { tester: stringControlTester, renderer: StringControlRenderer },
+    { tester: enumControlTester, renderer: EnumControlRenderer },
+    { tester: oneOfEnumControlTester, renderer: EnumControlRenderer },
     { tester: rankWith(3, isNumberControl), renderer: NumberControlRenderer },
     { tester: rankWith(3, isIntegerControl), renderer: IntegerControlRenderer },
     { tester: rankWith(2, isBooleanControl), renderer: BooleanControlRenderer },
