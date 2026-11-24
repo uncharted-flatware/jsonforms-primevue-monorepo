@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/compare/jsonforms-primevue-v1.5.0...jsonforms-primevue-v1.6.0) (2026-11-24)
+
+
+### Features
+
+* **jsonforms-primevue:** support labelled enums via schema oneOf ([#61](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/issues/61)) ([225f0fc](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/commit/225f0fc4d91d21693a358ca50c53d407ba9b38e6))
+
 ## [1.5.0](https://github.com/uncharted-flatware/jsonforms-primevue-monorepo/compare/jsonforms-primevue-v1.4.0...jsonforms-primevue-v1.5.0) (2026-10-16)
 
 
